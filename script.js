@@ -1,10 +1,4 @@
 
-Date.prototype.addDays = function(days){
-    var date = new Date(this.valueOf());
-    date.setDate(date.getDate() + days);
-    return date;
-}
-
 
 
 
@@ -19,15 +13,27 @@ class Player {
         this.currentActivity = "Doing nothing";
         this.workStatus = false;
         this.studyStatus = false;
-        this.currentDate = new Date(1995, 11, 17);
+        this.currentDate = new Date("1995-11-17");
        
     }
 
-    work() {
-        if (player.workStatus == false){
-            return;
+    work(job) {
+        if (job == "pizza"){
+            this.money += this.jobLevel * 10;
+            this.job = "Pizza Delivery Man";
+            
+        } else if(job == "receptionist"){
+            this.money += this.jobLevel * 15;
+            this.job = "Receptionist";
+        } else if(job == "real-estate"){
+            this.money += this.jobLevel * 25;
+            this.job = "Real Estate Agent";
+        } else if(job == "lawyer"){
+            this.money += this.jobLevel * 50;
+            this.job = "Lawyer";
         }
-        this.money += this.jobLevel * 10;
+        this.workStatus = true;
+        this.studyStatus = false;
         this.currentActivity = "Working";
         this.updateStats();
     }
@@ -42,6 +48,12 @@ class Player {
         this.updateStats();
     }
 
+    incrementDate(dateInput,increment){
+        let dateFormatTotime = new Date(dateInput);
+        let increasedDate = new Date(dateFormatTotime.getTime() + (increment * 86400000));
+        return increasedDate;
+    }
+
     buyFurniture(){
 
     }
@@ -49,7 +61,7 @@ class Player {
     simulateTimePassage(){
         this.money -= this.dailyExpenses;
         this.daysPassed++;
-        this.currentDate = currentDate.addDays(1);
+        this.currentDate = incrementDate(currentDate, 1);
         this.updateStats();
         
     }
@@ -65,6 +77,8 @@ class Player {
         document.getElementById("study").innerText = "Study Level:"+ this.studyLevel;
         document.getElementById("current-activity").innerText = "Currently:" + this.currentActivity;
         document.getElementById("current-date").innerText = "Current date:" + this.currentDate.toDateString();
+        document.getElementById("days-passed").innerText = "Days passed:" + this.daysPassed;
+
 
 
     }
@@ -79,12 +93,7 @@ document.getElementById("pizza-delivery").addEventListener("click", function() {
     if (player.currentActivity == "Working"){
         return;
     } 
-
-    
-    player.workStatus = true;
-    player.studyStatus = false;
-    player.updateCurrentActivity("Working");
-    workInterval = setInterval(() => player.work(), 1000);
+    workInterval = setInterval(() => player.work("pizza"), 1000);
     clearInterval(studyInterval);
   
     

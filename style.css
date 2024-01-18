@@ -1,0 +1,26 @@
+
+html{
+    height:100%;
+}
+body{
+    background-color: black;
+    color:white;
+    height:100%;
+}
+
+#game-container{
+    width: 100%;
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+#room{
+    grid-column: 3 /6;
+    grid-row: 2/3;
+}
+
+#left-panel{
+    grid-column: 2 /3;
+    grid-row: 2/3;
+}
