@@ -86,8 +86,8 @@ class Player {
 
     checkStudyRequirements(studyLvl){
         if (this.studyLevel >= studyLvl){
-            lawyerBtn.disabled = false;
-            lawyerBtn.textContent = "Lawyer (Study Level: 10)"
+            receptionistBtn.disabled = false;
+            receptionistBtn.textContent = "Receptionist"
         } else {
             return;
         }
@@ -196,7 +196,10 @@ class Player {
 const player = new Player();
 player.startGame();
 
-//work button click event
+
+
+
+//work activities
 
 document.getElementById("pizza-delivery").addEventListener("click", function() {
     if (player.currentActivity == "pizza"){
@@ -209,7 +212,7 @@ document.getElementById("pizza-delivery").addEventListener("click", function() {
 });
 
 let receptionistBtn = document.getElementById("receptionist");
-//receptionistBtn.disabled = true;
+receptionistBtn.disabled = true;
 
 receptionistBtn.addEventListener("click", function() {
     
@@ -226,12 +229,11 @@ realEstateBtn.disabled = true;
 
 realEstateBtn.addEventListener("click", function() {
     
-    if (player.currentActivity == "Working"){
+    if (player.currentActivity == "real-estate"){
         return;
-    } 
-    ;
-    workInterval = setInterval(() => player.work("real-estate"), 1000);
-    clearInterval(studyInterval);
+    } ;
+
+    player.work("real-estate");
 
 });
 
@@ -241,8 +243,11 @@ lawyerBtn.disabled = true;
 
 
     lawyerBtn.addEventListener("click", function() {
-        workInterval = setInterval(() => player.work("lawyer"), 1000);
-        clearInterval(studyInterval);
+        if (player.currentActivity == "lawyer"){
+            return;
+        } ;
+    
+        player.work("lawyer");
     
     });
     
@@ -250,7 +255,7 @@ lawyerBtn.disabled = true;
 
 
 
-
+//Studying activities
 
 
 document.getElementById("study-coding").addEventListener("click", function(){
@@ -278,3 +283,63 @@ buyTableBtn.addEventListener("click", function(){
 /* setInterval(() => player.simulateTimePassage(), 1000)*/
 
 
+
+
+//grid construction
+
+/*
+document.addEventListener("DOMContentLoaded", function(){
+    const gridContainer = document.getElementById("grid-container");
+    const numRows = 5;
+    const numCols = 10;
+
+    //CReate grid cells
+    for (let row=0; row<numRows; row++){
+        for (let col=0; col<numCols; col++){
+            const cell = document.createElement("div");
+            cell.className = "grid-cell";
+            cell.setAttribute("data-row", row);
+            cell.setAttribute("data-col", col);
+            gridContainer.appendChild(cell);
+        }
+    }
+
+    //event listener for clicking on grid cells
+
+    gridContainer.addEventListener("click", function (event){
+        const clickedCell = event.target;
+        if (clickedCell.classList.contains("grid-cell")){
+            const row = clickedCell.getAttribute("data-row");
+            const col = clickedCell.getAttribute("data-col");
+            alert("clicked on cell at" + row + "," + col)
+        }
+    })
+})
+
+*/
+
+const container = document.getElementById("grid-container");
+
+function makeRows(rows, cols){
+    container.style.setProperty("--grid-rows", rows);
+    container.style.setProperty("--grid-cols", cols);
+    for (c=0; c<(rows*cols); c++){
+        let cell = document.createElement("div");
+        cell.innerText= (c+1);
+        cell.setAttribute("data", c);
+        container.appendChild(cell).className = "grid-item";
+    }
+}
+    container.addEventListener("click", function (event){
+        const clickedCell = event.target;
+        if (clickedCell.classList.contains("grid-item")){
+            const data = clickedCell.getAttribute("data");
+            alert("clicked on cell at" + data);
+        }
+    });
+    
+
+    
+
+
+makeRows(8,13);
