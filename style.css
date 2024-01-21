@@ -42,19 +42,129 @@ body{
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     /*grid-auto-rows: 50px;*/
     gap: 0px;
-    background-color: red;
+    
+    max-width:fit-content;
 }
 
 .grid-item {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 30px;
     border: 1px solid white;
     box-sizing: border-box;
     cursor: pointer;
     text-align: center;
-    background-color: red;
+   
 }
 
 .grid-item:hover {
     background-color:grey
+}
+
+#grid-container2{
+    display:grid;
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-columns: repeat(16, 1fr);
+    background-color: blue;
+    width: 768px;
+    height: 360px;
+}
+
+#right-table{
+    grid-row: 10/13;
+    grid-column: 12 / 15;
+    border: 1px solid white;
+    cursor: pointer;
+    display:flex;
+    max-width: 144px;
+}
+
+#left-table{
+    grid-row: 11/13;
+    grid-column: 4 / 6;
+    border: 1px solid white;
+    cursor: pointer;
+    display:flex;
+    max-width: 144px;
+}
+
+#on-left-table{
+    grid-row: 9/11;
+    grid-column: 4 / 6;
+    border: 1px solid white;
+    cursor: pointer;
+    display:flex;
+    max-width: 96px;
+}
+
+#on-shelf1{
+    grid-row: 5/6;
+    grid-column: 1 / 2;
+    border: 1px solid white;
+    cursor: pointer;
+    display:flex;
+    max-width: 48px;
+}
+
+#on-shelf2{
+    grid-row: 5/6;
+    grid-column: 2 / 3;
+    border: 1px solid white;
+    cursor: pointer;
+    display:flex;
+    max-width: 48px;
+}
+
+#on-shelf3{
+    grid-row: 5/6;
+    grid-column: 3 / 4;
+    border: 1px solid white;
+    cursor: pointer;
+    display:flex;
+    max-width: 48px;
+}
+
+
+#on-table{
+    grid-row: 8/10;
+    grid-column: 13 / 16;
+    border: 1px solid white;
+    cursor: pointer;
+    display:flex;
+    max-width: 48px;
+}
+
+#ceiling-table{
+    grid-row: 1/3;
+    grid-column: 8 / 10;
+    border: 1px solid white;
+    cursor: pointer;
+    display:flex;
+    max-width: 192px;
+}
+
+#shelf{
+    grid-row: 6/13;
+    grid-column: 1 / 4;
+    border: 1px solid white;
+    cursor: pointer;
+    display:flex;
+    max-width: 144px;
+}
+
+#central-furniture{
+    grid-row: 11/13;
+    grid-column: 7 / 11;
+    border: 1px solid white;
+    cursor: pointer;
+    display:flex;
+    max-width: 192px;
+}
+
+#window{
+    grid-row: 5/9;
+    grid-column: 11 / 16;
+    border: 1px solid white;
+    cursor: pointer;
+    display:flex;
+    max-width: 240px;
 }

@@ -1,14 +1,19 @@
 
 
 class furniture {
-    constructor(price, name){
+    constructor(price, name, type, source){
         this.name = name;
         this.price = price;
         this.stats = "+1 Sanity"
+        this.type = type;
+        this.source = source;
+      
     }
 
   
 }
+
+let inventoryWindow = document.getElementById("inventory-window")
 
 
 class Player {
@@ -116,6 +121,8 @@ class Player {
             this.money -= furniture.price;
             this.inventory.push(furniture);
             console.log("You bought " + furniture.name + " for " + furniture.price);
+            this.cleanInventory()
+            this.populateInventory()
             this.displayStats();
         } else {
             console.log("Not enough money to buy " + furniture.name)
@@ -175,6 +182,25 @@ class Player {
         this.studyLevel += studyLevel;
     }
 
+    cleanInventory(){
+
+        let child = inventoryWindow.lastElementChild;
+        while (child){
+            inventoryWindow.removeChild(child);
+            child = inventoryWindow.lastElementChild;
+        }
+    
+    }
+    
+    populateInventory(){
+        for (let i=0; i<this.inventory.length; i++){
+            let item = document.createElement("div");
+            item.innerText = this.inventory[i].name
+            item.className = "item"
+            inventoryWindow.appendChild(item)
+        }
+    }
+
     displayStats() {
         document.getElementById("money").innerText = "Money:"+ this.money;
         document.getElementById("job").innerText = "Current Job:"+ this.job;
@@ -184,7 +210,8 @@ class Player {
         document.getElementById("days-passed").innerText = "Days passed:" + this.daysPassed;
         document.getElementById("inventory").innerText = "Inventory:" + this.inventory;
 
-
+    
+        
         this.checkStudyRequirements(10)
 
 
@@ -270,9 +297,11 @@ document.getElementById("study-coding").addEventListener("click", function(){
 })
 
 
-let table = new furniture(50, "Table");
+let table = new furniture(50, "Table", "2x1", "resources/computer.png");
 
 let buyTableBtn = document.getElementById("buy-table");
+let tableImg = document.createElement("img");
+tableImg.src = table.source;
 
 buyTableBtn.addEventListener("click", function(){
     player.buyFurni(table);
@@ -318,6 +347,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
 */
 
+
+//function to create grid
+
+/*
 const container = document.getElementById("grid-container");
 
 function makeRows(rows, cols){
@@ -334,12 +367,51 @@ function makeRows(rows, cols){
         const clickedCell = event.target;
         if (clickedCell.classList.contains("grid-item")){
             const data = clickedCell.getAttribute("data");
+            if (data == 164 || data == 148){
+                
+                if (data == 164){
+                    let furni164 = document.createElement("img");
+                    furni164.src = 'resources/computer.png';
+                    clickedCell.appendChild(furni164);
+                    console.log("background changed")
+                }
+                //add function to set up a certain png from the inventory depending on the furniture or object selected
+            }
             alert("clicked on cell at" + data);
         }
     });
     
 
+
+
+
+makeRows(12,16);
+
+*/
+
+// function to select the furniture from the menu
+
+function selectFurni(selectedFurniture){
+
+}
+
+//function to place furniture
+
+function placeFurni(selectedFurniture, cell){
+    //popup the menu with the
+
+}
+
+
+
+//test placing furniture
+
+
+const firstFurni = document.getElementById("table");
+
+
+firstFurni.addEventListener("click", function (event){
+        firstFurni.appendChild(tableImg);
+        alert("clicked on cell at first furniture");
     
-
-
-makeRows(8,13);
+});
