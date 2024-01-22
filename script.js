@@ -368,7 +368,7 @@ function populateInventoryPopup(typeArray, typeSlot){
 
         furniCard.addEventListener("click", function(){
             typeArray[i].equipped = true;
-            player.cleanInventory(inventoryPopup)
+            player.cleanInventory(inventoryPopupItems)
             populateInventoryPopup(typeArray, typeSlot);
             console.log(typeArray[i].equipped);
 
