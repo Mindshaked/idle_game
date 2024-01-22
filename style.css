@@ -1,15 +1,17 @@
 
 html{
-    height:100%;
+    height:100vh;
 }
 body{
+    height:100vh;
     background-color: black;
     color:white;
     height:100%;
 }
 
 #game-container{
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     display:grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -36,15 +38,7 @@ body{
 }
 
 
-#grid-container{
-    display:grid;
-    grid-template-rows: repeat(var(--grid-rows), 1fr);
-    grid-template-columns: repeat(var(--grid-cols), 1fr);
-    /*grid-auto-rows: 50px;*/
-    gap: 0px;
-    
-    max-width:fit-content;
-}
+
 
 .grid-item {
     width: 48px;
@@ -62,12 +56,29 @@ body{
 
 #grid-container2{
     display:grid;
+    position: relative;
     grid-template-rows: repeat(12, 1fr);
     grid-template-columns: repeat(16, 1fr);
     background-color: blue;
     width: 768px;
     height: 360px;
+    margin-left: 50px;
 }
+
+#left-wall{
+    grid-row: 1 / 13;
+    grid-column: 1 / 9;
+    background-color: #7b7b7b;
+    z-index: 1;
+}
+
+#right-wall{
+    grid-row: 1 / 13;
+    grid-column: 9 / 17;
+    background-color: #a6a6a6;
+    z-index: 1;
+}
+
 
 #right-table{
     grid-row: 10/13;
@@ -76,6 +87,7 @@ body{
     cursor: pointer;
     display:flex;
     max-width: 144px;
+    z-index: 3;
 }
 
 #left-table{
@@ -85,6 +97,7 @@ body{
     cursor: pointer;
     display:flex;
     max-width: 144px;
+    z-index: 3;
 }
 
 #on-left-table{
@@ -94,6 +107,7 @@ body{
     cursor: pointer;
     display:flex;
     max-width: 96px;
+    z-index: 3;
 }
 
 #on-shelf1{
@@ -103,6 +117,7 @@ body{
     cursor: pointer;
     display:flex;
     max-width: 48px;
+    z-index: 3;
 }
 
 #on-shelf2{
@@ -112,6 +127,7 @@ body{
     cursor: pointer;
     display:flex;
     max-width: 48px;
+    z-index: 3;
 }
 
 #on-shelf3{
@@ -121,6 +137,27 @@ body{
     cursor: pointer;
     display:flex;
     max-width: 48px;
+    z-index: 3;
+}
+
+#book-shelf1{
+    grid-row: 5/6;
+    grid-column: 6 / 8;
+    border: 1px solid white;
+    cursor: pointer;
+    display:flex;
+    max-width: 96px;
+    z-index: 3;
+}
+
+#book-shelf2{
+    grid-row: 7/8;
+    grid-column: 6 / 8;
+    border: 1px solid white;
+    cursor: pointer;
+    display:flex;
+    max-width: 96px;
+    z-index: 3;
 }
 
 
@@ -131,7 +168,9 @@ body{
     cursor: pointer;
     display:flex;
     max-width: 48px;
+    z-index: 3;
 }
+
 
 #ceiling-table{
     grid-row: 1/3;
@@ -140,6 +179,7 @@ body{
     cursor: pointer;
     display:flex;
     max-width: 192px;
+    z-index: 3;
 }
 
 #shelf{
@@ -149,6 +189,7 @@ body{
     cursor: pointer;
     display:flex;
     max-width: 144px;
+    z-index: 3;
 }
 
 #central-furniture{
@@ -158,13 +199,54 @@ body{
     cursor: pointer;
     display:flex;
     max-width: 192px;
+    z-index: 3;
 }
 
 #window{
-    grid-row: 5/9;
+    grid-row: 4/9;
     grid-column: 11 / 16;
     border: 1px solid white;
     cursor: pointer;
     display:flex;
     max-width: 240px;
+    z-index: 2;
+    background-color: #151d45;
+}
+
+#furni-selection-window{
+    position: absolute;
+    display: flex;
+    flex-direction:column;
+    padding: 10px;
+    top: 400px;
+    left: 20px;
+    background-color: red;
+    width: 700px;
+    height: 100px;
+    z-index: 10;
+    visibility:hidden;
+}
+
+.furni-cards{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    margin: 10px;
+    cursor: pointer;
+    color: black;
+}
+
+#close-popup-button{
+    color:white;
+}
+
+#furni-list{
+    display:flex;
+    align-items: center;
+}
+
+#popup-header{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
 }

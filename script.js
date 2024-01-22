@@ -7,6 +7,7 @@ class furniture {
         this.stats = "+1 Sanity"
         this.type = type;
         this.source = source;
+        this.equipped = false;
       
     }
 
@@ -121,7 +122,7 @@ class Player {
             this.money -= furniture.price;
             this.inventory.push(furniture);
             console.log("You bought " + furniture.name + " for " + furniture.price);
-            this.cleanInventory()
+            this.cleanInventory(inventoryWindow)
             this.populateInventory()
             this.displayStats();
         } else {
@@ -182,12 +183,12 @@ class Player {
         this.studyLevel += studyLevel;
     }
 
-    cleanInventory(){
+    cleanInventory(parent){
 
-        let child = inventoryWindow.lastElementChild;
+        let child = parent.lastElementChild;
         while (child){
-            inventoryWindow.removeChild(child);
-            child = inventoryWindow.lastElementChild;
+            parent.removeChild(child);
+            child = parent.lastElementChild;
         }
     
     }
@@ -297,7 +298,7 @@ document.getElementById("study-coding").addEventListener("click", function(){
 })
 
 
-let table = new furniture(50, "Table", "2x1", "resources/computer.png");
+let table = new furniture(50, "Table", "right-table", "resources/computer.png");
 
 let buyTableBtn = document.getElementById("buy-table");
 let tableImg = document.createElement("img");
@@ -314,104 +315,83 @@ buyTableBtn.addEventListener("click", function(){
 
 
 
-//grid construction
-
-/*
-document.addEventListener("DOMContentLoaded", function(){
-    const gridContainer = document.getElementById("grid-container");
-    const numRows = 5;
-    const numCols = 10;
-
-    //CReate grid cells
-    for (let row=0; row<numRows; row++){
-        for (let col=0; col<numCols; col++){
-            const cell = document.createElement("div");
-            cell.className = "grid-cell";
-            cell.setAttribute("data-row", row);
-            cell.setAttribute("data-col", col);
-            gridContainer.appendChild(cell);
-        }
-    }
-
-    //event listener for clicking on grid cells
-
-    gridContainer.addEventListener("click", function (event){
-        const clickedCell = event.target;
-        if (clickedCell.classList.contains("grid-cell")){
-            const row = clickedCell.getAttribute("data-row");
-            const col = clickedCell.getAttribute("data-col");
-            alert("clicked on cell at" + row + "," + col)
-        }
-    })
-})
-
-*/
 
 
-//function to create grid
-
-/*
-const container = document.getElementById("grid-container");
-
-function makeRows(rows, cols){
-    container.style.setProperty("--grid-rows", rows);
-    container.style.setProperty("--grid-cols", cols);
-    for (c=0; c<(rows*cols); c++){
-        let cell = document.createElement("div");
-        cell.innerText= (c+1);
-        cell.setAttribute("data", c);
-        container.appendChild(cell).className = "grid-item";
-    }
-}
-    container.addEventListener("click", function (event){
-        const clickedCell = event.target;
-        if (clickedCell.classList.contains("grid-item")){
-            const data = clickedCell.getAttribute("data");
-            if (data == 164 || data == 148){
-                
-                if (data == 164){
-                    let furni164 = document.createElement("img");
-                    furni164.src = 'resources/computer.png';
-                    clickedCell.appendChild(furni164);
-                    console.log("background changed")
-                }
-                //add function to set up a certain png from the inventory depending on the furniture or object selected
-            }
-            alert("clicked on cell at" + data);
-        }
-    });
-    
-
-
-
-
-makeRows(12,16);
-
-*/
-
-// function to select the furniture from the menu
-
-function selectFurni(selectedFurniture){
-
-}
 
 //function to place furniture
 
-function placeFurni(selectedFurniture, cell){
+function placeFurni(selectedFurniture, slot, slotArray){
     //popup the menu with the
-
+    slotArray.splice(0,1);
+    slotArray.push(selectedFurniture)
+    player.cleanInventory(slot)
+    let furniImg = document.createElement("img");
+    furniImg.src = selectedFurniture.source
+    slot.appendChild(furniImg)
+    console.log("this is the active array" + slotArray)
 }
-
-
 
 //test placing furniture
 
 
-const firstFurni = document.getElementById("table");
+const rightTableSlot = document.getElementById("right-table");
+let rightTableItem = [];
 
-
-firstFurni.addEventListener("click", function (event){
-        firstFurni.appendChild(tableImg);
-        alert("clicked on cell at first furniture");
+rightTableSlot.addEventListener("click", function (){
+        furniSelect("right-table", rightTableSlot)
     
 });
+
+
+//open window with furniture to select.
+
+const inventoryPopup = document.getElementById("furni-selection-window");
+const inventoryPopupItems = document.getElementById("furni-list");
+const inventoryPopupCloseBtn = document.getElementById("close-popup-button");
+
+inventoryPopupCloseBtn.addEventListener("click", function(){
+    inventoryPopup.style.visibility = "hidden";
+})
+
+
+//function puplate inventory popup
+function populateInventoryPopup(typeArray, typeSlot){
+    for (let i = 0; i< typeArray.length; i++){
+        let furniCard = document.createElement("div");
+        if (typeArray[i].equipped == true){
+            furniCard.style.border = "3px solid green"
+        }
+
+        furniCard.className = "furni-cards"
+        furniCard.innerText = typeArray[i].name;
+        inventoryPopupItems.appendChild(furniCard)
+
+        furniCard.addEventListener("click", function(){
+            typeArray[i].equipped = true;
+            player.cleanInventory(inventoryPopup)
+            populateInventoryPopup(typeArray, typeSlot);
+            console.log(typeArray[i].equipped);
+
+            placeFurni(typeArray[i], typeSlot, rightTableItem)
+            console.log("furnicard clicked")
+        })
+    }
+}
+
+// function to select the furniture from the menu
+
+
+function furniSelect(type, typeSlot){
+   
+    let typeFurnis = player.inventory.filter((furni) => furni.type == type);
+
+    console.log(typeFurnis)
+    player.cleanInventory(inventoryPopupItems)
+    populateInventoryPopup(typeFurnis, typeSlot);
+
+    console.log(typeFurnis)
+    inventoryPopup.style.visibility = "visible";
+    
+
+
+}
