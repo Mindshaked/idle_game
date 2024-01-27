@@ -81,11 +81,21 @@ body{
 
 
 #right-table{
-    grid-row: 11/13;
-    grid-column: 12 / 15;
+    grid-row: 10/14;
+    grid-column: 12 / 16;
     cursor: pointer;
     display:flex;
-    max-width: 144px;
+    max-width: 192px;
+    z-index: 3;
+}
+
+
+#on-table{
+    grid-row: 8/10;
+    grid-column: 13 / 16;
+    cursor: pointer;
+    display:flex;
+    max-width: 48px;
     z-index: 3;
 }
 
@@ -153,14 +163,6 @@ body{
 }
 
 
-#on-table{
-    grid-row: 9/11;
-    grid-column: 13 / 16;
-    cursor: pointer;
-    display:flex;
-    max-width: 48px;
-    z-index: 3;
-}
 
 
 #ceiling-table{
@@ -196,7 +198,7 @@ body{
 #central-furniture > img{
     align-self: flex-end;
     position: relative;
-    top: 2px;
+   
 }
 
 #window{
@@ -214,7 +216,9 @@ body{
 }
 
 .grid-slots-on{
-    border: 1px solid white;
+    /*border: 2px solid white;*/
+    outline: 2px dashed white;
+    /*border-style:dashed;*/
     pointer-events: auto;
 
 }
@@ -242,6 +246,17 @@ body{
     color: black;
 }
 
+.empty-furni{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    margin: 10px;
+    cursor: pointer;
+    color: black;
+}
+
+
+
 #close-popup-button{
     color:white;
 }
@@ -255,4 +270,21 @@ body{
     display:flex;
     flex-direction: row;
     justify-content:space-between;
+}
+
+#main-character{
+    width: 96px;
+    height: auto;
+    position: absolute;
+    z-index: 2;
+    transform: scaleX(-1);
+    top:255px;
+    right: 300px;
+}
+
+#character-pillow{
+    position:absolute;
+    z-index: 2;
+    top: 348px;
+    right: 320px;
 }

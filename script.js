@@ -343,7 +343,7 @@ centralFurnitureSlot.addEventListener("click", function (){
 });
 
 
-//open window with furniture to select.
+//open window with furniture to select, depending on the slot
 
 const inventoryPopup = document.getElementById("furni-selection-window");
 const inventoryPopupItems = document.getElementById("furni-list");
@@ -354,14 +354,41 @@ inventoryPopupCloseBtn.addEventListener("click", function(){
 })
 
 
+
+
 //function puplate inventory popup
 function populateInventoryPopup(typeArray, typeSlot){
+
+        let emptyFurni = document.createElement("div");
+        emptyFurni.className = "empty-furni";
+        emptyFurni.innerText = "X";
+        inventoryPopupItems.appendChild(emptyFurni);
+
+        emptyFurni.addEventListener("click", function(){
+            typeSlot.removeChild(typeSlot.firstElementChild)
+            for (let i = 0; i< typeArray.length; i++){
+                if (typeArray[i].equipped == true){
+                    typeArray[i].equipped = false;
+                    console.log("not equipped anymore");
+                }
+        
+            }
+
+            player.cleanInventory(inventoryPopupItems)
+            populateInventoryPopup(typeArray, typeSlot);
+            
+            console.log("empty furni button pressed")
+        })
+
     for (let i = 0; i< typeArray.length; i++){
         let furniCard = document.createElement("div");
         if (typeArray[i].equipped == true){
-            furniCard.style.border = "3px solid green"
+            furniCard.style.outline = "3px solid green"
+        } else{
+            furniCard.style.outline = "none";
         }
 
+        
         furniCard.className = "furni-cards"
         furniCard.innerText = typeArray[i].name;
         inventoryPopupItems.appendChild(furniCard)
@@ -375,7 +402,10 @@ function populateInventoryPopup(typeArray, typeSlot){
             placeFurni(typeArray[i], typeSlot, centralFurnitureItem)
             console.log("furnicard clicked")
         })
+    
     }
+
+    
 }
 
 // function to select the furniture from the menu
