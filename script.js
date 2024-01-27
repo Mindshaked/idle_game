@@ -298,7 +298,7 @@ document.getElementById("study-coding").addEventListener("click", function(){
 })
 
 
-let table = new furniture(50, "Table", "right-table", "resources/computer.png");
+let table = new furniture(50, "Table", "central-furniture", "resources/centraltable.png");
 
 let buyTableBtn = document.getElementById("buy-table");
 let tableImg = document.createElement("img");
@@ -334,11 +334,11 @@ function placeFurni(selectedFurniture, slot, slotArray){
 //test placing furniture
 
 
-const rightTableSlot = document.getElementById("right-table");
-let rightTableItem = [];
+const centralFurnitureSlot = document.getElementById("central-furniture");
+let centralFurnitureItem = [];
 
-rightTableSlot.addEventListener("click", function (){
-        furniSelect("right-table", rightTableSlot)
+centralFurnitureSlot.addEventListener("click", function (){
+        furniSelect("central-furniture", centralFurnitureSlot)
     
 });
 
@@ -372,7 +372,7 @@ function populateInventoryPopup(typeArray, typeSlot){
             populateInventoryPopup(typeArray, typeSlot);
             console.log(typeArray[i].equipped);
 
-            placeFurni(typeArray[i], typeSlot, rightTableItem)
+            placeFurni(typeArray[i], typeSlot, centralFurnitureItem)
             console.log("furnicard clicked")
         })
     }
@@ -395,3 +395,29 @@ function furniSelect(type, typeSlot){
 
 
 }
+
+
+//edit button so you can change the room or not
+
+const editButton = document.getElementById("edit-button");
+const gridElements = document.getElementsByClassName("grid-slots");
+console.log(gridElements)
+editButton.addEventListener("click", function(){
+
+    if (gridElements[0].classList.contains("grid-slots-on") == true){
+        for(let i=0; i<gridElements.length;i++){
+        gridElements[i].pointerEvents = "initial";
+        gridElements[i].classList.remove("grid-slots-on")
+        console.log("element added");
+        }
+    } else{
+
+    let i = 0;
+    while (i < gridElements.length){
+    gridElements[i].classList.add("grid-slots-on");
+    gridElements[i].pointerEvents = "none";
+    i = i + 1;
+    console.log("element removed" + gridElements.length)
+    }
+}
+})

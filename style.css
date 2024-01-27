@@ -81,9 +81,8 @@ body{
 
 
 #right-table{
-    grid-row: 10/13;
+    grid-row: 11/13;
     grid-column: 12 / 15;
-    border: 1px solid white;
     cursor: pointer;
     display:flex;
     max-width: 144px;
@@ -93,7 +92,6 @@ body{
 #left-table{
     grid-row: 11/13;
     grid-column: 4 / 6;
-    border: 1px solid white;
     cursor: pointer;
     display:flex;
     max-width: 144px;
@@ -103,7 +101,6 @@ body{
 #on-left-table{
     grid-row: 9/11;
     grid-column: 4 / 6;
-    border: 1px solid white;
     cursor: pointer;
     display:flex;
     max-width: 96px;
@@ -113,7 +110,6 @@ body{
 #on-shelf1{
     grid-row: 5/6;
     grid-column: 1 / 2;
-    border: 1px solid white;
     cursor: pointer;
     display:flex;
     max-width: 48px;
@@ -123,7 +119,6 @@ body{
 #on-shelf2{
     grid-row: 5/6;
     grid-column: 2 / 3;
-    border: 1px solid white;
     cursor: pointer;
     display:flex;
     max-width: 48px;
@@ -133,7 +128,6 @@ body{
 #on-shelf3{
     grid-row: 5/6;
     grid-column: 3 / 4;
-    border: 1px solid white;
     cursor: pointer;
     display:flex;
     max-width: 48px;
@@ -143,7 +137,6 @@ body{
 #book-shelf1{
     grid-row: 5/6;
     grid-column: 6 / 8;
-    border: 1px solid white;
     cursor: pointer;
     display:flex;
     max-width: 96px;
@@ -153,7 +146,6 @@ body{
 #book-shelf2{
     grid-row: 7/8;
     grid-column: 6 / 8;
-    border: 1px solid white;
     cursor: pointer;
     display:flex;
     max-width: 96px;
@@ -162,9 +154,8 @@ body{
 
 
 #on-table{
-    grid-row: 8/10;
+    grid-row: 9/11;
     grid-column: 13 / 16;
-    border: 1px solid white;
     cursor: pointer;
     display:flex;
     max-width: 48px;
@@ -175,17 +166,15 @@ body{
 #ceiling-table{
     grid-row: 1/3;
     grid-column: 8 / 10;
-    border: 1px solid white;
     cursor: pointer;
     display:flex;
-    max-width: 192px;
+    max-width: 196px;
     z-index: 3;
 }
 
 #shelf{
     grid-row: 6/13;
     grid-column: 1 / 4;
-    border: 1px solid white;
     cursor: pointer;
     display:flex;
     max-width: 144px;
@@ -193,24 +182,41 @@ body{
 }
 
 #central-furniture{
-    grid-row: 11/13;
+    grid-row: 12/13;
     grid-column: 7 / 11;
-    border: 1px solid white;
     cursor: pointer;
     display:flex;
     max-width: 192px;
     z-index: 3;
+    display:flex;
+    flex-direction:column;
+
+}
+
+#central-furniture > img{
+    align-self: flex-end;
+    position: relative;
+    top: 2px;
 }
 
 #window{
     grid-row: 4/9;
     grid-column: 11 / 16;
-    border: 1px solid white;
     cursor: pointer;
     display:flex;
     max-width: 240px;
     z-index: 2;
     background-color: #151d45;
+}
+
+.grid-slots{
+   pointer-events: none;
+}
+
+.grid-slots-on{
+    border: 1px solid white;
+    pointer-events: auto;
+
 }
 
 #furni-selection-window{
