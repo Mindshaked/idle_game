@@ -8,6 +8,9 @@ class furniture {
         this.type = type;
         this.source = source;
         this.equipped = false;
+        let id=0;
+        this.id = id;
+        ++id;
       
     }
 
@@ -298,13 +301,15 @@ document.getElementById("study-coding").addEventListener("click", function(){
 })
 
 
-let table = new furniture(50, "Table", "central-furniture", "resources/centraltable.png");
+
 
 let buyTableBtn = document.getElementById("buy-table");
 let tableImg = document.createElement("img");
-tableImg.src = table.source;
+
 
 buyTableBtn.addEventListener("click", function(){
+    let table = new furniture(50, "Table", "central-furniture", "resources/centraltable.png");
+    tableImg.src = table.source;
     player.buyFurni(table);
 
     });
@@ -322,7 +327,12 @@ buyTableBtn.addEventListener("click", function(){
 
 function placeFurni(selectedFurniture, slot, slotArray){
     //popup the menu with the
-    slotArray.splice(0,1);
+
+    console.log("this is the slotarray" + slotArray)
+    if (slotArray.length !== 0){
+        slotArray.splice(0,1);
+    }
+    
     slotArray.push(selectedFurniture)
     player.cleanInventory(slot)
     let furniImg = document.createElement("img");
@@ -338,7 +348,7 @@ const centralFurnitureSlot = document.getElementById("central-furniture");
 let centralFurnitureItem = [];
 
 centralFurnitureSlot.addEventListener("click", function (){
-        furniSelect("central-furniture", centralFurnitureSlot)
+        furniSelect("central-furniture", centralFurnitureSlot, centralFurnitureItem)
     
 });
 
@@ -357,7 +367,7 @@ inventoryPopupCloseBtn.addEventListener("click", function(){
 
 
 //function puplate inventory popup
-function populateInventoryPopup(typeArray, typeSlot){
+function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
 
         let emptyFurni = document.createElement("div");
         emptyFurni.className = "empty-furni";
@@ -365,17 +375,23 @@ function populateInventoryPopup(typeArray, typeSlot){
         inventoryPopupItems.appendChild(emptyFurni);
 
         emptyFurni.addEventListener("click", function(){
+            if (typeSlot.hasChildNodes() == true){
             typeSlot.removeChild(typeSlot.firstElementChild)
+            }
+            emptyFurni.style.outline = "3px solid blue";
             for (let i = 0; i< typeArray.length; i++){
                 if (typeArray[i].equipped == true){
                     typeArray[i].equipped = false;
+                    typeSlotArray = [];
                     console.log("not equipped anymore");
+                    console.log("this is the active array" + typeSlotArray)
                 }
         
             }
 
             player.cleanInventory(inventoryPopupItems)
-            populateInventoryPopup(typeArray, typeSlot);
+            populateInventoryPopup(typeArray, typeSlot, typeSlotArray);
+            
             
             console.log("empty furni button pressed")
         })
@@ -394,12 +410,20 @@ function populateInventoryPopup(typeArray, typeSlot){
         inventoryPopupItems.appendChild(furniCard)
 
         furniCard.addEventListener("click", function(){
+
+            for (let i = 0; i< typeArray.length; i++){
+                if (typeArray[i].equipped == true){
+                    typeArray[i].equipped = false;
+                }
+        
+            }
+
             typeArray[i].equipped = true;
             player.cleanInventory(inventoryPopupItems)
-            populateInventoryPopup(typeArray, typeSlot);
+            populateInventoryPopup(typeArray, typeSlot, typeSlotArray);
             console.log(typeArray[i].equipped);
 
-            placeFurni(typeArray[i], typeSlot, centralFurnitureItem)
+            placeFurni(typeArray[i], typeSlot, typeSlotArray)
             console.log("furnicard clicked")
         })
     
@@ -411,13 +435,13 @@ function populateInventoryPopup(typeArray, typeSlot){
 // function to select the furniture from the menu
 
 
-function furniSelect(type, typeSlot){
+function furniSelect(type, typeSlot, typeSlotArray){
    
     let typeFurnis = player.inventory.filter((furni) => furni.type == type);
 
     console.log(typeFurnis)
     player.cleanInventory(inventoryPopupItems)
-    populateInventoryPopup(typeFurnis, typeSlot);
+    populateInventoryPopup(typeFurnis, typeSlot, typeSlotArray);
 
     console.log(typeFurnis)
     inventoryPopup.style.visibility = "visible";
