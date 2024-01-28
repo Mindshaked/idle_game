@@ -210,7 +210,7 @@ class Player {
         document.getElementById("job").innerText = "Current Job:"+ this.job;
         document.getElementById("study").innerText = "Study Level:"+ this.studyLevel;
         document.getElementById("current-activity").innerText = "Currently:" + this.currentActivity;
-        document.getElementById("current-date").innerText = "Current date:" + this.currentDate.toDateString();
+        document.getElementById("current-date").innerText = this.currentDate.toDateString();
         document.getElementById("days-passed").innerText = "Days passed:" + this.daysPassed;
         document.getElementById("inventory").innerText = "Inventory:" + this.inventory;
 

@@ -9,14 +9,21 @@
 <body>
 
 <div id="game-container">
+    <div id="smartphone-container">
+        <img src="resources/menus/smartphone-menu.png" id="smartphone-menu">
+        <div id="smartphone-screen"></div>
+    </div>
+    
+    <p id="current-date">Current date:</p>
+    <p id="money">Money: 0$</p>
+    <button id="edit-button"><img src="resources/editbutton.png" id="edit-button-icon"></button>
+
 
     <div id="left-panel">
         <div id="stats-container">
-            <p id="money">Money: 0$</p>
             <p id="job">Current Job: unemployed</p>
             <p id="study">Current study: None</p>
             <p id="current-activity">Current Activity:doing nothing</p>
-            <p id="current-date">Current date:</p>
             <p id="days-passed">Days passed:</p>
             <p id="inventory">Inventory:</p>
             <p id="inventory-window">Items:</p>
@@ -39,7 +46,6 @@
         <div id="room">
             <!--<img id="room-background" src="resources/emptyroom.jpg"> -->
             <div id="grid-container">
-                <button id="edit-button">EDIT ROOM</button>
             </div>
             <div id="grid-container2">
                 <div id="right-table" class="grid-slots grid-slots-on" ></div>
