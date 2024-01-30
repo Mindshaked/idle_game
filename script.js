@@ -1,10 +1,12 @@
-
+let p = 0;
 
 class furniture {
     constructor(price, name, type, source){
         this.name = name;
         this.price = price;
         this.stats = "+1 Sanity"
+        this.description = "None";
+        this.requirements = "None";
         this.type = type;
         this.source = source;
         this.equipped = false;
@@ -27,7 +29,7 @@ class Player {
         this.studyLevel = 1;
         this.dailyExpenses = 2;
         this.daysPassed = 0;
-        this.currentActivity = null;
+        this.currentActivity = "Doing nothing";
         this.currentDate = new Date();
         this.inventory = [];
         this.room = [];
@@ -85,13 +87,6 @@ class Player {
         }
     }
 
-/*
-    incrementDate(dateInput,increment){
-        let dateFormatTotime = new Date(dateInput);
-        let increasedDate = new Date(dateFormatTotime.getTime() + (increment * 86400000));
-        return increasedDate;
-    }
-*/
 
     checkStudyRequirements(studyLvl){
         if (this.studyLevel >= studyLvl){
@@ -110,15 +105,6 @@ class Player {
             return false;
         }
     }
-    /*
-    simulateTimePassage(){
-        this.money -= this.dailyExpenses;
-        this.daysPassed++;
-        this.currentDate = incrementDate(currentDate, 1);
-        this.updateStats();
-        
-    }
-    */
 
     buyFurni(furniture){
         if (this.money >= furniture.price){
@@ -145,6 +131,28 @@ class Player {
     }
 
 
+    //current activity progress bar
+
+    progressBarMove(){
+        if (p == 0){
+        p = 1;
+        let bar = document.getElementById("activity-progress-bar");
+        let barWidth = 1;
+        let id = setInterval(frame, 10);
+        function frame(){
+            if (barWidth >= 100){
+                clearInterval(id);
+                p = 0;
+            } else{
+                barWidth++;
+                bar.style.width = barWidth + "%";
+            }
+        }
+     }
+
+    }
+
+
     startActivity(activity, moneyChange, studyLevel){
         this.endActivity();
         
@@ -155,6 +163,7 @@ class Player {
             if (this.checkCost(activity, moneyChange)){
                 this.updateStats(moneyChange, studyLevel);
                 this.displayStats();
+                this.progressBarMove();
             } else {
                 this.endActivity();
                 console.log("You don't have enough money to keep" + activity);
@@ -162,13 +171,15 @@ class Player {
             
         }, 1000);
 
+
+
     }
 
     endActivity(){
 
-    if (this.currentActivity !== null){
+    if (this.currentActivity !== "Doing nothing"){
         console.log("You finished" + this.currentActivity);
-        this.currentActivity = null;
+        this.currentActivity = "Doing nothing";
         console.log(this.currentActivity)
         clearInterval(this.interval);
         this.displayStats
@@ -207,7 +218,6 @@ class Player {
 
     displayStats() {
         document.getElementById("money").innerText = "Money:"+ this.money;
-        document.getElementById("job").innerText = "Current Job:"+ this.job;
         document.getElementById("study").innerText = "Study Level:"+ this.studyLevel;
         document.getElementById("current-activity").innerText = "Currently:" + this.currentActivity;
         document.getElementById("current-date").innerText = this.currentDate.toDateString();
@@ -315,7 +325,6 @@ buyTableBtn.addEventListener("click", function(){
     });
 
 
-/* setInterval(() => player.simulateTimePassage(), 1000)*/
 
 
 
@@ -475,3 +484,19 @@ editButton.addEventListener("click", function(){
     }
 }
 })
+
+//show the phone menu
+
+const phoneMenu = document.getElementById("smartphone-container");
+const phoneMenuBtn = document.getElementById("smartphone-button");
+
+function showPhoneMenu(){
+    phoneMenu.classList.toggle("visible");
+    console.log("button clicked");
+}
+
+phoneMenuBtn.addEventListener("click", function(){
+
+    showPhoneMenu();
+})
+

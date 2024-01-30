@@ -8,38 +8,74 @@
 </head>
 <body>
 
+    <div id="top-bar">
+        <div id="top-left">
+            <div id="jobs-top-button" class="top-button">JOBS</div>
+            <div id="activities-top-button" class="top-button">ACTIVITIES</div>
+            <div id="study-top-button" class="top-button">STUDY</div>
+            <div id="stats-top-button" class="top-button">STATS</div>
+            <div id="tasks-top-button" class="top-button">TASKS</div>
+            <div id="shop-top-button" class="top-button">SHOP</div>
+            <div id="options-top-button" class="top-button">OPTIONS</div>
+        </div>
+    </div>
+
+    <div id="shop-window">
+        <div id="shop-window-title">SHOP</div>
+        <div id="shop-left-panel"></div>
+        <div id="shop-top-panel"></div>
+        <div id="shop-bottom-panel"></div>
+              
+    </div>
+
 <div id="game-container">
+
+    <div id="current-activity-window" class="pixel-corners">
+        <p id="current-activity">Current Activity:doing nothing</p>
+        <div id="activity-progress-bar-div">
+            <div id="activity-progress-bar"></div>
+        </div>
+    </div>
+
     <div id="smartphone-container">
         <img src="resources/menus/smartphone-menu.png" id="smartphone-menu">
-        <div id="smartphone-screen"></div>
+        <div id="smartphone-screen">
+            <div id="stats-container">
+                <p id="job">Current Job: unemployed</p>
+                <p id="study">Current study: None</p>
+                <p id="days-passed">Days passed:</p>
+                <p id="inventory">Inventory:</p>
+                <p id="inventory-window">Items:</p>
+
+                <div id="work-list">
+                    <button id="pizza-delivery">Pizza Delivery</button>
+                    <button id="receptionist">Receptionist (Study Level: 15)</button>
+                    <button id="real-estate">Real Estate Agent(Study Level: 30)</button>
+                    <button id="lawyer">Lawyer (Study Level: 50)</button>
+                </div>
+
+                <div id="study-list">
+                    <button id="study-coding">Study Coding</button>
+                    <button id="buy-table">Buy table (50$)</button>
+                </div>
+            </div>
+        </div>
     </div>
+    
     
     <p id="current-date">Current date:</p>
     <p id="money">Money: 0$</p>
-    <button id="edit-button"><img src="resources/editbutton.png" id="edit-button-icon"></button>
+
+    <div id="edit-buttons-panel">
+        <button id="edit-button">Edit Room</button>
+        <button id="smartphone-button">Phone</button>
+    </div>
 
 
     <div id="left-panel">
-        <div id="stats-container">
-            <p id="job">Current Job: unemployed</p>
-            <p id="study">Current study: None</p>
-            <p id="current-activity">Current Activity:doing nothing</p>
-            <p id="days-passed">Days passed:</p>
-            <p id="inventory">Inventory:</p>
-            <p id="inventory-window">Items:</p>
-        </div>
-
-        <div id="work-list">
-            <button id="pizza-delivery">Pizza Delivery</button>
-            <button id="receptionist">Receptionist (Study Level: 15)</button>
-            <button id="real-estate">Real Estate Agent(Study Level: 30)</button>
-            <button id="lawyer">Lawyer (Study Level: 50)</button>
-        </div>
-
-        <div id="study-list">
-            <button id="study-coding">Study Coding</button>
-            <button id="buy-table">Buy table (50$)</button>
-        </div>
+        <p id="happiness">Happiness</p>
+        <p id="stress">Stress</p>
+        
 
     </div>
 
