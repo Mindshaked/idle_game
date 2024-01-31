@@ -2,13 +2,20 @@
     font-family: "PC-9900 V2 Regular";
     src: url("resources/font/pc-9900-v2.ttf") format("truetype");
 }
+@font-face{
+    font-family: "Ac437_SperryPC_8x16";
+    src: url("resources/font/Ac437_SperryPC_8x16.ttf") format("truetype");
+}
 
-
+@font-face{
+    font-family: "Px437_SperryPC_8x16";
+    src: url("resources/font/Px437_SperryPC_8x16.ttf") format("truetype");
+}
 
 
 html{
     height:100vh;
-    font-family: "PC-9900 V2 Regular";
+    font-family: "Px437_SperryPC_8x16";
     
 }
 body{
@@ -454,10 +461,10 @@ body{
 
 #shop-window{
     position: absolute;
-    width: 400px;
+    width: 450px;
     height: 600px;
     top: 15%;
-    left: 5%;
+    left: 2%;
     background-color: #221e1e;
     border: 3px solid #d4ca97;   
     z-index: 10;
@@ -485,13 +492,160 @@ body{
     grid-column: 1/3;
     background-color: #221d1d;
     border-right: 3px solid #d4ca97;
+    margin-top: 30px;
+    padding-top: 25px;
+    display:flex;
+    flex-direction: column;
+}
+
+.shop-section{
+    font-size: 12px;
+    height: 15px;
+    padding-left: 10px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    cursor: pointer;
+   
+}
+
+.shop-section-name{
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.shop-section:hover{
+    background-color: #d4ca97;
+    color: #221d1d;
+}
+
+#shop-section:hover{
+    background-color:#d4ca97;
 }
 
 #shop-top-panel{
-    grid-row: 1/5;
+    grid-row: 1/6;
     grid-column:3/7;
     background-color: #221d1d;
     border-bottom: 3px solid #d4ca97;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    margin-top: 30px;
+}
+
+#furniture-shop-name{
+    grid-row: 1/2;
+    grid-column: 2/5;
+    font-size: 12px;
+    display: flex;
+    flex-direction:row;
+    align-items:end;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#furniture-shop-img{
+    grid-row: 2/4;
+    grid-column: 2 / 5;
+}
+
+#furniture-shop-price-bonus{
+    grid-row: 4/5;
+    grid-column: 1/6;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    padding-left: 20px;
+    padding-top: 15px;
+}
+
+#furniture-shop-price-section{
+    display: flex;
+    flex-direction: row;
+    margin-right: 30px;
+}
+
+#furniture-shop-price-tag{
+    padding-right: 15px;
+}
+
+#furniture-shop-bonus-section{
+    display: flex;
+    flex-direction: row;
+}
+
+#furniture-shop-bonus-tag{
+    padding-right: 15px;
+}
+
+#furniture-shop-description-section{
+    grid-row: 5/7;
+    grid-column: 1/6;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-right: 13px;
+}
+
+#furniture-shop-description-tag{
+    padding-right: 15px;
+}
+
+
+
+#furniture-shop-req-section{
+    grid-row: 7/8;
+    grid-column: 1/6;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+#furniture-shop-req-tag{
+    padding-right: 15px;
+}
+
+#furniture-shop-buy-btn-section{
+    grid-row: 8/9;
+    grid-column: 1/6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#furniture-shop-buy-btn{
+    margin-bottom: 15px;
+    width: 130px;
+    border: none;
+    background-color: #84a699;
+    height: 30px;
+}
+
+.shop-item{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 10px;
+    font-size: 11px;
+    justify-content:space-between;
+    align-items: center;
+    height: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.shop-item:hover{
+    background-color: #d4ca97;
+    color: #221e1e;
 }
 
 .top-button{
@@ -509,7 +663,11 @@ body{
 }
 
 
-
+#shop-bottom-panel{
+    grid-row: 6/9;
+    grid-column:3/7;
+    display: flex;
+}
 
 
 
