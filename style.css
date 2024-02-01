@@ -91,6 +91,8 @@ body{
     width: 768px;
     height: 360px;
     margin-left: 50px;
+    background-color: #221e1e;
+    border: 3px solid #d4ca97;   
 }
 
 #left-wall{
@@ -318,23 +320,11 @@ body{
 }
 
 #current-date{
-    grid-column: 5 /6;
-    grid-row: 1/2;
-    display: flex;
-    flex-direction:column;
-    align-self: flex-end;
-    justify-self: flex-end;
+  
 }
 
 #money{
-    grid-column: 4/5;
-    grid-row: 1/2;
-    display: flex;
-    flex-direction: column;
-    align-self: flex-end;
-    justify-self: flex-end;
-    margin-right: 20px;
-    margin-bottom: 25px;
+    margin-right: 40px;
 }
 
 #edit-button{
@@ -349,7 +339,7 @@ body{
     border: none;
     background-color: black;
     color: white;
-    font-family: "PC-9900 V2 Regular";
+    font-family: "Px437_SperryPC_8x16";
     padding-top: 5px;
 }
 
@@ -400,7 +390,7 @@ body{
     border: none;
     background-color: black;
     color: white;
-    font-family: "PC-9900 V2 Regular";
+    font-family: "Px437_SperryPC_8x16";
     padding-top: 5px;
    
  }
@@ -416,27 +406,29 @@ body{
 }
 
 #current-activity-window{
-    grid-column: 3/4;
+    grid-column: 5/6;
     grid-row: 3/4;
-    background-color: grey;
-    height: 80px;
-    margin-top: 30px;
-    margin-left: 50px;
+    height: 70px;
+    margin-top: 20px;
+    margin-bottom: 30px;
     width: 300px;
     padding: 15px;
+    font-family: "Px437_SperryPC_8x16";
+    background-color: #221e1e;
+    border: 3px solid #d4ca97;  
+    font-size: 15px; 
     
 }
 
 #activity-progress-bar-div{
     width: 100%;
-    background-color: darkgrey;
-    border-radius: 10px;
+    background-color: #534e43;
 }
 
 #activity-progress-bar{
     width: 1%;
     height: 20px;
-    background-color: green;
+    background-color: #bebab2;
     border-radius: 10px;
 
 }
@@ -448,6 +440,7 @@ body{
     background-color: #d4ca97;
     display:flex;
     flex-direction:row;
+    justify-content: space-between;
 }
 
 #top-left{
@@ -457,6 +450,17 @@ body{
     justify-content:space-around;
     width: 600px;
     color: black;
+}
+
+#top-right{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content:space-around;
+    color: black;
+    width: 250px;
+    padding-right: 30px;
+    
 }
 
 #shop-window{
@@ -471,6 +475,7 @@ body{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(8, 1fr);
+    visibility:hidden;
     
 }
 
@@ -485,6 +490,20 @@ body{
     color: #221e1e;
     grid-column: 1/7;
     grid-row: 1/2;
+    align-items: center;
+}
+
+#room-window-title{
+    width: 773px;
+    height: 30px;
+    background-color: #d4ca97;
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #221e1e;
+    margin-left: 50px;
+    
 }
 
 #shop-left-panel{
@@ -513,19 +532,25 @@ body{
 }
 
 .shop-section-name{
-    display: flex;
-    align-items: center;
     font-size: 12px;
+    height: 15px;
+    padding-left: 15px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    cursor: pointer;
+  
 }
 
-.shop-section:hover{
+.shop-section-name:hover{
     background-color: #d4ca97;
     color: #221d1d;
 }
 
-#shop-section:hover{
-    background-color:#d4ca97;
-}
+
 
 #shop-top-panel{
     grid-row: 1/6;
@@ -552,6 +577,14 @@ body{
 #furniture-shop-img{
     grid-row: 2/4;
     grid-column: 2 / 5;
+    display: flex;
+
+    
+}
+
+#furniture-shop-img > img{
+    align-self: center;
+    justify-self: center;
 }
 
 #furniture-shop-price-bonus{
@@ -572,6 +605,7 @@ body{
 
 #furniture-shop-price-tag{
     padding-right: 15px;
+    color: #84a699;
 }
 
 #furniture-shop-bonus-section{
@@ -581,6 +615,7 @@ body{
 
 #furniture-shop-bonus-tag{
     padding-right: 15px;
+    color: #84a699;
 }
 
 #furniture-shop-description-section{
@@ -596,6 +631,7 @@ body{
 
 #furniture-shop-description-tag{
     padding-right: 15px;
+    color: #84a699;
 }
 
 
@@ -612,6 +648,7 @@ body{
 
 #furniture-shop-req-tag{
     padding-right: 15px;
+    color: #84a699;
 }
 
 #furniture-shop-buy-btn-section{
@@ -630,12 +667,18 @@ body{
     height: 30px;
 }
 
+#furniture-shop-buy-btn:hover{
+    background-color: #3b6d5a;
+    cursor: pointer;
+}
+
 .shop-item{
     display: flex;
     flex-direction: row;
     width: 100%;
+    box-sizing: border-box;
     padding: 10px;
-    font-size: 11px;
+    font-size: 12px;
     justify-content:space-between;
     align-items: center;
     height: 30px;
@@ -646,6 +689,7 @@ body{
 .shop-item:hover{
     background-color: #d4ca97;
     color: #221e1e;
+    cursor: pointer;
 }
 
 .top-button{
@@ -667,48 +711,10 @@ body{
     grid-row: 6/9;
     grid-column:3/7;
     display: flex;
+    flex-direction: column;
+    padding-top: 15px;
 }
 
 
 
 
-.pixel-corners {
-    clip-path: polygon(
-      0px calc(100% - 20px),
-      4px calc(100% - 20px),
-      4px calc(100% - 12px),
-      8px calc(100% - 12px),
-      8px calc(100% - 8px),
-      12px calc(100% - 8px),
-      12px calc(100% - 4px),
-      20px calc(100% - 4px),
-      20px 100%,
-      calc(100% - 20px) 100%,
-      calc(100% - 20px) calc(100% - 4px),
-      calc(100% - 12px) calc(100% - 4px),
-      calc(100% - 12px) calc(100% - 8px),
-      calc(100% - 8px) calc(100% - 8px),
-      calc(100% - 8px) calc(100% - 12px),
-      calc(100% - 4px) calc(100% - 12px),
-      calc(100% - 4px) calc(100% - 20px),
-      100% calc(100% - 20px),
-      100% 20px,
-      calc(100% - 4px) 20px,
-      calc(100% - 4px) 12px,
-      calc(100% - 8px) 12px,
-      calc(100% - 8px) 8px,
-      calc(100% - 12px) 8px,
-      calc(100% - 12px) 4px,
-      calc(100% - 20px) 4px,
-      calc(100% - 20px) 0px,
-      20px 0px,
-      20px 4px,
-      12px 4px,
-      12px 8px,
-      8px 8px,
-      8px 12px,
-      4px 12px,
-      4px 20px,
-      0px 20px
-    );
-  }

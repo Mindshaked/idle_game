@@ -13,6 +13,8 @@ class furniture {
         let id=0;
         this.id = id;
         ++id;
+
+        this.mood = "none";
       
     }
 
@@ -217,7 +219,7 @@ class Player {
     }
 
     displayStats() {
-        document.getElementById("money").innerText = "Money:"+ this.money;
+        document.getElementById("money").innerText = "MONEY: $"+ this.money;
         document.getElementById("study").innerText = "Study Level:"+ this.studyLevel;
         document.getElementById("current-activity").innerText = "Currently:" + this.currentActivity;
         document.getElementById("current-date").innerText = this.currentDate.toDateString();
@@ -500,3 +502,90 @@ phoneMenuBtn.addEventListener("click", function(){
     showPhoneMenu();
 })
 
+
+
+//shop popup
+
+const shopWindowbtn = document.getElementById("shop-top-button");
+const shopWindow = document.getElementById("shop-window");
+
+function toggleShopWindow(){
+    if (shopWindow.style.visibility == "visible"){
+    shopWindow.style.visibility = "hidden";
+    } else {
+        shopWindow.style.visibility = "visible";
+        }
+}
+
+shopWindowbtn.addEventListener("click", function(){
+    toggleShopWindow();
+})
+
+
+//shop array
+
+let centralFurnitureSection = {
+    sectionName: "Central furniture",
+    items:
+        [{
+            shopType: "central-furniture",
+            itemPrice: "$" + 50,
+            itemName: "Basic central table"
+        },
+        {
+            shopType: "central-furniture",
+            itemPrice: "$" + 50,
+            itemName: "Luxury central table"
+        }
+    ]
+}
+
+let shopInventory = [centralFurnitureSection]
+
+
+
+
+//shop class to populate the window
+
+const shopSectionsWindow = document.getElementById("shop-left-panel");
+const shopItemWindow = document.getElementById("shop-bottom-panel")
+
+
+function  populateShopSections(){
+
+    for (i=0;i<shopInventory.length;i++){
+        const shopSection = document.createElement("div");
+        shopSection.innerText = shopInventory[i].sectionName;
+        shopSection.classList.add("shop-section-name")
+        shopSectionsWindow.appendChild(shopSection);
+        shopSection.addEventListener("click", function(){
+            populateSectionItems(shopInventory.i);
+        })
+    }
+}
+populateShopSections();
+
+console.log("ahihi" + shopInventory[0].items);
+
+console.log(centralFurnitureSection);
+
+function populateSectionItems(section){
+    for (i=0;i<section.items.length;i++){
+        const shopItem = document.createElement("div");
+        const shopItemName = document.createElement("div");
+        const shopItemPrice = document.createElement("div");
+        shopItemName.innerText = section.items[i].itemName;
+        shopItemPrice.innerText = section.items[i].itemPrice;
+        console.log(section.items[i].itemName)
+        shopItem.classList.add("shop-item")
+        shopItemName.classList.add("shop-item-name");
+        shopItemPrice.classList.add("shop-item-price");
+        shopItemWindow.appendChild(shopItem);
+        shopItem.appendChild(shopItemName);
+        shopItem.appendChild(shopItemPrice);
+    }
+
+
+}
+
+populateSectionItems(centralFurnitureSection);
