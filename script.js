@@ -530,12 +530,20 @@ let centralFurnitureSection = {
         [{
             shopType: "central-furniture",
             itemPrice: "$" + 50,
-            itemName: "Basic central table"
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: "none",
+            itemDescription: "a normal table",
+            itemReq: "None"
         },
         {
             shopType: "central-furniture",
             itemPrice: "$" + 50,
-            itemName: "Luxury central table"
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: "none",
+            itemDescription: "a normal table",
+            itemReq: "None"
         }
     ]
 }
@@ -549,43 +557,95 @@ let shopInventory = [centralFurnitureSection]
 
 const shopSectionsWindow = document.getElementById("shop-left-panel");
 const shopItemWindow = document.getElementById("shop-bottom-panel")
+const shopTopPanel = document.getElementById("shop-top-panel");
+const shopFurnitureImage = document.getElementById("furniture-shop-img");
+const furniturePriceSection = document.getElementById("furniture-shop-price-section")
+const furnitureBonusSection = document.getElementById("furniture-shop-bonus-section")
+const furnitureDescSection = document.getElementById("furniture-shop-description-section");
+const furnitureReqSection = document.getElementById("furniture-shop-req-section");
+
+
 
 
 function  populateShopSections(){
 
-    for (i=0;i<shopInventory.length;i++){
+    for (let i=0;i<shopInventory.length;i++){
         const shopSection = document.createElement("div");
         shopSection.innerText = shopInventory[i].sectionName;
         shopSection.classList.add("shop-section-name")
         shopSectionsWindow.appendChild(shopSection);
+        
+        
         shopSection.addEventListener("click", function(){
-            populateSectionItems(shopInventory.i);
+            populateSectionItems(shopInventory[i]);
         })
+        
     }
+   
 }
-populateShopSections();
 
-console.log("ahihi" + shopInventory[0].items);
+populateShopSections()
+
+console.log("ahihi" + shopInventory[0]);
 
 console.log(centralFurnitureSection);
 
 function populateSectionItems(section){
-    for (i=0;i<section.items.length;i++){
+    console.log("això és la secció" + section)
+    for (let i=0;i<section.items.length;i++){
         const shopItem = document.createElement("div");
         const shopItemName = document.createElement("div");
         const shopItemPrice = document.createElement("div");
         shopItemName.innerText = section.items[i].itemName;
         shopItemPrice.innerText = section.items[i].itemPrice;
-        console.log(section.items[i].itemName)
         shopItem.classList.add("shop-item")
         shopItemName.classList.add("shop-item-name");
         shopItemPrice.classList.add("shop-item-price");
         shopItemWindow.appendChild(shopItem);
         shopItem.appendChild(shopItemName);
         shopItem.appendChild(shopItemPrice);
+        shopItem.addEventListener("click", function(){
+            console.log("hello")
+            populateItemDetail(section.items[i])
+        })
     }
 
 
 }
 
-populateSectionItems(centralFurnitureSection);
+function populateItemDetail(item){
+
+    const shopItemTitle = document.createElement("div");
+    const shopItemImg = document.createElement("img");
+    const shopItemPriceDetail = document.createElement("div"); 
+    const shopItemBonus = document.createElement("div");
+    const shopItemDescription = document.createElement("div");
+    const shopItemReq = document.createElement("div");
+
+    shopItemTitle.setAttribute("id", "furniture-shop-name")
+    shopItemImg.setAttribute("id", "furniture-shop-img-source")
+    shopItemPriceDetail.setAttribute("id", "furniture-shop-price")
+    shopItemBonus.setAttribute("id", "furniture-shop-bonus")
+    shopItemDescription.setAttribute("id", "furniture-shop-description")
+    shopItemReq.setAttribute("id", "furniture-shop-req")
+
+    shopItemTitle.innerText = item.itemName;
+    shopItemImg.src = item.itemImg;
+    shopItemPriceDetail.innerText = item.itemPrice;
+    shopItemBonus.innerText = item.itemBonus;
+    shopItemDescription.innerText = item.itemDescription;
+    shopItemReq.innerText = item.itemReq;
+
+    shopTopPanel.appendChild(shopItemTitle);
+    shopFurnitureImage.appendChild(shopItemImg);
+    furniturePriceSection.appendChild(shopItemPriceDetail);
+    furnitureBonusSection.appendChild(shopItemBonus);
+    furnitureDescSection.appendChild(shopItemDescription);
+    furnitureReqSection.appendChild(shopItemReq);
+
+
+
+
+
+}
+
