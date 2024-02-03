@@ -529,7 +529,7 @@ let centralFurnitureSection = {
     items:
         [{
             shopType: "central-furniture",
-            itemPrice: "$" + 50,
+            itemPrice: 50,
             itemName: "Basic central table",
             itemImg: "resources/centraltable.png",
             itemBonus: "none",
@@ -538,7 +538,7 @@ let centralFurnitureSection = {
         },
         {
             shopType: "central-furniture",
-            itemPrice: "$" + 50,
+            itemPrice: 50,
             itemName: "Luxury central table",
             itemImg: "resources/centraltable.png",
             itemBonus: "none",
@@ -559,10 +559,24 @@ const shopSectionsWindow = document.getElementById("shop-left-panel");
 const shopItemWindow = document.getElementById("shop-bottom-panel")
 const shopTopPanel = document.getElementById("shop-top-panel");
 const shopFurnitureImage = document.getElementById("furniture-shop-img");
+const furniturePriceBonusSection = document.getElementById("furniture-shop-price-bonus")
 const furniturePriceSection = document.getElementById("furniture-shop-price-section")
 const furnitureBonusSection = document.getElementById("furniture-shop-bonus-section")
 const furnitureDescSection = document.getElementById("furniture-shop-description-section");
 const furnitureReqSection = document.getElementById("furniture-shop-req-section");
+const shopItemTitle = document.createElement("div");
+const shopItemImg = document.createElement("img");
+const shopItemPriceDetail = document.createElement("div"); 
+const shopItemBonus = document.createElement("div");
+const shopItemDescription = document.createElement("div");
+const shopItemReq = document.createElement("div");
+const shopItemBuyBtnSlot = document.createElement("div")
+const shopItemBuyBtn = document.createElement("button")
+
+
+
+
+
 
 
 
@@ -577,6 +591,7 @@ function  populateShopSections(){
         
         
         shopSection.addEventListener("click", function(){
+            removeChildItemDet(shopItemWindow)
             populateSectionItems(shopInventory[i]);
         })
         
@@ -605,7 +620,7 @@ function populateSectionItems(section){
         shopItem.appendChild(shopItemName);
         shopItem.appendChild(shopItemPrice);
         shopItem.addEventListener("click", function(){
-            console.log("hello")
+            removeChildItemDet(shopTopPanel)
             populateItemDetail(section.items[i])
         })
     }
@@ -615,12 +630,8 @@ function populateSectionItems(section){
 
 function populateItemDetail(item){
 
-    const shopItemTitle = document.createElement("div");
-    const shopItemImg = document.createElement("img");
-    const shopItemPriceDetail = document.createElement("div"); 
-    const shopItemBonus = document.createElement("div");
-    const shopItemDescription = document.createElement("div");
-    const shopItemReq = document.createElement("div");
+
+
 
     shopItemTitle.setAttribute("id", "furniture-shop-name")
     shopItemImg.setAttribute("id", "furniture-shop-img-source")
@@ -628,6 +639,15 @@ function populateItemDetail(item){
     shopItemBonus.setAttribute("id", "furniture-shop-bonus")
     shopItemDescription.setAttribute("id", "furniture-shop-description")
     shopItemReq.setAttribute("id", "furniture-shop-req")
+    furniturePriceBonusSection.setAttribute("id", "furniture-shop-price-bonus")
+    furniturePriceSection.setAttribute("id", "furniture-shop-price-section")
+    furnitureBonusSection.setAttribute("id", "furniture-shop-bonus-section")
+    furnitureDescSection.setAttribute("id", "furniture-shop-description-section")
+    furnitureReqSection.setAttribute("id", "furniture-shop-req-section")
+    shopItemBuyBtnSlot.setAttribute("id", "furniture-shop-buy-btn-section");
+    shopItemBuyBtn.setAttribute("id", "furniture-shop-buy-btn");
+
+
 
     shopItemTitle.innerText = item.itemName;
     shopItemImg.src = item.itemImg;
@@ -635,17 +655,41 @@ function populateItemDetail(item){
     shopItemBonus.innerText = item.itemBonus;
     shopItemDescription.innerText = item.itemDescription;
     shopItemReq.innerText = item.itemReq;
+    shopItemBuyBtn.innerText = "BUY";
+
+    // item buy button functionality
+
+    shopItemBuyBtn.addEventListener("click", function(){
+        let newFurniture = new furniture(item.itemPrice, item.itemName, item.shopType, item.itemImg);
+        player.buyFurni(newFurniture);
+    })
+
 
     shopTopPanel.appendChild(shopItemTitle);
+    shopTopPanel.appendChild(shopFurnitureImage);
+    shopTopPanel.appendChild(furniturePriceSection);
+    shopTopPanel.appendChild(furnitureBonusSection);
+    shopTopPanel.appendChild(furnitureDescSection);
+    shopTopPanel.appendChild(furnitureReqSection);
+    shopTopPanel.appendChild(furniturePriceBonusSection);
+    shopTopPanel.appendChild(shopItemBuyBtnSlot)
+    shopItemBuyBtnSlot.appendChild(shopItemBuyBtn);
     shopFurnitureImage.appendChild(shopItemImg);
     furniturePriceSection.appendChild(shopItemPriceDetail);
     furnitureBonusSection.appendChild(shopItemBonus);
+    furniturePriceBonusSection.appendChild(furniturePriceSection);
+    furniturePriceBonusSection.appendChild(furnitureBonusSection);
     furnitureDescSection.appendChild(shopItemDescription);
     furnitureReqSection.appendChild(shopItemReq);
 
 
+}
 
+function removeChildItemDet(container){
 
-
+   while (container.firstChild){
+    console.log("dom element removed")
+    container.removeChild(container.firstChild);
+   }
 }
 
