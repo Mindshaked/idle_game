@@ -538,7 +538,7 @@ let centralFurnitureSection = {
         },
         {
             shopType: "central-furniture",
-            itemPrice: 50,
+            itemPrice: 200,
             itemName: "Luxury central table",
             itemImg: "resources/centraltable.png",
             itemBonus: "none",
@@ -572,6 +572,10 @@ const shopItemDescription = document.createElement("div");
 const shopItemReq = document.createElement("div");
 const shopItemBuyBtnSlot = document.createElement("div")
 const shopItemBuyBtn = document.createElement("button")
+const shopItemPriceTag = document.getElementById("furniture-shop-price-tag");
+const shopItemBonusTag = document.getElementById("furniture-shop-bonus-tag")
+const shopItemDescriptionTag = document.getElementById("furniture-shop-description-tag")
+const shopItemReqTag = document.getElementById("furniture-shop-req-tag")
 
 
 
@@ -656,6 +660,13 @@ function populateItemDetail(item){
     shopItemDescription.innerText = item.itemDescription;
     shopItemReq.innerText = item.itemReq;
     shopItemBuyBtn.innerText = "BUY";
+    shopItemBuyBtn.style.visibility = "visible";
+    shopItemPriceTag.innerText = "PRICE:"
+    shopItemBonusTag.innerText = "BONUS:"
+    shopItemDescriptionTag.innerText = "DESCRIPTION:";
+    shopItemReqTag.innerText = "REQUIREMENETS:"
+
+
 
     // item buy button functionality
 

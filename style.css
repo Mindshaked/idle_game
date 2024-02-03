@@ -665,6 +665,7 @@ body{
     border: none;
     background-color: #84a699;
     height: 30px;
+    visibility: hidden;
 }
 
 #furniture-shop-buy-btn:hover{
