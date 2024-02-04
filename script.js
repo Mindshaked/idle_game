@@ -729,18 +729,29 @@ let basicJobsSection = {
     jobs:
         [{
             jobName: "Pizza Delivery",
-            jobSalary: 50,
-            jobRequirements: 0
+            jobPay: 50,
+            jobReq: "None",
+            jobDesc: "an accessible and easy job to for beginners in the job market"
         },
         {
             jobName: "Garbage Collector",
-            jobSalary: 50,
-            jobRequirements: 0
+            jobPay: 50,
+            jobReq: "None",
+            jobDesc: "You might smell bad when coming back home, but it is what it is"
         }
     ]
 }
 
-let jobSections = [basicJobsSection]
+let advancedJobsSection = {
+    sectionName: "ADVANCED JOBS",
+    jobs:[{
+
+    }
+]
+
+}
+
+let jobSections = [basicJobsSection, advancedJobsSection]
 
 
 
@@ -759,11 +770,13 @@ function  populateJobSections(){
         jobSection.addEventListener("click", function(){
             if (toggleState == "active"){
                 removeChildItemDet(jobSectionSubMenu)
-                
-                } 
+                toggleState = "inactive";
+                } else{
+                    toggleJobSectionContent(jobSections[i], jobSectionSubMenu);
+                    toggleState = "active";
+                }
            
-            toggleJobSectionContent(jobSections[i], jobSectionSubMenu);
-            toggleState = "active";
+           
         })
         
         
@@ -816,7 +829,7 @@ const jobDescSection = document.getElementById("job-detail-desc-section");
 const jobDescTag = document.getElementById("job-detail-desc-tag");
 const jobDesc = document.createElement("div");
 const jobApplyBtnSection = document.getElementById("job-apply-btn-section");
-const jobApplyBtn = document.
+const jobApplyBtn = document.createElement("button")
 
 
 
@@ -829,6 +842,7 @@ function populateJobDetail(job){
         jobPay.setAttribute("id", "job-detail-pay");
         jobReq.setAttribute("id", "job-detail-req");
         jobDesc.setAttribute("id", "job-detail-desc");
+        jobApplyBtn.setAttribute("id", "job-apply-btn")
 
         jobImage.src = job.jobSrc;
         jobTitle.innerText = job.jobName;
@@ -836,34 +850,38 @@ function populateJobDetail(job){
         jobReq.innerText = job.jobReq;
         jobDesc.innerText = job.jobDesc;
         console.log("job details appended")
+        jobApplyBtn.innerText = "APPLY";
+        jobApplyBtn.style.visibility = "visible";
 
-        jobsWindowRightPanel.appendChild(jobTitle);
+        jobTitleTag.innerText = "JOB TITLE: ";
+        jobPayTag.innerText = "PAY: $";
+        jobReqTag.innerText = "REQUIREMENTS: ";
+        jobDescTag.innerText = "DESCRIPTION: ";
+
+
+        //job button functionality
+
+
+        
+        jobImageSection.appendChild(jobImage);
+        jobTitleSection.appendChild(jobTitleTag);
+        jobTitleSection.appendChild(jobTitle);
+        jobPaySection.appendChild(jobPayTag);
+        jobPaySection.appendChild(jobPay);
+        jobReqSection.appendChild(jobReqTag);
+        jobReqSection.appendChild(jobReq);
+        jobDescSection.appendChild(jobDescTag);
+        jobDescSection.appendChild(jobDesc);
+        jobApplyBtnSection.appendChild(jobApplyBtn);
+        jobsWindowRightPanel.appendChild(jobImageSection);
+        jobsWindowRightPanel.appendChild(jobTitleSection);
+        jobsWindowRightPanel.appendChild(jobPaySection);
+        jobsWindowRightPanel.appendChild(jobReqSection);
+        jobsWindowRightPanel.appendChild(jobDescSection);
+        jobsWindowRightPanel.appendChild(jobApplyBtnSection);
 
 
 }
 
-/*
-function populateSectionItems(section){
-    console.log("això és la secció" + section)
-    for (let i=0;i<section.items.length;i++){
-        const shopItem = document.createElement("div");
-        const shopItemName = document.createElement("div");
-        const shopItemPrice = document.createElement("div");
-        shopItemName.innerText = section.items[i].itemName;
-        shopItemPrice.innerText = section.items[i].itemPrice;
-        shopItem.classList.add("shop-item")
-        shopItemName.classList.add("shop-item-name");
-        shopItemPrice.classList.add("shop-item-price");
-        shopItemWindow.appendChild(shopItem);
-        shopItem.appendChild(shopItemName);
-        shopItem.appendChild(shopItemPrice);
-        shopItem.addEventListener("click", function(){
-            removeChildItemDet(shopTopPanel)
-            populateItemDetail(section.items[i])
-        })
-    }
 
 
-}
-
-*/
