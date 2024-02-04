@@ -242,62 +242,6 @@ player.startGame();
 
 
 
-//work activities
-
-document.getElementById("pizza-delivery").addEventListener("click", function() {
-    if (player.currentActivity == "pizza"){
-        return;
-    } 
-
-    player.work("pizza");
-   
-
-});
-
-let receptionistBtn = document.getElementById("receptionist");
-receptionistBtn.disabled = true;
-
-receptionistBtn.addEventListener("click", function() {
-    
-    if (player.currentActivity == "receptionist"){
-        return;
-    };
-
-    player.work("receptionist");
-
-});
-
-let realEstateBtn = document.getElementById("real-estate");
-realEstateBtn.disabled = true;
-
-realEstateBtn.addEventListener("click", function() {
-    
-    if (player.currentActivity == "real-estate"){
-        return;
-    } ;
-
-    player.work("real-estate");
-
-});
-
-
-let lawyerBtn = document.getElementById("lawyer");
-lawyerBtn.disabled = true;
-
-
-    lawyerBtn.addEventListener("click", function() {
-        if (player.currentActivity == "lawyer"){
-            return;
-        } ;
-    
-        player.work("lawyer");
-    
-    });
-    
-
-
-
-
 //Studying activities
 
 
@@ -311,12 +255,6 @@ document.getElementById("study-coding").addEventListener("click", function(){
 
     
 })
-
-
-
-
-
-
 
 
 
@@ -508,6 +446,7 @@ function toggleShopWindow(){
 }
 
 shopWindowbtn.addEventListener("click", function(){
+    removeChildItemDet(shopSectionsWindow);
     populateShopSections()
     toggleShopWindow();
 })
@@ -586,7 +525,7 @@ function  populateShopSections(){
         
         
         shopSection.addEventListener("click", function(){
-            removeChildItemDet(shopItemWindow)
+            removeChildItemDet(shopItemWindow);
             populateSectionItems(shopInventory[i]);
         })
         
@@ -719,6 +658,7 @@ jobsWindowbtn.addEventListener("click", function(){
 
     toggleJobWindow();
     removeChildItemDet(jobsWindowLeftPanel)
+    removeChildItemDet(jobsWindowRightPanel);
     populateJobSections()
 })
 
