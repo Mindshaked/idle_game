@@ -315,16 +315,6 @@ document.getElementById("study-coding").addEventListener("click", function(){
 
 
 
-let buyTableBtn = document.getElementById("buy-table");
-let tableImg = document.createElement("img");
-
-
-buyTableBtn.addEventListener("click", function(){
-    let table = new furniture(50, "Table", "central-furniture", "resources/centraltable.png");
-    tableImg.src = table.source;
-    player.buyFurni(table);
-
-    });
 
 
 
@@ -518,6 +508,7 @@ function toggleShopWindow(){
 }
 
 shopWindowbtn.addEventListener("click", function(){
+    populateShopSections()
     toggleShopWindow();
 })
 
@@ -525,7 +516,7 @@ shopWindowbtn.addEventListener("click", function(){
 //shop array
 
 let centralFurnitureSection = {
-    sectionName: "Central furniture",
+    sectionName: "CENTRAL FURNITURE",
     items:
         [{
             shopType: "central-furniture",
@@ -603,7 +594,7 @@ function  populateShopSections(){
    
 }
 
-populateShopSections()
+
 
 console.log("ahihi" + shopInventory[0]);
 
@@ -704,3 +695,175 @@ function removeChildItemDet(container){
    }
 }
 
+
+
+
+//job popup
+
+
+const jobsWindowbtn = document.getElementById("jobs-top-button");
+const jobsWindow = document.getElementById("job-window");
+const jobsWindowLeftPanel = document.getElementById("job-window-left-panel");
+const jobsWindowRightPanel = document.getElementById("job-window-right-panel")
+
+function toggleJobWindow(){
+    if (jobsWindow.style.visibility == "visible"){
+    jobsWindow.style.visibility = "hidden";
+    } else {
+        jobsWindow.style.visibility = "visible";
+        }
+}
+
+jobsWindowbtn.addEventListener("click", function(){
+
+    toggleJobWindow();
+    removeChildItemDet(jobsWindowLeftPanel)
+    populateJobSections()
+})
+
+
+//job array
+
+let basicJobsSection = {
+    sectionName: "BASIC JOBS",
+    jobs:
+        [{
+            jobName: "Pizza Delivery",
+            jobSalary: 50,
+            jobRequirements: 0
+        },
+        {
+            jobName: "Garbage Collector",
+            jobSalary: 50,
+            jobRequirements: 0
+        }
+    ]
+}
+
+let jobSections = [basicJobsSection]
+
+
+
+function  populateJobSections(){
+
+    for (let i=0;i<jobSections.length;i++){
+        const jobSection = document.createElement("div");
+        const jobSectionSubMenu = document.createElement("div");
+        jobSection.innerText = jobSections[i].sectionName;
+        jobSection.classList.add("job-section-name")
+        jobSectionSubMenu.classList.add("job-section-sub-menu")
+        jobsWindowLeftPanel.appendChild(jobSection);
+        jobsWindowLeftPanel.appendChild(jobSectionSubMenu);
+        let toggleState = "inactive"
+        
+        jobSection.addEventListener("click", function(){
+            if (toggleState == "active"){
+                removeChildItemDet(jobSectionSubMenu)
+                
+                } 
+           
+            toggleJobSectionContent(jobSections[i], jobSectionSubMenu);
+            toggleState = "active";
+        })
+        
+        
+    }
+   
+}
+
+//toggle job section jobs
+
+function toggleJobSectionContent(section, sectionDom){
+    for (let i=0; i<section.jobs.length;i++){
+        const jobItem = document.createElement("div");
+        jobItem.innerText = section.jobs[i].jobName;
+        jobItem.classList.add("job-left-panel");
+        sectionDom.appendChild(jobItem);
+        console.log("jobs displayed")
+
+
+        jobItem.addEventListener("click", function(){
+            /*removeChildItemDet(jobsWindowRightPanel)*/
+            console.log("job clicked")
+            console.log(section.jobs[i])
+            populateJobDetail(section.jobs[i])
+        })
+
+        
+
+    }
+
+}
+
+
+//populate jobSectionDetails
+
+
+
+
+const jobImageSection = document.getElementById("furniture-shop-img");
+const jobImage = document.createElement("img");
+const jobTitleSection = document.getElementById("job-detail-title-section");
+const jobTitleTag = document.getElementById("job-detail-title-tag");
+const jobTitle = document.createElement("div");
+const jobPaySection = document.getElementById("job-detail-pay-section");
+const jobPayTag = document.getElementById("job-detail-pay-tag");
+const jobPay = document.createElement("div");
+const jobReqSection = document.getElementById("job-detail-req-section");
+const jobReqTag = document.getElementById("job-detail-req-tag");
+const jobReq = document.createElement("job-detail-req");
+const jobDescSection = document.getElementById("job-detail-desc-section");
+const jobDescTag = document.getElementById("job-detail-desc-tag");
+const jobDesc = document.createElement("div");
+const jobApplyBtnSection = document.getElementById("job-apply-btn-section");
+const jobApplyBtn = document.
+
+
+
+function populateJobDetail(job){
+    
+
+
+        jobImage.setAttribute("id", "job-img-source");
+        jobTitle.setAttribute("id", "job-detail-title");
+        jobPay.setAttribute("id", "job-detail-pay");
+        jobReq.setAttribute("id", "job-detail-req");
+        jobDesc.setAttribute("id", "job-detail-desc");
+
+        jobImage.src = job.jobSrc;
+        jobTitle.innerText = job.jobName;
+        jobPay.innerText = job.jobPay;
+        jobReq.innerText = job.jobReq;
+        jobDesc.innerText = job.jobDesc;
+        console.log("job details appended")
+
+        jobsWindowRightPanel.appendChild(jobTitle);
+
+
+}
+
+/*
+function populateSectionItems(section){
+    console.log("això és la secció" + section)
+    for (let i=0;i<section.items.length;i++){
+        const shopItem = document.createElement("div");
+        const shopItemName = document.createElement("div");
+        const shopItemPrice = document.createElement("div");
+        shopItemName.innerText = section.items[i].itemName;
+        shopItemPrice.innerText = section.items[i].itemPrice;
+        shopItem.classList.add("shop-item")
+        shopItemName.classList.add("shop-item-name");
+        shopItemPrice.classList.add("shop-item-price");
+        shopItemWindow.appendChild(shopItem);
+        shopItem.appendChild(shopItemName);
+        shopItem.appendChild(shopItemPrice);
+        shopItem.addEventListener("click", function(){
+            removeChildItemDet(shopTopPanel)
+            populateItemDetail(section.items[i])
+        })
+    }
+
+
+}
+
+*/
