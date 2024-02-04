@@ -666,6 +666,7 @@ function populateItemDetail(item){
         player.buyFurni(newFurniture);
     })
 
+    
 
     shopTopPanel.appendChild(shopItemTitle);
     shopTopPanel.appendChild(shopFurnitureImage);
@@ -731,13 +732,15 @@ let basicJobsSection = {
             jobName: "Pizza Delivery",
             jobPay: 50,
             jobReq: "None",
-            jobDesc: "an accessible and easy job to for beginners in the job market"
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "pizza"
         },
         {
             jobName: "Garbage Collector",
             jobPay: 50,
             jobReq: "None",
-            jobDesc: "You might smell bad when coming back home, but it is what it is"
+            jobDesc: "You might smell bad when coming back home, but it is what it is",
+            jobActivity: "garbage"
         }
     ]
 }
@@ -860,6 +863,16 @@ function populateJobDetail(job){
 
 
         //job button functionality
+
+        jobApplyBtn.addEventListener("click", function() {
+            if (player.currentActivity == job.jobActivity){
+                return;
+            } 
+        
+            player.work(job.jobActivity);
+           
+        
+        });
 
 
         

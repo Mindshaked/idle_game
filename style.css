@@ -429,7 +429,7 @@ body{
     width: 1%;
     height: 20px;
     background-color: #bebab2;
-    border-radius: 10px;
+    
 
 }
 
@@ -875,7 +875,7 @@ body{
     visibility: hidden;
 }
 
-#job-buy-btn:hover{
+#job-apply-btn:hover{
     background-color: #3b6d5a;
     cursor: pointer;
 }
