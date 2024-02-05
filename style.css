@@ -742,10 +742,26 @@ body{
     position: sticky;
     display: flex;
     justify-content: center;
+    flex-direction: row;
     color: #221e1e;
     grid-column: 1/7;
     grid-row: 1/2;
     align-items: center;
+}
+
+#job-window-close-btn{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 5px;
+}
+
+#shop-window-close-btn{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 5px;
+    top: 2px;
 }
 
 #job-window-left-panel{
@@ -878,4 +894,26 @@ body{
 #job-apply-btn:hover{
     background-color: #3b6d5a;
     cursor: pointer;
+}
+
+
+#job-detail-title-tag{
+    padding-right: 15px;
+    color: #84a699;
+}
+
+#job-detail-pay-tag{
+    padding-right: 15px;
+    color: #84a699;
+}
+
+#job-detail-req-tag{
+    padding-right: 15px;
+    margin-top: 15px;
+    color: #84a699;
+}
+
+#job-detail-desc-tag{
+    padding-right: 15px;
+    color: #84a699;
 }

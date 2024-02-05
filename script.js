@@ -436,18 +436,26 @@ phoneMenuBtn.addEventListener("click", function(){
 
 const shopWindowbtn = document.getElementById("shop-top-button");
 const shopWindow = document.getElementById("shop-window");
+const shopWindowCloseBtn = document.getElementById("shop-window-close-btn");
 
 function toggleShopWindow(){
     if (shopWindow.style.visibility == "visible"){
     shopWindow.style.visibility = "hidden";
+    shopItemBuyBtn.style.visibility = "hidden";
     } else {
         shopWindow.style.visibility = "visible";
+        shopItemBuyBtn.style.visibility = "visible";
         }
 }
 
 shopWindowbtn.addEventListener("click", function(){
     removeChildItemDet(shopSectionsWindow);
+    removeChildItemDet(shopTopPanel)
     populateShopSections()
+    toggleShopWindow();
+})
+
+shopWindowCloseBtn.addEventListener("click", function(){
     toggleShopWindow();
 })
 
@@ -506,6 +514,7 @@ const shopItemPriceTag = document.getElementById("furniture-shop-price-tag");
 const shopItemBonusTag = document.getElementById("furniture-shop-bonus-tag")
 const shopItemDescriptionTag = document.getElementById("furniture-shop-description-tag")
 const shopItemReqTag = document.getElementById("furniture-shop-req-tag")
+const shopWindowTitle = document.getElementById("shop-window-title");
 
 
 
@@ -580,6 +589,7 @@ function populateItemDetail(item){
     furnitureReqSection.setAttribute("id", "furniture-shop-req-section")
     shopItemBuyBtnSlot.setAttribute("id", "furniture-shop-buy-btn-section");
     shopItemBuyBtn.setAttribute("id", "furniture-shop-buy-btn");
+    
 
 
 
@@ -623,6 +633,8 @@ function populateItemDetail(item){
     furniturePriceBonusSection.appendChild(furnitureBonusSection);
     furnitureDescSection.appendChild(shopItemDescription);
     furnitureReqSection.appendChild(shopItemReq);
+    shopWindow.appendChild(shopWindowCloseBtn);
+
 
 
 }
@@ -636,7 +648,7 @@ function removeChildItemDet(container){
 }
 
 
-
+drag_div(shopWindowTitle,shopWindow)
 
 //job popup
 
@@ -644,7 +656,9 @@ function removeChildItemDet(container){
 const jobsWindowbtn = document.getElementById("jobs-top-button");
 const jobsWindow = document.getElementById("job-window");
 const jobsWindowLeftPanel = document.getElementById("job-window-left-panel");
-const jobsWindowRightPanel = document.getElementById("job-window-right-panel")
+const jobsWindowRightPanel = document.getElementById("job-window-right-panel");
+const jobsWindowName = document.getElementById("job-window-name");
+const jobsWindowCloseBtn = document.getElementById("job-window-close-btn");
 
 function toggleJobWindow(){
     if (jobsWindow.style.visibility == "visible"){
@@ -661,6 +675,49 @@ jobsWindowbtn.addEventListener("click", function(){
     removeChildItemDet(jobsWindowRightPanel);
     populateJobSections()
 })
+
+jobsWindowCloseBtn.addEventListener("click", function(){
+    toggleJobWindow()
+})
+
+
+// draggable window
+
+
+
+
+function drag_div(div_bar, div_window){
+
+let mousePosition;
+let offset = [0,0];
+let isDown = false;
+
+div_bar.addEventListener('mousedown', function(e) {
+    isDown = true;
+    offset = [
+        div_window.offsetLeft - e.clientX,
+        div_window.offsetTop - e.clientY
+    ];
+}, true);
+
+document.addEventListener('mouseup', function() {
+    isDown = false;
+}, true);
+
+document.addEventListener('mousemove', function(event) {
+    event.preventDefault();
+    if (isDown) {
+        mousePosition = {
+
+            x : event.clientX,
+            y : event.clientY
+
+        };
+        div_window.style.left = (mousePosition.x + offset[0]) + 'px';
+        div_window.style.top  = (mousePosition.y + offset[1]) + 'px';
+    }
+}, true);
+}
 
 
 //job array
@@ -771,7 +828,7 @@ const jobReq = document.createElement("job-detail-req");
 const jobDescSection = document.getElementById("job-detail-desc-section");
 const jobDescTag = document.getElementById("job-detail-desc-tag");
 const jobDesc = document.createElement("div");
-const jobApplyBtnSection = document.getElementById("job-apply-btn-section");
+const jobApplyBtnSection =  document.createElement("div");
 const jobApplyBtn = document.createElement("button")
 
 
@@ -779,7 +836,7 @@ const jobApplyBtn = document.createElement("button")
 function populateJobDetail(job){
     
 
-
+        jobApplyBtnSection.setAttribute("id","job-apply-btn-section")
         jobImage.setAttribute("id", "job-img-source");
         jobTitle.setAttribute("id", "job-detail-title");
         jobPay.setAttribute("id", "job-detail-pay");
@@ -837,4 +894,4 @@ function populateJobDetail(job){
 }
 
 
-
+drag_div(jobsWindowName, jobsWindow)
