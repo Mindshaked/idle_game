@@ -650,6 +650,9 @@ function removeChildItemDet(container){
 
 drag_div(shopWindowTitle,shopWindow)
 
+
+
+
 //job popup
 
 
@@ -895,3 +898,259 @@ function populateJobDetail(job){
 
 
 drag_div(jobsWindowName, jobsWindow)
+
+
+
+
+
+
+//Activities popup
+
+
+
+const activitiesWindowbtn = document.getElementById("activities-top-button");
+const activitiesWindow = document.getElementById("activities-window");
+const activitiesWindowLeftPanel = document.getElementById("activities-window-left-panel");
+const activitiesWindowRightPanel = document.getElementById("activities-window-right-panel");
+const activitiesWindowName = document.getElementById("activities-window-name");
+const activitiesWindowCloseBtn = document.getElementById("activities-window-close-btn");
+
+function toggleActivitiesWindow(){
+    if (activitiesWindow.style.visibility == "visible"){
+        activitiesStartBtn.style.visibility = "hidden";
+        activitiesWindow.style.visibility = "hidden";
+    } else {
+        activitiesStartBtn.style.visibility = "visible";
+        activitiesWindow.style.visibility = "visible";
+        }
+}
+
+activitiesWindowbtn.addEventListener("click", function(){
+
+    toggleActivitiesWindow();
+    removeChildItemDet(activitiesWindowLeftPanel)
+    removeChildItemDet(activitiesWindowRightPanel);
+    populateActivitiesSections()
+})
+
+activitiesWindowCloseBtn.addEventListener("click", function(){
+    toggleActivitiesWindow()
+})
+
+
+// draggable window
+
+
+
+
+function drag_div(div_bar, div_window){
+
+let mousePosition;
+let offset = [0,0];
+let isDown = false;
+
+div_bar.addEventListener('mousedown', function(e) {
+    isDown = true;
+    offset = [
+        div_window.offsetLeft - e.clientX,
+        div_window.offsetTop - e.clientY
+    ];
+}, true);
+
+document.addEventListener('mouseup', function() {
+    isDown = false;
+}, true);
+
+document.addEventListener('mousemove', function(event) {
+    event.preventDefault();
+    if (isDown) {
+        mousePosition = {
+
+            x : event.clientX,
+            y : event.clientY
+
+        };
+        div_window.style.left = (mousePosition.x + offset[0]) + 'px';
+        div_window.style.top  = (mousePosition.y + offset[1]) + 'px';
+    }
+}, true);
+}
+
+
+//job array
+
+let basicActivitiesSection = {
+    sectionName: "BASIC ACTIVITIES",
+    activities:
+        [{
+            activityName: "Taka a walk",
+            activityCost: 50,
+            activityReq: "None",
+            activityDesc: "an accessible and easy job to for beginners in the job market",
+            activityActivity: "pizza"
+        },
+        {
+            activityName: "Garbage Collector",
+            activityCost: 50,
+            activityReq: "None",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activityActivity: "garbage"
+        }
+    ]
+}
+
+let advancedActivitiesSection = {
+    sectionName: "ADVANCED ACTIVITIES",
+    activities:[{
+
+    }
+]
+
+}
+
+let activitiesSections = [basicActivitiesSection, advancedActivitiesSection]
+
+
+
+function  populateActivitiesSections(){
+
+    for (let i=0;i<activitiesSections.length;i++){
+        const activitySection = document.createElement("div");
+        const activitySectionSubMenu = document.createElement("div");
+        activitySection.innerText = activitiesSections[i].sectionName;
+        activitySection.classList.add("activities-section-name")
+        activitySectionSubMenu.classList.add("activities-section-sub-menu")
+        activitiesWindowLeftPanel.appendChild(activitySection);
+        activitiesWindowLeftPanel.appendChild(activitySectionSubMenu);
+        let toggleState = "inactive"
+        
+        activitySection.addEventListener("click", function(){
+            if (toggleState == "active"){
+                removeChildItemDet(activitySectionSubMenu)
+                toggleState = "inactive";
+                } else{
+                    toggleActivitySectionContent(activitiesSections[i], activitySectionSubMenu);
+                    toggleState = "active";
+                }
+           
+           
+        })
+        
+        
+    }
+   
+}
+
+//toggle activities section 
+
+function toggleActivitySectionContent(section, sectionDom){
+    for (let i=0; i<section.activities.length;i++){
+        const activityItem = document.createElement("div");
+        activityItem.innerText = section.activities[i].activityName;
+        activityItem.classList.add("activities-left-panel");
+        sectionDom.appendChild(activityItem);
+        console.log("activities displayed")
+
+
+        activityItem.addEventListener("click", function(){
+            /*removeChildItemDet(jobsWindowRightPanel)*/
+            console.log("activity clicked")
+            console.log(section.activities[i])
+            populateJobDetail(section.activities[i])
+        })
+
+        
+
+    }
+
+}
+
+
+//populate activitiesSectionDetails
+
+
+
+
+const activitiesImageSection = document.getElementById("activities-img");
+const activitiesImage = document.createElement("img");
+const activitiesTitleSection = document.getElementById("activities-detail-title-section");
+const activitiesTitleTag = document.getElementById("activities-detail-title-tag");
+const activitiesTitle = document.createElement("div");
+const activitiesCostSection = document.getElementById("activities-detail-cost-section");
+const activitiesCostTag = document.getElementById("activities-detail-cost-tag");
+const activitiesCost = document.createElement("div");
+const activitiesReqSection = document.getElementById("activities-detail-req-section");
+const activitiesReqTag = document.getElementById("activities-detail-req-tag");
+const activitiesReq = document.createElement("activities-detail-req");
+const activitiesDescSection = document.getElementById("activities-detail-desc-section");
+const activitiesDescTag = document.getElementById("activities-detail-desc-tag");
+const activitiesDesc = document.createElement("div");
+const activitiesStartBtnSection =  document.createElement("div");
+const activitiesStartBtn = document.createElement("button")
+
+
+
+function populateJobDetail(job){
+    
+
+        activitiesStartBtnSection.setAttribute("id","activities-start-btn-section")
+        activitiesImage.setAttribute("id", "activities-img-source");
+        activitiesTitle.setAttribute("id", "activities-detail-title");
+        activitiesCost.setAttribute("id", "activities-detail-cost");
+        activitiesReq.setAttribute("id", "activities-detail-req");
+        activitiesDesc.setAttribute("id", "activities-detail-desc");
+        activitiesStartBtn.setAttribute("id", "activities-start-btn")
+
+        activitiesImage.src = job.activitySrc;
+        activitiesTitle.innerText = job.activityName;
+        activitiesCost.innerText = job.activityCost;
+        activitiesReq.innerText = job.activityReq;
+        activitiesDesc.innerText = job.activityDesc;
+        console.log("job details appended")
+        activitiesStartBtn.innerText = "APPLY";
+        activitiesStartBtn.style.visibility = "visible";
+
+        activitiesTitleTag.innerText = "JOB TITLE: ";
+        activitiesCostTag.innerText = "COST: $";
+        activitiesReqTag.innerText = "REQUIREMENTS: ";
+        activitiesDescTag.innerText = "DESCRIPTION: ";
+
+
+        //job button functionality
+
+        /*jobApplyBtn.addEventListener("click", function() {
+            if (player.currentActivity == job.jobActivity){
+                return;
+            } 
+        
+            player.work(job.jobActivity);
+           
+        
+        });
+
+        */
+
+
+        
+        activitiesImageSection.appendChild(activitiesImage);
+        activitiesTitleSection.appendChild(activitiesTitleTag);
+        activitiesTitleSection.appendChild(activitiesTitle);
+        activitiesCostSection.appendChild(activitiesCostTag);
+        activitiesCostSection.appendChild(activitiesCost);
+        activitiesReqSection.appendChild(activitiesReqTag);
+        activitiesReqSection.appendChild(activitiesReq);
+        activitiesDescSection.appendChild(activitiesDescTag);
+        activitiesDescSection.appendChild(activitiesDesc);
+        activitiesStartBtnSection.appendChild(activitiesStartBtn);
+        activitiesWindowRightPanel.appendChild(activitiesImageSection);
+        activitiesWindowRightPanel.appendChild(activitiesTitleSection);
+        activitiesWindowRightPanel.appendChild(activitiesCostSection);
+        activitiesWindowRightPanel.appendChild(activitiesReqSection);
+        activitiesWindowRightPanel.appendChild(activitiesDescSection);
+        activitiesWindowRightPanel.appendChild(activitiesStartBtnSection);
+
+
+}
+
+
+drag_div(activitiesWindowName, activitiesWindow)
