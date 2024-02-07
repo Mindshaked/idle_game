@@ -89,6 +89,10 @@ class Player {
         }
     }
 
+    activity(activity){
+        
+    }
+
 
     checkStudyRequirements(studyLvl){
         if (this.studyLevel >= studyLvl){
@@ -665,8 +669,10 @@ const jobsWindowCloseBtn = document.getElementById("job-window-close-btn");
 
 function toggleJobWindow(){
     if (jobsWindow.style.visibility == "visible"){
+        jobApplyBtn.style.visibility = "hidden";
     jobsWindow.style.visibility = "hidden";
     } else {
+        jobApplyBtn.style.visibility = "visible";
         jobsWindow.style.visibility = "visible";
         }
 }
@@ -733,14 +739,16 @@ let basicJobsSection = {
             jobPay: 50,
             jobReq: "None",
             jobDesc: "an accessible and easy job to for beginners in the job market",
-            jobActivity: "pizza"
+            jobActivity: "pizza",
+            jobExperience: 0
         },
         {
             jobName: "Garbage Collector",
             jobPay: 50,
             jobReq: "None",
             jobDesc: "You might smell bad when coming back home, but it is what it is",
-            jobActivity: "garbage"
+            jobActivity: "garbage",
+            jobExperience: 0
         }
     ]
 }
@@ -1056,7 +1064,7 @@ function toggleActivitySectionContent(section, sectionDom){
             /*removeChildItemDet(jobsWindowRightPanel)*/
             console.log("activity clicked")
             console.log(section.activities[i])
-            populateJobDetail(section.activities[i])
+            populateActivitiesDetail(section.activities[i])
         })
 
         
@@ -1090,7 +1098,7 @@ const activitiesStartBtn = document.createElement("button")
 
 
 
-function populateJobDetail(job){
+function populateActivitiesDetail(job){
     
 
         activitiesStartBtnSection.setAttribute("id","activities-start-btn-section")
