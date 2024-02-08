@@ -115,7 +115,19 @@ class Player {
 
     work(job) {
         if (job == "pizza"){
-            this.startActivity("pizza", 10, 0, this.social, 30)
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 30
+                },
+                {
+                    "skill": this.athletics,
+                    "experience": 10
+
+                }
+            ]
+
+            this.startActivity("pizza", 10, 0, jobSkills)
             this.job = "Pizza Delivery Man";
             
         } else if(job == "receptionist"){
@@ -221,7 +233,7 @@ class Player {
 
 
 
-    startActivity(activity, moneyChange, studyLevel, skill, skillExp){
+    startActivity(activity, moneyChange, studyLevel, skills){
         this.endActivity();
         
         console.log("You started" + activity);
@@ -229,7 +241,7 @@ class Player {
 
         this.interval = setInterval(() => {
             if (this.checkCost(activity, moneyChange)){
-                this.updateStats(moneyChange, studyLevel, skill, skillExp);
+                this.updateStats(moneyChange, studyLevel, skills);
                 this.displayStats();
                 this.progressBarMove();
             } else {
@@ -275,17 +287,23 @@ class Player {
 
     }
 
-    updateSkillStats(skill, skillExp){
-        if (this.checkCurrentSkillExp(skill) < this.nextLevel(skill.level + 1)){
+    updateSkillStats(skills){
+
+        for(let i = 0; i < skills.length; i++){
+            if (this.checkCurrentSkillExp(skills[i].skill) < this.nextLevel(skills[i].skill.level + 1)){
            
-            console.log("you have earned " + skillExp + " in " + skill.name)
-            this.skillEarnExp(skill, skillExp, skill.modifier);
-            console.log(this.checkCurrentSkillExp(skill))
-        } else{
-            this.skillEarnExp(skill, skillExp, skill.modifier);
-            this.skillLevelUp(skill);
-            console.log("Level up!, now you are level " + skill.level + " of " + skill.name)
+                console.log("you have earned " + skills[i].experience + " in " + skills[i].skill.name)
+                this.skillEarnExp(skills[i].skill, skills[i].experience, skills[i].skill.modifier);
+                console.log(this.checkCurrentSkillExp(skills[i].skill))
+            } else{
+                this.skillEarnExp(skills[i].skill, skills[i].experience, skills[i].skill.modifier);
+                this.skillLevelUp(skills[i].skill);
+                console.log("Level up!, now you are level " + skills[i].skill.level + " of " + skills[i].skill.name)
+            }
+
         }
+
+        
     }
 
     nextLevel(level){
