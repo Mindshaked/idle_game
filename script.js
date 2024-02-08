@@ -284,7 +284,7 @@ class Player {
         } else{
             this.skillEarnExp(skill, skillExp, skill.modifier);
             this.skillLevelUp(skill);
-            console.log("Level up!, now you are level " + skill.lvl + " of " + skill.name)
+            console.log("Level up!, now you are level " + skill.level + " of " + skill.name)
         }
     }
 
