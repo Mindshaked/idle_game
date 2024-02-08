@@ -14,7 +14,7 @@ class furniture {
         this.id = id;
         ++id;
 
-        this.mood = "none";
+
       
     }
 
@@ -36,13 +36,74 @@ class Player {
         this.inventory = [];
         this.room = [];
         this.interval = null;
+
+        this.mood = "none";
+        this.acomplished = 0;
+        this.depressed = 0;
+        this.relaxed = 0;
+        this.stressed = 0;
+        this.excited = 0;
+        this.angry = 0;
+        this.afraid = 0;
+        this.lonely = 0;
+
+        //skills
+        this.social = {
+            name: "Social",
+            level: 1,
+            exp: 0,
+            modifier: 1
+        }
+        
+        this.tech = {
+            name: "Text",
+            level: 1,
+            exp: 0,
+            modifier: 1
+        }
+
+        this.art = {
+            name: "Art",
+            level: 1,
+            exp: 0,
+            modifier: 1
+        }
+
+        this.athletics = {
+            name: "Athletics",
+            level: 1,
+            exp: 0,
+            modifier: 1
+        }
+
+        this.science = {
+            name: "Science",
+            level: 1,
+            exp: 0,
+            modifier: 1
+        }
+
+        this.military = {
+            name: "Military",
+            level: 1,
+            exp: 0,
+            modifier: 1
+        }
+
+        this.emotion = {
+            name: "Empotion",
+            level: 1,
+            exp: 0,
+            modifier: 1
+        }
+       
        
     }
 
     startGame() {
         console.log("Game started");
         this.interval = setInterval(() => {
-            this.updateStats(0,0);
+            
             this.displayStats();
         }, 1000);
     }
@@ -54,7 +115,7 @@ class Player {
 
     work(job) {
         if (job == "pizza"){
-            this.startActivity("pizza", 10, 0)
+            this.startActivity("pizza", 10, 0, this.social, 30)
             this.job = "Pizza Delivery Man";
             
         } else if(job == "receptionist"){
@@ -159,7 +220,8 @@ class Player {
     }
 
 
-    startActivity(activity, moneyChange, studyLevel){
+
+    startActivity(activity, moneyChange, studyLevel, skill, skillExp){
         this.endActivity();
         
         console.log("You started" + activity);
@@ -167,7 +229,7 @@ class Player {
 
         this.interval = setInterval(() => {
             if (this.checkCost(activity, moneyChange)){
-                this.updateStats(moneyChange, studyLevel);
+                this.updateStats(moneyChange, studyLevel, skill, skillExp);
                 this.displayStats();
                 this.progressBarMove();
             } else {
@@ -198,10 +260,54 @@ class Player {
         this.updateStats();
     }
 
-    updateStats(moneyChange, studyLevel){
+    updateStats(moneyChange, studyLevel, skill,skillExp){
         this.money += moneyChange;
         this.studyLevel += studyLevel;
+       
+        this.updateSkillStats(skill, skillExp)
     }
+
+
+    //stats updating
+
+    updateMoodStats(moodStat, modifier){
+        moodStat += modifier;
+
+    }
+
+    updateSkillStats(skill, skillExp){
+        if (this.checkCurrentSkillExp(skill) < this.nextLevel(skill.level + 1)){
+           
+            console.log("you have earned " + skillExp + " in " + skill.name)
+            this.skillEarnExp(skill, skillExp, skill.modifier);
+            console.log(this.checkCurrentSkillExp(skill))
+        } else{
+            this.skillEarnExp(skill, skillExp, skill.modifier);
+            this.skillLevelUp(skill);
+            console.log("Level up!, now you are level " + skill.lvl + " of " + skill.name)
+        }
+    }
+
+    nextLevel(level){
+        let exponent = 1.5;
+        let baseXp = 1000;
+        return Math.floor(baseXp * (level ** exponent))
+    }
+
+    checkCurrentSkillExp(skill){
+        return skill.exp;
+    }
+
+    skillEarnExp(skill, experience, skillModifier){
+        skill.exp += experience * skillModifier;
+    }
+
+    skillLevelUp(skill){
+        skill.level += +1;
+    }
+
+
+    // furni inventory
 
     cleanInventory(parent){
 
@@ -259,8 +365,6 @@ document.getElementById("study-coding").addEventListener("click", function(){
 
     
 })
-
-
 
 
 
