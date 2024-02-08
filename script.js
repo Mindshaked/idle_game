@@ -38,14 +38,56 @@ class Player {
         this.interval = null;
 
         this.mood = "none";
-        this.acomplished = 0;
-        this.depressed = 0;
-        this.relaxed = 0;
-        this.stressed = 0;
-        this.excited = 0;
-        this.angry = 0;
-        this.afraid = 0;
-        this.lonely = 0;
+        this.acomplished = {
+            name: "Acomplishment",
+            modifier: 1,
+            status: 0
+            }
+
+        this.depressed = {
+            name: "Depression",
+            modifier: 1,
+            status: 0
+            }
+
+        this.relaxed = {
+            name: "Relax",
+            modifier: 1,
+            status: 0
+            }
+
+        this.stressed = {
+            name: "Stress",
+            modifier: 1,
+            status: 0
+            }
+
+        this.excited = {
+            name: "Excitement",
+            modifier: 1,
+            status: 0
+            }
+
+        this.angry = {
+            name: "Anger",
+            modifier: 1,
+            status: 0
+            }
+
+        this.afraid = {
+            name: "Fear",
+            modifier: 1,
+            status: 0
+            }
+
+        this.lonely = {
+            name: "Loneliness",
+            modifier: 1,
+            status: 0
+            }
+
+
+
 
         //skills
         this.social = {
@@ -127,7 +169,14 @@ class Player {
                 }
             ]
 
-            this.startActivity("pizza", 10, 0, jobSkills)
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 1
+                }
+            ]
+
+            this.startActivity("pizza", 10, 0, jobSkills, jobMood)
             this.job = "Pizza Delivery Man";
             
         } else if(job == "receptionist"){
@@ -177,7 +226,7 @@ class Player {
     }
 
 
-    checkCost(activity, moneyChange) {
+    checkCost(moneyChange) {
         if (this.money + moneyChange >= 0) {
             return true;
         } else {
@@ -233,15 +282,15 @@ class Player {
 
 
 
-    startActivity(activity, moneyChange, studyLevel, skills){
+    startActivity(activity, moneyChange, studyLevel, skills, mood){
         this.endActivity();
         
         console.log("You started" + activity);
         this.currentActivity = activity;
 
         this.interval = setInterval(() => {
-            if (this.checkCost(activity, moneyChange)){
-                this.updateStats(moneyChange, studyLevel, skills);
+            if (this.checkCost(moneyChange)){
+                this.updateStats(moneyChange, studyLevel, skills, mood);
                 this.displayStats();
                 this.progressBarMove();
             } else {
@@ -272,20 +321,32 @@ class Player {
         this.updateStats();
     }
 
-    updateStats(moneyChange, studyLevel, skill,skillExp){
+    updateStats(moneyChange, studyLevel, skill, mood){
         this.money += moneyChange;
         this.studyLevel += studyLevel;
        
-        this.updateSkillStats(skill, skillExp)
+        this.updateSkillStats(skill)
+        this.updateMoodStats(mood)
     }
 
 
-    //stats updating
+//mood updating
 
-    updateMoodStats(moodStat, modifier){
-        moodStat += modifier;
+
+
+    updateMoodStats(mood){
+        for(let i = 0; i < mood.length; i++){
+                mood[i].mood.status += mood[i].change * mood[i].mood.modifier;
+                console.log(mood[i].mood.name + " incrased be " + mood[i].change)
+
+            }
+      
 
     }
+
+
+
+    //skills updating
 
     updateSkillStats(skills){
 
@@ -308,7 +369,7 @@ class Player {
 
     nextLevel(level){
         let exponent = 1.5;
-        let baseXp = 1000;
+        let baseXp = 500;
         return Math.floor(baseXp * (level ** exponent))
     }
 
