@@ -138,6 +138,23 @@ class Player {
             exp: 0,
             modifier: 1
         }
+
+
+
+        //job levels
+
+        this.pizza = {
+            name: "Pizza Delivery Man",
+            level: 1,
+            exp: 0,
+            modifier: 1,
+            jobEarnExp(){
+                this.exp += 30 * this.modifier;
+            },
+            jobLevelUp(){
+                this.lvl += 1
+            }
+        }
        
        
     }
@@ -160,7 +177,8 @@ class Player {
             let jobSkills = [
                 {
                     "skill" : this.social,
-                    "experience": 30
+                    "experience": 30,
+                    
                 },
                 {
                     "skill": this.athletics,
@@ -176,8 +194,11 @@ class Player {
                 }
             ]
 
-            this.startActivity("pizza", 10, 0, jobSkills, jobMood)
-            this.job = "Pizza Delivery Man";
+            this.startActivity(this.pizza, 10, 0, jobSkills, jobMood)
+            this.job = this.pizza.name;
+            
+            
+           
             
         } else if(job == "receptionist"){
             this.startActivity("receptionist", 15, 0)
@@ -283,19 +304,26 @@ class Player {
 
 
     startActivity(activity, moneyChange, studyLevel, skills, mood){
+        if (this.currentActivity == activity.name){
+            this.endActivity();
+            return;
+        }
         this.endActivity();
+
+       
         
-        console.log("You started" + activity);
-        this.currentActivity = activity;
+        console.log("You started" + activity.name);
+        this.currentActivity = activity.name;
 
         this.interval = setInterval(() => {
             if (this.checkCost(moneyChange)){
                 this.updateStats(moneyChange, studyLevel, skills, mood);
+                this.updateJobStats(activity);
                 this.displayStats();
                 this.progressBarMove();
             } else {
                 this.endActivity();
-                console.log("You don't have enough money to keep" + activity);
+                console.log("You don't have enough money to keep" + activity.name);
             }
             
         }, 1000);
@@ -325,6 +353,7 @@ class Player {
         this.money += moneyChange;
         this.studyLevel += studyLevel;
        
+       
         this.updateSkillStats(skill)
         this.updateMoodStats(mood)
     }
@@ -345,6 +374,22 @@ class Player {
     }
 
 
+
+
+
+    //jobs level and experience updating
+
+    updateJobStats(job){
+        if (this.checkCurrentSkillExp(job) < this.nextLevel(job.level + 1)){
+            job.jobEarnExp()
+            console.log("this is" + job.name + "experience: " + job.exp)
+        } else {
+            job.jobEarnExp()
+            job.jobLevelUp()
+            console.log("you level up at" + job.name)
+
+        }
+    }
 
     //skills updating
 
