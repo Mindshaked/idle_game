@@ -173,7 +173,7 @@ class Player {
     }
 
     work(job) {
-        if (job == "pizza"){
+        if (job == "Pizza Delivery Man"){
             let jobSkills = [
                 {
                     "skill" : this.social,
@@ -304,11 +304,9 @@ class Player {
 
 
     startActivity(activity, moneyChange, studyLevel, skills, mood){
-        if (this.currentActivity == activity.name || this.currentActivity != "Doing nothing"){
-            this.endActivity();
-            return;
-        }
-        this.endActivity();
+      
+        
+        
 
        
         
@@ -328,6 +326,8 @@ class Player {
             
         }, 1000);
 
+        console.log("current activity after starting activity:" + this.currentActivity)
+
 
 
     }
@@ -341,6 +341,7 @@ class Player {
         clearInterval(this.interval);
         this.displayStats
         }
+        console.log("current activity after finishing activity:" + this.currentActivity)
 
     }
 
@@ -673,10 +674,10 @@ const shopWindowCloseBtn = document.getElementById("shop-window-close-btn");
 function toggleShopWindow(){
     if (shopWindow.style.visibility == "visible"){
     shopWindow.style.visibility = "hidden";
-    shopItemBuyBtn.style.visibility = "hidden";
+    shopItemBuyBtn.remove();
     } else {
         shopWindow.style.visibility = "visible";
-        shopItemBuyBtn.style.visibility = "visible";
+        
         }
 }
 
@@ -688,6 +689,9 @@ shopWindowbtn.addEventListener("click", function(){
 })
 
 shopWindowCloseBtn.addEventListener("click", function(){
+    removeChildItemDet(shopSectionsWindow);
+    removeChildItemDet(shopTopPanel)
+    populateShopSections()
     toggleShopWindow();
 })
 
@@ -897,10 +901,10 @@ const jobsWindowCloseBtn = document.getElementById("job-window-close-btn");
 
 function toggleJobWindow(){
     if (jobsWindow.style.visibility == "visible"){
-        jobApplyBtn.style.visibility = "hidden";
+        jobApplyBtn.remove();
     jobsWindow.style.visibility = "hidden";
     } else {
-        jobApplyBtn.style.visibility = "visible";
+       
         jobsWindow.style.visibility = "visible";
         }
 }
@@ -915,6 +919,9 @@ jobsWindowbtn.addEventListener("click", function(){
 
 jobsWindowCloseBtn.addEventListener("click", function(){
     toggleJobWindow()
+    removeChildItemDet(jobsWindowLeftPanel)
+    removeChildItemDet(jobsWindowRightPanel);
+    populateJobSections()
 })
 
 
@@ -963,11 +970,11 @@ let basicJobsSection = {
     sectionName: "BASIC JOBS",
     jobs:
         [{
-            jobName: "Pizza Delivery",
+            jobName: "Pizza Delivery Man",
             jobPay: 50,
             jobReq: "None",
             jobDesc: "an accessible and easy job to for beginners in the job market",
-            jobActivity: "pizza",
+            jobActivity: "Pizza Delivery Man",
             jobExperience: 0
         },
         {
@@ -1100,15 +1107,14 @@ function populateJobDetail(job){
 
         //job button functionality
 
-        jobApplyBtn.addEventListener("click", function() {
-            if (player.currentActivity == job.jobActivity){
-                return;
-            } 
         
-            player.work(job.jobActivity);
-           
+
         
-        });
+        
+        
+        
+        
+       
 
 
         
@@ -1129,7 +1135,23 @@ function populateJobDetail(job){
         jobsWindowRightPanel.appendChild(jobDescSection);
         jobsWindowRightPanel.appendChild(jobApplyBtnSection);
 
-
+        if (jobApplyBtn.classList.contains("event-added")){
+            return;
+        } else{
+            jobApplyBtn.addEventListener("click", function() {
+                jobApplyBtn.classList.add("event-added");    
+                console.log("EventLIstener added")
+                if (player.currentActivity == job.jobActivity){
+                    player.endActivity()
+                    console.log("you stopped doing that")
+                    return;
+                } 
+            
+                player.work(job.jobActivity);
+              
+            
+            });
+        }
 }
 
 
