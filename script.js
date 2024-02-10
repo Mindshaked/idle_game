@@ -304,7 +304,7 @@ class Player {
 
 
     startActivity(activity, moneyChange, studyLevel, skills, mood){
-        if (this.currentActivity == activity.name){
+        if (this.currentActivity == activity.name || this.currentActivity != "Doing nothing"){
             this.endActivity();
             return;
         }
