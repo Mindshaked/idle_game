@@ -1206,6 +1206,9 @@ activitiesWindowbtn.addEventListener("click", function(){
 
 activitiesWindowCloseBtn.addEventListener("click", function(){
     toggleActivitiesWindow()
+    removeChildItemDet(activitiesWindowLeftPanel)
+    removeChildItemDet(activitiesWindowRightPanel);
+    populateActivitiesSections()
 })
 
 
@@ -1456,8 +1459,8 @@ statsWindowbtn.addEventListener("click", function(){
     populateStatsSections();
 })
 
-activitiesWindowCloseBtn.addEventListener("click", function(){
-    toggleActivitiesWindow()
+statsWindowCloseBtn.addEventListener("click", function(){
+    toggleStatsWindow()
     removeChildItemDet(statsWindowSkills);
     removeChildItemDet(statsWindowContent);
     populateStatsSections();
@@ -1595,3 +1598,5 @@ function populateStatsSections(){
 
 }
 
+
+drag_div(statsWindowName, statsWindow)

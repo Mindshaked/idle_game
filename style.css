@@ -1135,7 +1135,6 @@ body{
     background-color: #221e1e;
     border: 3px solid #d4ca97;   
     z-index: 10;
-    
     overflow-y: scroll;
     visibility:hidden;
 }
@@ -1153,6 +1152,17 @@ body{
     grid-column: 1/7;
     grid-row: 1/2;
     align-items: center;
+    
+}
+
+#stats-window-close-btn{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 4px;
+    top: 2px;
+    
+    
     
 }
 
@@ -1271,6 +1281,8 @@ body{
     flex-direction: row;
     margin: 15px;
 }
+
+
 
 
 
