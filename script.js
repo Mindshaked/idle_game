@@ -1451,12 +1451,16 @@ function toggleStatsWindow(){
 statsWindowbtn.addEventListener("click", function(){
 
     toggleStatsWindow();
-    removeChildItemDet(statsWindowContent)
-    populateStatsSections()
+    removeChildItemDet(statsWindowContent);
+    removeChildItemDet(statsWindowSkills);
+    populateStatsSections();
 })
 
 activitiesWindowCloseBtn.addEventListener("click", function(){
     toggleActivitiesWindow()
+    removeChildItemDet(statsWindowSkills);
+    removeChildItemDet(statsWindowContent);
+    populateStatsSections();
 })
 
 
@@ -1483,7 +1487,12 @@ let statsWindowSocialBar = document.createElement("div");
 
 
 
+let intervalId = window.setInterval(function(){
+    removeChildItemDet(statsWindowContent);
+    removeChildItemDet(statsWindowSkills);
 
+    populateStatsSections();
+}, 1000);
 
 
 
@@ -1523,13 +1532,23 @@ function populateStatsSections(){
         statsWindowSkillBarBase.classList.add("skill-progress-bar-div");
         statsWindowSkillBarContainer.classList.add("skill-progress-bar-container")
         statsWindowSkillLvl.classList.add("stats-window-skill-level")
+        statsWindowSkillBar.classList.add("skill-progress-bar")
 
         console.log(player.playerSkills)
         statsWindowSkillName.innerText = player.playerSkills[i].name;
         statsWindowSkillLvl.innerText = "Lvl. " + player.playerSkills[i].level;
-        statsWindowSkillExp.innerText = player.playerSkills[i].exp + "/" + player.nextLevel(player.playerSkills[i].level)
+        statsWindowSkillExp.innerText = player.playerSkills[i].exp + "/" + (player.nextLevel(player.playerSkills[i].level + 1))
 
+        if (player.playerSkills[i].level == 1){
 
+       
+        statsWindowSkillBar.style.width = ((player.playerSkills[i].exp/player.nextLevel(player.playerSkills[i].level + 1)) * 100) + "%";
+        } else {
+            statsWindowSkillBar.style.width = ((player.playerSkills[i].exp-player.nextLevel(player.playerSkills[i].level))/(player.nextLevel(player.playerSkills[i].level + 1)-player.nextLevel(player.playerSkills[i].level)) * 100) + "%";
+        }
+        console.log (player.nextLevel(player.playerSkills[i].level))
+
+        
 
         statsWindowSkill.classList.add("stats-window-skill-element");
         statsWindowSkills.appendChild(statsWindowSkill);

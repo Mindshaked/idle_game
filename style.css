@@ -1244,8 +1244,9 @@ body{
     color: #84a699;
 }
 
-#social-progress-bar{
-    width: 1%;
+.skill-progress-bar{
+    width: 0%;
+    height: 20px;
     background-color: #bebab2;
 }
 
