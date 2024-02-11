@@ -25,7 +25,8 @@ let inventoryWindow = document.getElementById("inventory-window")
 
 
 class Player {
-    constructor(){
+    constructor(name){
+        this.name = name;
         this.money = 0;
         this.jobLevel = 1;
         this.studyLevel = 1;
@@ -36,6 +37,7 @@ class Player {
         this.inventory = [];
         this.room = [];
         this.interval = null;
+        this.profilePicture = "resources/profilepicture.png";
 
         this.mood = "none";
         this.acomplished = {
@@ -133,11 +135,15 @@ class Player {
         }
 
         this.emotion = {
-            name: "Empotion",
+            name: "Emotion",
             level: 1,
             exp: 0,
             modifier: 1
         }
+
+        this.playerSkills = [this.social, this.tech, this.art, this.athletics, this.science, this.military, this.emotion]
+
+       
 
 
 
@@ -159,6 +165,7 @@ class Player {
        
     }
 
+   
     startGame() {
         console.log("Game started");
         this.interval = setInterval(() => {
@@ -300,6 +307,10 @@ class Player {
      }
 
     }
+
+    
+
+    
 
 
 
@@ -471,7 +482,7 @@ class Player {
 }
 
 
-const player = new Player();
+const player = new Player("Edi");
 player.startGame();
 
 
@@ -492,6 +503,8 @@ document.getElementById("study-coding").addEventListener("click", function(){
 })
 
 
+
+//skill progress bar
 
 
 
@@ -1412,3 +1425,154 @@ function populateActivitiesDetail(job){
 
 
 drag_div(activitiesWindowName, activitiesWindow)
+
+
+
+
+
+/// STATS WINDOW AND FUNCTIONALITY
+
+
+const statsWindowbtn = document.getElementById("stats-top-button");
+const statsWindow = document.getElementById("stats-window");
+const statsWindowName = document.getElementById("stats-window-name");
+const statsWindowCloseBtn = document.getElementById("stats-window-close-btn");
+
+function toggleStatsWindow(){
+    if (statsWindow.style.visibility == "visible"){
+        
+        statsWindow.style.visibility = "hidden";
+    } else {
+        
+        statsWindow.style.visibility = "visible";
+        }
+}
+
+statsWindowbtn.addEventListener("click", function(){
+
+    toggleStatsWindow();
+    removeChildItemDet(statsWindowContent)
+    populateStatsSections()
+})
+
+activitiesWindowCloseBtn.addEventListener("click", function(){
+    toggleActivitiesWindow()
+})
+
+
+// stats dom
+
+const statsWindowContent = document.createElement("div");
+const statsWindowImgContainer = document.createElement("div");
+const statsWindowImg = document.createElement("img");
+const statsWindowMain = document.createElement("div");
+const statsWindowMainNameContainer = document.createElement("div");
+const statsWindowMainName = document.createElement("div");
+const statsWindowMainMoneyContainer = document.createElement("div");
+const statsWindowMainMoney = document.createElement("div");
+const statsWindowMainMoodContainer = document.createElement("div");
+const statsWindowMainMood = document.createElement("div");
+const statsWindowMainNameTag = document.createElement("div");
+const statsWindowMainMoneyTag = document.createElement("div");
+const statsWindowMainMoodTag = document.createElement("div");
+const statsWindowEmotionsTitle = document.createElement("div");
+const statsWindowEmotions = document.createElement("div");
+const statsWindowSkillsTitle = document.createElement("div");
+const statsWindowSkills = document.createElement("div");
+let statsWindowSocialBar = document.createElement("div");
+
+
+
+
+
+
+
+
+function populateStatsSections(){
+    statsWindowContent.setAttribute("id", "stats-window-content");
+    statsWindowImgContainer.setAttribute("id", "stats-window-img-container");
+    statsWindowImg.setAttribute("id", "stats-window-img");
+    statsWindowMain.setAttribute("id", "stats-window-main")
+    statsWindowEmotionsTitle.setAttribute("id", "stats-window-emotions-title");
+    statsWindowEmotions.setAttribute("id", "stats-window-emotions");
+    statsWindowSkillsTitle.setAttribute("id", "stats-window-skills-title");
+    statsWindowSkills.setAttribute("id", "stats-window-skills");
+
+    statsWindowMainNameContainer.setAttribute("id", "stats-window-main-name-container");
+    statsWindowMainMoneyContainer.setAttribute("id", "stats-window-main-money-container");
+    statsWindowMainMoodContainer.setAttribute("id", "stats-window-main-mood-container");
+
+    statsWindowMainNameTag.classList.add("stats-window-tags");
+    statsWindowMainMoneyTag.classList.add("stats-window-tags");
+    statsWindowMainMoodTag.classList.add("stats-window-tags");
+
+    statsWindowSocialBar.setAttribute("id", "social-progress-bar")
+
+
+
+
+    //skills section
+    for (let i=0; i<player.playerSkills.length;i++){
+        let statsWindowSkill = document.createElement("div");
+        let statsWindowSkillName = document.createElement("div");
+        let statsWindowSkillBar = document.createElement("div");
+        let statsWindowSkillLvl = document.createElement("div");
+        let statsWindowSkillBarBase = document.createElement("div");
+        let statsWindowSkillBarContainer = document.createElement("div");
+        let statsWindowSkillExp = document.createElement("div");
+        statsWindowSkillBarBase.classList.add("skill-progress-bar-div");
+        statsWindowSkillBarContainer.classList.add("skill-progress-bar-container")
+        statsWindowSkillLvl.classList.add("stats-window-skill-level")
+
+        console.log(player.playerSkills)
+        statsWindowSkillName.innerText = player.playerSkills[i].name;
+        statsWindowSkillLvl.innerText = "Lvl. " + player.playerSkills[i].level;
+        statsWindowSkillExp.innerText = player.playerSkills[i].exp + "/" + player.nextLevel(player.playerSkills[i].level)
+
+
+
+        statsWindowSkill.classList.add("stats-window-skill-element");
+        statsWindowSkills.appendChild(statsWindowSkill);
+        statsWindowSkill.appendChild(statsWindowSkillName);
+        statsWindowSkillBarBase.appendChild(statsWindowSkillBar);
+        statsWindowSkillBarContainer.appendChild(statsWindowSkillBarBase);
+        statsWindowSkill.appendChild(statsWindowSkillBarContainer);
+        statsWindowSkillBarContainer.appendChild(statsWindowSkillLvl);
+        statsWindowSkill.appendChild(statsWindowSkillExp);
+    }
+
+
+
+
+    statsWindowImg.src = player.profilePicture;
+    statsWindowEmotionsTitle.innerText = "Emotions";
+    statsWindowSkillsTitle.innerText = "Skills";
+    statsWindowMainNameTag.innerText = "NAME: "
+    statsWindowMainName.innerText = player.name;
+    statsWindowMainMoneyTag.innerText = "MONEY: "
+    statsWindowMainMoney.innerText = "$" + player.money;
+    statsWindowMainMoodTag.innerText = "CURRENT MOOD: "
+    statsWindowMainMood.innerText = "needs to be set"
+
+    statsWindow.appendChild(statsWindowContent);
+    statsWindowContent.appendChild(statsWindowImgContainer);
+    statsWindowImgContainer.appendChild(statsWindowImg);
+    statsWindowMain.appendChild(statsWindowMainNameContainer);
+    statsWindowMain.appendChild(statsWindowMainMoneyContainer);
+    statsWindowMain.appendChild(statsWindowMainMoodContainer);
+    statsWindowMainNameContainer.appendChild(statsWindowMainNameTag);
+    statsWindowMainNameContainer.appendChild(statsWindowMainName);
+    statsWindowMainMoneyContainer.appendChild(statsWindowMainMoneyTag);
+    statsWindowMainMoneyContainer.appendChild(statsWindowMainMoney);
+    statsWindowMainMoodContainer.appendChild(statsWindowMainMoodTag);
+    statsWindowMainMoodContainer.appendChild(statsWindowMainMood);
+    statsWindowContent.appendChild(statsWindowMain);
+    statsWindowContent.appendChild(statsWindowEmotionsTitle);
+    statsWindowContent.appendChild(statsWindowEmotions);
+    statsWindowContent.appendChild(statsWindowSkillsTitle);
+    statsWindowContent.appendChild(statsWindowSkills);
+
+
+
+}
+
