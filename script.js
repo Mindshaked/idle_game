@@ -100,7 +100,7 @@ class Player {
         }
         
         this.tech = {
-            name: "Text",
+            name: "Tech",
             level: 1,
             exp: 0,
             modifier: 1
@@ -1490,6 +1490,8 @@ let statsWindowSocialBar = document.createElement("div");
 
 
 
+
+
 let intervalId = window.setInterval(function(){
     removeChildItemDet(statsWindowContent);
     removeChildItemDet(statsWindowSkills);
@@ -1519,6 +1521,12 @@ function populateStatsSections(){
     statsWindowMainMoodTag.classList.add("stats-window-tags");
 
     statsWindowSocialBar.setAttribute("id", "social-progress-bar")
+
+
+
+    //emotions section
+
+    //acomplished - depressed
 
 
 

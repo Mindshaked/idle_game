@@ -1282,6 +1282,22 @@ body{
     margin: 15px;
 }
 
+.emotion-progress-bar{
+    width: 20px;
+    height: 100px;
+}
+
+.emotion-progress-bar-div{
+    height:200px;
+    width: 20px;
+    background-color: #534e43;
+}
+
+.emotion-progress-bar-slider{
+    width: 20px;
+    height: 40px;
+    background-color: #bebab2;
+}
 
 
 
