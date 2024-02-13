@@ -40,6 +40,7 @@ class Player {
         this.profilePicture = "resources/profilepicture.png";
 
         this.mood = "none";
+
         this.acomplished = {
             name: "Acomplishment",
             modifier: 1,
@@ -64,19 +65,19 @@ class Player {
             status: 0
             }
 
-        this.excited = {
+        this.joyful = {
             name: "Excitement",
             modifier: 1,
             status: 0
             }
 
-        this.angry = {
+        this.afraid = {
             name: "Anger",
             modifier: 1,
             status: 0
             }
 
-        this.afraid = {
+        this.companionship = {
             name: "Fear",
             modifier: 1,
             status: 0
@@ -88,7 +89,7 @@ class Player {
             status: 0
             }
 
-
+            this.playerEmotions = [this.acomplished, this.depressed, this.relaxed, this.stressed, this.joyful, this.afraid, this.companionship, this.lonely]
 
 
         //skills
@@ -144,7 +145,7 @@ class Player {
         this.playerSkills = [this.social, this.tech, this.art, this.athletics, this.science, this.military, this.emotion]
 
        
-
+        
 
 
         //job levels
@@ -1492,9 +1493,11 @@ let statsWindowSocialBar = document.createElement("div");
 
 
 
+
 let intervalId = window.setInterval(function(){
     removeChildItemDet(statsWindowContent);
     removeChildItemDet(statsWindowSkills);
+    removeChildItemDet(statsWindowEmotions);
 
     populateStatsSections();
 }, 1000);
@@ -1524,12 +1527,43 @@ function populateStatsSections(){
 
 
 
+
+
     //emotions section
 
-    //acomplished - depressed
 
 
+    
+    for (let i=0; i<player.playerEmotions.length; i+=2){
+        let statsWindowEmotionSlot = document.createElement("div");
+        let statsWindowEmotionName = document.createElement("div");
+        let statsWindowEmotionName2 = document.createElement("div");
+        let statsWindowEmotionBarContainer = document.createElement("div");
+        let statsWindowEmotionBar = document.createElement("div");
 
+        statsWindowEmotionSlot.classList.add("emotions-slot");
+        statsWindowEmotionName.classList.add("emotion-name-1");
+        statsWindowEmotionName2.classList.add("emotion-name-2");
+
+        statsWindowEmotionBarContainer.classList.add("emotion-progress-bar-div");
+        statsWindowEmotionBar.classList.add("emotion-progress-bar-slider");
+
+        statsWindowEmotionName.innerText = player.playerEmotions[i].name;
+        statsWindowEmotionName2.innerText = player.playerEmotions[i+1].name;
+
+        let statsEmotionResult = player.playerEmotions[i].name - player.playerEmotions[i+1].name;
+        statsWindowEmotionBar.style.top += statsEmotionResult + "%";
+
+
+        statsWindowEmotions.appendChild(statsWindowEmotionSlot);
+        statsWindowEmotionSlot.appendChild(statsWindowEmotionName);
+        statsWindowEmotionSlot.appendChild(statsWindowEmotionBarContainer);
+        statsWindowEmotionSlot.appendChild(statsWindowEmotionName2);
+        statsWindowEmotionBarContainer.appendChild(statsWindowEmotionBar);
+        
+    
+
+    }
 
     //skills section
     for (let i=0; i<player.playerSkills.length;i++){
