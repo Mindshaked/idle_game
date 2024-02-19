@@ -1277,6 +1277,7 @@ body{
 .skill-progress-bar-container{
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .stats-window-skill-level{
@@ -1305,7 +1306,13 @@ body{
     height: 20px;
     background-color: #bebab2;
     position: absolute;
-    top: 35%;
+    bottom: 0%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    
     
 }
 

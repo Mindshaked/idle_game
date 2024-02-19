@@ -202,6 +202,8 @@ class Player {
                 }
             ]
 
+    
+
             this.startActivity(this.pizza, 10, 0, jobSkills, jobMood)
             this.job = this.pizza.name;
             
@@ -378,8 +380,14 @@ class Player {
 
     updateMoodStats(mood){
         for(let i = 0; i < mood.length; i++){
+            if (mood[i].mood.status >= 35 || mood[i].mood.status <= -35){
+                return;
+            } else{
                 mood[i].mood.status += mood[i].change * mood[i].mood.modifier;
-                console.log(mood[i].mood.name + " incrased be " + mood[i].change)
+                console.log(mood[i].mood.name + " increased by " + mood[i].change + "total:" + this.depressed.status)
+            }
+                
+    
 
             }
       
@@ -1551,8 +1559,24 @@ function populateStatsSections(){
         statsWindowEmotionName.innerText = player.playerEmotions[i].name;
         statsWindowEmotionName2.innerText = player.playerEmotions[i+1].name;
 
-        let statsEmotionResult = player.playerEmotions[i].name - player.playerEmotions[i+1].name;
-        statsWindowEmotionBar.style.top += statsEmotionResult + "%";
+        let statsEmotionResult = player.playerEmotions[i].status - player.playerEmotions[i+1].status;
+       
+        statsWindowEmotionBar.style.bottom = (35 + statsEmotionResult) + "%";
+        statsWindowEmotionBar.innerText = statsEmotionResult;
+
+        
+
+        if (statsEmotionResult < 0){
+            statsWindowEmotionBar.style.backgroundColor = "red";
+        } else if(statsEmotionResult == 0){
+            statsWindowEmotionBar.style.backgroundColor = "white";
+        } else{
+            statsWindowEmotionBar.style.backgroundColor = "green";
+        }
+        
+        console.log("emotions bar position:" + statsWindowEmotionBar.style.top)
+    
+
 
 
         statsWindowEmotions.appendChild(statsWindowEmotionSlot);
