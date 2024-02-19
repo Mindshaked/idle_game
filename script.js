@@ -1446,17 +1446,22 @@ drag_div(activitiesWindowName, activitiesWindow)
 
 
 const statsWindowbtn = document.getElementById("stats-top-button");
+const statsWindowContainer = document.getElementById("stats-window-container")
 const statsWindow = document.getElementById("stats-window");
 const statsWindowName = document.getElementById("stats-window-name");
 const statsWindowCloseBtn = document.getElementById("stats-window-close-btn");
 
 function toggleStatsWindow(){
-    if (statsWindow.style.visibility == "visible"){
+    if (statsWindowContainer.style.visibility == "visible"){
         
+        statsWindowContainer.style.visibility = "hidden";
         statsWindow.style.visibility = "hidden";
+        statsWindowName.style.visibility = "hidden";
     } else {
         
+        statsWindowContainer.style.visibility = "visible";
         statsWindow.style.visibility = "visible";
+        statsWindowName.style.visibility = "visible";
         }
 }
 
@@ -1465,6 +1470,7 @@ statsWindowbtn.addEventListener("click", function(){
     toggleStatsWindow();
     removeChildItemDet(statsWindowContent);
     removeChildItemDet(statsWindowSkills);
+    removeChildItemDet(statsWindowEmotions);
     populateStatsSections();
 })
 
@@ -1508,7 +1514,7 @@ let intervalId = window.setInterval(function(){
     removeChildItemDet(statsWindowEmotions);
 
     populateStatsSections();
-}, 1000);
+}, 500);
 
 
 
@@ -1665,4 +1671,4 @@ function populateStatsSections(){
 }
 
 
-drag_div(statsWindowName, statsWindow)
+drag_div(statsWindowName, statsWindowContainer)

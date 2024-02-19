@@ -1126,33 +1126,43 @@ body{
 
 /* stats */
 
-#stats-window{
+#stats-window-container{
     position: absolute;
-    width: 450px;
-    height: 600px;
     top: 15%;
     left: 2%;
+    width: auto;
+    height: auto;
+ 
+}
+
+#stats-window{
+    position: absolute;
+    width: 451px;
+    height: 600px;
+    
     background-color: #221e1e;
     border: 3px solid #d4ca97;   
     z-index: 10;
     overflow-y: scroll;
+    overflow-x:hidden;
     visibility:hidden;
 }
 
 
 #stats-window-name{
-    width: 450px;
+    width: 456px;
     height: 30px;
     background-color: #d4ca97;
-    position: fixed;
+    
+  
     display: flex;
     justify-content: center;
     flex-direction: row;
     color: #221e1e;
-    grid-column: 1/7;
-    grid-row: 1/2;
+   
     align-items: center;
-    z-index: 11;
+    visibility:hidden;
+   
     
 }
 
@@ -1160,8 +1170,9 @@ body{
     width: 25px;
     height: 25px;
     position: absolute;
-    right: 4px;
-    top: 2px;
+    right: 8px;
+    top: 4px;
+    z-index: 11;
     
     
     
@@ -1173,7 +1184,7 @@ body{
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(8, 1fr);
     padding: 20px;
-    padding-top: 50px;
+    padding-top: 40px;
     
    
    
