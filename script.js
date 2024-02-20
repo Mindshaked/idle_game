@@ -871,6 +871,7 @@ function populateItemDetail(item){
     shopItemBuyBtn.addEventListener("click", function(){
         let newFurniture = new furniture(item.itemPrice, item.itemName, item.shopType, item.itemImg);
         player.buyFurni(newFurniture);
+        console.log(player.inventory[0].name)
     })
 
     
@@ -1672,3 +1673,73 @@ function populateStatsSections(){
 
 
 drag_div(statsWindowName, statsWindowContainer)
+
+
+
+
+
+// Inventory window functionality and populate.
+
+const inventoryWindowbtn = document.getElementById("inventory-top-button");
+const inventoryWindowContainer = document.getElementById("inventory-window-container")
+const inventoryMainWindow = document.getElementById("inventory-main-window");
+const inventoryWindowName = document.getElementById("inventory-window-name");
+const inventoryWindowCloseBtn = document.getElementById("inventory-window-close-btn");
+const inventoryWindowItemDetail = document.getElementById("inventory-item-detail");
+
+function toggleInventoryWindow(){
+    if (inventoryWindowContainer.style.visibility == "visible"){
+        
+        inventoryWindowContainer.style.visibility = "hidden";
+        inventoryMainWindow.style.visibility = "hidden";
+        inventoryWindowName.style.visibility = "hidden";
+    } else {
+        
+        inventoryWindowContainer.style.visibility = "visible";
+        inventoryMainWindow.style.visibility = "visible";
+        inventoryWindowName.style.visibility = "visible";
+        }
+}
+
+inventoryWindowbtn.addEventListener("click", function(){
+
+    toggleInventoryWindow();
+    removeChildItemDet(inventoryMainWindow);
+
+    populateInventorySections();
+})
+
+inventoryWindowCloseBtn.addEventListener("click", function(){
+    toggleInventoryWindow()
+    removeChildItemDet(inventoryMainWindow);
+  
+    populateInventorySections();
+})
+
+
+
+
+
+function populateInventorySections(){
+
+    for (let i=0; i < player.inventory.length; i++ ){
+        let inventoryItem = document.createElement("div");
+        inventoryItem.classList.add("inventory-item-element")
+        let inventoryItemImg = document.createElement("img");
+        inventoryItemImg.classList.add("inventory-item-img");
+        inventoryItemImg.src = player.inventory[i].source;
+       
+
+        inventoryItem.addEventListener("click", function(){
+            inventoryWindowItemDetail.style.visibility = "visible";
+        })
+        inventoryMainWindow.appendChild(inventoryWindowItemDetail)
+        inventoryMainWindow.appendChild(inventoryItem);
+        inventoryItem.appendChild(inventoryItemImg);
+    }
+
+
+
+
+
+}
