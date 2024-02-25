@@ -10,6 +10,7 @@ class furniture {
         this.type = type;
         this.source = source;
         this.equipped = false;
+        this.amount = 1;
         let id=0;
         this.id = id;
         ++id;
@@ -1687,6 +1688,8 @@ const inventoryWindowName = document.getElementById("inventory-window-name");
 const inventoryWindowCloseBtn = document.getElementById("inventory-window-close-btn");
 const inventoryWindowItemDetail = document.getElementById("inventory-item-detail");
 
+
+
 function toggleInventoryWindow(){
     if (inventoryWindowContainer.style.visibility == "visible"){
         
@@ -1707,6 +1710,7 @@ inventoryWindowbtn.addEventListener("click", function(){
     removeChildItemDet(inventoryMainWindow);
 
     populateInventorySections();
+    
 })
 
 inventoryWindowCloseBtn.addEventListener("click", function(){
@@ -1728,11 +1732,89 @@ function populateInventorySections(){
         let inventoryItemImg = document.createElement("img");
         inventoryItemImg.classList.add("inventory-item-img");
         inventoryItemImg.src = player.inventory[i].source;
+
+        console.log("item attached to inventory");
        
 
         inventoryItem.addEventListener("click", function(){
+            removeChildItemDet(inventoryWindowItemDetail);
             inventoryWindowItemDetail.style.visibility = "visible";
+
+            //attach all the elements for the details of an item
+
+            const inventoryWindowDetailNameDescContainer = document.createElement("div");
+            inventoryWindowDetailNameDescContainer.setAttribute("id", "inventory-window-detail-name-desc-container")
+            const inventoryWindowDetailNameContainer = document.createElement("div");
+            inventoryWindowDetailNameContainer.setAttribute("id", "inventory-window-detail-name-container")
+            const inventoryWindowDetailDescContainer = document.createElement("div");
+            inventoryWindowDetailDescContainer.setAttribute("id", "inventory-window-detail-desc-container")
+            const inventoryWindowDetailActionsContainer = document.createElement("div");
+            inventoryWindowDetailActionsContainer.setAttribute("id", "inventory-window-detail-actions-container")
+            const inventoryWindowDetailSellContainer = document.createElement("div");
+            inventoryWindowDetailSellContainer.setAttribute("id", "inventory-window-detail-sell-container")
+            const inventoryWindowDetailPriceContainer = document.createElement("div");
+            inventoryWindowDetailPriceContainer.setAttribute("id", "inventory-window-detail-price-container")
+
+            const inventoryWindowDetailNameTag = document.createElement("div");
+            inventoryWindowDetailNameTag.setAttribute("id", "inventory-item-detail-name-tag");
+            inventoryWindowDetailNameTag.innerText = "Name"
+            const inventoryWindowDetailName = document.createElement("div");
+            inventoryWindowDetailName.setAttribute("id", "inventory-item-detail-name");
+            inventoryWindowDetailName.innerText = player.inventory[i].name;
+
+            const inventoryWindowDetailImg = document.createElement("img");
+            inventoryWindowDetailImg.setAttribute("id", "inventory-item-detail-image");
+            inventoryWindowDetailImg.src = player.inventory[i].source;
+
+            const inventoryWindowDetailDescTag = document.createElement("div");
+            inventoryWindowDetailDescTag.setAttribute("id", "inventory-item-detail-desc-tag");
+            inventoryWindowDetailDescTag.innerText = "Description"
+
+            const inventoryWindowDetailDesc = document.createElement("div");
+            inventoryWindowDetailDesc.setAttribute("id", "inventory-item-detail-desc");
+            inventoryWindowDetailDesc.innerText = player.inventory[i].description;
+
+            const inventoryWindowDetailPriceTag = document.createElement("div");
+            inventoryWindowDetailPriceTag.setAttribute("id", "inventory-item-detail-price-tag");
+            inventoryWindowDetailPriceTag.innerText = "Price";
+
+            const inventoryWindowDetailPrice = document.createElement("div");
+            inventoryWindowDetailPrice.setAttribute("id", "inventory-item-detail-price");
+            inventoryWindowDetailPrice.innerText = player.inventory[i].price;
+
+            const inventoryWindowDetailNum = document.createElement("div");
+            inventoryWindowDetailNum.setAttribute("id", "inventory-item-detail-number");
+            inventoryWindowDetailNum.innerText = player.inventory[i].amount;
+
+            const inventoryWindowSellBtn = document.createElement("button");
+            inventoryWindowSellBtn.setAttribute("id", "inventory-item-detail-sell-btn");
+            inventoryWindowSellBtn.innerText = "SELL";
+
+            const inventoryWindowDestroyBtn = document.createElement("button");
+            inventoryWindowDestroyBtn.setAttribute("id", "inventory-item-detail-destroy-btn");
+            inventoryWindowDestroyBtn.innerText = "DESTROY";
+
+            inventoryWindowItemDetail.appendChild(inventoryWindowDetailImg)
+            inventoryWindowItemDetail.appendChild(inventoryWindowDetailNameDescContainer)
+            inventoryWindowItemDetail.appendChild(inventoryWindowDetailActionsContainer);
+            inventoryWindowDetailNameDescContainer.appendChild(inventoryWindowDetailNameContainer)
+            inventoryWindowDetailNameContainer.appendChild(inventoryWindowDetailNameTag);
+            inventoryWindowDetailNameContainer.appendChild(inventoryWindowDetailName);
+            inventoryWindowDetailNameDescContainer.appendChild(inventoryWindowDetailDescContainer)
+            inventoryWindowDetailDescContainer.appendChild(inventoryWindowDetailDescTag);
+            inventoryWindowDetailDescContainer.appendChild(inventoryWindowDetailDesc);
+            inventoryWindowDetailActionsContainer.appendChild(inventoryWindowDetailPriceContainer)
+            inventoryWindowDetailPriceContainer.appendChild(inventoryWindowDetailPriceTag);
+            inventoryWindowDetailPriceContainer.appendChild(inventoryWindowDetailPrice);
+            inventoryWindowDetailActionsContainer.appendChild(inventoryWindowDetailSellContainer)
+            inventoryWindowDetailSellContainer.appendChild(inventoryWindowDetailNum);
+            inventoryWindowDetailSellContainer.appendChild(inventoryWindowSellBtn);
+            inventoryWindowDetailSellContainer.appendChild(inventoryWindowDestroyBtn);
+
+
         })
+
+
         inventoryMainWindow.appendChild(inventoryWindowItemDetail)
         inventoryMainWindow.appendChild(inventoryItem);
         inventoryItem.appendChild(inventoryItemImg);
