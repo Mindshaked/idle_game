@@ -1388,11 +1388,10 @@ body{
     position: absolute;
     bottom:  0%;
     left: 3%;
-    width: 415px;
+    width: 400px;
     height: 130px;
     background-color: #2c2727;
     padding: 30px;
-    
     visibility: hidden;
     border: 2px solid #d4ca97; 
     bottom: 15px;
@@ -1405,11 +1404,23 @@ body{
 }
 
 #inventory-item-detail-image{
+   
+   
+    margin: 10px;
+    object-fit: cover;
+    max-width: 100%;
+}
+
+#inventory-item-detail-image-container{
     grid-column: 0/1;
     grid-row: 0/1;
-    width: auto;
-    height: 20px;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
     margin: 10px;
+    height: 80%;
 }
 
 #inventory-window-detail-name-container{
@@ -1430,7 +1441,7 @@ body{
     flex-direction: column;
     font-size: 14px;
     margin-left: 20px;
-    justify-content:space-around;
+    justify-content:flex-start;
     align-items: center;
     height: 100%;
 }
@@ -1439,8 +1450,9 @@ body{
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     font-size: 14px;
+    margin-left: 15px;
 }
 
 #inventory-window-detail-price-container{
@@ -1452,8 +1464,29 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px;
+    justify-content: space-between;
+    height: 70%;
     
 }
+
+#inventory-window-detail-desc-container{
+    margin-top: 15px;
+    
+}
+
+.inventory-empty-slot{
+    height: 60px;
+    width: 60px;
+    border: 1px solid #797979; 
+    margin: 10px; ;
+}
+
+.inventory-empty-slot:hover{
+    background-color: #5a5353;
+    cursor: pointer;
+}
+
 
 
 #inventory-item-detail-name-desc{
@@ -1463,14 +1496,16 @@ body{
 }
 
 #inventory-item-detail-name-tag{
-    margin-right: 8px;
+    margin-bottom: 8px;
+    color: #84a699;
 }
 #inventory-item-detail-name{
 
 }
 
 #inventory-item-detail-desc-tag{
-
+    margin-bottom: 8px;
+    color: #84a699;
 }
 
 #inventory-item-detail-desc{
@@ -1483,7 +1518,7 @@ body{
 }
 
 #inventory-item-detail-price-tag{
-
+    color: #84a699;
 }
 
 #inventory-item-detail-price{
@@ -1491,15 +1526,35 @@ body{
 }
 
 #inventory-item-detail-number{
-    margin-bottom: 10px;
+    
 }
 
 #inventory-item-detail-sell-btn{
-
+    width: 120px;
+    height: 30px;
+    background-color: #84a699;
+    border-style: none;
 }
 
-#inventory-item-detail-destroy{
+#inventory-item-detail-sell-btn:hover {
+    background-color: #587c6e;
+    cursor: pointer;
+}
 
+
+
+#inventory-item-detail-destroy-btn{
+    width: 62px;
+    height: 16px;
+    font-size: 8px;
+    border-style: none;
+    background-color: #CB7373;
+    
+}
+
+#inventory-item-detail-destroy-btn:hover{
+    background-color: #a55656;
+    cursor: pointer;
 }
 
 

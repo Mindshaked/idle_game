@@ -871,6 +871,8 @@ function populateItemDetail(item){
 
     shopItemBuyBtn.addEventListener("click", function(){
         let newFurniture = new furniture(item.itemPrice, item.itemName, item.shopType, item.itemImg);
+        removeChildItemDet(inventoryMainWindow);
+        populateInventorySections();
         player.buyFurni(newFurniture);
         console.log(player.inventory[0].name)
     })
@@ -1708,7 +1710,6 @@ inventoryWindowbtn.addEventListener("click", function(){
 
     toggleInventoryWindow();
     removeChildItemDet(inventoryMainWindow);
-
     populateInventorySections();
     
 })
@@ -1757,10 +1758,13 @@ function populateInventorySections(){
 
             const inventoryWindowDetailNameTag = document.createElement("div");
             inventoryWindowDetailNameTag.setAttribute("id", "inventory-item-detail-name-tag");
-            inventoryWindowDetailNameTag.innerText = "Name"
+            inventoryWindowDetailNameTag.innerText = "NAME"
             const inventoryWindowDetailName = document.createElement("div");
             inventoryWindowDetailName.setAttribute("id", "inventory-item-detail-name");
             inventoryWindowDetailName.innerText = player.inventory[i].name;
+
+            const inventoryWindowDetailImgContainer = document.createElement("div");
+            inventoryWindowDetailImgContainer.setAttribute("id", "inventory-item-detail-image-container");
 
             const inventoryWindowDetailImg = document.createElement("img");
             inventoryWindowDetailImg.setAttribute("id", "inventory-item-detail-image");
@@ -1768,7 +1772,7 @@ function populateInventorySections(){
 
             const inventoryWindowDetailDescTag = document.createElement("div");
             inventoryWindowDetailDescTag.setAttribute("id", "inventory-item-detail-desc-tag");
-            inventoryWindowDetailDescTag.innerText = "Description"
+            inventoryWindowDetailDescTag.innerText = "DESCRIPTION"
 
             const inventoryWindowDetailDesc = document.createElement("div");
             inventoryWindowDetailDesc.setAttribute("id", "inventory-item-detail-desc");
@@ -1794,7 +1798,8 @@ function populateInventorySections(){
             inventoryWindowDestroyBtn.setAttribute("id", "inventory-item-detail-destroy-btn");
             inventoryWindowDestroyBtn.innerText = "DESTROY";
 
-            inventoryWindowItemDetail.appendChild(inventoryWindowDetailImg)
+            inventoryWindowDetailImgContainer.appendChild(inventoryWindowDetailImg)
+            inventoryWindowItemDetail.appendChild(inventoryWindowDetailImgContainer)
             inventoryWindowItemDetail.appendChild(inventoryWindowDetailNameDescContainer)
             inventoryWindowItemDetail.appendChild(inventoryWindowDetailActionsContainer);
             inventoryWindowDetailNameDescContainer.appendChild(inventoryWindowDetailNameContainer)
@@ -1820,8 +1825,15 @@ function populateInventorySections(){
         inventoryItem.appendChild(inventoryItemImg);
     }
 
+    for (let i=0; i < 10; i++ ){
+        let inventoryEmptySlot = document.createElement("div");
+        inventoryEmptySlot.classList.add("inventory-empty-slot")
+        inventoryMainWindow.appendChild(inventoryEmptySlot)
 
+    }
 
 
 
 }
+
+drag_div(inventoryWindowName,inventoryMainWindow)
