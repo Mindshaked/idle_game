@@ -1132,6 +1132,7 @@ body{
     left: 2%;
     width: auto;
     height: auto;
+    
  
 }
 
@@ -1146,6 +1147,7 @@ body{
     overflow-y: scroll;
     overflow-x:hidden;
     visibility:hidden;
+    
 }
 
 
@@ -1185,6 +1187,7 @@ body{
     grid-template-rows: repeat(8, 1fr);
     padding: 20px;
     padding-top: 40px;
+    padding-bottom: 40px;
     
    
    
@@ -1525,6 +1528,28 @@ body{
     margin-left: 20px;
 }
 
+#inventory-item-detail-number-container{
+    display: flex;
+    flex-direction: row;
+}
+
+
+#inventory-item-detail-number-up{
+    background-color: red;
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+}
+
+#inventory-item-detail-number-down{
+    background-color: blue;
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+}
+
+
+
 #inventory-item-detail-number{
     
 }
@@ -1587,14 +1612,19 @@ body{
     width: 100%;
 }
 
-.inventory-item-img:hover{
+.inventory-item-element:hover{
     border: 1px solid #bebab2;
     cursor: pointer;
     
 }
 
 
-
+.inventory-item-num{
+    position:relative;
+    bottom: 30%;
+    font-size: 11px;
+    left: 5%;
+}
 
 
 /* SCROLL BAR CUSTOM */

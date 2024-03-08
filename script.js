@@ -10,7 +10,7 @@ class furniture {
         this.type = type;
         this.source = source;
         this.equipped = false;
-        this.amount = 1;
+        this.quantity = 1;
         let id=0;
         this.id = id;
         ++id;
@@ -22,7 +22,7 @@ class furniture {
   
 }
 
-let inventoryWindow = document.getElementById("inventory-window")
+
 
 
 class Player {
@@ -266,25 +266,51 @@ class Player {
         }
     }
 
-    buyFurni(furniture){
+    buyFurni(furniture, quantity){
+
+        const furniIndex = this.inventory.findIndex(item => item.name === furniture.name);
+
+        
         if (this.money >= furniture.price){
-            this.money -= furniture.price;
-            this.inventory.push(furniture);
-            console.log("You bought " + furniture.name + " for " + furniture.price);
-            this.cleanInventory(inventoryWindow)
-            this.populateInventory()
-            this.displayStats();
+            if (furniIndex !== -1){
+                this.inventory[furniIndex].quantity += quantity;
+                this.money -= furniture.price * quantity;
+                alert("Bought "+ quantity + furniture.name +" for " + furniture.price)
+                                
+                this.displayStats();
+            } else {
+                this.inventory.push(furniture);
+                const furniIndex = this.inventory.findIndex(item => item.name === furniture.name);
+                this.inventory[furniIndex].quantity += quantity
+                this.money -= furniture.price * quantity;
+                alert("You bought "+ quantity + furniture.name + " for " + furniture.price);
+               
+               
+                this.displayStats();
+            }
+
+          
         } else {
             console.log("Not enough money to buy " + furniture.name)
         }
     }
 
-    sellFurni(furniture){
-        const furniIndex = this.inventory.indexOf(furniture);
+    sellFurni(furniture, amount){
+        const furniIndex = this.inventory.findIndex(item => item.name === furniture.name)
         if (furniIndex !== -1){
-            this.money += furniture.price;
-            this.inventory.splice(furniIndex, 1);
-            console.log("You sold " + furniture.name + " for " + furniture.price);
+            if (this.inventory[furniIndex].quantity > 1){
+                this.inventory[furniIndex].quantity -= amount;
+                this.money += furniture.price * amount;
+                if (this.inventory[furniIndex].quantity == 0){
+                    this.inventory.splice(furniIndex, 1);
+                }
+                console.log("You sold " + furniture.name + " for " + furniture.price);
+            } else if (this.inventory[furniIndex].quantity <= 1){
+                this.money += furniture.price;
+                this.inventory.splice(furniIndex, 1);
+                console.log("You sold " + furniture.name + " for " + furniture.price);
+            } 
+           
         } else {
             console.log("Not found in your inventory");
         }
@@ -465,14 +491,7 @@ class Player {
     
     }
     
-    populateInventory(){
-        for (let i=0; i<this.inventory.length; i++){
-            let item = document.createElement("div");
-            item.innerText = this.inventory[i].name
-            item.className = "item"
-            inventoryWindow.appendChild(item)
-        }
-    }
+  
 
     displayStats() {
         document.getElementById("money").innerText = "MONEY: $"+ this.money;
@@ -701,6 +720,7 @@ function toggleShopWindow(){
     } else {
         shopWindow.style.visibility = "visible";
         
+        
         }
 }
 
@@ -869,13 +889,23 @@ function populateItemDetail(item){
 
     // item buy button functionality
 
-    shopItemBuyBtn.addEventListener("click", function(){
-        let newFurniture = new furniture(item.itemPrice, item.itemName, item.shopType, item.itemImg);
-        removeChildItemDet(inventoryMainWindow);
-        populateInventorySections();
-        player.buyFurni(newFurniture);
-        console.log(player.inventory[0].name)
-    })
+    if (shopItemBuyBtn.classList.contains("event-added")){
+        return;
+
+    } else{
+
+        shopItemBuyBtn.addEventListener("click", function(){
+            shopItemBuyBtn.classList.add("event-added");
+            let newFurniture = new furniture(item.itemPrice, item.itemName, item.shopType, item.itemImg);
+            removeChildItemDet(inventoryMainWindow);
+            populateInventorySections();
+            player.buyFurni(newFurniture, 1);
+            
+        })
+
+    }   
+
+   
 
     
 
@@ -904,7 +934,7 @@ function populateItemDetail(item){
 function removeChildItemDet(container){
 
    while (container.firstChild){
-    console.log("dom element removed")
+
     container.removeChild(container.firstChild);
    }
 }
@@ -927,10 +957,10 @@ const jobsWindowCloseBtn = document.getElementById("job-window-close-btn");
 
 function toggleJobWindow(){
     if (jobsWindow.style.visibility == "visible"){
-        jobApplyBtn.remove();
+        jobApplyBtn.style.visibility = "hidden"
     jobsWindow.style.visibility = "hidden";
     } else {
-       
+        jobApplyBtn.style.visibility = "visible"
         jobsWindow.style.visibility = "visible";
         }
 }
@@ -1086,7 +1116,7 @@ function toggleJobSectionContent(section, sectionDom){
 
 
 
-const jobImageSection = document.getElementById("furniture-shop-img");
+const jobImageSection = document.getElementById("job-img");
 const jobImage = document.createElement("img");
 const jobTitleSection = document.getElementById("job-detail-title-section");
 const jobTitleTag = document.getElementById("job-detail-title-tag");
@@ -1118,7 +1148,7 @@ function populateJobDetail(job){
 
         jobImage.src = job.jobSrc;
         jobTitle.innerText = job.jobName;
-        jobPay.innerText = job.jobPay;
+        jobPay.innerText = "$" + job.jobPay;
         jobReq.innerText = job.jobReq;
         jobDesc.innerText = job.jobDesc;
         console.log("job details appended")
@@ -1126,7 +1156,7 @@ function populateJobDetail(job){
         jobApplyBtn.style.visibility = "visible";
 
         jobTitleTag.innerText = "JOB TITLE: ";
-        jobPayTag.innerText = "PAY: $";
+        jobPayTag.innerText = "PAY:";
         jobReqTag.innerText = "REQUIREMENTS: ";
         jobDescTag.innerText = "DESCRIPTION: ";
 
@@ -1584,7 +1614,7 @@ function populateStatsSections(){
             statsWindowEmotionBar.style.backgroundColor = "green";
         }
         
-        console.log("emotions bar position:" + statsWindowEmotionBar.style.top)
+        
     
 
 
@@ -1613,7 +1643,7 @@ function populateStatsSections(){
         statsWindowSkillLvl.classList.add("stats-window-skill-level")
         statsWindowSkillBar.classList.add("skill-progress-bar")
 
-        console.log(player.playerSkills)
+        
         statsWindowSkillName.innerText = player.playerSkills[i].name;
         statsWindowSkillLvl.innerText = "Lvl. " + player.playerSkills[i].level;
         statsWindowSkillExp.innerText = player.playerSkills[i].exp + "/" + (player.nextLevel(player.playerSkills[i].level + 1))
@@ -1625,7 +1655,7 @@ function populateStatsSections(){
         } else {
             statsWindowSkillBar.style.width = ((player.playerSkills[i].exp-player.nextLevel(player.playerSkills[i].level))/(player.nextLevel(player.playerSkills[i].level + 1)-player.nextLevel(player.playerSkills[i].level)) * 100) + "%";
         }
-        console.log (player.nextLevel(player.playerSkills[i].level))
+        
 
         
 
@@ -1698,6 +1728,7 @@ function toggleInventoryWindow(){
         inventoryWindowContainer.style.visibility = "hidden";
         inventoryMainWindow.style.visibility = "hidden";
         inventoryWindowName.style.visibility = "hidden";
+        inventoryWindowItemDetail.style.visibility = "hidden";
     } else {
         
         inventoryWindowContainer.style.visibility = "visible";
@@ -1733,6 +1764,9 @@ function populateInventorySections(){
         let inventoryItemImg = document.createElement("img");
         inventoryItemImg.classList.add("inventory-item-img");
         inventoryItemImg.src = player.inventory[i].source;
+        let inventoryItemNum = document.createElement("div");
+        inventoryItemNum.classList.add("inventory-item-num");
+        inventoryItemNum.innerText = player.inventory[i].quantity;
 
         console.log("item attached to inventory");
        
@@ -1786,13 +1820,63 @@ function populateInventorySections(){
             inventoryWindowDetailPrice.setAttribute("id", "inventory-item-detail-price");
             inventoryWindowDetailPrice.innerText = player.inventory[i].price;
 
+
+            let itemAmount = player.inventory[i].quantity;
+
+            const inventoryWindowDetailNumContainer = document.createElement("div");
+            inventoryWindowDetailNumContainer.setAttribute("id", "inventory-item-detail-number-container");
+
+            const inventoryWindowDetailNumUp = document.createElement("img");
+            inventoryWindowDetailNumUp.setAttribute("id", "inventory-item-detail-number-up");
+            inventoryWindowDetailNumUp.addEventListener("click", function(){
+                if (itemAmount < player.inventory[i].quantity){
+                    itemAmount++;
+                    inventoryWindowDetailNum.innerText = itemAmount;
+                } else {
+                    return;
+                }
+            })
+
+            const inventoryWindowDetailNumDown = document.createElement("img");
+            inventoryWindowDetailNumDown.setAttribute("id", "inventory-item-detail-number-down");
+            inventoryWindowDetailNumDown.addEventListener("click", function(){
+                if (itemAmount > 1){
+                    itemAmount--;
+                    inventoryWindowDetailNum.innerText = itemAmount;
+                } else {
+                    return;
+                }
+            
+            })
+
             const inventoryWindowDetailNum = document.createElement("div");
             inventoryWindowDetailNum.setAttribute("id", "inventory-item-detail-number");
-            inventoryWindowDetailNum.innerText = player.inventory[i].amount;
+            
+            inventoryWindowDetailNum.innerText = itemAmount;
+
+
 
             const inventoryWindowSellBtn = document.createElement("button");
             inventoryWindowSellBtn.setAttribute("id", "inventory-item-detail-sell-btn");
             inventoryWindowSellBtn.innerText = "SELL";
+
+            inventoryWindowSellBtn.addEventListener("click", function(){
+                let newItemAmount = player.inventory[i].quantity - itemAmount;
+                let itemName = player.inventory[i].name;
+                player.sellFurni(player.inventory[i], itemAmount)
+                
+                alert("se ha vendido" + itemAmount + " " + itemName);
+
+
+                itemAmount = newItemAmount;
+                inventoryWindowDetailNum.innerText = itemAmount;
+             
+                removeChildItemDet(inventoryMainWindow);
+                populateInventorySections();
+               
+            })
+
+            
 
             const inventoryWindowDestroyBtn = document.createElement("button");
             inventoryWindowDestroyBtn.setAttribute("id", "inventory-item-detail-destroy-btn");
@@ -1811,8 +1895,13 @@ function populateInventorySections(){
             inventoryWindowDetailActionsContainer.appendChild(inventoryWindowDetailPriceContainer)
             inventoryWindowDetailPriceContainer.appendChild(inventoryWindowDetailPriceTag);
             inventoryWindowDetailPriceContainer.appendChild(inventoryWindowDetailPrice);
-            inventoryWindowDetailActionsContainer.appendChild(inventoryWindowDetailSellContainer)
-            inventoryWindowDetailSellContainer.appendChild(inventoryWindowDetailNum);
+            inventoryWindowDetailActionsContainer.appendChild(inventoryWindowDetailSellContainer);
+
+            inventoryWindowDetailNumContainer.appendChild(inventoryWindowDetailNumDown);
+            inventoryWindowDetailNumContainer.appendChild(inventoryWindowDetailNum);
+            inventoryWindowDetailNumContainer.appendChild(inventoryWindowDetailNumUp);
+
+            inventoryWindowDetailSellContainer.appendChild(inventoryWindowDetailNumContainer);
             inventoryWindowDetailSellContainer.appendChild(inventoryWindowSellBtn);
             inventoryWindowDetailSellContainer.appendChild(inventoryWindowDestroyBtn);
 
@@ -1823,6 +1912,7 @@ function populateInventorySections(){
         inventoryMainWindow.appendChild(inventoryWindowItemDetail)
         inventoryMainWindow.appendChild(inventoryItem);
         inventoryItem.appendChild(inventoryItemImg);
+        inventoryItem.appendChild(inventoryItemNum);
     }
 
     for (let i=0; i < 10; i++ ){
@@ -1836,4 +1926,4 @@ function populateInventorySections(){
 
 }
 
-drag_div(inventoryWindowName,inventoryMainWindow)
+drag_div(inventoryWindowName,inventoryWindowContainer)
