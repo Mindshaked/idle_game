@@ -163,6 +163,49 @@ class Player {
                 this.lvl += 1
             }
         }
+
+
+
+        //study levels
+
+        this.upgrades = [
+            {
+                name: "TECH",
+                studies: [
+                    {
+                        name: "Mecha Engineering",
+                        level: 1,
+                        modifier: 1,
+                        requirements: 0,
+                        status: "active",
+                        levelCost(){
+                            let cost = (500*this.level)*this.modifier * 1.25;
+                            return cost;
+                        },
+                        levelUp(){
+                            this.level += 1;
+                            this.money -= this.levelCost()
+                        }
+
+                    },
+                    {
+                        name: "Artificial Intelligence",
+                        level: 1,
+                        modifier: 1,
+                        requirements: 0,
+                        status: "inactive",
+                        levelCost(){
+                            let cost =  (500*this.level)*this.modifier * 1.25;
+                            return cost;
+                        },
+                        levelUp(){
+                            this.level += 1;
+                            this.money -= this.levelCost()
+                        }
+                    }
+                ]
+            }
+        ]
        
        
     }
@@ -716,7 +759,7 @@ const shopWindowCloseBtn = document.getElementById("shop-window-close-btn");
 function toggleShopWindow(){
     if (shopWindow.style.visibility == "visible"){
     shopWindow.style.visibility = "hidden";
-    shopItemBuyBtn.remove();
+    
     } else {
         shopWindow.style.visibility = "visible";
         
@@ -842,6 +885,7 @@ function populateSectionItems(section){
         shopItem.appendChild(shopItemName);
         shopItem.appendChild(shopItemPrice);
         shopItem.addEventListener("click", function(){
+            console.log("shop details should be shown")
             removeChildItemDet(shopTopPanel)
             populateItemDetail(section.items[i])
         })
@@ -887,6 +931,24 @@ function populateItemDetail(item){
 
 
 
+    shopTopPanel.appendChild(shopItemTitle);
+    shopTopPanel.appendChild(shopFurnitureImage);
+    shopTopPanel.appendChild(furniturePriceSection);
+    shopTopPanel.appendChild(furnitureBonusSection);
+    shopTopPanel.appendChild(furnitureDescSection);
+    shopTopPanel.appendChild(furnitureReqSection);
+    shopTopPanel.appendChild(furniturePriceBonusSection);
+    shopTopPanel.appendChild(shopItemBuyBtnSlot)
+    shopItemBuyBtnSlot.appendChild(shopItemBuyBtn);
+    shopFurnitureImage.appendChild(shopItemImg);
+    furniturePriceSection.appendChild(shopItemPriceDetail);
+    furnitureBonusSection.appendChild(shopItemBonus);
+    furniturePriceBonusSection.appendChild(furniturePriceSection);
+    furniturePriceBonusSection.appendChild(furnitureBonusSection);
+    furnitureDescSection.appendChild(shopItemDescription);
+    furnitureReqSection.appendChild(shopItemReq);
+    shopWindow.appendChild(shopWindowCloseBtn);
+
     // item buy button functionality
 
     if (shopItemBuyBtn.classList.contains("event-added")){
@@ -906,27 +968,6 @@ function populateItemDetail(item){
     }   
 
    
-
-    
-
-    shopTopPanel.appendChild(shopItemTitle);
-    shopTopPanel.appendChild(shopFurnitureImage);
-    shopTopPanel.appendChild(furniturePriceSection);
-    shopTopPanel.appendChild(furnitureBonusSection);
-    shopTopPanel.appendChild(furnitureDescSection);
-    shopTopPanel.appendChild(furnitureReqSection);
-    shopTopPanel.appendChild(furniturePriceBonusSection);
-    shopTopPanel.appendChild(shopItemBuyBtnSlot)
-    shopItemBuyBtnSlot.appendChild(shopItemBuyBtn);
-    shopFurnitureImage.appendChild(shopItemImg);
-    furniturePriceSection.appendChild(shopItemPriceDetail);
-    furnitureBonusSection.appendChild(shopItemBonus);
-    furniturePriceBonusSection.appendChild(furniturePriceSection);
-    furniturePriceBonusSection.appendChild(furnitureBonusSection);
-    furnitureDescSection.appendChild(shopItemDescription);
-    furnitureReqSection.appendChild(shopItemReq);
-    shopWindow.appendChild(shopWindowCloseBtn);
-
 
 
 }
@@ -1927,3 +1968,124 @@ function populateInventorySections(){
 }
 
 drag_div(inventoryWindowName,inventoryWindowContainer)
+
+
+
+
+//// Upgrades section
+
+const upgradesWindowbtn = document.getElementById("upgrades-top-button");
+const upgradesWindowContainer = document.getElementById("upgrades-window-container")
+const upgradesMainWindow = document.getElementById("upgrades-main-window");
+const upgradesWindowName = document.getElementById("upgrades-window-name");
+const upgradesWindowCloseBtn = document.getElementById("upgrades-window-close-btn");
+const upgradesWindowSections = document.getElementById("upgrades-window-sections");
+const upgradesWindowSectionItems = document.getElementById("upgrades-window-section-list");
+
+
+
+function toggleUpgradesWindow(){
+    if (upgradesWindowContainer.style.visibility == "visible"){
+        
+        upgradesWindowContainer.style.visibility = "hidden";
+        upgradesMainWindow.style.visibility = "hidden";
+        upgradesWindowName.style.visibility = "hidden";
+        
+    } else {
+        
+        upgradesWindowContainer.style.visibility = "visible";
+        upgradesMainWindow.style.visibility = "visible";
+        upgradesWindowName.style.visibility = "visible";
+        }
+}
+
+upgradesWindowbtn.addEventListener("click", function(){
+
+    toggleUpgradesWindow();
+    removeChildItemDet(upgradesWindowSections);
+    populateUpgradesSections();
+    
+})
+
+upgradesWindowCloseBtn.addEventListener("click", function(){
+    toggleUpgradesWindow()
+    removeChildItemDet(upgradesWindowSections);
+  
+    populateUpgradesSections();
+})
+
+
+
+function populateUpgradesSections(){
+
+    for (let i = 0; i < player.upgrades.length; i++){
+        console.log(player.upgrades[i].name)
+        console.log(player.upgrades[i].studies[0])
+
+        let upgradesSection = document.createElement("div");
+        upgradesSection.classList.add("upgrades-section-element")
+        upgradesSection.innerText = player.upgrades[i].name;
+
+        upgradesSection.addEventListener("click", function(){
+            removeChildItemDet(upgradesWindowSectionItems);
+            populateUpgradesSectionList(player.upgrades[i]);
+        })
+
+        upgradesWindowSections.appendChild(upgradesSection);
+        
+
+    }
+
+
+
+}
+
+function populateUpgradesSectionList(section){
+    for (let i = 0; i < section.studies.length; i++){
+        let upgradesSectionItem = document.createElement("div");
+        upgradesSectionItem.classList.add("upgrades-section-items");
+
+        let upgradesSectionItemLeft = document.createElement("div");
+        upgradesSectionItemLeft.classList.add("upgrades-section-items-left");
+
+        let upgradesSectionItemName = document.createElement("div");
+        upgradesSectionItemName.classList.add("upgrades-section-items-name");
+        upgradesSectionItemName.innerText = section.studies[i].name;
+        let upgradesSectionItemLevel = document.createElement("div");
+        upgradesSectionItemLevel.classList.add("upgrades-section-items-level");
+        upgradesSectionItemLevel.innerText = "Lvl. " + section.studies[i].level;
+
+
+        let upgradesSectionItemRight = document.createElement("div");
+        upgradesSectionItemRight.classList.add("upgrades-section-items-right");
+
+        let upgradesSectionItemUpgradeBtn = document.createElement("button");
+        upgradesSectionItemUpgradeBtn.classList.add("upgrade-section-items-upgrade-button");
+        upgradesSectionItemUpgradeBtn.innerText = "Upgrade";
+        upgradesSectionItemUpgradeBtn.addEventListener("click", function(){
+
+            if (section.studies[i].levelCost() > player.money){
+                console.log("not enough money to upgrade");
+                return;
+            }
+            section.studies[i].levelUp();
+            upgradesSectionItemUpgradeCost.innerText = section.studies[i].levelCost();
+            upgradesSectionItemLevel.innerText = "Lvl. " + section.studies[i].level;
+        })
+
+        let upgradesSectionItemUpgradeCost = document.createElement("div");
+        upgradesSectionItemUpgradeCost.classList.add("upgrade-section-item-upgrade-cost");
+        upgradesSectionItemUpgradeCost.innerText = "$" + section.studies[i].levelCost();
+
+
+       
+
+        upgradesWindowSectionItems.appendChild(upgradesSectionItem);
+        upgradesSectionItem.appendChild(upgradesSectionItemLeft);
+        upgradesSectionItemLeft.appendChild(upgradesSectionItemName);
+        upgradesSectionItemLeft.appendChild(upgradesSectionItemLevel);
+        upgradesSectionItem.appendChild(upgradesSectionItemRight);
+        upgradesSectionItemRight.appendChild(upgradesSectionItemUpgradeBtn);
+        upgradesSectionItemRight.appendChild(upgradesSectionItemUpgradeCost);
+    }
+}
