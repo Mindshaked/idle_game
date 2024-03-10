@@ -1747,6 +1747,17 @@ body{
     font-size: 10px;
 }
 
+#upgrades-window-close-btn{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 8px;
+    top: 4px;
+    z-index: 11;
+    
+    
+    
+}
 
 
 

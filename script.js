@@ -1,7 +1,7 @@
 let p = 0;
 
 class furniture {
-    constructor(price, name, type, source){
+    constructor(price, name, type, source, effects){
         this.name = name;
         this.price = price;
         this.stats = "+1 Sanity"
@@ -10,16 +10,50 @@ class furniture {
         this.type = type;
         this.source = source;
         this.equipped = false;
+        this.effectsState = "off";
         this.quantity = 1;
+        this.effects = effects;
+        console.log(this.effects)
         let id=0;
         this.id = id;
         ++id;
 
+        }
 
+        applyEffects(status){
+
+           
+            let furniEffects = this.effects;
+            if (status == "equipped" && furniEffects.length !== 0 && this.effectsState == "off"){
+                this.effectsState = "on";
+
+               for (let i=0; i< furniEffects.length; i+=2){
+                   
+        
+                    furniEffects[i] += furniEffects[i+1];
+                    console.log("furni effects applied")
+                    console.log(furniEffects[i]);
+                    console.log ("this is effectsState" + this.effectsState)
+               }
+
+            } else if (status == "unequipped" && furniEffects.length !== 0){
+
+                this.effectsState = "off";
+
+                for (let i=0; i< furniEffects.length; i+=2){
+                    
+                    furniEffects[i] -= furniEffects[i+1];
+                    console.log(furniEffects[i] + "furni effects disabled");
+                }
+             } else {
+                console.log("effects already applied")
+                console.log(player.pizza.pay)
+                return;
+             }
       
     }
 
-  
+
 }
 
 
@@ -28,9 +62,9 @@ class furniture {
 class Player {
     constructor(name){
         this.name = name;
-        this.money = 0;
+        this.money = 1000;
         this.jobLevel = 1;
-        this.studyLevel = 1;
+       
         this.dailyExpenses = 2;
         this.daysPassed = 0;
         this.currentActivity = "Doing nothing";
@@ -154,10 +188,18 @@ class Player {
         this.pizza = {
             name: "Pizza Delivery Man",
             level: 1,
+            expModifier: 1,
             exp: 0,
-            modifier: 1,
+            payModifier: 1,
+            pay: 10,
+            jobPay(){
+                let finalPay = this.pay * this.payModifier;
+                console.log(this.payModifier)
+                return finalPay;
+            },
+           
             jobEarnExp(){
-                this.exp += 30 * this.modifier;
+                this.exp += 30 * this.expModifier;
             },
             jobLevelUp(){
                 this.lvl += 1
@@ -248,7 +290,7 @@ class Player {
 
     
 
-            this.startActivity(this.pizza, 10, 0, jobSkills, jobMood)
+            this.startActivity(this.pizza, this.pizza.jobPay(), jobSkills, jobMood)
             this.job = this.pizza.name;
             
             
@@ -273,31 +315,24 @@ class Player {
 
    
 
-    study(subject) {
+    activity(subject) {
         let studyCost = 0;
 
-        if(player.money <= studyCost){
+        if(player.money <= activityCost){
             this.endActivity();
         } 
 
-        if (subject == "customer service"){
-        studyCost = -5;
-        this.startActivity("Study", studyCost, 1)
+        if (subject == "take a walk"){
+        activityCost = -5;
+        this.startActivity("Activity", activityCost, 1)
         }
     }
 
-    activity(activity){
-        
-    }
+   
 
 
-    checkStudyRequirements(studyLvl){
-        if (this.studyLevel >= studyLvl){
-            receptionistBtn.disabled = false;
-            receptionistBtn.textContent = "Receptionist"
-        } else {
-            return;
-        }
+    checkActivityRequirements(activityLvl){
+     
     }
 
 
@@ -324,7 +359,7 @@ class Player {
             } else {
                 this.inventory.push(furniture);
                 const furniIndex = this.inventory.findIndex(item => item.name === furniture.name);
-                this.inventory[furniIndex].quantity += quantity
+                this.inventory[furniIndex].quantity = quantity
                 this.money -= furniture.price * quantity;
                 alert("You bought "+ quantity + furniture.name + " for " + furniture.price);
                
@@ -387,22 +422,20 @@ class Player {
 
 
 
-    startActivity(activity, moneyChange, studyLevel, skills, mood){
+    startActivity(activity, moneyChange, skills, mood){
       
-        
-        
-
-       
         
         console.log("You started" + activity.name);
         this.currentActivity = activity.name;
 
         this.interval = setInterval(() => {
             if (this.checkCost(moneyChange)){
-                this.updateStats(moneyChange, studyLevel, skills, mood);
+                this.updateStats(moneyChange, skills, mood);
                 this.updateJobStats(activity);
                 this.displayStats();
                 this.progressBarMove();
+
+                console.log(moneyChange)
             } else {
                 this.endActivity();
                 console.log("You don't have enough money to keep" + activity.name);
@@ -434,9 +467,8 @@ class Player {
         this.updateStats();
     }
 
-    updateStats(moneyChange, studyLevel, skill, mood){
+    updateStats(moneyChange, skill, mood){
         this.money += moneyChange;
-        this.studyLevel += studyLevel;
        
        
         this.updateSkillStats(skill)
@@ -538,15 +570,13 @@ class Player {
 
     displayStats() {
         document.getElementById("money").innerText = "MONEY: $"+ this.money;
-        document.getElementById("study").innerText = "Study Level:"+ this.studyLevel;
+        
         document.getElementById("current-activity").innerText = "Currently:" + this.currentActivity;
         document.getElementById("current-date").innerText = this.currentDate.toDateString();
         document.getElementById("days-passed").innerText = "Days passed:" + this.daysPassed;
         document.getElementById("inventory").innerText = "Inventory:" + this.inventory;
 
     
-        
-        this.checkStudyRequirements(10)
 
 
 
@@ -591,11 +621,19 @@ function placeFurni(selectedFurniture, slot, slotArray){
     }
     
     slotArray.push(selectedFurniture)
+
+    selectedFurniture.applyEffects("equipped");
+
+    
     player.cleanInventory(slot)
     let furniImg = document.createElement("img");
     furniImg.src = selectedFurniture.source
     slot.appendChild(furniImg)
     console.log("this is the active array" + slotArray)
+
+   
+   
+    
 }
 
 //test placing furniture
@@ -639,6 +677,7 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
             for (let i = 0; i< typeArray.length; i++){
                 if (typeArray[i].equipped == true){
                     typeArray[i].equipped = false;
+                    typeArray[i].applyEffects("unequipped");
                     typeSlotArray = [];
                     console.log("not equipped anymore");
                     console.log("this is the active array" + typeSlotArray)
@@ -657,8 +696,11 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
         let furniCard = document.createElement("div");
         if (typeArray[i].equipped == true){
             furniCard.style.outline = "3px solid green"
+            
+            
         } else{
             furniCard.style.outline = "none";
+           
         }
 
         
@@ -671,17 +713,24 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
             for (let i = 0; i< typeArray.length; i++){
                 if (typeArray[i].equipped == true){
                     typeArray[i].equipped = false;
+                    typeArray[i].applyEffects("unequipped");
+                   
                 }
         
             }
 
+
             typeArray[i].equipped = true;
+
+           
             player.cleanInventory(inventoryPopupItems)
             populateInventoryPopup(typeArray, typeSlot, typeSlotArray);
             console.log(typeArray[i].equipped);
 
             placeFurni(typeArray[i], typeSlot, typeSlotArray)
             console.log("furnicard clicked")
+
+          
         })
     
     }
@@ -707,6 +756,7 @@ function furniSelect(type, typeSlot, typeSlotArray){
 
 }
 
+console.log(player.pizza.jobPay());
 
 //edit button so you can change the room or not
 
@@ -792,16 +842,16 @@ let centralFurnitureSection = {
             itemPrice: 50,
             itemName: "Basic central table",
             itemImg: "resources/centraltable.png",
-            itemBonus: "none",
+            itemBonus: [player.pizza.payModifier, 1],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: "None",
         },
         {
             shopType: "central-furniture",
             itemPrice: 200,
             itemName: "Luxury central table",
             itemImg: "resources/centraltable.png",
-            itemBonus: "none",
+            itemBonus: [],
             itemDescription: "a normal table",
             itemReq: "None"
         }
@@ -958,7 +1008,7 @@ function populateItemDetail(item){
 
         shopItemBuyBtn.addEventListener("click", function(){
             shopItemBuyBtn.classList.add("event-added");
-            let newFurniture = new furniture(item.itemPrice, item.itemName, item.shopType, item.itemImg);
+            let newFurniture = new furniture(item.itemPrice, item.itemName, item.shopType, item.itemImg, item.itemBonus);
             removeChildItemDet(inventoryMainWindow);
             populateInventorySections();
             player.buyFurni(newFurniture, 1);
@@ -1068,7 +1118,7 @@ let basicJobsSection = {
     jobs:
         [{
             jobName: "Pizza Delivery Man",
-            jobPay: 50,
+            jobPay: 10,
             jobReq: "None",
             jobDesc: "an accessible and easy job to for beginners in the job market",
             jobActivity: "Pizza Delivery Man",
@@ -1341,11 +1391,11 @@ let basicActivitiesSection = {
     sectionName: "BASIC ACTIVITIES",
     activities:
         [{
-            activityName: "Taka a walk",
-            activityCost: 50,
+            activityName: "Take a walk",
+            activityCost: 5,
             activityReq: "None",
-            activityDesc: "an accessible and easy job to for beginners in the job market",
-            activityActivity: "pizza"
+            activityDesc: "an accessible and easy way to exercise and release stress",
+            activityActivity: "walk"
         },
         {
             activityName: "Garbage Collector",
@@ -2069,7 +2119,7 @@ function populateUpgradesSectionList(section){
                 return;
             }
             section.studies[i].levelUp();
-            upgradesSectionItemUpgradeCost.innerText = section.studies[i].levelCost();
+            upgradesSectionItemUpgradeCost.innerText =  "$" + section.studies[i].levelCost();
             upgradesSectionItemLevel.innerText = "Lvl. " + section.studies[i].level;
         })
 
@@ -2089,3 +2139,5 @@ function populateUpgradesSectionList(section){
         upgradesSectionItemRight.appendChild(upgradesSectionItemUpgradeCost);
     }
 }
+
+drag_div(upgradesWindowName,upgradesWindowContainer)
