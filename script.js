@@ -188,6 +188,7 @@ class Player {
         this.pizza = {
             name: "Pizza Delivery Man",
             level: 1,
+            type: "job",
             expModifier: 1,
             exp: 0,
             payModifier: 1,
@@ -207,6 +208,30 @@ class Player {
         }
 
 
+
+        // activity levels
+
+        this.walk = {
+            name: "walk",
+            level: 1,
+            type: "activity",
+            expModifier: 1,
+            exp: 0,
+            costModifier: 1,
+            cost: 0,
+            activityCost(){
+                let finalCost = this.cost * this.costModifier;
+                console.log(this.costModifier)
+                return finalCost;
+            },
+           
+            activityEarnExp(){
+                this.exp += 30 * this.expModifier;
+            },
+            activityLevelUp(){
+                this.lvl += 1
+            }
+        }
 
         //study levels
 
@@ -270,7 +295,7 @@ class Player {
 
         // input is item, amount of the item
     checkPlayerItem(itemRequirements){
-        for (let i =0; i < itemRequirements.length; i+=2){
+        for (let i = 0; i < itemRequirements.length; i+=2){
 
             let itemIsTrue = (item) => item.name == itemRequirements[i];
             let itemIndex = this.inventory.findIndex(itemIsTrue);
@@ -303,6 +328,62 @@ class Player {
         clearInterval(this.interval);
     }
 
+
+    activity(activity){
+        if (activity == "walk"){
+            let activitySkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 30,
+                    
+                },
+                {
+                    "skill": this.athletics,
+                    "experience": 10
+
+                }
+            ]
+
+            let activityMood = [
+                {
+                    "mood" : this.acomplished,
+                    "change": 1
+                }
+            ]
+
+            let centralTable = new furniture(centralFurnitureSection.items[0].itemPrice, centralFurnitureSection.items[0].itemName, centralFurnitureSection.items[0].shopType, centralFurnitureSection.items[0].itemImg, centralFurnitureSection.items[0].itemBonus)
+            let activityItemPool = [centralTable, 5]
+
+    
+
+            this.startActivity(this.walk, this.walk.activityCost(), activitySkills, activityMood, activityItemPool)
+            this.job = this.pizza.name;
+            
+            
+           
+            
+        } 
+        
+        /*else if(job == "receptionist"){
+            this.startActivity("receptionist", 15, 0)
+            this.job = "Receptionist";
+
+        } else if(job == "real-estate"){
+            this.startActivity("real-estate", 25, 0)
+            this.job = "Real Estate Agent";
+
+        } else if(job == "lawyer"){
+            this.startActivity("lawyer", 50, 0)
+            this.job = "Lawyer";
+        }
+        */
+
+
+        this.displayStats();
+    
+    }
+
+
     work(job) {
         if (job == "Pizza Delivery Man"){
             let jobSkills = [
@@ -325,9 +406,12 @@ class Player {
                 }
             ]
 
+            let centralTable = new furniture(centralFurnitureSection.items[0].itemPrice, centralFurnitureSection.items[0].itemName, centralFurnitureSection.items[0].shopType, centralFurnitureSection.items[0].itemImg, centralFurnitureSection.items[0].itemBonus)
+            let jobItemPool = [centralTable, 5]
+
     
 
-            this.startActivity(this.pizza, this.pizza.jobPay(), jobSkills, jobMood)
+            this.startActivity(this.pizza, this.pizza.jobPay(), jobSkills, jobMood, jobItemPool)
             this.job = this.pizza.name;
             
             
@@ -348,21 +432,6 @@ class Player {
 
 
         this.displayStats();
-    }
-
-   
-
-    activity(subject) {
-        let studyCost = 0;
-
-        if(player.money <= activityCost){
-            this.endActivity();
-        } 
-
-        if (subject == "take a walk"){
-        activityCost = -5;
-        this.startActivity("Activity", activityCost, 1)
-        }
     }
 
    
@@ -459,7 +528,7 @@ class Player {
 
 
 
-    startActivity(activity, moneyChange, skills, mood){
+    startActivity(activity, moneyChange, skills, mood, itemPool){
       
         
         console.log("You started" + activity.name);
@@ -468,9 +537,17 @@ class Player {
         this.interval = setInterval(() => {
             if (this.checkCost(moneyChange)){
                 this.updateStats(moneyChange, skills, mood);
-                this.updateJobStats(activity);
+
+                if (activity.type == "job"){
+                    this.updateJobStats(activity);
+                } else if(activity.type == "activity"){
+                    this.updateActivityStats(activity);
+                }
+                
+                
                 this.displayStats();
                 this.progressBarMove();
+                this.itemDropThrow(itemPool);
 
                 console.log(moneyChange)
             } else {
@@ -534,6 +611,39 @@ class Player {
     }
 
 
+    //items drop rate
+
+    itemDropRate(){
+        return Math.floor(Math.random() * 100);
+    }
+
+
+    //array with item, droprate
+    itemDropThrow(itemPool){
+
+        for (let i = 0; i < itemPool.length; i+=2){
+
+            let itemChance = this.itemDropRate();
+            if (itemChance <= itemPool[i+1]){
+                const itemIndex = this.inventory.findIndex(item => item.name === itemPool[i].name);
+
+                if (itemIndex !== -1){
+                    this.inventory[itemIndex].quantity += 1;
+                    console.log("item added to quantity")
+                } else{
+                    this.inventory.push(itemPool[i]);
+                    console.log("item pusshed into inventory")
+                }
+
+            } else{
+                console.log("You didn't get the item")
+                return;
+            }
+        }
+     }
+
+
+
 
 
 
@@ -550,6 +660,22 @@ class Player {
 
         }
     }
+
+
+    //activity levels and experience updating
+
+    updateActivityStats(activity){
+        if (this.checkCurrentSkillExp(activity) < this.nextLevel(activity.level + 1)){
+            activity.activityEarnExp()
+            console.log("this is" + activity.name + "experience: " + activity.exp)
+        } else {
+            activity.activityEarnExp()
+            activity.activityLevelUp()
+            console.log("you level up at" + activity.name)
+
+        }
+    }
+
 
     //skills updating
 
@@ -1441,16 +1567,18 @@ let basicActivitiesSection = {
         [{
             activityName: "Take a walk",
             activityCost: 5,
-            activityReq: "None",
+            activityReq: [],
+            skillReq: [],
             activityDesc: "an accessible and easy way to exercise and release stress",
-            activityActivity: "walk"
+            activity: "walk"
         },
         {
             activityName: "Garbage Collector",
             activityCost: 50,
-            activityReq: "None",
+            activityReq: [],
+            skillReq: [],
             activityDesc: "You might smell bad when coming back home, but it is what it is",
-            activityActivity: "garbage"
+            activity: "garbage"
         }
     ]
 }
@@ -1546,7 +1674,7 @@ const activitiesStartBtn = document.createElement("button")
 
 
 
-function populateActivitiesDetail(job){
+function populateActivitiesDetail(activity){
     
 
         activitiesStartBtnSection.setAttribute("id","activities-start-btn-section")
@@ -1557,13 +1685,13 @@ function populateActivitiesDetail(job){
         activitiesDesc.setAttribute("id", "activities-detail-desc");
         activitiesStartBtn.setAttribute("id", "activities-start-btn")
 
-        activitiesImage.src = job.activitySrc;
-        activitiesTitle.innerText = job.activityName;
-        activitiesCost.innerText = job.activityCost;
-        activitiesReq.innerText = job.activityReq;
-        activitiesDesc.innerText = job.activityDesc;
+        activitiesImage.src = activity.activitySrc;
+        activitiesTitle.innerText = activity.activityName;
+        activitiesCost.innerText = activity.activityCost;
+        activitiesReq.innerText = activity.activityReq;
+        activitiesDesc.innerText = activity.activityDesc;
         console.log("job details appended")
-        activitiesStartBtn.innerText = "APPLY";
+        activitiesStartBtn.innerText = "START";
         activitiesStartBtn.style.visibility = "visible";
 
         activitiesTitleTag.innerText = "JOB TITLE: ";
@@ -1572,19 +1700,29 @@ function populateActivitiesDetail(job){
         activitiesDescTag.innerText = "DESCRIPTION: ";
 
 
-        //job button functionality
-
-        /*jobApplyBtn.addEventListener("click", function() {
-            if (player.currentActivity == job.jobActivity){
-                return;
-            } 
-        
-            player.work(job.jobActivity);
-           
-        
-        });
-
-        */
+        if ( activitiesStartBtn.classList.contains("event-added")){
+            return;
+        } else{
+            activitiesStartBtn.addEventListener("click", function() {
+                activitiesStartBtn.classList.add("event-added");    
+                console.log("EventLIstener added")
+                if (player.currentActivity == activity.activity){
+                    player.endActivity()
+                    console.log("you stopped doing that")
+                    return;
+                } 
+            
+                if (player.checkPlayerItem(activity.activityReq) == true && player.checkPlayerSkill(activity.skillReq) == true){
+                    player.activity(activity.activity);
+                } else {
+                    alert("You don't meet the requirements for this job")
+                }
+                
+               
+              
+            
+            });
+        }
 
 
         
