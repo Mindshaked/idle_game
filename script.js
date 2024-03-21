@@ -254,9 +254,9 @@ class Player {
 
 
         // input is skill, level
-    checkPlayerSkill(){
-        for (let i = 0; i < arguments.length; i+=2){
-            if (arguments[i] < arguments[i+1]){
+    checkPlayerSkill(skillRequirements){
+        for (let i = 0; i < skillRequirements.length; i+=2){
+            if (skillRequirements[i] < skillRequirements[i+1]){
                 console.log("the player doesn't have the level required")
                 return false;
             } 
@@ -269,14 +269,14 @@ class Player {
 
 
         // input is item, amount of the item
-    checkPlayerItem(){
-        for (let i =0; i < arguments.length; i+=2){
+    checkPlayerItem(itemRequirements){
+        for (let i =0; i < itemRequirements.length; i+=2){
 
-            let itemIsTrue = (item) => item.name == arguments[i];
+            let itemIsTrue = (item) => item.name == itemRequirements[i];
             let itemIndex = this.inventory.findIndex(itemIsTrue);
 
-            if (itemIndex == -1 || this.inventory[itemIndex].quantity < arguments[i+1]){
-                console.log("no se ha encontrado" + arguments[i])
+            if (itemIndex == -1 || this.inventory[itemIndex].quantity < itemRequirements[i+1]){
+                console.log("no se ha encontrado" + itemRequirements[i])
                 return false;
                 
             } 
@@ -1157,17 +1157,21 @@ let basicJobsSection = {
         [{
             jobName: "Pizza Delivery Man",
             jobPay: 10,
-            jobReq: "None",
+            skillReq: [player.military.level, 1],
+            jobReq: "Military lvl 1, 1 basic central table",
+            itemReq: ["Basic central table", 1],
             jobDesc: "an accessible and easy job to for beginners in the job market",
             jobActivity: "Pizza Delivery Man",
             jobExperience: 0
         },
         {
             jobName: "Garbage Collector",
-            jobPay: 50,
-            jobReq: "None",
-            jobDesc: "You might smell bad when coming back home, but it is what it is",
-            jobActivity: "garbage",
+            jobPay: 10,
+            skillReq: [player.military.level, 2],
+            jobReq: "Military lvl 2, 1 basic central table",
+            itemReq: ["Basic central table", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "Garbage collector",
             jobExperience: 0
         }
     ]
@@ -1332,9 +1336,13 @@ function populateJobDetail(job){
                     return;
                 } 
             
-                player.work(job.jobActivity);
-                player.checkPlayerItem("Basic central table", 1, "Luxury central table", 1);
-                player.checkPlayerSkill(player.military, 1)
+                if (player.checkPlayerItem(job.itemReq) == true && player.checkPlayerSkill(job.skillReq) == true){
+                    player.work(job.jobActivity);
+                } else {
+                    alert("You don't meet the requirements for this job")
+                }
+                
+               
               
             
             });
