@@ -252,7 +252,44 @@ class Player {
        
     }
 
+
+        // input is skill, level
+    checkPlayerSkill(){
+        for (let i = 0; i < arguments.length; i+=2){
+            if (arguments[i] < arguments[i+1]){
+                console.log("the player doesn't have the level required")
+                return false;
+            } 
+
+           
+        }
+        console.log("You meet the skill requirements")
+        return true;
+    }
+
+
+        // input is item, amount of the item
+    checkPlayerItem(){
+        for (let i =0; i < arguments.length; i+=2){
+
+            let itemIsTrue = (item) => item.name == arguments[i];
+            let itemIndex = this.inventory.findIndex(itemIsTrue);
+
+            if (itemIndex == -1 || this.inventory[itemIndex].quantity < arguments[i+1]){
+                console.log("no se ha encontrado" + arguments[i])
+                return false;
+                
+            } 
+           
+        }
+        console.log("you have all the items")
+        return true;
+       
+    }
    
+
+
+
     startGame() {
         console.log("Game started");
         this.interval = setInterval(() => {
@@ -890,6 +927,22 @@ const shopWindowTitle = document.getElementById("shop-window-title");
 
 
 
+shopItemTitle.setAttribute("id", "furniture-shop-name")
+shopItemImg.setAttribute("id", "furniture-shop-img-source")
+shopItemPriceDetail.setAttribute("id", "furniture-shop-price")
+shopItemBonus.setAttribute("id", "furniture-shop-bonus")
+shopItemDescription.setAttribute("id", "furniture-shop-description")
+shopItemReq.setAttribute("id", "furniture-shop-req")
+furniturePriceBonusSection.setAttribute("id", "furniture-shop-price-bonus")
+furniturePriceSection.setAttribute("id", "furniture-shop-price-section")
+furnitureBonusSection.setAttribute("id", "furniture-shop-bonus-section")
+furnitureDescSection.setAttribute("id", "furniture-shop-description-section")
+furnitureReqSection.setAttribute("id", "furniture-shop-req-section")
+shopItemBuyBtnSlot.setAttribute("id", "furniture-shop-buy-btn-section");
+shopItemBuyBtn.setAttribute("id", "furniture-shop-buy-btn");
+
+
+
 
 
 
@@ -907,6 +960,7 @@ function  populateShopSections(){
         
         shopSection.addEventListener("click", function(){
             removeChildItemDet(shopItemWindow);
+           ;
             populateSectionItems(shopInventory[i]);
         })
         
@@ -944,25 +998,9 @@ function populateSectionItems(section){
 
 }
 
+
+
 function populateItemDetail(item){
-
-
-
-
-    shopItemTitle.setAttribute("id", "furniture-shop-name")
-    shopItemImg.setAttribute("id", "furniture-shop-img-source")
-    shopItemPriceDetail.setAttribute("id", "furniture-shop-price")
-    shopItemBonus.setAttribute("id", "furniture-shop-bonus")
-    shopItemDescription.setAttribute("id", "furniture-shop-description")
-    shopItemReq.setAttribute("id", "furniture-shop-req")
-    furniturePriceBonusSection.setAttribute("id", "furniture-shop-price-bonus")
-    furniturePriceSection.setAttribute("id", "furniture-shop-price-section")
-    furnitureBonusSection.setAttribute("id", "furniture-shop-bonus-section")
-    furnitureDescSection.setAttribute("id", "furniture-shop-description-section")
-    furnitureReqSection.setAttribute("id", "furniture-shop-req-section")
-    shopItemBuyBtnSlot.setAttribute("id", "furniture-shop-buy-btn-section");
-    shopItemBuyBtn.setAttribute("id", "furniture-shop-buy-btn");
-    
 
 
 
@@ -978,6 +1016,22 @@ function populateItemDetail(item){
     shopItemBonusTag.innerText = "BONUS:"
     shopItemDescriptionTag.innerText = "DESCRIPTION:";
     shopItemReqTag.innerText = "REQUIREMENETS:"
+
+
+  
+      // item buy button functionality
+
+      const buyItemFunc = function buyItemFunction(){
+        let newFurniture = new furniture(item.itemPrice, item.itemName, item.shopType, item.itemImg, item.itemBonus);
+        player.buyFurni(newFurniture, 1);
+        console.log (player.inventory)
+        console.log("el item que has comprado es" + newFurniture.name)
+        shopItemBuyBtn.removeEventListener("click", buyItemFunc)
+    }
+        
+
+        shopItemBuyBtn.addEventListener("click", buyItemFunc)
+
 
 
 
@@ -999,23 +1053,7 @@ function populateItemDetail(item){
     furnitureReqSection.appendChild(shopItemReq);
     shopWindow.appendChild(shopWindowCloseBtn);
 
-    // item buy button functionality
-
-    if (shopItemBuyBtn.classList.contains("event-added")){
-        return;
-
-    } else{
-
-        shopItemBuyBtn.addEventListener("click", function(){
-            shopItemBuyBtn.classList.add("event-added");
-            let newFurniture = new furniture(item.itemPrice, item.itemName, item.shopType, item.itemImg, item.itemBonus);
-            removeChildItemDet(inventoryMainWindow);
-            populateInventorySections();
-            player.buyFurni(newFurniture, 1);
-            
-        })
-
-    }   
+  
 
    
 
@@ -1295,6 +1333,8 @@ function populateJobDetail(job){
                 } 
             
                 player.work(job.jobActivity);
+                player.checkPlayerItem("Basic central table", 1, "Luxury central table", 1);
+                player.checkPlayerSkill(player.military, 1)
               
             
             });
@@ -1833,6 +1873,7 @@ inventoryWindowbtn.addEventListener("click", function(){
     toggleInventoryWindow();
     removeChildItemDet(inventoryMainWindow);
     populateInventorySections();
+    console.log(player.inventory)
     
 })
 
@@ -2111,7 +2152,8 @@ function populateUpgradesSectionList(section){
 
         let upgradesSectionItemUpgradeBtn = document.createElement("button");
         upgradesSectionItemUpgradeBtn.classList.add("upgrade-section-items-upgrade-button");
-        upgradesSectionItemUpgradeBtn.innerText = "Upgrade";
+        upgradesSectionItemUpgradeBtn.innerText = "UPGRADE";
+
         upgradesSectionItemUpgradeBtn.addEventListener("click", function(){
 
             if (section.studies[i].levelCost() > player.money){

@@ -1713,12 +1713,13 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 40px;
     padding: 15px;
 }
 
 .upgrade-section-items-upgrade-button{
     width: 70px;
-    height: 20px;
+    height: 25px;
     background-color: #84a699;
     border-style: none;
     cursor: pointer;
@@ -1741,10 +1742,17 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+}
+
+.upgrades-section-items-left{
+    display: flex;
+    flex-direction: column;
+   
 }
 
 .upgrade-section-item-upgrade-cost{
-    font-size: 10px;
+    font-size: 12px;
 }
 
 #upgrades-window-close-btn{
