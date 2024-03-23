@@ -76,10 +76,12 @@ function populateUpgradesSectionList(section, player){
         upgradesSectionItemUpgradeBtn.addEventListener("click", function(){
 
             if (section.studies[i].levelCost() > player.money){
-                console.log("not enough money to upgrade");
+                player.displayAlert("Not enough money to upgrade");
                 return;
             }
             section.studies[i].levelUp();
+
+            player.displayAlert("You upgraded " + section.studies[i].name + " to level " + section.studies[i].level)
             upgradesSectionItemUpgradeCost.innerText =  "$" + section.studies[i].levelCost();
             upgradesSectionItemLevel.innerText = "Lvl. " + section.studies[i].level;
         })

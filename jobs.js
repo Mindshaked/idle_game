@@ -199,7 +199,7 @@ function populateJobDetail(job, player){
                 if (player.checkPlayerItem(job.itemReq) == true && player.checkPlayerSkill(job.skillReq) == true){
                     player.work(job.jobActivity);
                 } else {
-                    alert("You don't meet the requirements for this job")
+                    player.displayAlert("You don't meet the requirements for this job")
                 }
                 
                

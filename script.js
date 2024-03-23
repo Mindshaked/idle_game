@@ -1,6 +1,6 @@
 let p = 0;
 
-import {shopInventory} from "./shop.js"
+import {shopInventory, centralFurnitureSection} from "./shop.js"
 
 export class furniture {
     constructor(price, name, type, source, effects){
@@ -59,6 +59,33 @@ export class furniture {
 }
 
 
+class Job {
+    constructor(name, type, action, pay){
+        this.name = name;
+        this.level = 1;
+        this.type = type;
+        this.action = action;
+        this.expModifier = 1;
+        this.exp = 0;
+        this.payModifier = 1;
+        this.pay = pay;   
+    }
+
+    jobPay(){
+        let finalPay = this.pay * this.payModifier;
+        console.log(this.payModifier)
+        return finalPay;
+    }
+   
+    jobEarnExp(){
+        this.exp += 30 * this.expModifier;
+    }
+    jobLevelUp(){
+        this.lvl += 1
+    }
+ 
+}
+
 
 
 class Player {
@@ -66,8 +93,6 @@ class Player {
         this.name = name;
         this.money = 1000;
         this.jobLevel = 1;
-       
-        this.dailyExpenses = 2;
         this.daysPassed = 0;
         this.currentActivity = "Doing nothing";
         this.currentDate = new Date();
@@ -187,27 +212,8 @@ class Player {
 
         //job levels
 
-        this.pizza = {
-            name: "Pizza Delivery Man",
-            level: 1,
-            type: "job",
-            expModifier: 1,
-            exp: 0,
-            payModifier: 1,
-            pay: 10,
-            jobPay(){
-                let finalPay = this.pay * this.payModifier;
-                console.log(this.payModifier)
-                return finalPay;
-            },
-           
-            jobEarnExp(){
-                this.exp += 30 * this.expModifier;
-            },
-            jobLevelUp(){
-                this.lvl += 1
-            }
-        }
+        this.pizza = new Job("Pizza Delivery Man", "job", "delivering pizza", 10);
+        
 
 
 
@@ -217,6 +223,7 @@ class Player {
             name: "walk",
             level: 1,
             type: "activity",
+            action: "walking",
             expModifier: 1,
             exp: 0,
             costModifier: 1,
@@ -284,7 +291,7 @@ class Player {
     checkPlayerSkill(skillRequirements){
         for (let i = 0; i < skillRequirements.length; i+=2){
             if (skillRequirements[i] < skillRequirements[i+1]){
-                console.log("the player doesn't have the level required")
+                player.displayAlert("the player doesn't have the level required");
                 return false;
             } 
 
@@ -303,7 +310,7 @@ class Player {
             let itemIndex = this.inventory.findIndex(itemIsTrue);
 
             if (itemIndex == -1 || this.inventory[itemIndex].quantity < itemRequirements[i+1]){
-                console.log("no se ha encontrado" + itemRequirements[i])
+                player.displayAlert(itemRequirements[i] + "not found")
                 return false;
                 
             } 
@@ -461,7 +468,7 @@ class Player {
             if (furniIndex !== -1){
                 this.inventory[furniIndex].quantity += quantity;
                 this.money -= furniture.price * quantity;
-                alert("Bought "+ quantity + furniture.name +" for " + furniture.price)
+                player.displayAlert("Bought "+ quantity + furniture.name +" for " + furniture.price)
                                 
                 this.displayStats();
             } else {
@@ -469,7 +476,7 @@ class Player {
                 const furniIndex = this.inventory.findIndex(item => item.name === furniture.name);
                 this.inventory[furniIndex].quantity = quantity
                 this.money -= furniture.price * quantity;
-                alert("You bought "+ quantity + furniture.name + " for " + furniture.price);
+                player.displayAlert("You bought "+ quantity + furniture.name + " for " + furniture.price);
                
                
                 this.displayStats();
@@ -477,7 +484,7 @@ class Player {
 
           
         } else {
-            console.log("Not enough money to buy " + furniture.name)
+            player.displayAlert("Not enough money to buy " + furniture.name)
         }
     }
 
@@ -490,15 +497,15 @@ class Player {
                 if (this.inventory[furniIndex].quantity == 0){
                     this.inventory.splice(furniIndex, 1);
                 }
-                console.log("You sold " + furniture.name + " for " + furniture.price);
+                player.displayAlert("You sold " + furniture.name + " for " + furniture.price);
             } else if (this.inventory[furniIndex].quantity <= 1){
                 this.money += furniture.price;
                 this.inventory.splice(furniIndex, 1);
-                console.log("You sold " + furniture.name + " for " + furniture.price);
+                player.displayAlert("You sold " + furniture.name + " for " + furniture.price);
             } 
            
         } else {
-            console.log("Not found in your inventory");
+            player.displayAlert("Not found in your inventory");
         }
     }
 
@@ -531,10 +538,12 @@ class Player {
 
 
     startActivity(activity, moneyChange, skills, mood, itemPool){
+
+        //ADD VARIABLE THAT YOU CAN INPUT IN THE FUNCTION PARAMETERS TO CHANGE WHAT IS THE INTERVAL OF EVERY ACTIVITY
       
         
-        console.log("You started" + activity.name);
-        this.currentActivity = activity.name;
+        player.displayAlert("You started " + activity.action);
+        this.currentActivity = activity.action;
 
         this.interval = setInterval(() => {
             if (this.checkCost(moneyChange)){
@@ -551,10 +560,10 @@ class Player {
                 this.progressBarMove();
                 this.itemDropThrow(itemPool);
 
-                console.log(moneyChange)
+                console.log(activity.exp)
             } else {
                 this.endActivity();
-                console.log("You don't have enough money to keep" + activity.name);
+                player.displayAlert("You don't have enough money to keep" + activity.name);
             }
             
         }, 1000);
@@ -568,7 +577,7 @@ class Player {
     endActivity(){
 
     if (this.currentActivity !== "Doing nothing"){
-        console.log("You finished" + this.currentActivity);
+        player.displayAlert("You stopped" + this.currentActivity);
         this.currentActivity = "Doing nothing";
         console.log(this.currentActivity)
         clearInterval(this.interval);
@@ -631,7 +640,7 @@ class Player {
 
                 if (itemIndex !== -1){
                     this.inventory[itemIndex].quantity += 1;
-                    console.log("item added to quantity")
+                    player.displayAlert(itemPool[i].name + " acquired")
                 } else{
                     this.inventory.push(itemPool[i]);
                     console.log("item pusshed into inventory")
@@ -658,7 +667,7 @@ class Player {
         } else {
             job.jobEarnExp()
             job.jobLevelUp()
-            console.log("you level up at" + job.name)
+            player.displayAlert("Your " + job.name + " level is now " + job.level);
 
         }
     }
@@ -673,7 +682,7 @@ class Player {
         } else {
             activity.activityEarnExp()
             activity.activityLevelUp()
-            console.log("you level up at" + activity.name)
+            player.displayAlert("you level up at" + activity.name)
 
         }
     }
@@ -692,7 +701,7 @@ class Player {
             } else{
                 this.skillEarnExp(skills[i].skill, skills[i].experience, skills[i].skill.modifier);
                 this.skillLevelUp(skills[i].skill);
-                console.log("Level up!, now you are level " + skills[i].skill.level + " of " + skills[i].skill.name)
+                player.displayAlert("Level up!, now you are level " + skills[i].skill.level + " of " + skills[i].skill.name)
             }
 
         }
@@ -741,11 +750,36 @@ class Player {
         document.getElementById("days-passed").innerText = "Days passed:" + this.daysPassed;
         document.getElementById("inventory").innerText = "Inventory:" + this.inventory;
 
-    
-
-
 
     }
+
+
+    displayAlert(message){
+        let messageContainer = document.createElement("div");
+        messageContainer.setAttribute("id", "message-container");
+        let messageWindow = document.createElement("div");
+        messageWindow.setAttribute("id", "message-window");
+        let messageContent = document.createElement("div");
+        messageContent.setAttribute("id", "message-content");
+        let messageBtn =  document.createElement("div");
+        messageBtn.setAttribute("id", "message-button");
+        let gameContainer = document.getElementById("game-container");
+
+        messageWindow.classList.add("message-animation");
+        messageContent.innerText = message;
+
+        gameContainer.appendChild(messageContainer);
+        messageContainer.appendChild(messageWindow);
+        messageWindow.appendChild(messageContent);
+
+    }
+
+  
+
+
+
+
+
 }
 
 
@@ -1035,7 +1069,6 @@ drag_div(shopWindowTitle,shopWindow)
 import {toggleJobWindow, jobsWindowbtn, jobsWindowCloseBtn, populateJobSections, jobsWindowLeftPanel, jobsWindowRightPanel, jobsWindowName, jobsWindow} from "./jobs.js"
 
 jobsWindowbtn.addEventListener("click", function(){
-
     toggleJobWindow();
     removeChildItemDet(jobsWindowLeftPanel)
     removeChildItemDet(jobsWindowRightPanel);

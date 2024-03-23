@@ -25,7 +25,7 @@ export function toggleShopWindow(){
 
 //shop array
 
-let centralFurnitureSection = {
+export let centralFurnitureSection = {
     sectionName: "CENTRAL FURNITURE",
     items:
         [{
@@ -111,7 +111,7 @@ export function  populateShopSections(player){
         
         shopSection.addEventListener("click", function(){
             removeChildItemDet(shopItemWindow);
-           ;
+           
             populateSectionItems(shopInventory[i], player);
         })
         
@@ -176,7 +176,7 @@ function populateItemDetail(item, player){
         let newFurniture = new furniture(item.itemPrice, item.itemName, item.shopType, item.itemImg, item.itemBonus);
         player.buyFurni(newFurniture, 1);
         console.log (player.inventory)
-        console.log("el item que has comprado es" + newFurniture.name)
+        player.displayAlert("You bought " + newFurniture.name)
         shopItemBuyBtn.removeEventListener("click", buyItemFunc)
     }
         

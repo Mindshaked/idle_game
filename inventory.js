@@ -143,7 +143,7 @@ export function populateInventorySections(player){
                 let itemName = player.inventory[i].name;
                 player.sellFurni(player.inventory[i], itemAmount)
                 
-                alert("se ha vendido" + itemAmount + " " + itemName);
+                player.displayAlert("You sold " + itemAmount + " " + itemName);
 
 
                 itemAmount = newItemAmount;

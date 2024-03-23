@@ -1770,6 +1770,57 @@ body{
 
 
 
+/* display message */
+
+#message-container{
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    margin: 20px;
+}
+
+#message-window{
+    width: 200px;
+    min-height: 80px;
+    height: auto;
+    display: flex;
+    padding: 10px;
+    background-color: #221e1e;
+    opacity: 0;
+    z-index: 20;
+    border: 2px solid #d4ca97;  
+    justify-content: center;
+    align-items: center;
+
+
+   
+
+}
+
+#message-content{
+    color: #d4ca97; 
+}
+
+.message-animation{
+    animation: alert 4s linear none;
+    transition: all .4s ease-in-out;
+}
+
+@keyframes alert {
+    0%,
+    100% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }  
+    90% {
+        opacity: 1;
+    }
+}
+
+
+
 /* SCROLL BAR CUSTOM */
 
 /* width */
