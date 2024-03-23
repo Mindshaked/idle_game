@@ -1032,6 +1032,14 @@ phoneMenuBtn.addEventListener("click", function(){
 })
 
 
+// room window
+
+const roomWindow = document.getElementById("grid-container2");
+const roomTitle = document.getElementById("room-window-title"); 
+const roomContainer = document.getElementById("room")
+
+drag_div(roomTitle,roomContainer)
+
 
 //shop popup
 
