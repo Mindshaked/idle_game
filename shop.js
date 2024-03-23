@@ -171,7 +171,7 @@ function populateItemDetail(item, player){
     shopItemReqTag.innerText = "REQUIREMENETS:"
 
 
-  
+    
       // item buy button functionality
 
       const buyItemFunc = function buyItemFunction(){
@@ -179,11 +179,15 @@ function populateItemDetail(item, player){
         player.buyFurni(newFurniture, 1);
         console.log (player.inventory)
         player.displayAlert("You bought " + newFurniture.name + " for $" + item.itemPrice)
-        shopItemBuyBtn.removeEventListener("click", buyItemFunc)
-    }
+        shopItemBuyBtn.classList.add("event-added")
         
+    }
 
-        shopItemBuyBtn.addEventListener("click", buyItemFunc)
+        if (!shopItemBuyBtn.classList.contains("event-added")){
+            shopItemBuyBtn.addEventListener("click", buyItemFunc);
+        }
+
+       
 
 
 

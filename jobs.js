@@ -11,7 +11,7 @@ let basicJobsSection = {
             jobReq: "Military lvl 1, 1 basic central table",
             itemReq: ["Basic central table", 1],
             jobDesc: "an accessible and easy job to for beginners in the job market",
-            jobActivity: "Pizza Delivery Man",
+            jobActivity: "delivering pizza",
             jobExperience: 0
         },
         {
@@ -21,7 +21,7 @@ let basicJobsSection = {
             jobReq: "Military lvl 2, 1 basic central table",
             itemReq: ["Basic central table", 1],
             jobDesc: "an accessible and easy job to for beginners in the job market",
-            jobActivity: "Garbage collector",
+            jobActivity: "collecting garbage",
             jobExperience: 0
         }
     ]
@@ -184,20 +184,20 @@ function populateJobDetail(job, player){
                 //job button functionality
 
                 
-        if (jobApplyBtn.classList.contains("event-added")){
-            return;
-        } else{
+        if (!jobApplyBtn.classList.contains("event-added")){
+
             jobApplyBtn.addEventListener("click", function() {
-                jobApplyBtn.classList.add("event-added");    
-                console.log("EventLIstener added")
+                  
+               jobApplyBtn.classList.add("event-added");
                 if (player.currentActivity == job.jobActivity){
                     player.endActivity()
-                    console.log("you stopped doing that")
+                    
                     return;
                 } 
             
                 if (player.checkPlayerItem(job.itemReq) == true && player.checkPlayerSkill(job.skillReq) == true){
-                    player.work(job.jobActivity);
+                    player.work(job.jobName);
+                    console.log(job.jobActivity + "currentactivity" + player.currentActivity)
                 } else {
                     player.displayAlert("You don't meet the requirements for this job")
                 }
@@ -207,4 +207,6 @@ function populateJobDetail(job, player){
             
             });
         }
-}
+            
+    }
+

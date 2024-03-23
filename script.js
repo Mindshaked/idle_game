@@ -260,8 +260,10 @@ class Player {
                             return cost;
                         },
                         levelUp(){
+                            
+                            player.money -= this.levelCost()
                             this.level += 1;
-                            this.money -= this.levelCost()
+            
                         }
 
                     },
@@ -276,8 +278,9 @@ class Player {
                             return cost;
                         },
                         levelUp(){
-                            this.level += 1;
                             this.money -= this.levelCost()
+                            this.level += 1;
+                          
                         }
                     }
                 ]
@@ -578,7 +581,7 @@ class Player {
     endActivity(){
 
     if (this.currentActivity !== "Doing nothing"){
-        player.displayAlert("You stopped" + this.currentActivity);
+        player.displayAlert("You stopped " + this.currentActivity);
         this.currentActivity = "Doing nothing";
         console.log(this.currentActivity)
         clearInterval(this.interval);

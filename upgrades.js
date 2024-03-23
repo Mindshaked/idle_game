@@ -73,18 +73,31 @@ function populateUpgradesSectionList(section, player){
         upgradesSectionItemUpgradeBtn.classList.add("upgrade-section-items-upgrade-button");
         upgradesSectionItemUpgradeBtn.innerText = "UPGRADE";
 
-        upgradesSectionItemUpgradeBtn.addEventListener("click", function(){
 
-            if (section.studies[i].levelCost() > player.money){
-                player.displayAlert("Not enough money to upgrade");
-                return;
-            }
-            section.studies[i].levelUp();
+        if (!upgradesSectionItemUpgradeBtn.classList.contains("event-added")){
 
-            player.displayAlert("You upgraded " + section.studies[i].name + " to level " + section.studies[i].level)
-            upgradesSectionItemUpgradeCost.innerText =  "$" + section.studies[i].levelCost();
-            upgradesSectionItemLevel.innerText = "Lvl. " + section.studies[i].level;
-        })
+            upgradesSectionItemUpgradeBtn.addEventListener("click", function(){
+
+                upgradesSectionItemUpgradeBtn.classList.add("event-added");
+    
+                if (section.studies[i].levelCost() > player.money){
+                    player.displayAlert("Not enough money to upgrade");
+                    return;
+                }
+                section.studies[i].levelUp();
+
+
+                player.displayStats();
+    
+                player.displayAlert("You upgraded " + section.studies[i].name + " to level " + section.studies[i].level)
+                upgradesSectionItemUpgradeCost.innerText =  "$" + section.studies[i].levelCost();
+                upgradesSectionItemLevel.innerText = "Lvl. " + section.studies[i].level;
+            })
+
+
+        }
+
+        
 
         let upgradesSectionItemUpgradeCost = document.createElement("div");
         upgradesSectionItemUpgradeCost.classList.add("upgrade-section-item-upgrade-cost");
