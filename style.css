@@ -329,19 +329,20 @@ body{
 }
 
 #edit-button{
-    grid-column: 3/4;
-    grid-row: 1/2;
+   
     display: flex;
     flex-direction: column;
     align-self: flex-end;
-    margin-left: 50px;
-    margin-bottom: 20px;
-    height: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    height: auto;
     border: none;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.336);
     color: white;
     font-family: "Px437_SperryPC_8x16";
-    padding-top: 5px;
+   
+    font-size: 10px;
 }
 
 #edit-button:hover{
@@ -393,6 +394,9 @@ body{
     color: white;
     font-family: "Px437_SperryPC_8x16";
     padding-top: 5px;
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
    
  }
 
@@ -402,8 +406,8 @@ body{
 
 #edit-buttons-panel{
     display: flex;
-    grid-column: 3/4;
-    grid-row: 1/2;
+    position: absolute;
+    z-index: 2;
 }
 
 #current-activity-window{
@@ -412,7 +416,7 @@ body{
     height: auto;
     margin-top: 20px;
     margin-bottom: 30px;
-    width: 300px;
+    width: 200px;
     padding: 15px;
     font-family: "Px437_SperryPC_8x16";
     background-color: #221e1e;
@@ -1787,7 +1791,7 @@ body{
 
 #message-window{
     width: 200px;
-    min-height: 80px;
+    min-height: 50px;
     height: auto;
     display: flex;
     padding: 10px;
@@ -1805,6 +1809,7 @@ body{
 
 #message-content{
     color: #d4ca97; 
+    font-size: 12px;
 }
 
 .message-animation{

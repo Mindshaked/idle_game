@@ -31,6 +31,7 @@ export let centralFurnitureSection = {
         [{
             shopType: "central-furniture",
             itemPrice: 50,
+            itemSellPrice: 30,
             itemName: "Basic central table",
             itemImg: "resources/centraltable.png",
             itemBonus: ["player.pizza.payModifier", 1],
@@ -40,6 +41,7 @@ export let centralFurnitureSection = {
         {
             shopType: "central-furniture",
             itemPrice: 200,
+            itemSellPrice: 120,
             itemName: "Luxury central table",
             itemImg: "resources/centraltable.png",
             itemBonus: [],
@@ -173,7 +175,7 @@ function populateItemDetail(item, player){
       // item buy button functionality
 
       const buyItemFunc = function buyItemFunction(){
-        let newFurniture = new furniture(item.itemPrice, item.itemName, item.shopType, item.itemImg, item.itemBonus);
+        let newFurniture = new furniture(item.itemPrice, item.itemSellPrice, item.itemName, item.shopType, item.itemImg, item.itemBonus);
         player.buyFurni(newFurniture, 1);
         console.log (player.inventory)
         player.displayAlert("You bought " + newFurniture.name)

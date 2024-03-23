@@ -3,9 +3,10 @@ let p = 0;
 import {shopInventory, centralFurnitureSection} from "./shop.js"
 
 export class furniture {
-    constructor(price, name, type, source, effects){
+    constructor(price, sellPrice, name, type, source, effects){
         this.name = name;
         this.price = price;
+        this.sellPrice = sellPrice;
         this.stats = "+1 Sanity"
         this.description = "None";
         this.requirements = "None";
@@ -360,7 +361,7 @@ class Player {
                 }
             ]
 
-            let centralTable = new furniture(centralFurnitureSection.items[0].itemPrice, centralFurnitureSection.items[0].itemName, centralFurnitureSection.items[0].shopType, centralFurnitureSection.items[0].itemImg, centralFurnitureSection.items[0].itemBonus)
+            let centralTable = new furniture(centralFurnitureSection.items[0].itemPrice, centralFurnitureSection.items[0].itemSellPrice, centralFurnitureSection.items[0].itemName, centralFurnitureSection.items[0].shopType, centralFurnitureSection.items[0].itemImg, centralFurnitureSection.items[0].itemBonus)
             let activityItemPool = [centralTable, 5]
 
     
@@ -415,7 +416,7 @@ class Player {
                 }
             ]
 
-            let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
             let jobItemPool = [centralTable, 5]
 
     
@@ -493,15 +494,15 @@ class Player {
         if (furniIndex !== -1){
             if (this.inventory[furniIndex].quantity > 1){
                 this.inventory[furniIndex].quantity -= amount;
-                this.money += furniture.price * amount;
+                this.money += furniture.sellPrice * amount;
                 if (this.inventory[furniIndex].quantity == 0){
                     this.inventory.splice(furniIndex, 1);
                 }
-                player.displayAlert("You sold " + furniture.name + " for " + furniture.price);
+                player.displayAlert("You sold " + furniture.name + " for " + furniture.sellPrice);
             } else if (this.inventory[furniIndex].quantity <= 1){
-                this.money += furniture.price;
+                this.money += furniture.sellPrice;
                 this.inventory.splice(furniIndex, 1);
-                player.displayAlert("You sold " + furniture.name + " for " + furniture.price);
+                player.displayAlert("You sold " + furniture.name + " for " + furniture.sellPrice);
             } 
            
         } else {
@@ -1004,14 +1005,15 @@ editButton.addEventListener("click", function(){
         }
     } else{
 
-    let i = 0;
-    while (i < gridElements.length){
-    gridElements[i].classList.add("grid-slots-on");
-    gridElements[i].pointerEvents = "none";
-    i = i + 1;
-    console.log("element removed" + gridElements.length)
-    }
-}
+   
+
+    for (let i = 0; i < gridElements.length; i++){
+        gridElements[i].classList.add("grid-slots-on");
+        gridElements[i].pointerEvents = "none";
+        console.log("element removed" + gridElements.length)
+        }
+   
+    }  
 })
 
 
