@@ -178,7 +178,7 @@ function populateItemDetail(item, player){
         let newFurniture = new furniture(item.itemPrice, item.itemSellPrice, item.itemName, item.shopType, item.itemImg, item.itemBonus);
         player.buyFurni(newFurniture, 1);
         console.log (player.inventory)
-        player.displayAlert("You bought " + newFurniture.name)
+        player.displayAlert("You bought " + newFurniture.name + " for $" + item.itemPrice)
         shopItemBuyBtn.removeEventListener("click", buyItemFunc)
     }
         
