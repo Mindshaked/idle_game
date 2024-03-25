@@ -2,6 +2,7 @@ let p = 0;
 
 import {shopInventory, centralFurnitureSection} from "./shop.js"
 
+
 export class furniture {
     constructor(price, sellPrice, name, type, source, effects){
         this.name = name;
@@ -27,16 +28,19 @@ export class furniture {
 
            
             let furniEffects = this.effects;
+           
             if (status == "equipped" && furniEffects.length !== 0 && this.effectsState == "off"){
                 this.effectsState = "on";
 
-               for (let i=0; i< furniEffects.length; i+=2){
-                   
-        
-                    furniEffects[i] += furniEffects[i+1];
+               for (let i=0; i< furniEffects.length; i+=3){
+
+
+                    
+
+                    player[furniEffects[i]][furniEffects[i+1]] += furniEffects[i+2];
                     console.log("furni effects applied")
-                    console.log(furniEffects[i]);
-                    console.log ("this is effectsState" + this.effectsState)
+                   
+                    
                }
 
             } else if (status == "unequipped" && furniEffects.length !== 0){
@@ -44,8 +48,10 @@ export class furniture {
                 this.effectsState = "off";
 
                 for (let i=0; i< furniEffects.length; i+=2){
+
+                    let furniTarget = player[furniEffects[i]][furniEffects[i+1]];
                     
-                    furniEffects[i] -= furniEffects[i+1];
+                    furniTarget -= furniEffects[i+2];
                     console.log(furniEffects[i] + "furni effects disabled");
                 }
              } else {
@@ -74,7 +80,7 @@ class Job {
 
     jobPay(){
         let finalPay = this.pay * this.payModifier;
-        console.log(this.payModifier)
+        console.log("this is the paymodifier" + this.payModifier)
         return finalPay;
     }
    
@@ -114,71 +120,77 @@ class Upgrade {
 }
 
 
+let tickets = new furniture(5, 2, "PC Bang tickets", "consumable", "resources/centraltable.png", []);
+tickets.quantity = 1000;
+
+let computerTools = new furniture(5, 2, "Computer tools", "item", "resources/centraltable.png", [])
+
+import {jobSections} from "./jobs.js"
 
 class Player {
     constructor(name){
         this.name = name;
-        this.money = 1000;
+        this.money = 100000;
         this.jobLevel = 1;
         this.daysPassed = 0;
         this.currentActivity = "Doing nothing";
         this.currentDate = new Date();
-        this.inventory = [];
+        this.inventory = [tickets, computerTools];
         this.room = [];
         this.interval = null;
         this.profilePicture = "resources/profilepicture.png";
 
         this.mood = "none";
 
-        this.acomplished = {
-            name: "Acomplishment",
+        this.accomplished = {
+            name: "Accomplished",
             modifier: 1,
             status: 0
             }
 
         this.depressed = {
-            name: "Depression",
+            name: "Depressed",
             modifier: 1,
             status: 0
             }
 
         this.relaxed = {
-            name: "Relax",
+            name: "Relaxed",
             modifier: 1,
             status: 0
             }
 
         this.stressed = {
-            name: "Stress",
+            name: "Stressed",
             modifier: 1,
             status: 0
             }
 
-        this.joyful = {
-            name: "Excitement",
+        this.excited = {
+            name: "Excited",
             modifier: 1,
             status: 0
             }
 
         this.afraid = {
-            name: "Anger",
+            name: "Angry",
             modifier: 1,
             status: 0
             }
 
-        this.companionship = {
-            name: "Fear",
+        this.accompanied = {
+            name: "accompanied",
             modifier: 1,
             status: 0
             }
 
         this.lonely = {
-            name: "Loneliness",
+            name: "Lonely",
             modifier: 1,
             status: 0
             }
 
-            this.playerEmotions = [this.acomplished, this.depressed, this.relaxed, this.stressed, this.joyful, this.afraid, this.companionship, this.lonely]
+            this.playerEmotions = [this.accomplished, this.depressed, this.relaxed, this.stressed, this.excited, this.afraid, this.accompanied, this.lonely]
 
 
         //skills
@@ -186,49 +198,63 @@ class Player {
             name: "Social",
             level: 1,
             exp: 0,
-            modifier: 1
+            modifier: 1,
+            badMoodModifier: 1,
+            goodMoodModifier: 1
         }
         
         this.tech = {
             name: "Tech",
             level: 1,
             exp: 0,
-            modifier: 1
+            modifier: 1,
+            badMoodModifier: 1,
+            goodMoodModifier: 1
         }
 
         this.art = {
             name: "Art",
             level: 1,
             exp: 0,
-            modifier: 1
+            modifier: 1,
+            badMoodModifier: 1,
+            goodMoodModifier: 1
         }
 
         this.athletics = {
             name: "Athletics",
             level: 1,
             exp: 0,
-            modifier: 1
+            modifier: 1,
+            badMoodModifier: 1,
+            goodMoodModifier: 1
         }
 
         this.science = {
             name: "Science",
             level: 1,
             exp: 0,
-            modifier: 1
+            modifier: 1,
+            badMoodModifier: 1,
+            goodMoodModifier: 1
         }
 
         this.military = {
             name: "Military",
             level: 1,
             exp: 0,
-            modifier: 1
+            modifier: 1,
+            badMoodModifier: 1,
+            goodMoodModifier: 1
         }
 
         this.emotion = {
             name: "Emotion",
             level: 1,
             exp: 0,
-            modifier: 1
+            modifier: 1,
+            badMoodModifier: 1,
+            goodMoodModifier: 1
         }
 
         this.playerSkills = [this.social, this.tech, this.art, this.athletics, this.science, this.military, this.emotion]
@@ -342,6 +368,7 @@ class Player {
         const militaryStrategy = new Upgrade ("Military Strategy", [])
 
 
+
         this.upgrades = [
             {
                 name: "TECH",
@@ -385,14 +412,51 @@ class Player {
 
         // input is skill, level
     checkPlayerSkill(skillRequirements){
+
+       
+
+
         for (let i = 0; i < skillRequirements.length; i+=2){
-            if (skillRequirements[i] < skillRequirements[i+1]){
-                player.displayAlert("the player doesn't have the level required");
+
+        let playerUpgrades = this.upgrades;
+
+       
+
+        let targetStudy = (study) => study["name"] == skillRequirements[i];
+        let targetSection = (section) => section["studies"].find(targetStudy)
+        let sectionIndex = playerUpgrades.findIndex(targetSection)
+              
+        let skillToCheck = skillRequirements[i]
+
+        if (playerUpgrades[sectionIndex] === undefined){
+            console.log("profession skill needed")
+            skillToCheck = this[skillRequirements[i]].level
+        } else {
+            let studiesArray = playerUpgrades[sectionIndex]["studies"]; 
+            let studiesIndex = studiesArray.findIndex(targetStudy);
+
+            skillToCheck = studiesArray[studiesIndex].level
+        }
+
+
+
+    
+        console.log(skillRequirements[i])
+
+        console.log(skillToCheck)
+
+
+            if (skillToCheck < skillRequirements[i+1]){
+                console.log("the player doesn't have the level required");
                 return false;
             } 
+            
 
-           
+           // jobSections[0].jobs[0].itemConsum
+
+           // ["player.informatics.level", 10],
         }
+        
         console.log("You meet the skill requirements")
         return true;
     }
@@ -406,7 +470,6 @@ class Player {
             let itemIndex = this.inventory.findIndex(itemIsTrue);
 
             if (itemIndex == -1 || this.inventory[itemIndex].quantity < itemRequirements[i+1]){
-                player.displayAlert(itemRequirements[i] + "not found")
                 return false;
                 
             } 
@@ -415,6 +478,24 @@ class Player {
         console.log("you have all the items")
         return true;
        
+    }
+
+    consumePlayerItem(items){
+
+        for (let i = 0; i < items.length; i+=2){
+
+            let itemIsThere = (item) => item.name == items[i];
+            let itemIndex = this.inventory.findIndex(itemIsThere);
+            console.log(itemIndex)
+            this.inventory[itemIndex].quantity -= items[i+1];
+
+            removeChildItemDet(inventoryMainWindow);
+            populateInventorySections(this)
+
+        }
+        
+            
+        
     }
    
 
@@ -438,11 +519,6 @@ class Player {
         if (activity == "walk"){
             let activitySkills = [
                 {
-                    "skill" : this.social,
-                    "experience": 30,
-                    
-                },
-                {
                     "skill": this.athletics,
                     "experience": 10
 
@@ -452,7 +528,7 @@ class Player {
             let activityMood = [
                 {
                     "mood" : this.relaxed,
-                    "change": 0.1
+                    "change": 0.01
                 }
             ]
 
@@ -480,10 +556,12 @@ class Player {
 
     work(job) {
         if (job == "PC Bang clerk"){
+
+            console.log (this.pcBang.payModifier)
             let jobSkills = [
                 {
                     "skill" : this.tech,
-                    "experience": 30,
+                    "experience": 30*this.tech.modifier,
                     
                 }
             ]
@@ -491,11 +569,11 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.relaxed,
-                    "change": 0.01,
+                    "change": 0.01*this.tech.goodMoodModifier,
                 },
                 {
                     "mood" : this.depressed,
-                    "change": 0.02,
+                    "change": 0.02*this.tech.badMoodModifier,
                 }
             ]
 
@@ -503,9 +581,10 @@ class Player {
             //let jobItemPool = [centralTable, 5]
 
             let jobItemPool = []
+            let jobItemConsum = jobSections[0].jobs[0].itemConsum
     
 
-            this.startActivity(this.pcBang, this.pcBang.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.startActivity(this.pcBang, this.pcBang.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.pcBang.name;
             
             
@@ -514,21 +593,24 @@ class Player {
         } else if(job == "IT Technician"){
             let jobSkills = [
                 {
-                    "skill" : this.social,
-                    "experience": 30,
+                    "skill" : this.tech,
+                    "experience": 50*this.tech.modifier,
                     
-                },
-                {
-                    "skill": this.athletics,
-                    "experience": 10
-
                 }
             ]
 
             let jobMood = [
                 {
                     "mood" : this.depressed,
-                    "change": 1
+                    "change": 0.01*this.tech.badMoodModifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.tech.badMoodModifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.tech.goodMoodModifier,
                 }
             ]
 
@@ -544,21 +626,24 @@ class Player {
         } else if(job == "E-sports Player"){
             let jobSkills = [
                 {
-                    "skill" : this.social,
-                    "experience": 30,
+                    "skill" : this.tech,
+                    "experience": 50*this.tech.modifier,
                     
-                },
-                {
-                    "skill": this.athletics,
-                    "experience": 10
-
                 }
             ]
 
             let jobMood = [
                 {
-                    "mood" : this.depressed,
-                    "change": 1
+                    "mood" : this.accomplished,
+                    "change": 0.01*this.tech.goodMoodModifier,
+                },
+                {
+                    "mood" : this.excited,
+                    "change": 0.01*this.tech.goodMoodModifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change" : 0.03*this.tech.badMoodModifier,
                 }
             ]
 
@@ -574,21 +659,24 @@ class Player {
         } else if(job == "Mecha Mechanic"){
             let jobSkills = [
                 {
-                    "skill" : this.social,
-                    "experience": 30,
+                    "skill" : this.tech,
+                    "experience": 80*this.tech.modifier,
                     
-                },
-                {
-                    "skill": this.athletics,
-                    "experience": 10
-
                 }
             ]
 
             let jobMood = [
                 {
-                    "mood" : this.depressed,
-                    "change": 1
+                    "mood" : this.stressed,
+                    "change": 0.01*this.tech.badMoodModifier,
+                },
+                {
+                    "mood" : this.excited,
+                    "change": 0.02*this.tech.goodMoodModifier,
+                },
+                {
+                    "mood" : this.lonely,
+                    "change" : 0.01*this.tech.badMoodModifier,
                 }
             ]
 
@@ -605,21 +693,24 @@ class Player {
         } else if(job == "Videogame Developer"){
             let jobSkills = [
                 {
-                    "skill" : this.social,
-                    "experience": 30,
+                    "skill" : this.tech,
+                    "experience": 80*this.tech.modifier,
                     
-                },
-                {
-                    "skill": this.athletics,
-                    "experience": 10
-
                 }
             ]
 
             let jobMood = [
                 {
-                    "mood" : this.depressed,
-                    "change": 1
+                    "mood" : this.stressed,
+                    "change": 0.01*this.tech.badMoodModifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.tech.goodMoodModifier,
+                },
+                {
+                    "mood" : this.lonely,
+                    "change" : 0.01*this.tech.badMoodModifier,
                 }
             ]
 
@@ -636,21 +727,24 @@ class Player {
         } else if(job == "AI Specialist"){
             let jobSkills = [
                 {
-                    "skill" : this.social,
-                    "experience": 30,
+                    "skill" : this.tech,
+                    "experience": 80*this.tech.modifier,
                     
-                },
-                {
-                    "skill": this.athletics,
-                    "experience": 10
-
                 }
             ]
 
             let jobMood = [
                 {
-                    "mood" : this.depressed,
-                    "change": 1
+                    "mood" : this.accomplished,
+                    "change": 0.02*this.tech.goodMoodModifier,
+                },
+                {
+                    "mood" : this.lonely,
+                    "change": 0.02*this.tech.badMoodModifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change" : 0.01*this.tech.badMoodModifier,
                 }
             ]
 
@@ -667,21 +761,24 @@ class Player {
         } else if(job == "Street Racer"){
             let jobSkills = [
                 {
-                    "skill" : this.social,
-                    "experience": 30,
+                    "skill" : this.tech,
+                    "experience": 80*this.tech.modifier,
                     
-                },
-                {
-                    "skill": this.athletics,
-                    "experience": 10
-
                 }
             ]
 
             let jobMood = [
                 {
-                    "mood" : this.depressed,
-                    "change": 1
+                    "mood" : this.accomplished,
+                    "change": 0.01*this.tech.goodMoodModifier,
+                },
+                {
+                    "mood" : this.afraid,
+                    "change": 0.03*this.tech.badMoodModifier,
+                },
+                {
+                    "mood" : this.accompanied,
+                    "change" : 0.02*this.tech.goodMoodModifier,
                 }
             ]
 
@@ -698,21 +795,24 @@ class Player {
         } else if(job == "Cyber Security Expert"){
             let jobSkills = [
                 {
-                    "skill" : this.social,
-                    "experience": 30,
+                    "skill" : this.tech,
+                    "experience": 120*this.tech.modifier,
                     
-                },
-                {
-                    "skill": this.athletics,
-                    "experience": 10
-
                 }
             ]
 
             let jobMood = [
                 {
-                    "mood" : this.depressed,
-                    "change": 1
+                    "mood" : this.accomplished,
+                    "change": 0.04*this.tech.goodMoodModifier,
+                },
+                {
+                    "mood" : this.lonely,
+                    "change": 0.01*this.tech.badMoodModifier,
+                },
+                {
+                    "mood" : this.afraid,
+                    "change" : 0.02*this.tech.badMoodModifier,
                 }
             ]
 
@@ -729,21 +829,24 @@ class Player {
         } else if(job == "Metal Bubble Racer"){
             let jobSkills = [
                 {
-                    "skill" : this.social,
-                    "experience": 30,
+                    "skill" : this.tech,
+                    "experience": 120*this.tech.modifier,
                     
-                },
-                {
-                    "skill": this.athletics,
-                    "experience": 10
-
                 }
             ]
 
             let jobMood = [
                 {
-                    "mood" : this.depressed,
-                    "change": 1
+                    "mood" : this.accomplished,
+                    "change": 0.02*this.tech.goodMoodModifier,
+                },
+                {
+                    "mood" : this.excited,
+                    "change": 0.04*this.tech.goodMoodModifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change" : 0.03*this.tech.badMoodModifier,
                 }
             ]
 
@@ -760,21 +863,28 @@ class Player {
         } else if(job == "Rogue AI Hunter"){
             let jobSkills = [
                 {
-                    "skill" : this.social,
-                    "experience": 30,
+                    "skill" : this.tech,
+                    "experience": 120*this.tech.modifier,
                     
-                },
-                {
-                    "skill": this.athletics,
-                    "experience": 10
-
                 }
             ]
 
             let jobMood = [
                 {
+                    "mood" : this.lonely,
+                    "change": 0.03*this.tech.badMoodModifier,
+                },
+                {
                     "mood" : this.depressed,
-                    "change": 1
+                    "change": 0.01*this.tech.badMoodModifier,
+                },
+                {
+                    "mood" : this.afraid,
+                    "change" : 0.01*this.tech.badMoodModifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change" : 0.06*this.tech.goodMoodModifier,
                 }
             ]
 
@@ -791,21 +901,20 @@ class Player {
         } else if(job == "Nanomachine Specialist"){
             let jobSkills = [
                 {
-                    "skill" : this.social,
-                    "experience": 30,
+                    "skill" : this.tech,
+                    "experience": 120*this.tech.modifier,
                     
-                },
-                {
-                    "skill": this.athletics,
-                    "experience": 10
-
                 }
             ]
 
             let jobMood = [
                 {
                     "mood" : this.depressed,
-                    "change": 1
+                    "change": 0.03*this.tech.badMoodModifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.04*this.tech.goodMoodModifier,
                 }
             ]
 
@@ -822,21 +931,20 @@ class Player {
         } else if(job == "AI Governor"){
             let jobSkills = [
                 {
-                    "skill" : this.social,
-                    "experience": 30,
+                    "skill" : this.tech,
+                    "experience": 250*this.tech.modifier,
                     
-                },
-                {
-                    "skill": this.athletics,
-                    "experience": 10
-
                 }
             ]
 
             let jobMood = [
                 {
-                    "mood" : this.depressed,
-                    "change": 1
+                    "mood" : this.lonely,
+                    "change": 0.04*this.tech.badMoodModifier,
+                },
+                {
+                    "mood" : this.excited,
+                    "change": 0.04*this.tech.goodMoodModifier,
                 }
             ]
 
@@ -851,21 +959,20 @@ class Player {
         } else if(job == "Cyberterrorist"){
             let jobSkills = [
                 {
-                    "skill" : this.social,
-                    "experience": 30,
+                    "skill" : this.tech,
+                    "experience": 250*this.tech.modifier,
                     
-                },
-                {
-                    "skill": this.athletics,
-                    "experience": 10
-
                 }
             ]
 
             let jobMood = [
                 {
-                    "mood" : this.depressed,
-                    "change": 1
+                    "mood" : this.afraid,
+                    "change": 0.04*this.tech.badMoodModifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.04*this.tech.goodMoodModifier,
                 }
             ]
 
@@ -884,11 +991,6 @@ class Player {
     }
 
    
-
-
-    checkActivityRequirements(activityLvl){
-     
-    }
 
 
     checkCost(moneyChange) {
@@ -977,13 +1079,14 @@ class Player {
 
 
 
-    startActivity(activity, moneyChange, skills, mood, itemPool){
+    startActivity(activity, moneyChange, skills, mood, itemPool, itemConsum){
 
         //ADD VARIABLE THAT YOU CAN INPUT IN THE FUNCTION PARAMETERS TO CHANGE WHAT IS THE INTERVAL OF EVERY ACTIVITY
       
         
         player.displayAlert("You started " + activity.action);
         this.currentActivity = activity.action;
+
 
         this.interval = setInterval(() => {
             if (this.checkCost(moneyChange)){
@@ -995,7 +1098,7 @@ class Player {
                     this.updateActivityStats(activity);
                 }
                 
-                
+                this.consumePlayerItem(itemConsum);
                 this.displayStats();
                 this.progressBarMove();
                 this.itemDropThrow(itemPool);
@@ -1196,20 +1299,19 @@ class Player {
 
 
     displayAlert(message){
-        let messageContainer = document.createElement("div");
-        messageContainer.setAttribute("id", "message-container");
+        let messageContainer = document.getElementById("message-container");
         let messageWindow = document.createElement("div");
         messageWindow.setAttribute("id", "message-window");
         let messageContent = document.createElement("div");
         messageContent.setAttribute("id", "message-content");
         let messageBtn =  document.createElement("div");
         messageBtn.setAttribute("id", "message-button");
-        let gameContainer = document.getElementById("game-container");
+
 
         messageWindow.classList.add("message-animation");
         messageContent.innerText = message;
 
-        gameContainer.appendChild(messageContainer);
+
         messageContainer.appendChild(messageWindow);
         messageWindow.appendChild(messageContent);
 
@@ -1486,12 +1588,11 @@ drag_div(roomTitle,roomContainer)
 
 export const shopWindow = document.getElementById("shop-window");
 
-import {toggleShopWindow, populateShopSections, shopWindowbtn, shopWindowCloseBtn, shopWindowTitle, shopTopPanel, shopSectionsWindow} from "./shop.js"
+import {toggleShopWindow, populateShopSections, shopWindowbtn, shopWindowCloseBtn, shopWindowTitle, shopSectionsWindow} from "./shop.js"
 
 
 shopWindowbtn.addEventListener("click", function(){
     removeChildItemDet(shopSectionsWindow);
-   
     populateShopSections(player)
     toggleShopWindow();
 })

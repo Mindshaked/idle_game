@@ -14,9 +14,12 @@ export const shopTopPanel = document.getElementById("shop-top-panel");
 export function toggleShopWindow(){
     if (shopWindow.style.visibility == "visible"){
     shopWindow.style.visibility = "hidden";
+    shopItemBuyBtn.style.visibility = "hidden";
+
     
     } else {
         shopWindow.style.visibility = "visible";
+        shopItemBuyBtn.style.visibility = "visible";
         
         
         }
@@ -34,7 +37,7 @@ export let centralFurnitureSection = {
             itemSellPrice: 30,
             itemName: "Basic central table",
             itemImg: "resources/centraltable.png",
-            itemBonus: ["player.pizza.payModifier", 1],
+            itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
             itemReq: "None",
         },
@@ -175,19 +178,20 @@ function populateItemDetail(item, player){
     
       // item buy button functionality
 
+     
+      
       const buyItemFunc = function buyItemFunction(){
+        shopItemBuyBtn.removeEventListener("click", buyItemFunc);
         let newFurniture = new furniture(item.itemPrice, item.itemSellPrice, item.itemName, item.shopType, item.itemImg, item.itemBonus);
         player.buyFurni(newFurniture, 1);
         console.log (player.inventory)
-        player.displayAlert("You bought " + newFurniture.name + " for $" + item.itemPrice)
-        shopItemBuyBtn.classList.add("event-added")
+    
+         }
+
         
-    }
+         
 
-        if (!shopItemBuyBtn.classList.contains("event-added")){
-            shopItemBuyBtn.addEventListener("click", buyItemFunc);
-        }
-
+         shopItemBuyBtn.addEventListener("click", buyItemFunc);
        
 
 

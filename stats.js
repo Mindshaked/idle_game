@@ -151,6 +151,7 @@ export function populateStatsSections(player){
             statsWindowSkillBar.style.width = ((player.playerSkills[i].exp-player.nextLevel(player.playerSkills[i].level))/(player.nextLevel(player.playerSkills[i].level + 1)-player.nextLevel(player.playerSkills[i].level)) * 100) + "%";
         }
         
+        console.log(player.playerSkills[i].level)
 
         
 

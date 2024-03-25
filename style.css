@@ -1828,9 +1828,11 @@ body{
     bottom: 0%;
     left: 0%;
     margin: 20px;
+    height: 400px;
 }
 
 #message-window{
+    margin-top: 10px;
     width: 200px;
     min-height: 50px;
     height: auto;
