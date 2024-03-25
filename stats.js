@@ -94,7 +94,7 @@ export function populateStatsSections(player){
         statsWindowEmotionName.innerText = player.playerEmotions[i].name;
         statsWindowEmotionName2.innerText = player.playerEmotions[i+1].name;
 
-        let statsEmotionResult = player.playerEmotions[i].status - player.playerEmotions[i+1].status;
+        let statsEmotionResult = Math.round(player.playerEmotions[i].status - player.playerEmotions[i+1].status);
        
         statsWindowEmotionBar.style.bottom = (35 + statsEmotionResult) + "%";
         statsWindowEmotionBar.innerText = statsEmotionResult;

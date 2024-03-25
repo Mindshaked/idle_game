@@ -35,6 +35,8 @@ body{
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(3, 1fr);
     overflow:hidden;
+    background-image: url("./resources/backgroundwall1.jpg");
+    background-size: cover;
     
 }
 
@@ -827,7 +829,7 @@ body{
 
 
 .job-left-panel{
-    font-size: 12px;
+    font-size: 11px;
     height: 15px;
     padding-left: 15px;
     padding-right: 20px;
@@ -836,6 +838,7 @@ body{
     display: flex;
     justify-self: center;
     align-items: center;
+    justify-content: space-between;
     cursor: pointer;
 }
 
@@ -887,16 +890,24 @@ body{
 }
 
 #job-detail-desc-section{
-    
+    margin-top: 15px;
     grid-row: 5/7;
     grid-column: 1/6;
 }
 
+#job-detail-buff-section{
+    grid-row: 7/8;
+    grid-column: 1/6;
+}
+
+
 #job-apply-btn-section{
-   
+    margin-top: 10px;
     grid-row: 8/9;
     grid-column: 2/5;
 }
+
+
 
 #job-apply-btn{
     margin-bottom: 15px;
@@ -918,9 +929,20 @@ body{
     color: #84a699;
 }
 
+#job-detail-title{
+    margin-top: 8px;
+    font-size: 12px;
+}
+
 #job-detail-pay-tag{
+    margin-top: 10px;
     padding-right: 15px;
     color: #84a699;
+}
+
+#job-detail-pay{
+    font-size: 12px;
+    margin-top: 8px;
 }
 
 #job-detail-req-tag{
@@ -929,10 +951,29 @@ body{
     color: #84a699;
 }
 
+#job-detail-req{
+    font-size: 12px;
+}
+
 #job-detail-desc-tag{
     padding-right: 15px;
     color: #84a699;
 }
+
+#job-detail-desc{
+    font-size: 12px;
+}
+
+
+#job-detail-buff-tag{
+    color: #84a699;
+}
+
+#job-detail-buff{
+    font-size: 12px;
+}
+
+
 
 
 

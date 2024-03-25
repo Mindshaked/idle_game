@@ -50,7 +50,7 @@ export class furniture {
                 }
              } else {
                 console.log("effects already applied")
-                console.log(player.pizza.pay)
+               
                 return;
              }
       
@@ -81,10 +81,36 @@ class Job {
     jobEarnExp(){
         this.exp += 30 * this.expModifier;
     }
-    jobLevelUp(){
-        this.lvl += 1
+    jobLevelUp(player){
+        this.level += 1;
+        console.log(this.level);
+
+         populateJobSections(player);
+       
     }
  
+}
+
+class Upgrade {
+    constructor(name, requirements){
+        this.name = name;
+        this.level = 1;
+        this.modifier = 1;
+        this.requirements = requirements;
+        this.status = "active";
+    }
+
+    levelCost(){
+        let cost = (500*this.level)*this.modifier * 1.25;
+        return cost;
+    }
+
+    levelUp(){
+        
+        player.money -= this.levelCost()
+        this.level += 1;
+    
+    }
 }
 
 
@@ -213,7 +239,25 @@ class Player {
 
         //job levels
 
-        this.pizza = new Job("Pizza Delivery Man", "job", "delivering pizza", 10);
+        // TECH JOBS
+
+        this.pcBang = new Job("PC Bang clerk", "job", "working at a PC Bang", 10);
+
+        this.itTechnician = new Job("IT Technician", "job", "fixing computers", 20);
+        this.esportsPlayer = new Job("E-sports Professional Player", "job", "playing games", 20);
+
+        this.mechaMechanic = new Job("Mecha Mechanic", "job", "fixing giant robots", 40);
+        this.videogameDev = new Job("Videogame Developer", "job", "developing videogames", 40);
+        this.aiSpecialist = new Job("AI Specialist", "job", "creating AI Prompts", 40);
+        this.streetRacing = new Job("Street Racer", "job", "driving in an illegal race", 40);
+
+        this.cyberSecurity = new Job("Cyber Security Expert", "job", "stopping hackers", 80);
+        this.metalBubble = new Job("Metal Bubble Racer", "job", "frolling and rolling", 80);
+        this.rogueAiHunter = new Job("Rogue AI Hunter", "job", "stopping the end of the world", 80);
+        this.nanomachineSpecialist = new Job("Nanomachine Specialist", "job", "making very little machines", 80);
+
+        this.aiGovenor = new Job("AI Governor", "job", "ruling the whole society through AI", 200);
+        this.cyberTerrorist = new Job("Cyberterrorist", "job", "hacking for a greater cause", 200);
         
 
 
@@ -245,47 +289,95 @@ class Player {
 
         //study levels
 
+
+        // TECH
+        const machineControl = new Upgrade("Machine Control", []);
+        const artificialIntelligence = new Upgrade("Artificial Intelligence", []);
+        const programming = new Upgrade("Programming", []);
+        const mechanics = new Upgrade("Mechanics", []);
+        const informatics = new Upgrade("Informatics", []);
+        const nanoTech = new Upgrade("Nanotech", []);
+
+
+        // SOCIAL
+        const selling = new Upgrade("Sales", []);
+        const persuasion = new Upgrade("Persuasion", []);
+        const digitalRep = new Upgrade("Digital Reputation", []);
+        const economics = new Upgrade("Economics", [])
+
+
+        // EMOTIONS
+
+        const divination = new Upgrade("Divination", []);
+        const emotionalShifting = new Upgrade ("Emotional Shifting", []);
+        const emotionalControl = new Upgrade ("Emotional Control", []);
+        const memoryArchitecture = new Upgrade ("Memory Architecture", []);
+
+        //ARTS
+
+        const dancing = new Upgrade ("dancing", []);
+        const voiceControl = new Upgrade ("Voice Control", []);
+        const acting = new Upgrade ("Acting", []);
+        const influence = new Upgrade ("Influence", []);
+
+        // ATHLETICS
+
+        const fighting = new Upgrade ("Fighting", []);
+        const agility = new Upgrade ("Agility", []);
+        const physicalStrength = new Upgrade ("Physical Strength", []);
+        const courage = new Upgrade ("Courage", []);
+
+        //SCIENCE
+
+        const medicine = new Upgrade ("Medicine", []);
+        const biology = new Upgrade ("Biology", []);
+        const chemistry = new Upgrade ("Chemistry", []);
+        const engineering = new Upgrade ("Engineering", []);
+
+        //MILITARY
+
+        const pilotage = new Upgrade ("Pilotage", []);
+        const firearmSkill = new Upgrade ("Firearm Skill", []);
+        const espionage = new Upgrade ("Espionage", []);
+        const militaryStrategy = new Upgrade ("Military Strategy", [])
+
+
         this.upgrades = [
             {
                 name: "TECH",
-                studies: [
-                    {
-                        name: "Mecha Engineering",
-                        level: 1,
-                        modifier: 1,
-                        requirements: 0,
-                        status: "active",
-                        levelCost(){
-                            let cost = (500*this.level)*this.modifier * 1.25;
-                            return cost;
-                        },
-                        levelUp(){
-                            
-                            player.money -= this.levelCost()
-                            this.level += 1;
-            
-                        }
+                studies: [machineControl, artificialIntelligence, programming, mechanics, informatics, nanoTech]
+            },
 
-                    },
-                    {
-                        name: "Artificial Intelligence",
-                        level: 1,
-                        modifier: 1,
-                        requirements: 0,
-                        status: "inactive",
-                        levelCost(){
-                            let cost =  (500*this.level)*this.modifier * 1.25;
-                            return cost;
-                        },
-                        levelUp(){
-                            this.money -= this.levelCost()
-                            this.level += 1;
-                          
-                        }
-                    }
-                ]
+            {
+                name: "SOCIAL",
+                studies: [selling, persuasion, digitalRep, economics]
+            },
+
+            {
+                name: "EMOTIONS",
+                studies: [divination, emotionalShifting, emotionalControl, memoryArchitecture]
+            },
+
+            {
+                name: "ARTS",
+                studies: [dancing, voiceControl, acting, influence]
+            },
+
+            {
+                name: "ATHLETICS",
+                studies: [fighting, agility, physicalStrength, courage]
+            },
+
+            {
+                name: "SCIENCE",
+                studies: [medicine, biology, chemistry, engineering]
+            },
+
+            {
+                name: "MILITARY",
+                studies: [pilotage, firearmSkill, espionage, militaryStrategy]
             }
-        ]
+        ] 
        
        
     }
@@ -359,8 +451,8 @@ class Player {
 
             let activityMood = [
                 {
-                    "mood" : this.acomplished,
-                    "change": 1
+                    "mood" : this.relaxed,
+                    "change": 0.1
                 }
             ]
 
@@ -370,26 +462,14 @@ class Player {
     
 
             this.startActivity(this.walk, this.walk.activityCost(), activitySkills, activityMood, activityItemPool)
-            this.job = this.pizza.name;
+            this.job = this.walk.name;
             
             
            
             
         } 
         
-        /*else if(job == "receptionist"){
-            this.startActivity("receptionist", 15, 0)
-            this.job = "Receptionist";
-
-        } else if(job == "real-estate"){
-            this.startActivity("real-estate", 25, 0)
-            this.job = "Real Estate Agent";
-
-        } else if(job == "lawyer"){
-            this.startActivity("lawyer", 50, 0)
-            this.job = "Lawyer";
-        }
-        */
+   
 
 
         this.displayStats();
@@ -397,8 +477,41 @@ class Player {
     }
 
 
+
     work(job) {
-        if (job == "Pizza Delivery Man"){
+        if (job == "PC Bang clerk"){
+            let jobSkills = [
+                {
+                    "skill" : this.tech,
+                    "experience": 30,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.relaxed,
+                    "change": 0.01,
+                },
+                {
+                    "mood" : this.depressed,
+                    "change": 0.02,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+    
+
+            this.startActivity(this.pcBang, this.pcBang.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.job = this.pcBang.name;
+            
+            
+           
+            
+        } else if(job == "IT Technician"){
             let jobSkills = [
                 {
                     "skill" : this.social,
@@ -419,28 +532,351 @@ class Player {
                 }
             ]
 
-            let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
-            let jobItemPool = [centralTable, 5]
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
 
+            let jobItemPool = []
     
 
-            this.startActivity(this.pizza, this.pizza.jobPay(), jobSkills, jobMood, jobItemPool)
-            this.job = this.pizza.name;
-            
-            
-           
-            
-        } else if(job == "receptionist"){
-            this.startActivity("receptionist", 15, 0)
-            this.job = "Receptionist";
+            this.startActivity(this.itTechnician, this.itTechnician.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.job = this.itTechnician.name;
 
-        } else if(job == "real-estate"){
-            this.startActivity("real-estate", 25, 0)
-            this.job = "Real Estate Agent";
+        } else if(job == "E-sports Player"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 30,
+                    
+                },
+                {
+                    "skill": this.athletics,
+                    "experience": 10
 
-        } else if(job == "lawyer"){
-            this.startActivity("lawyer", 50, 0)
-            this.job = "Lawyer";
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 1
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+    
+
+            this.startActivity(this.esportsPlayer, this.esportsPlayer.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.job = this.esportsPlayer.name;
+
+        } else if(job == "Mecha Mechanic"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 30,
+                    
+                },
+                {
+                    "skill": this.athletics,
+                    "experience": 10
+
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 1
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+    
+
+            this.startActivity(this.mechaMechanic, this.mechaMechanic.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.job = this.mechaMechanic.name;
+
+            
+        } else if(job == "Videogame Developer"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 30,
+                    
+                },
+                {
+                    "skill": this.athletics,
+                    "experience": 10
+
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 1
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+    
+
+            this.startActivity(this.videogameDev, this.videogameDev.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.job = this.videogameDev.name;
+
+
+        } else if(job == "AI Specialist"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 30,
+                    
+                },
+                {
+                    "skill": this.athletics,
+                    "experience": 10
+
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 1
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+    
+
+            this.startActivity(this.aiSpecialist, this.aiSpecialist.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.job = this.aiSpecialist.name;
+
+
+        } else if(job == "Street Racer"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 30,
+                    
+                },
+                {
+                    "skill": this.athletics,
+                    "experience": 10
+
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 1
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+    
+
+            this.startActivity(this.streetRacing, this.streetRacing.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.job = this.streetRacing.name;
+
+
+        } else if(job == "Cyber Security Expert"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 30,
+                    
+                },
+                {
+                    "skill": this.athletics,
+                    "experience": 10
+
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 1
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+    
+
+            this.startActivity(this.cyberSecurity, this.cyberSecurity.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.job = this.cyberSecurity.name;
+
+
+        } else if(job == "Metal Bubble Racer"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 30,
+                    
+                },
+                {
+                    "skill": this.athletics,
+                    "experience": 10
+
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 1
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+    
+
+            this.startActivity(this.metalBubble, this.metalBubble.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.job = this.metalBubble.name;
+
+
+        } else if(job == "Rogue AI Hunter"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 30,
+                    
+                },
+                {
+                    "skill": this.athletics,
+                    "experience": 10
+
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 1
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+    
+
+            this.startActivity(this.rogueAiHunter, this.rogueAiHunter.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.job = this.rogueAiHunter.name;
+
+
+        } else if(job == "Nanomachine Specialist"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 30,
+                    
+                },
+                {
+                    "skill": this.athletics,
+                    "experience": 10
+
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 1
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+    
+
+            this.startActivity(this.nanomachineSpecialist, this.nanomachineSpecialist.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.job = this.nanomachineSpecialist.name;
+
+
+        } else if(job == "AI Governor"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 30,
+                    
+                },
+                {
+                    "skill": this.athletics,
+                    "experience": 10
+
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 1
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+    
+
+            this.startActivity(this.aiGovenor, this.aiGovenor.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.job = this.aiGovenor.name;
+        } else if(job == "Cyberterrorist"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 30,
+                    
+                },
+                {
+                    "skill": this.athletics,
+                    "experience": 10
+
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 1
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+    
+
+            this.startActivity(this.cyberTerrorist, this.cyberTerrorist.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.job = this.cyberTerrorist.name;
         }
 
 
@@ -670,8 +1106,9 @@ class Player {
             console.log("this is" + job.name + "experience: " + job.exp)
         } else {
             job.jobEarnExp()
-            job.jobLevelUp()
+            job.jobLevelUp(player)
             player.displayAlert("Your " + job.name + " level is now " + job.level);
+            console.log(job.level)
 
         }
     }
@@ -991,7 +1428,6 @@ function furniSelect(type, typeSlot, typeSlotArray){
 
 }
 
-console.log(player.pizza.jobPay());
 
 //edit button so you can change the room or not
 
@@ -1055,14 +1491,14 @@ import {toggleShopWindow, populateShopSections, shopWindowbtn, shopWindowCloseBt
 
 shopWindowbtn.addEventListener("click", function(){
     removeChildItemDet(shopSectionsWindow);
-    removeChildItemDet(shopTopPanel)
+   
     populateShopSections(player)
     toggleShopWindow();
 })
 
 shopWindowCloseBtn.addEventListener("click", function(){
     removeChildItemDet(shopSectionsWindow);
-    removeChildItemDet(shopTopPanel)
+   
     populateShopSections(player)
     toggleShopWindow();
 })
@@ -1084,14 +1520,14 @@ import {toggleJobWindow, jobsWindowbtn, jobsWindowCloseBtn, populateJobSections,
 jobsWindowbtn.addEventListener("click", function(){
     toggleJobWindow();
     removeChildItemDet(jobsWindowLeftPanel)
-    removeChildItemDet(jobsWindowRightPanel);
+    
     populateJobSections(player)
 })
 
 jobsWindowCloseBtn.addEventListener("click", function(){
     toggleJobWindow()
     removeChildItemDet(jobsWindowLeftPanel)
-    removeChildItemDet(jobsWindowRightPanel);
+   
     populateJobSections(player)
 })
 

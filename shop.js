@@ -80,6 +80,7 @@ const shopItemReqTag = document.getElementById("furniture-shop-req-tag")
 
 
 
+
 shopItemTitle.setAttribute("id", "furniture-shop-name")
 shopItemImg.setAttribute("id", "furniture-shop-img-source")
 shopItemPriceDetail.setAttribute("id", "furniture-shop-price")
@@ -165,10 +166,10 @@ function populateItemDetail(item, player){
     shopItemReq.innerText = item.itemReq;
     shopItemBuyBtn.innerText = "BUY";
     shopItemBuyBtn.style.visibility = "visible";
-    shopItemPriceTag.innerText = "PRICE:"
-    shopItemBonusTag.innerText = "BONUS:"
-    shopItemDescriptionTag.innerText = "DESCRIPTION:";
-    shopItemReqTag.innerText = "REQUIREMENETS:"
+    shopItemPriceTag.innerText = "PRICE"
+    shopItemBonusTag.innerText = "BONUS"
+    shopItemDescriptionTag.innerText = "DESCRIPTION";
+    shopItemReqTag.innerText = "REQUIREMENETS"
 
 
     
