@@ -679,7 +679,7 @@ body{
     border: none;
     background-color: #84a699;
     height: 30px;
-    visibility: hidden;
+   
 }
 
 #furniture-shop-buy-btn:hover{
@@ -915,7 +915,7 @@ body{
     border: none;
     background-color: #84a699;
     height: 30px;
-    visibility: hidden;
+    
 }
 
 #job-apply-btn:hover{
@@ -1142,7 +1142,7 @@ body{
     border: none;
     background-color: #84a699;
     height: 30px;
-    visibility: hidden;
+   
 }
 
 #activities-start-btn:hover{
@@ -1828,7 +1828,10 @@ body{
     bottom: 0%;
     left: 0%;
     margin: 20px;
-    height: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: hidden;
 }
 
 #message-window{

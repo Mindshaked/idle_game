@@ -175,8 +175,8 @@ export function populateStatsSections(player){
     statsWindowMainName.innerText = player.name;
     statsWindowMainMoneyTag.innerText = "MONEY: "
     statsWindowMainMoney.innerText = "$" + player.money;
-    statsWindowMainMoodTag.innerText = "CURRENT MOOD: "
-    statsWindowMainMood.innerText = "needs to be set"
+    statsWindowMainMoodTag.innerText = "CURRENT MOOD: ";
+    statsWindowMainMood.innerText = " " + player.getCurrentMood()
 
     statsWindow.appendChild(statsWindowContent);
     statsWindowContent.appendChild(statsWindowImgContainer);

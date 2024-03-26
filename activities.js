@@ -65,10 +65,10 @@ let activitiesSections = [basicActivitiesSection, advancedActivitiesSection]
 
 export function toggleActivitiesWindow(){
     if (activitiesWindow.style.visibility == "visible"){
-        activitiesStartBtn.style.visibility = "hidden";
+       
         activitiesWindow.style.visibility = "hidden";
     } else {
-        activitiesStartBtn.style.visibility = "visible";
+      
         activitiesWindow.style.visibility = "visible";
         }
 }
@@ -135,6 +135,7 @@ export function toggleActivitySectionContent(section, sectionDom, player){
 
 export function populateActivitiesDetail(activity, player){
     
+        activitiesStartBtn.remove();
 
         activitiesStartBtnSection.setAttribute("id","activities-start-btn-section")
         activitiesImage.setAttribute("id", "activities-img-source");
@@ -151,8 +152,7 @@ export function populateActivitiesDetail(activity, player){
         activitiesDesc.innerText = activity.activityDesc;
         console.log("job details appended")
         activitiesStartBtn.innerText = "START";
-        activitiesStartBtn.style.visibility = "visible";
-
+      
         activitiesTitleTag.innerText = "JOB TITLE: ";
         activitiesCostTag.innerText = "COST: $";
         activitiesReqTag.innerText = "REQUIREMENTS: ";

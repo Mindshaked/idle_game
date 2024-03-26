@@ -14,12 +14,12 @@ export const shopTopPanel = document.getElementById("shop-top-panel");
 export function toggleShopWindow(){
     if (shopWindow.style.visibility == "visible"){
     shopWindow.style.visibility = "hidden";
-    shopItemBuyBtn.style.visibility = "hidden";
+  
 
     
     } else {
         shopWindow.style.visibility = "visible";
-        shopItemBuyBtn.style.visibility = "visible";
+       
         
         
         }
@@ -159,7 +159,7 @@ function populateSectionItems(section, player){
 
 function populateItemDetail(item, player){
 
-
+    shopItemBuyBtn.remove();
 
     shopItemTitle.innerText = item.itemName;
     shopItemImg.src = item.itemImg;
@@ -168,7 +168,6 @@ function populateItemDetail(item, player){
     shopItemDescription.innerText = item.itemDescription;
     shopItemReq.innerText = item.itemReq;
     shopItemBuyBtn.innerText = "BUY";
-    shopItemBuyBtn.style.visibility = "visible";
     shopItemPriceTag.innerText = "PRICE"
     shopItemBonusTag.innerText = "BONUS"
     shopItemDescriptionTag.innerText = "DESCRIPTION";

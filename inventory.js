@@ -151,6 +151,7 @@ export function populateInventorySections(player){
              
                 removeChildItemDet(inventoryMainWindow);
                 populateInventorySections(player);
+                inventoryWindowItemDetail.style.visibility = "hidden";
                
             })
 

@@ -193,6 +193,7 @@ class Player {
             this.playerEmotions = [this.accomplished, this.depressed, this.relaxed, this.stressed, this.excited, this.afraid, this.accompanied, this.lonely]
 
 
+
         //skills
         this.social = {
             name: "Social",
@@ -410,6 +411,23 @@ class Player {
     }
 
 
+    //get current player mood
+    getCurrentMood(){
+        let max = this.playerEmotions[0]["status"];
+        let maxEmotion = "passive";
+
+        for (let i = 1; i < this.playerEmotions.length; i++){
+            if (this.playerEmotions[i]["status"] > max){
+                max = this.playerEmotions[i];
+                maxEmotion = this.playerEmotions[i]["name"];
+            }
+        }
+
+        return maxEmotion;
+    }
+
+
+
         // input is skill, level
     checkPlayerSkill(skillRequirements){
 
@@ -618,9 +636,10 @@ class Player {
             //let jobItemPool = [centralTable, 5]
 
             let jobItemPool = []
+            let jobItemConsum = []
     
 
-            this.startActivity(this.itTechnician, this.itTechnician.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.startActivity(this.itTechnician, this.itTechnician.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.itTechnician.name;
 
         } else if(job == "E-sports Player"){
@@ -651,9 +670,9 @@ class Player {
             //let jobItemPool = [centralTable, 5]
 
             let jobItemPool = []
-    
+            let jobItemConsum = []
 
-            this.startActivity(this.esportsPlayer, this.esportsPlayer.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.startActivity(this.esportsPlayer, this.esportsPlayer.jobPay(), jobSkills, jobMood, jobItemPool), jobItemConsum
             this.job = this.esportsPlayer.name;
 
         } else if(job == "Mecha Mechanic"){
@@ -684,9 +703,9 @@ class Player {
             //let jobItemPool = [centralTable, 5]
 
             let jobItemPool = []
-    
+            let jobItemConsum = []
 
-            this.startActivity(this.mechaMechanic, this.mechaMechanic.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.startActivity(this.mechaMechanic, this.mechaMechanic.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.mechaMechanic.name;
 
             
@@ -718,9 +737,9 @@ class Player {
             //let jobItemPool = [centralTable, 5]
 
             let jobItemPool = []
-    
+            let jobItemConsum = []
 
-            this.startActivity(this.videogameDev, this.videogameDev.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.startActivity(this.videogameDev, this.videogameDev.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.videogameDev.name;
 
 
@@ -752,9 +771,9 @@ class Player {
             //let jobItemPool = [centralTable, 5]
 
             let jobItemPool = []
-    
+            let jobItemConsum = []
 
-            this.startActivity(this.aiSpecialist, this.aiSpecialist.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.startActivity(this.aiSpecialist, this.aiSpecialist.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.aiSpecialist.name;
 
 
@@ -786,9 +805,9 @@ class Player {
             //let jobItemPool = [centralTable, 5]
 
             let jobItemPool = []
-    
+            let jobItemConsum = []
 
-            this.startActivity(this.streetRacing, this.streetRacing.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.startActivity(this.streetRacing, this.streetRacing.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.streetRacing.name;
 
 
@@ -820,9 +839,9 @@ class Player {
             //let jobItemPool = [centralTable, 5]
 
             let jobItemPool = []
-    
+            let jobItemConsum = []
 
-            this.startActivity(this.cyberSecurity, this.cyberSecurity.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.startActivity(this.cyberSecurity, this.cyberSecurity.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.cyberSecurity.name;
 
 
@@ -854,9 +873,9 @@ class Player {
             //let jobItemPool = [centralTable, 5]
 
             let jobItemPool = []
-    
+            let jobItemConsum = []
 
-            this.startActivity(this.metalBubble, this.metalBubble.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.startActivity(this.metalBubble, this.metalBubble.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.metalBubble.name;
 
 
@@ -892,9 +911,9 @@ class Player {
             //let jobItemPool = [centralTable, 5]
 
             let jobItemPool = []
-    
+            let jobItemConsum = []
 
-            this.startActivity(this.rogueAiHunter, this.rogueAiHunter.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.startActivity(this.rogueAiHunter, this.rogueAiHunter.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.rogueAiHunter.name;
 
 
@@ -922,9 +941,9 @@ class Player {
             //let jobItemPool = [centralTable, 5]
 
             let jobItemPool = []
-    
+            let jobItemConsum = []
 
-            this.startActivity(this.nanomachineSpecialist, this.nanomachineSpecialist.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.startActivity(this.nanomachineSpecialist, this.nanomachineSpecialist.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.nanomachineSpecialist.name;
 
 
@@ -952,9 +971,9 @@ class Player {
             //let jobItemPool = [centralTable, 5]
 
             let jobItemPool = []
-    
+            let jobItemConsum = []
 
-            this.startActivity(this.aiGovenor, this.aiGovenor.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.startActivity(this.aiGovenor, this.aiGovenor.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.aiGovenor.name;
         } else if(job == "Cyberterrorist"){
             let jobSkills = [
@@ -980,9 +999,9 @@ class Player {
             //let jobItemPool = [centralTable, 5]
 
             let jobItemPool = []
-    
+            let jobItemConsum = []
 
-            this.startActivity(this.cyberTerrorist, this.cyberTerrorist.jobPay(), jobSkills, jobMood, jobItemPool)
+            this.startActivity(this.cyberTerrorist, this.cyberTerrorist.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.cyberTerrorist.name;
         }
 
