@@ -17,7 +17,6 @@ export class furniture {
         this.effectsState = "off";
         this.quantity = 1;
         this.effects = effects;
-        console.log(this.effects)
         let id=0;
         this.id = id;
         ++id;
@@ -38,7 +37,6 @@ export class furniture {
                     
 
                     player[furniEffects[i]][furniEffects[i+1]] += furniEffects[i+2];
-                    console.log("furni effects applied")
                    
                     
                }
@@ -52,10 +50,8 @@ export class furniture {
                     let furniTarget = player[furniEffects[i]][furniEffects[i+1]];
                     
                     furniTarget -= furniEffects[i+2];
-                    console.log(furniEffects[i] + "furni effects disabled");
                 }
              } else {
-                console.log("effects already applied")
                
                 return;
              }
@@ -80,7 +76,6 @@ class Job {
 
     jobPay(){
         let finalPay = this.pay * this.payModifier;
-        console.log("this is the paymodifier" + this.payModifier)
         return finalPay;
     }
    
@@ -89,7 +84,6 @@ class Job {
     }
     jobLevelUp(player){
         this.level += 1;
-        console.log(this.level);
 
          populateJobSections(player);
        
@@ -302,7 +296,6 @@ class Player {
             cost: 0,
             activityCost(){
                 let finalCost = this.cost * this.costModifier;
-                console.log(this.costModifier)
                 return finalCost;
             },
            
@@ -447,7 +440,6 @@ class Player {
         let skillToCheck = skillRequirements[i]
 
         if (playerUpgrades[sectionIndex] === undefined){
-            console.log("profession skill needed")
             skillToCheck = this[skillRequirements[i]].level
         } else {
             let studiesArray = playerUpgrades[sectionIndex]["studies"]; 
@@ -459,13 +451,9 @@ class Player {
 
 
     
-        console.log(skillRequirements[i])
-
-        console.log(skillToCheck)
 
 
             if (skillToCheck < skillRequirements[i+1]){
-                console.log("the player doesn't have the level required");
                 return false;
             } 
             
@@ -475,7 +463,6 @@ class Player {
            // ["player.informatics.level", 10],
         }
         
-        console.log("You meet the skill requirements")
         return true;
     }
 
@@ -493,7 +480,6 @@ class Player {
             } 
            
         }
-        console.log("you have all the items")
         return true;
        
     }
@@ -504,7 +490,6 @@ class Player {
 
             let itemIsThere = (item) => item.name == items[i];
             let itemIndex = this.inventory.findIndex(itemIsThere);
-            console.log(itemIndex)
             this.inventory[itemIndex].quantity -= items[i+1];
 
             removeChildItemDet(inventoryMainWindow);
@@ -520,7 +505,6 @@ class Player {
 
 
     startGame() {
-        console.log("Game started");
         this.interval = setInterval(() => {
             
             this.displayStats();
@@ -528,7 +512,6 @@ class Player {
     }
 
     stopGame(){
-        console.log("Game stopped");
         clearInterval(this.interval);
     }
 
@@ -575,7 +558,6 @@ class Player {
     work(job) {
         if (job == "PC Bang clerk"){
 
-            console.log (this.pcBang.payModifier)
             let jobSkills = [
                 {
                     "skill" : this.tech,
@@ -1120,7 +1102,9 @@ class Player {
                 this.consumePlayerItem(itemConsum);
                 this.displayStats();
                 this.progressBarMove();
-                this.itemDropThrow(i
+                this.itemDropThrow(itemPool);
+
+              
             } else {
                 this.endActivity();
                 player.displayAlert("You don't have enough money to keep" + activity.name);
@@ -1138,11 +1122,9 @@ class Player {
     if (this.currentActivity !== "Doing nothing"){
         player.displayAlert("You stopped " + this.currentActivity);
         this.currentActivity = "Doing nothing";
-       
         clearInterval(this.interval);
         this.displayStats
         }
-       
 
     }
 
