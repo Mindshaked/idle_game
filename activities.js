@@ -110,13 +110,11 @@ export function toggleActivitySectionContent(section, sectionDom, player){
         activityItem.innerText = section.activities[i].activityName;
         activityItem.classList.add("activities-left-panel");
         sectionDom.appendChild(activityItem);
-        console.log("activities displayed")
+    
 
 
         activityItem.addEventListener("click", function(){
-            /*removeChildItemDet(jobsWindowRightPanel)*/
-            console.log("activity clicked")
-            console.log(section.activities[i])
+      
             populateActivitiesDetail(section.activities[i], player)
         })
 
@@ -150,7 +148,6 @@ export function populateActivitiesDetail(activity, player){
         activitiesCost.innerText = activity.activityCost;
         activitiesReq.innerText = activity.activityReq;
         activitiesDesc.innerText = activity.activityDesc;
-        console.log("job details appended")
         activitiesStartBtn.innerText = "START";
       
         activitiesTitleTag.innerText = "JOB TITLE: ";
@@ -164,10 +161,8 @@ export function populateActivitiesDetail(activity, player){
         } else{
             activitiesStartBtn.addEventListener("click", function() {
                 activitiesStartBtn.classList.add("event-added");    
-                console.log("EventLIstener added")
                 if (player.currentActivity == activity.activity){
                     player.endActivity()
-                    console.log("you stopped doing that")
                     return;
                 } 
             

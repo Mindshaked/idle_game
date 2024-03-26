@@ -187,10 +187,10 @@ export const jobsWindowCloseBtn = document.getElementById("job-window-close-btn"
 
 export function toggleJobWindow(){
     if (jobsWindow.style.visibility == "visible"){
-      //  jobApplyBtn.style.visibility = "hidden"
+     
     jobsWindow.style.visibility = "hidden";
     } else {
-       // jobApplyBtn.style.visibility = "visible"
+      
         jobsWindow.style.visibility = "visible";
         }
 }
@@ -250,11 +250,6 @@ function toggleJobSectionContent(section, sectionDom, player){
         const jobItem = document.createElement("div");
         const jobItemLvl = document.createElement("div");
 
-        console.log("this is item requirements" + section.jobs[i].itemReq)
-
-        console.log(player.checkPlayerItem(section.jobs[i].itemReq))
-
-        console.log(player.checkPlayerSkill(section.jobs[i].skillReq))
 
 
         if (player.checkPlayerItem(section.jobs[i].itemReq) !== true || player.checkPlayerSkill(section.jobs[i].skillReq) !== true){
@@ -272,35 +267,13 @@ function toggleJobSectionContent(section, sectionDom, player){
         jobItem.classList.add("job-left-panel");
         sectionDom.appendChild(jobItem);
         jobItem.appendChild(jobItemLvl);
-        console.log("jobs displayed")
 
         
 
         jobItem.addEventListener("click", function(){
         
 
-            
-
-            let job = section.jobs[i];
-
-
-
-           /* if (eventListener != false){
-                jobApplyBtn.removeEventListener("click", applyJob)
-                console.log("se ha borrado el event y eventlistener es false");
-                eventListener = false;
-            
-                
-            } else{
-                eventListener = true;
-                console.log("el eventlistener es true");
-                
-            }
-
-            */
-            
-
-                populateJobDetail(job, player, applyJob)
+                populateJobDetail(section.jobs[i], player, applyJob)
             
         })
 
@@ -359,7 +332,6 @@ function populateJobDetail(job, player, applyJob){
         jobReq.innerText = job.jobReq;
         jobDesc.innerText = job.jobDesc;
         jobBuff.innerText = job.jobBuff;
-        console.log("job details appended")
         jobApplyBtn.innerText = "APPLY";
         
 
@@ -387,7 +359,6 @@ function populateJobDetail(job, player, applyJob){
 
         if (player.checkPlayerItem(job.itemReq) == true && player.checkPlayerSkill(job.skillReq) == true && player.checkPlayerItem(job.itemConsum == true)){
             player.work(job.jobName);
-            console.log(job.jobActivity + "currentactivity" + player.currentActivity)
         } else {
             player.displayAlert("You don't meet the requirements for this job")
         }

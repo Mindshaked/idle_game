@@ -127,12 +127,7 @@ export function  populateShopSections(player){
 
 
 
-console.log("ahihi" + shopInventory[0]);
-
-console.log(centralFurnitureSection);
-
 function populateSectionItems(section, player){
-    console.log("això és la secció" + section)
     for (let i=0;i<section.items.length;i++){
         const shopItem = document.createElement("div");
         const shopItemName = document.createElement("div");
@@ -146,7 +141,6 @@ function populateSectionItems(section, player){
         shopItem.appendChild(shopItemName);
         shopItem.appendChild(shopItemPrice);
         shopItem.addEventListener("click", function(){
-            console.log("shop details should be shown")
             removeChildItemDet(shopTopPanel)
             populateItemDetail(section.items[i], player)
         })
@@ -183,7 +177,6 @@ function populateItemDetail(item, player){
         shopItemBuyBtn.removeEventListener("click", buyItemFunc);
         let newFurniture = new furniture(item.itemPrice, item.itemSellPrice, item.itemName, item.shopType, item.itemImg, item.itemBonus);
         player.buyFurni(newFurniture, 1);
-        console.log (player.inventory)
     
          }
 

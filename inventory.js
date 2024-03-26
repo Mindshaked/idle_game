@@ -46,7 +46,6 @@ export function populateInventorySections(player){
         inventoryItemNum.classList.add("inventory-item-num");
         inventoryItemNum.innerText = player.inventory[i].quantity;
 
-        console.log("item attached to inventory");
        
 
         inventoryItem.addEventListener("click", function(){
@@ -141,9 +140,10 @@ export function populateInventorySections(player){
             inventoryWindowSellBtn.addEventListener("click", function(){
                 let newItemAmount = player.inventory[i].quantity - itemAmount;
                 let itemName = player.inventory[i].name;
+                let itemSellPrice = player.inventory[i].sellPrice
                 player.sellFurni(player.inventory[i], itemAmount)
                 
-                player.displayAlert("You sold " + itemAmount + " " + itemName);
+                player.displayAlert("You sold " + itemAmount + " " + itemName + " for $" + (itemSellPrice*itemAmount));
 
 
                 itemAmount = newItemAmount;

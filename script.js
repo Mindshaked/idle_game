@@ -1062,7 +1062,7 @@ class Player {
             } else if (this.inventory[furniIndex].quantity <= 1){
                 this.money += furniture.sellPrice;
                 this.inventory.splice(furniIndex, 1);
-                player.displayAlert("You sold " + furniture.name + " for " + furniture.sellPrice);
+             
             } 
            
         } else {
@@ -1120,9 +1120,7 @@ class Player {
                 this.consumePlayerItem(itemConsum);
                 this.displayStats();
                 this.progressBarMove();
-                this.itemDropThrow(itemPool);
-
-                console.log(activity.exp)
+                this.itemDropThrow(i
             } else {
                 this.endActivity();
                 player.displayAlert("You don't have enough money to keep" + activity.name);
@@ -1130,7 +1128,6 @@ class Player {
             
         }, 1000);
 
-        console.log("current activity after starting activity:" + this.currentActivity)
 
 
 
@@ -1141,11 +1138,11 @@ class Player {
     if (this.currentActivity !== "Doing nothing"){
         player.displayAlert("You stopped " + this.currentActivity);
         this.currentActivity = "Doing nothing";
-        console.log(this.currentActivity)
+       
         clearInterval(this.interval);
         this.displayStats
         }
-        console.log("current activity after finishing activity:" + this.currentActivity)
+       
 
     }
 
@@ -1173,7 +1170,6 @@ class Player {
                 return;
             } else{
                 mood[i].mood.status += mood[i].change * mood[i].mood.modifier;
-                console.log(mood[i].mood.name + " increased by " + mood[i].change + "total:" + this.depressed.status)
             }
                 
     
@@ -1205,11 +1201,9 @@ class Player {
                     player.displayAlert(itemPool[i].name + " acquired")
                 } else{
                     this.inventory.push(itemPool[i]);
-                    console.log("item pusshed into inventory")
                 }
 
             } else{
-                console.log("You didn't get the item")
                 return;
             }
         }
@@ -1225,12 +1219,10 @@ class Player {
     updateJobStats(job){
         if (this.checkCurrentSkillExp(job) < this.nextLevel(job.level + 1)){
             job.jobEarnExp()
-            console.log("this is" + job.name + "experience: " + job.exp)
         } else {
             job.jobEarnExp()
             job.jobLevelUp(player)
             player.displayAlert("Your " + job.name + " level is now " + job.level);
-            console.log(job.level)
 
         }
     }
@@ -1241,7 +1233,6 @@ class Player {
     updateActivityStats(activity){
         if (this.checkCurrentSkillExp(activity) < this.nextLevel(activity.level + 1)){
             activity.activityEarnExp()
-            console.log("this is" + activity.name + "experience: " + activity.exp)
         } else {
             activity.activityEarnExp()
             activity.activityLevelUp()
@@ -1258,9 +1249,7 @@ class Player {
         for(let i = 0; i < skills.length; i++){
             if (this.checkCurrentSkillExp(skills[i].skill) < this.nextLevel(skills[i].skill.level + 1)){
            
-                console.log("you have earned " + skills[i].experience + " in " + skills[i].skill.name)
                 this.skillEarnExp(skills[i].skill, skills[i].experience, skills[i].skill.modifier);
-                console.log(this.checkCurrentSkillExp(skills[i].skill))
             } else{
                 this.skillEarnExp(skills[i].skill, skills[i].experience, skills[i].skill.modifier);
                 this.skillLevelUp(skills[i].skill);
@@ -1406,7 +1395,6 @@ export function removeChildItemDet(container){
 function placeFurni(selectedFurniture, slot, slotArray){
     //popup the menu with the
 
-    console.log("this is the slotarray" + slotArray)
     if (slotArray.length !== 0){
         slotArray.splice(0,1);
     }
@@ -1420,7 +1408,6 @@ function placeFurni(selectedFurniture, slot, slotArray){
     let furniImg = document.createElement("img");
     furniImg.src = selectedFurniture.source
     slot.appendChild(furniImg)
-    console.log("this is the active array" + slotArray)
 
    
    
@@ -1472,8 +1459,7 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
                     typeArray[i].equipped = false;
                     typeArray[i].applyEffects("unequipped");
                     typeSlotArray = [];
-                    console.log("not equipped anymore");
-                    console.log("this is the active array" + typeSlotArray)
+                   
                 }
         
             }
@@ -1482,7 +1468,6 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
             populateInventoryPopup(typeArray, typeSlot, typeSlotArray);
             
             
-            console.log("empty furni button pressed")
         })
 
     for (let i = 0; i< typeArray.length; i++){
@@ -1518,10 +1503,8 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
            
             player.cleanInventory(inventoryPopupItems)
             populateInventoryPopup(typeArray, typeSlot, typeSlotArray);
-            console.log(typeArray[i].equipped);
 
             placeFurni(typeArray[i], typeSlot, typeSlotArray)
-            console.log("furnicard clicked")
 
           
         })
@@ -1538,11 +1521,9 @@ function furniSelect(type, typeSlot, typeSlotArray){
    
     let typeFurnis = player.inventory.filter((furni) => furni.type == type);
 
-    console.log(typeFurnis)
     player.cleanInventory(inventoryPopupItems)
     populateInventoryPopup(typeFurnis, typeSlot, typeSlotArray);
 
-    console.log(typeFurnis)
     inventoryPopup.style.visibility = "visible";
     
 
@@ -1554,14 +1535,12 @@ function furniSelect(type, typeSlot, typeSlotArray){
 
 const editButton = document.getElementById("edit-button");
 const gridElements = document.getElementsByClassName("grid-slots");
-console.log(gridElements)
 editButton.addEventListener("click", function(){
 
     if (gridElements[0].classList.contains("grid-slots-on") == true){
         for(let i=0; i<gridElements.length;i++){
         gridElements[i].pointerEvents = "initial";
         gridElements[i].classList.remove("grid-slots-on")
-        console.log("element added");
         }
     } else{
 
@@ -1570,7 +1549,6 @@ editButton.addEventListener("click", function(){
     for (let i = 0; i < gridElements.length; i++){
         gridElements[i].classList.add("grid-slots-on");
         gridElements[i].pointerEvents = "none";
-        console.log("element removed" + gridElements.length)
         }
    
     }  
@@ -1585,7 +1563,6 @@ const phoneMenuBtn = document.getElementById("smartphone-button");
 
 function showPhoneMenu(){
     phoneMenu.classList.toggle("visible");
-    console.log("button clicked");
 }
 
 phoneMenuBtn.addEventListener("click", function(){
@@ -1748,7 +1725,6 @@ inventoryWindowbtn.addEventListener("click", function(){
     toggleInventoryWindow();
     removeChildItemDet(inventoryMainWindow);
     populateInventorySections(player);
-    console.log(player.inventory)
     
 })
 

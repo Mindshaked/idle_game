@@ -29,8 +29,7 @@ export function toggleUpgradesWindow(){
 export function populateUpgradesSections(player){
 
     for (let i = 0; i < player.upgrades.length; i++){
-        console.log(player.upgrades[i].name)
-        console.log(player.upgrades[i].studies[0])
+      
 
         let upgradesSection = document.createElement("div");
         upgradesSection.classList.add("upgrades-section-element")
