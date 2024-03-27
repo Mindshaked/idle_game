@@ -1,6 +1,6 @@
 let p = 0;
 
-import {shopInventory, centralFurnitureSection} from "./shop.js"
+import {shopInventory} from "./shop.js"
 
 
 export class furniture {
@@ -37,6 +37,7 @@ export class furniture {
                     
 
                     player[furniEffects[i]][furniEffects[i+1]] += furniEffects[i+2];
+
                    
                     
                }
@@ -45,11 +46,13 @@ export class furniture {
 
                 this.effectsState = "off";
 
-                for (let i=0; i< furniEffects.length; i+=2){
+                for (let i=0; i< furniEffects.length; i+=3){
 
-                    let furniTarget = player[furniEffects[i]][furniEffects[i+1]];
+                    player[furniEffects[i]][furniEffects[i+1]] -= furniEffects[i+2];
+
+
                     
-                    furniTarget -= furniEffects[i+2];
+
                 }
              } else {
                
@@ -533,12 +536,12 @@ class Player {
                 }
             ]
 
-            let centralTable = new furniture(centralFurnitureSection.items[0].itemPrice, centralFurnitureSection.items[0].itemSellPrice, centralFurnitureSection.items[0].itemName, centralFurnitureSection.items[0].shopType, centralFurnitureSection.items[0].itemImg, centralFurnitureSection.items[0].itemBonus)
+            let centralTable = new furniture(shopInventory.socialSet.items[0].itemPrice, shopInventory.socialSet.items[0].itemSellPrice, shopInventory.socialSet.items[0].itemName, shopInventory.socialSet.items[0].shopType, shopInventory.socialSet.items[0].itemImg, shopInventory.socialSet.items[0].itemBonus)
             let activityItemPool = [centralTable, 5]
-
+            let activityItemConsum = jobSections[0].jobs[0].itemConsum
     
 
-            this.startActivity(this.walk, this.walk.activityCost(), activitySkills, activityMood, activityItemPool)
+            this.startActivity(this.walk, this.walk.activityCost(), activitySkills, activityMood, activityItemPool, activityItemConsum)
             this.job = this.walk.name;
             
             
@@ -1396,7 +1399,9 @@ function placeFurni(selectedFurniture, slot, slotArray){
     
 }
 
-//test placing furniture
+
+
+//furniture slots to place
 
 
 const centralFurnitureSlot = document.getElementById("central-furniture");
@@ -1407,7 +1412,124 @@ centralFurnitureSlot.addEventListener("click", function (){
     
 });
 
-// add the rest of furniture slots 
+
+const bookShelfSlot = document.getElementById("book-shelf");
+let bookShelfItem = [];
+
+bookShelfSlot.addEventListener("click", function (){
+        furniSelect("book-shelf", bookShelfSlot, bookShelfItem)
+    
+});
+
+const windowSlot = document.getElementById("window");
+let windowItem = [];
+
+windowSlot.addEventListener("click", function (){
+        furniSelect("window", windowSlot, windowItem)
+    
+});
+
+const lampSlot = document.getElementById("lamp");
+let lampItem = [];
+
+lampSlot.addEventListener("click", function (){
+        furniSelect("lamp", lampSlot, lampItem)
+    
+});
+
+
+const tvStandSlot = document.getElementById("tv-stand");
+let tvStandItem = [];
+
+tvStandSlot.addEventListener("click", function (){
+        furniSelect("tv-stand", tvStandSlot, tvStandItem)
+    
+});
+
+const deskSlot = document.getElementById("desk");
+let deskItem = [];
+
+deskSlot.addEventListener("click", function (){
+        furniSelect("desk", deskSlot, deskItem)
+    
+});
+
+const onDeskSlot = document.getElementById("on-desk");
+let onDeskItem = [];
+
+onDeskSlot.addEventListener("click", function (){
+        furniSelect("on-desk", onDeskSlot, onDeskItem)
+    
+});
+
+const bookShelfSlot1 = document.getElementById("book-shelf1");
+const bookShelfSlot2 = document.getElementById("book-shelf2");
+const bookShelfSlot3 = document.getElementById("book-shelf3");
+const onShelfSlot1 = document.getElementById("on-shelf1");
+const onShelfSlot2 = document.getElementById("on-shelf2");
+const onShelfSlot3 = document.getElementById("on-shelf3");
+const onShelfSlot4 = document.getElementById("on-shelf4");
+
+let bookShelfItem1 = [];
+let bookShelfItem2 = [];
+let bookShelfItem3 = [];
+let onShelfItem1 = [];
+let onShelfItem2 = [];
+let onShelfItem3 = [];
+let onShelfItem4 = [];
+
+bookShelfSlot1.addEventListener("click", function (){
+        furniSelect("decoration", bookShelfSlot1, bookShelfItem1)
+    
+});
+
+bookShelfSlot2.addEventListener("click", function (){
+    furniSelect("decoration", bookShelfSlot2, bookShelfItem2)
+
+});
+
+bookShelfSlot3.addEventListener("click", function (){
+    furniSelect("decoration", bookShelfSlot3, bookShelfItem3)
+
+});
+
+onShelfSlot1.addEventListener("click", function (){
+    furniSelect("decoration", onShelfSlot1, onShelfItem1)
+
+});
+
+onShelfSlot2.addEventListener("click", function (){
+    furniSelect("decoration", onShelfSlot2, onShelfItem2)
+
+});
+
+onShelfSlot3.addEventListener("click", function (){
+    furniSelect("decoration", onShelfSlot3, onShelfItem3)
+
+});
+
+onShelfSlot4.addEventListener("click", function (){
+    furniSelect("decoration", onShelfSlot4, onShelfItem4)
+
+});
+
+
+/*
+
+<div id="on-left-table" class="grid-slots grid-slots"></div>
+
+<div id="on-shelf1" class="grid-slots grid-slots"></div>
+<div id="on-shelf2" class="grid-slots grid-slots"></div>
+<div id="on-shelf3" class="grid-slots grid-slots"></div>
+
+<div id="central-furniture" class="grid-slots grid-slots"></div>
+<div id="on-table" class="grid-slots grid-slots"></div>
+<div id="book-shelf1" class="grid-slots grid-slots"></div>
+<div id="book-shelf2" class="grid-slots grid-slots"></div>
+
+*/
+
+
 
 
 //open window with furniture to select, depending on the slot
@@ -1439,8 +1561,12 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
             for (let i = 0; i< typeArray.length; i++){
                 if (typeArray[i].equipped == true){
                     typeArray[i].equipped = false;
+                    console.log("furniture desequipado" + typeArray[i].name)
+                    console.log(typeArray)
                     typeArray[i].applyEffects("unequipped");
                     typeSlotArray = [];
+                    console.log("ha acabado")
+                   
                    
                 }
         

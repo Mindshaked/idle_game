@@ -28,8 +28,8 @@ export function toggleShopWindow(){
 
 //shop array
 
-export let centralFurnitureSection = {
-    sectionName: "CENTRAL FURNITURE",
+let socialSet = {
+    sectionName: "SOCIAL SET",
     items:
         [{
             shopType: "central-furniture",
@@ -54,7 +54,343 @@ export let centralFurnitureSection = {
     ]
 }
 
-export let shopInventory = [centralFurnitureSection]
+let artSet = {
+    sectionName: "ART SET",
+    items:
+        [{
+            shopType: "central-furniture",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: "None",
+        },
+        {
+            shopType: "central-furniture",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: [],
+            itemDescription: "a normal table",
+            itemReq: "None"
+        }
+    ]
+}
+let techSet = {
+    sectionName: "TECH SET",
+    items:
+        [{
+            shopType: "central-furniture",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: "None",
+        },
+        {
+            shopType: "central-furniture",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: [],
+            itemDescription: "a normal table",
+            itemReq: "None"
+        }
+    ]
+}
+let emotionSet = {
+    sectionName: "EMOTIONS SET",
+    items:
+        [{
+            shopType: "central-furniture",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: "None",
+        },
+        {
+            shopType: "central-furniture",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: [],
+            itemDescription: "a normal table",
+            itemReq: "None"
+        }
+    ]
+}
+let physicalSet = {
+    sectionName: "ATHLETICS SET",
+    items:
+        [{
+            shopType: "central-furniture",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: "None",
+        },
+        {
+            shopType: "central-furniture",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: [],
+            itemDescription: "a normal table",
+            itemReq: "None"
+        }
+    ]
+}
+let militarySet = {
+    sectionName: "MILITARY SET",
+    items:
+        [{
+            shopType: "central-furniture",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: "None",
+        },
+        {
+            shopType: "central-furniture",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: [],
+            itemDescription: "a normal table",
+            itemReq: "None"
+        }
+    ]
+}
+let scienceSet = {
+    sectionName: "SCIENCE SET",
+    items:
+        [{
+            shopType: "central-furniture",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: "None",
+        },
+        {
+            shopType: "central-furniture",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: [],
+            itemDescription: "a normal table",
+            itemReq: "None"
+        }
+    ]
+}
+
+let deskItems = {
+    sectionName: "ON-DESK ITEMS",
+    items:
+        [{
+            shopType: "on-desk",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: "None",
+        },
+        {
+            shopType: "on-desk",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: [],
+            itemDescription: "a normal table",
+            itemReq: "None"
+        }
+    ]
+}
+
+let landscapeHolograms = {
+    sectionName: "LANDSCAPES",
+    items:
+        [{
+            shopType: "central-furniture",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: "None",
+        },
+        {
+            shopType: "central-furniture",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: [],
+            itemDescription: "a normal table",
+            itemReq: "None"
+        }
+    ]
+}
+
+let pets = {
+    sectionName: "PETS",
+    items:
+        [{
+            shopType: "central-furniture",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: "None",
+        },
+        {
+            shopType: "central-furniture",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: [],
+            itemDescription: "a normal table",
+            itemReq: "None"
+        }
+    ]
+}
+
+let miscFurniture = {
+    sectionName: "STANDING FURNITURE",
+    items:
+        [{
+            shopType: "central-furniture",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: "None",
+        },
+        {
+            shopType: "central-furniture",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: [],
+            itemDescription: "a normal table",
+            itemReq: "None"
+        }
+    ]
+}
+
+let wallItems = {
+    sectionName: "WALL ITEMS",
+    items:
+        [{
+            shopType: "WALL ITEMS",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: "None",
+        },
+        {
+            shopType: "central-furniture",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: [],
+            itemDescription: "a normal table",
+            itemReq: "None"
+        }
+    ]
+}
+
+let shelfDecorations = {
+    sectionName: "SHELF DECORATIONS",
+    items:
+        [{
+            shopType: "central-furniture",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: "None",
+        },
+        {
+            shopType: "central-furniture",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: [],
+            itemDescription: "a normal table",
+            itemReq: "None"
+        }
+    ]
+}
+
+let tvStandItems = {
+    sectionName: "TV STAND FURNITURE",
+    items:
+        [{
+            shopType: "central-furniture",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: "None",
+        },
+        {
+            shopType: "central-furniture",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Luxury central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: [],
+            itemDescription: "a normal table",
+            itemReq: "None"
+        }
+    ]
+}
+
+
+
+
+export let shopInventory = [socialSet, artSet, techSet, emotionSet, physicalSet, militarySet, scienceSet, deskItems, landscapeHolograms, pets, miscFurniture, wallItems, shelfDecorations, tvStandItems]
 
 
 
@@ -74,8 +410,6 @@ const shopItemPriceDetail = document.createElement("div");
 const shopItemBonus = document.createElement("div");
 const shopItemDescription = document.createElement("div");
 const shopItemReq = document.createElement("div");
-const shopItemBuyBtnSlot = document.createElement("div")
-const shopItemBuyBtn = document.createElement("button")
 const shopItemPriceTag = document.getElementById("furniture-shop-price-tag");
 const shopItemBonusTag = document.getElementById("furniture-shop-bonus-tag")
 const shopItemDescriptionTag = document.getElementById("furniture-shop-description-tag")
@@ -84,19 +418,7 @@ const shopItemReqTag = document.getElementById("furniture-shop-req-tag")
 
 
 
-shopItemTitle.setAttribute("id", "furniture-shop-name")
-shopItemImg.setAttribute("id", "furniture-shop-img-source")
-shopItemPriceDetail.setAttribute("id", "furniture-shop-price")
-shopItemBonus.setAttribute("id", "furniture-shop-bonus")
-shopItemDescription.setAttribute("id", "furniture-shop-description")
-shopItemReq.setAttribute("id", "furniture-shop-req")
-furniturePriceBonusSection.setAttribute("id", "furniture-shop-price-bonus")
-furniturePriceSection.setAttribute("id", "furniture-shop-price-section")
-furnitureBonusSection.setAttribute("id", "furniture-shop-bonus-section")
-furnitureDescSection.setAttribute("id", "furniture-shop-description-section")
-furnitureReqSection.setAttribute("id", "furniture-shop-req-section")
-shopItemBuyBtnSlot.setAttribute("id", "furniture-shop-buy-btn-section");
-shopItemBuyBtn.setAttribute("id", "furniture-shop-buy-btn");
+
 
 
 
@@ -153,7 +475,24 @@ function populateSectionItems(section, player){
 
 function populateItemDetail(item, player){
 
+    const shopItemBuyBtnSlot = document.createElement("div")
+    const shopItemBuyBtn = document.createElement("button")
+
     shopItemBuyBtn.remove();
+
+    shopItemTitle.setAttribute("id", "furniture-shop-name")
+    shopItemImg.setAttribute("id", "furniture-shop-img-source")
+    shopItemPriceDetail.setAttribute("id", "furniture-shop-price")
+    shopItemBonus.setAttribute("id", "furniture-shop-bonus")
+    shopItemDescription.setAttribute("id", "furniture-shop-description")
+    shopItemReq.setAttribute("id", "furniture-shop-req")
+    furniturePriceBonusSection.setAttribute("id", "furniture-shop-price-bonus")
+    furniturePriceSection.setAttribute("id", "furniture-shop-price-section")
+    furnitureBonusSection.setAttribute("id", "furniture-shop-bonus-section")
+    furnitureDescSection.setAttribute("id", "furniture-shop-description-section")
+    furnitureReqSection.setAttribute("id", "furniture-shop-req-section")
+    shopItemBuyBtnSlot.setAttribute("id", "furniture-shop-buy-btn-section");
+    shopItemBuyBtn.setAttribute("id", "furniture-shop-buy-btn");
 
     shopItemTitle.innerText = item.itemName;
     shopItemImg.src = item.itemImg;
@@ -174,7 +513,7 @@ function populateItemDetail(item, player){
      
       
       const buyItemFunc = function buyItemFunction(){
-        shopItemBuyBtn.removeEventListener("click", buyItemFunc);
+       
         let newFurniture = new furniture(item.itemPrice, item.itemSellPrice, item.itemName, item.shopType, item.itemImg, item.itemBonus);
         player.buyFurni(newFurniture, 1);
     

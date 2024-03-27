@@ -166,16 +166,915 @@ export let techJobSection = {
     ]
 }
 
-let advancedJobsSection = {
-    sectionName: "ADVANCED JOBS",
-    jobs:[{
-
-    }
-]
+let artJobSection = {
+        sectionName: "ARTS",
+        jobs:[{
+            jobName: "PC Bang clerk",
+            jobPay: 10,
+            jobIdentifier: "pcBang",
+            skillReq:[],
+            jobReq: "None",
+            itemReq: [],
+            itemConsum: ["PC Bang tickets", 1],
+            jobDesc: "Chill job where you can play your favorite games at the same time",
+            jobActivity: "working at a PC Bang",
+            jobBuff: "0.02/s relaxed, 0.01/s depressed, Tech 30xp/s"
+        },
+        {
+            jobName: "IT Technician",
+            jobPay: 20,
+            jobIdentifier: "itTechnician",
+            skillReq: ["Informatics", 10],
+            jobReq: "Informatics lvl 10, 1 computer tools",
+            itemReq: ["Computer tools", 1],
+            itemConsum: [],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "fixing computers",
+            jobBuff: "0.02/s stressed, 0.01/s depressed, Tech 50xp/s"
+        },
+        {
+            jobName: "E-sports Player",
+            jobPay: 20,
+            jobIdentifier: "esportsPlayer",
+            skillReq: ["Machine Control", 10],
+            jobReq: "Machine control lvl 10, 1 game console",
+            itemReq: ["Game console", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "playing games very seriously",
+            jobBuff: "0.01/s accomplished, 0.01/s stressed, 0.02/s excited, Tech 50xp/s"
+        },
+        {
+            jobName: "Mecha Mechanic",
+            jobPay: 40,
+            jobIdentifier: "mechaMechanic",
+            skillReq: ["Mechanics", 25, "Robotics", 15],
+            jobReq: "Mechanics lvl 25, Robotics lvl 15, 1 mech tools",
+            itemReq: ["Mech tools", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "fixing giant robots",
+            jobBuff: "0.01/s stressed, 0.02/s excited, 0.01/s lonely, Tech 80xp/s "
+        },
+        {
+            jobName: "Videogame Developer",
+            jobPay: 40,
+            jobIdentifier: "videogameDev",
+            skillReq: ["Programming", 25, "itTechnician", 15],
+            jobReq: "Programming lvl 25, IT Technician lvl 15, 1 computer",
+            itemReq: ["Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "developing videogames",
+            jobBuff: "0.01/s stressed, 0.03/s accomplished, 0.01/s lonely, Tech 80xp/s"
+        },
+        {
+            jobName: "AI Specialist",
+            jobPay: 40,
+            jobIdentifier: "aiSpecialist",
+            skillReq: ["Artificial Intelligence", 25, "Programming", 15],
+            jobReq: "Artificial Intelligence lvl 25, Programming lvl 15, 1 computer",
+            itemReq: ["Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "creating AI Prompts",
+            jobBuff: "0.01/s stressed, 0.02/s lonely, 0.02/s accomplished, Tech 80xp/s"
+        },
+        {
+            jobName: "Street Racer",
+            jobPay: 40,
+            jobIdentifier: "streetRacing",
+            skillReq: ["Machine Control", 30, "Mechanics", 10],
+            jobReq: "Machine Control lvl 30, Mechanics lvl 10, 1 car",
+            itemReq: ["Car", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "driving in an ilegal street race",
+            jobBuff: "0.01/s stressed, 0.03/s afraid, 0.02/s accompanied, Tech 80xp/s"
+        },
+        {
+            jobName: "Cyber Security Expert",
+            jobPay: 80,
+            jobIdentifier: "cyberSecurity",
+            skillReq: ["itTechnician", 40, "Programming", 50, "Informatics", 50],
+            jobReq: "IT Technician lvl 40, Programming lvl 50, Informatics lvl 50, 1 high-end computer",
+            itemReq: ["High-end Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "stopping hackers",
+            jobBuff: "0.02/s afraid, 0.01/s lonely, 0.04/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Metal Bubble Racer",
+            jobPay: 80,
+            jobIdentifier: "metalBubble",
+            skillReq: ["Machine Control", 40, "streetRacing", 50, "Mechanics", 50],
+            jobReq: "Machine Control lvl 40, Street Racing lvl 50, Mechanics lvl 50, 1 Metal Bubble",
+            itemReq: ["Metal Bubble", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "rolling and rolling",
+            jobBuff: "0.03/s stressed, 0.04/s excited, 0.02/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Rogue AI Hunter",
+            jobPay: 80,
+            jobIdentifier: "rogueAiHunter",
+            skillReq: ["Artificial Intelligence", 60, "Programming", 50, "videogameDev", 40],
+            jobReq: "Artificial Intelligence lvl 60, Programming lvl 50, Videogame Developer lvl 40, 1 high-end computer",
+            itemReq: ["High-end Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "stopping the end of the world",
+            jobBuff: "0.03/s lonely, 0.01/s depressed, 0.01/s afraid, 0.06/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Nanomachine Specialist",
+            jobPay: 80,
+            jobIdentifier: "nanomachineSpecialist",
+            skillReq: ["Machine Control", 40, "mechaMechanic", 50, "Nanotech", 60],
+            jobReq: "Machine control lvl 40, Mecha Mechanic lvl 50, Nano Tech lvl 60, 1 Nano equipment",
+            itemReq: ["Nano equipment", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "making very little machines",
+            jobBuff: "0.03/s depressed, 0.04/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "AI Governor",
+            jobPay: 200,
+            jobIdentifier: "aiGovenor",
+            skillReq: ["rogueAiHunter", 80, "aiSpecialist", 85, "Machine Control", 60],
+            jobReq: "Rogue AI Hunter lvl 80, AI Specialist lvl 85, Machine Control lvl 60, 1 AI Brain Implant",
+            itemReq: ["AI Brain Implant", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "ruling the whole society through AI",
+            jobBuff: "0.04/s excited, 0.04/s lonely, Tech 250xp/s "
+        },
+        {
+            jobName: "Cyberterrorist",
+            jobPay: 200,
+            jobIdentifier: "cyberTerrorist",
+            skillReq: ["cyberSecurity", 85, "Informatics", 80, "Programming", 70],
+            jobReq: "Cyber Security Expert lvl 85, Informatics lvl 80, Programming lvl 70, 1 Hacking computer",
+            itemReq: ["Hacking computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "hacking for a greater cause",
+            jobBuff: "0.04/s afraid, 0.04 accomplished, Tech 250xp/s"
+        }
+    ]
 
 }
 
-export let jobSections = [techJobSection, advancedJobsSection]
+let mechJobSection = {
+        sectionName: "MECH",
+        jobs:[{
+            jobName: "PC Bang clerk",
+            jobPay: 10,
+            jobIdentifier: "pcBang",
+            skillReq:[],
+            jobReq: "None",
+            itemReq: [],
+            itemConsum: ["PC Bang tickets", 1],
+            jobDesc: "Chill job where you can play your favorite games at the same time",
+            jobActivity: "working at a PC Bang",
+            jobBuff: "0.02/s relaxed, 0.01/s depressed, Tech 30xp/s"
+        },
+        {
+            jobName: "IT Technician",
+            jobPay: 20,
+            jobIdentifier: "itTechnician",
+            skillReq: ["Informatics", 10],
+            jobReq: "Informatics lvl 10, 1 computer tools",
+            itemReq: ["Computer tools", 1],
+            itemConsum: [],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "fixing computers",
+            jobBuff: "0.02/s stressed, 0.01/s depressed, Tech 50xp/s"
+        },
+        {
+            jobName: "E-sports Player",
+            jobPay: 20,
+            jobIdentifier: "esportsPlayer",
+            skillReq: ["Machine Control", 10],
+            jobReq: "Machine control lvl 10, 1 game console",
+            itemReq: ["Game console", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "playing games very seriously",
+            jobBuff: "0.01/s accomplished, 0.01/s stressed, 0.02/s excited, Tech 50xp/s"
+        },
+        {
+            jobName: "Mecha Mechanic",
+            jobPay: 40,
+            jobIdentifier: "mechaMechanic",
+            skillReq: ["Mechanics", 25, "Robotics", 15],
+            jobReq: "Mechanics lvl 25, Robotics lvl 15, 1 mech tools",
+            itemReq: ["Mech tools", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "fixing giant robots",
+            jobBuff: "0.01/s stressed, 0.02/s excited, 0.01/s lonely, Tech 80xp/s "
+        },
+        {
+            jobName: "Videogame Developer",
+            jobPay: 40,
+            jobIdentifier: "videogameDev",
+            skillReq: ["Programming", 25, "itTechnician", 15],
+            jobReq: "Programming lvl 25, IT Technician lvl 15, 1 computer",
+            itemReq: ["Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "developing videogames",
+            jobBuff: "0.01/s stressed, 0.03/s accomplished, 0.01/s lonely, Tech 80xp/s"
+        },
+        {
+            jobName: "AI Specialist",
+            jobPay: 40,
+            jobIdentifier: "aiSpecialist",
+            skillReq: ["Artificial Intelligence", 25, "Programming", 15],
+            jobReq: "Artificial Intelligence lvl 25, Programming lvl 15, 1 computer",
+            itemReq: ["Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "creating AI Prompts",
+            jobBuff: "0.01/s stressed, 0.02/s lonely, 0.02/s accomplished, Tech 80xp/s"
+        },
+        {
+            jobName: "Street Racer",
+            jobPay: 40,
+            jobIdentifier: "streetRacing",
+            skillReq: ["Machine Control", 30, "Mechanics", 10],
+            jobReq: "Machine Control lvl 30, Mechanics lvl 10, 1 car",
+            itemReq: ["Car", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "driving in an ilegal street race",
+            jobBuff: "0.01/s stressed, 0.03/s afraid, 0.02/s accompanied, Tech 80xp/s"
+        },
+        {
+            jobName: "Cyber Security Expert",
+            jobPay: 80,
+            jobIdentifier: "cyberSecurity",
+            skillReq: ["itTechnician", 40, "Programming", 50, "Informatics", 50],
+            jobReq: "IT Technician lvl 40, Programming lvl 50, Informatics lvl 50, 1 high-end computer",
+            itemReq: ["High-end Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "stopping hackers",
+            jobBuff: "0.02/s afraid, 0.01/s lonely, 0.04/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Metal Bubble Racer",
+            jobPay: 80,
+            jobIdentifier: "metalBubble",
+            skillReq: ["Machine Control", 40, "streetRacing", 50, "Mechanics", 50],
+            jobReq: "Machine Control lvl 40, Street Racing lvl 50, Mechanics lvl 50, 1 Metal Bubble",
+            itemReq: ["Metal Bubble", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "rolling and rolling",
+            jobBuff: "0.03/s stressed, 0.04/s excited, 0.02/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Rogue AI Hunter",
+            jobPay: 80,
+            jobIdentifier: "rogueAiHunter",
+            skillReq: ["Artificial Intelligence", 60, "Programming", 50, "videogameDev", 40],
+            jobReq: "Artificial Intelligence lvl 60, Programming lvl 50, Videogame Developer lvl 40, 1 high-end computer",
+            itemReq: ["High-end Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "stopping the end of the world",
+            jobBuff: "0.03/s lonely, 0.01/s depressed, 0.01/s afraid, 0.06/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Nanomachine Specialist",
+            jobPay: 80,
+            jobIdentifier: "nanomachineSpecialist",
+            skillReq: ["Machine Control", 40, "mechaMechanic", 50, "Nanotech", 60],
+            jobReq: "Machine control lvl 40, Mecha Mechanic lvl 50, Nano Tech lvl 60, 1 Nano equipment",
+            itemReq: ["Nano equipment", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "making very little machines",
+            jobBuff: "0.03/s depressed, 0.04/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "AI Governor",
+            jobPay: 200,
+            jobIdentifier: "aiGovenor",
+            skillReq: ["rogueAiHunter", 80, "aiSpecialist", 85, "Machine Control", 60],
+            jobReq: "Rogue AI Hunter lvl 80, AI Specialist lvl 85, Machine Control lvl 60, 1 AI Brain Implant",
+            itemReq: ["AI Brain Implant", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "ruling the whole society through AI",
+            jobBuff: "0.04/s excited, 0.04/s lonely, Tech 250xp/s "
+        },
+        {
+            jobName: "Cyberterrorist",
+            jobPay: 200,
+            jobIdentifier: "cyberTerrorist",
+            skillReq: ["cyberSecurity", 85, "Informatics", 80, "Programming", 70],
+            jobReq: "Cyber Security Expert lvl 85, Informatics lvl 80, Programming lvl 70, 1 Hacking computer",
+            itemReq: ["Hacking computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "hacking for a greater cause",
+            jobBuff: "0.04/s afraid, 0.04 accomplished, Tech 250xp/s"
+        }
+    ]
+
+}
+
+let socialJobSection = {
+        sectionName: "SOCIAL",
+        jobs:[{
+            jobName: "PC Bang clerk",
+            jobPay: 10,
+            jobIdentifier: "pcBang",
+            skillReq:[],
+            jobReq: "None",
+            itemReq: [],
+            itemConsum: ["PC Bang tickets", 1],
+            jobDesc: "Chill job where you can play your favorite games at the same time",
+            jobActivity: "working at a PC Bang",
+            jobBuff: "0.02/s relaxed, 0.01/s depressed, Tech 30xp/s"
+        },
+        {
+            jobName: "IT Technician",
+            jobPay: 20,
+            jobIdentifier: "itTechnician",
+            skillReq: ["Informatics", 10],
+            jobReq: "Informatics lvl 10, 1 computer tools",
+            itemReq: ["Computer tools", 1],
+            itemConsum: [],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "fixing computers",
+            jobBuff: "0.02/s stressed, 0.01/s depressed, Tech 50xp/s"
+        },
+        {
+            jobName: "E-sports Player",
+            jobPay: 20,
+            jobIdentifier: "esportsPlayer",
+            skillReq: ["Machine Control", 10],
+            jobReq: "Machine control lvl 10, 1 game console",
+            itemReq: ["Game console", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "playing games very seriously",
+            jobBuff: "0.01/s accomplished, 0.01/s stressed, 0.02/s excited, Tech 50xp/s"
+        },
+        {
+            jobName: "Mecha Mechanic",
+            jobPay: 40,
+            jobIdentifier: "mechaMechanic",
+            skillReq: ["Mechanics", 25, "Robotics", 15],
+            jobReq: "Mechanics lvl 25, Robotics lvl 15, 1 mech tools",
+            itemReq: ["Mech tools", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "fixing giant robots",
+            jobBuff: "0.01/s stressed, 0.02/s excited, 0.01/s lonely, Tech 80xp/s "
+        },
+        {
+            jobName: "Videogame Developer",
+            jobPay: 40,
+            jobIdentifier: "videogameDev",
+            skillReq: ["Programming", 25, "itTechnician", 15],
+            jobReq: "Programming lvl 25, IT Technician lvl 15, 1 computer",
+            itemReq: ["Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "developing videogames",
+            jobBuff: "0.01/s stressed, 0.03/s accomplished, 0.01/s lonely, Tech 80xp/s"
+        },
+        {
+            jobName: "AI Specialist",
+            jobPay: 40,
+            jobIdentifier: "aiSpecialist",
+            skillReq: ["Artificial Intelligence", 25, "Programming", 15],
+            jobReq: "Artificial Intelligence lvl 25, Programming lvl 15, 1 computer",
+            itemReq: ["Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "creating AI Prompts",
+            jobBuff: "0.01/s stressed, 0.02/s lonely, 0.02/s accomplished, Tech 80xp/s"
+        },
+        {
+            jobName: "Street Racer",
+            jobPay: 40,
+            jobIdentifier: "streetRacing",
+            skillReq: ["Machine Control", 30, "Mechanics", 10],
+            jobReq: "Machine Control lvl 30, Mechanics lvl 10, 1 car",
+            itemReq: ["Car", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "driving in an ilegal street race",
+            jobBuff: "0.01/s stressed, 0.03/s afraid, 0.02/s accompanied, Tech 80xp/s"
+        },
+        {
+            jobName: "Cyber Security Expert",
+            jobPay: 80,
+            jobIdentifier: "cyberSecurity",
+            skillReq: ["itTechnician", 40, "Programming", 50, "Informatics", 50],
+            jobReq: "IT Technician lvl 40, Programming lvl 50, Informatics lvl 50, 1 high-end computer",
+            itemReq: ["High-end Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "stopping hackers",
+            jobBuff: "0.02/s afraid, 0.01/s lonely, 0.04/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Metal Bubble Racer",
+            jobPay: 80,
+            jobIdentifier: "metalBubble",
+            skillReq: ["Machine Control", 40, "streetRacing", 50, "Mechanics", 50],
+            jobReq: "Machine Control lvl 40, Street Racing lvl 50, Mechanics lvl 50, 1 Metal Bubble",
+            itemReq: ["Metal Bubble", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "rolling and rolling",
+            jobBuff: "0.03/s stressed, 0.04/s excited, 0.02/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Rogue AI Hunter",
+            jobPay: 80,
+            jobIdentifier: "rogueAiHunter",
+            skillReq: ["Artificial Intelligence", 60, "Programming", 50, "videogameDev", 40],
+            jobReq: "Artificial Intelligence lvl 60, Programming lvl 50, Videogame Developer lvl 40, 1 high-end computer",
+            itemReq: ["High-end Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "stopping the end of the world",
+            jobBuff: "0.03/s lonely, 0.01/s depressed, 0.01/s afraid, 0.06/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Nanomachine Specialist",
+            jobPay: 80,
+            jobIdentifier: "nanomachineSpecialist",
+            skillReq: ["Machine Control", 40, "mechaMechanic", 50, "Nanotech", 60],
+            jobReq: "Machine control lvl 40, Mecha Mechanic lvl 50, Nano Tech lvl 60, 1 Nano equipment",
+            itemReq: ["Nano equipment", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "making very little machines",
+            jobBuff: "0.03/s depressed, 0.04/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "AI Governor",
+            jobPay: 200,
+            jobIdentifier: "aiGovenor",
+            skillReq: ["rogueAiHunter", 80, "aiSpecialist", 85, "Machine Control", 60],
+            jobReq: "Rogue AI Hunter lvl 80, AI Specialist lvl 85, Machine Control lvl 60, 1 AI Brain Implant",
+            itemReq: ["AI Brain Implant", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "ruling the whole society through AI",
+            jobBuff: "0.04/s excited, 0.04/s lonely, Tech 250xp/s "
+        },
+        {
+            jobName: "Cyberterrorist",
+            jobPay: 200,
+            jobIdentifier: "cyberTerrorist",
+            skillReq: ["cyberSecurity", 85, "Informatics", 80, "Programming", 70],
+            jobReq: "Cyber Security Expert lvl 85, Informatics lvl 80, Programming lvl 70, 1 Hacking computer",
+            itemReq: ["Hacking computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "hacking for a greater cause",
+            jobBuff: "0.04/s afraid, 0.04 accomplished, Tech 250xp/s"
+        }
+    ]
+
+}
+
+let scienceJobSection = {
+        sectionName: "SCIENCE",
+        jobs:[{
+            jobName: "PC Bang clerk",
+            jobPay: 10,
+            jobIdentifier: "pcBang",
+            skillReq:[],
+            jobReq: "None",
+            itemReq: [],
+            itemConsum: ["PC Bang tickets", 1],
+            jobDesc: "Chill job where you can play your favorite games at the same time",
+            jobActivity: "working at a PC Bang",
+            jobBuff: "0.02/s relaxed, 0.01/s depressed, Tech 30xp/s"
+        },
+        {
+            jobName: "IT Technician",
+            jobPay: 20,
+            jobIdentifier: "itTechnician",
+            skillReq: ["Informatics", 10],
+            jobReq: "Informatics lvl 10, 1 computer tools",
+            itemReq: ["Computer tools", 1],
+            itemConsum: [],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "fixing computers",
+            jobBuff: "0.02/s stressed, 0.01/s depressed, Tech 50xp/s"
+        },
+        {
+            jobName: "E-sports Player",
+            jobPay: 20,
+            jobIdentifier: "esportsPlayer",
+            skillReq: ["Machine Control", 10],
+            jobReq: "Machine control lvl 10, 1 game console",
+            itemReq: ["Game console", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "playing games very seriously",
+            jobBuff: "0.01/s accomplished, 0.01/s stressed, 0.02/s excited, Tech 50xp/s"
+        },
+        {
+            jobName: "Mecha Mechanic",
+            jobPay: 40,
+            jobIdentifier: "mechaMechanic",
+            skillReq: ["Mechanics", 25, "Robotics", 15],
+            jobReq: "Mechanics lvl 25, Robotics lvl 15, 1 mech tools",
+            itemReq: ["Mech tools", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "fixing giant robots",
+            jobBuff: "0.01/s stressed, 0.02/s excited, 0.01/s lonely, Tech 80xp/s "
+        },
+        {
+            jobName: "Videogame Developer",
+            jobPay: 40,
+            jobIdentifier: "videogameDev",
+            skillReq: ["Programming", 25, "itTechnician", 15],
+            jobReq: "Programming lvl 25, IT Technician lvl 15, 1 computer",
+            itemReq: ["Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "developing videogames",
+            jobBuff: "0.01/s stressed, 0.03/s accomplished, 0.01/s lonely, Tech 80xp/s"
+        },
+        {
+            jobName: "AI Specialist",
+            jobPay: 40,
+            jobIdentifier: "aiSpecialist",
+            skillReq: ["Artificial Intelligence", 25, "Programming", 15],
+            jobReq: "Artificial Intelligence lvl 25, Programming lvl 15, 1 computer",
+            itemReq: ["Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "creating AI Prompts",
+            jobBuff: "0.01/s stressed, 0.02/s lonely, 0.02/s accomplished, Tech 80xp/s"
+        },
+        {
+            jobName: "Street Racer",
+            jobPay: 40,
+            jobIdentifier: "streetRacing",
+            skillReq: ["Machine Control", 30, "Mechanics", 10],
+            jobReq: "Machine Control lvl 30, Mechanics lvl 10, 1 car",
+            itemReq: ["Car", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "driving in an ilegal street race",
+            jobBuff: "0.01/s stressed, 0.03/s afraid, 0.02/s accompanied, Tech 80xp/s"
+        },
+        {
+            jobName: "Cyber Security Expert",
+            jobPay: 80,
+            jobIdentifier: "cyberSecurity",
+            skillReq: ["itTechnician", 40, "Programming", 50, "Informatics", 50],
+            jobReq: "IT Technician lvl 40, Programming lvl 50, Informatics lvl 50, 1 high-end computer",
+            itemReq: ["High-end Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "stopping hackers",
+            jobBuff: "0.02/s afraid, 0.01/s lonely, 0.04/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Metal Bubble Racer",
+            jobPay: 80,
+            jobIdentifier: "metalBubble",
+            skillReq: ["Machine Control", 40, "streetRacing", 50, "Mechanics", 50],
+            jobReq: "Machine Control lvl 40, Street Racing lvl 50, Mechanics lvl 50, 1 Metal Bubble",
+            itemReq: ["Metal Bubble", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "rolling and rolling",
+            jobBuff: "0.03/s stressed, 0.04/s excited, 0.02/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Rogue AI Hunter",
+            jobPay: 80,
+            jobIdentifier: "rogueAiHunter",
+            skillReq: ["Artificial Intelligence", 60, "Programming", 50, "videogameDev", 40],
+            jobReq: "Artificial Intelligence lvl 60, Programming lvl 50, Videogame Developer lvl 40, 1 high-end computer",
+            itemReq: ["High-end Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "stopping the end of the world",
+            jobBuff: "0.03/s lonely, 0.01/s depressed, 0.01/s afraid, 0.06/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Nanomachine Specialist",
+            jobPay: 80,
+            jobIdentifier: "nanomachineSpecialist",
+            skillReq: ["Machine Control", 40, "mechaMechanic", 50, "Nanotech", 60],
+            jobReq: "Machine control lvl 40, Mecha Mechanic lvl 50, Nano Tech lvl 60, 1 Nano equipment",
+            itemReq: ["Nano equipment", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "making very little machines",
+            jobBuff: "0.03/s depressed, 0.04/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "AI Governor",
+            jobPay: 200,
+            jobIdentifier: "aiGovenor",
+            skillReq: ["rogueAiHunter", 80, "aiSpecialist", 85, "Machine Control", 60],
+            jobReq: "Rogue AI Hunter lvl 80, AI Specialist lvl 85, Machine Control lvl 60, 1 AI Brain Implant",
+            itemReq: ["AI Brain Implant", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "ruling the whole society through AI",
+            jobBuff: "0.04/s excited, 0.04/s lonely, Tech 250xp/s "
+        },
+        {
+            jobName: "Cyberterrorist",
+            jobPay: 200,
+            jobIdentifier: "cyberTerrorist",
+            skillReq: ["cyberSecurity", 85, "Informatics", 80, "Programming", 70],
+            jobReq: "Cyber Security Expert lvl 85, Informatics lvl 80, Programming lvl 70, 1 Hacking computer",
+            itemReq: ["Hacking computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "hacking for a greater cause",
+            jobBuff: "0.04/s afraid, 0.04 accomplished, Tech 250xp/s"
+        }
+    ]
+
+}
+
+let athleticsJobSection = {
+        sectionName: "ATHLETICS",
+        jobs:[{
+            jobName: "PC Bang clerk",
+            jobPay: 10,
+            jobIdentifier: "pcBang",
+            skillReq:[],
+            jobReq: "None",
+            itemReq: [],
+            itemConsum: ["PC Bang tickets", 1],
+            jobDesc: "Chill job where you can play your favorite games at the same time",
+            jobActivity: "working at a PC Bang",
+            jobBuff: "0.02/s relaxed, 0.01/s depressed, Tech 30xp/s"
+        },
+        {
+            jobName: "IT Technician",
+            jobPay: 20,
+            jobIdentifier: "itTechnician",
+            skillReq: ["Informatics", 10],
+            jobReq: "Informatics lvl 10, 1 computer tools",
+            itemReq: ["Computer tools", 1],
+            itemConsum: [],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "fixing computers",
+            jobBuff: "0.02/s stressed, 0.01/s depressed, Tech 50xp/s"
+        },
+        {
+            jobName: "E-sports Player",
+            jobPay: 20,
+            jobIdentifier: "esportsPlayer",
+            skillReq: ["Machine Control", 10],
+            jobReq: "Machine control lvl 10, 1 game console",
+            itemReq: ["Game console", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "playing games very seriously",
+            jobBuff: "0.01/s accomplished, 0.01/s stressed, 0.02/s excited, Tech 50xp/s"
+        },
+        {
+            jobName: "Mecha Mechanic",
+            jobPay: 40,
+            jobIdentifier: "mechaMechanic",
+            skillReq: ["Mechanics", 25, "Robotics", 15],
+            jobReq: "Mechanics lvl 25, Robotics lvl 15, 1 mech tools",
+            itemReq: ["Mech tools", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "fixing giant robots",
+            jobBuff: "0.01/s stressed, 0.02/s excited, 0.01/s lonely, Tech 80xp/s "
+        },
+        {
+            jobName: "Videogame Developer",
+            jobPay: 40,
+            jobIdentifier: "videogameDev",
+            skillReq: ["Programming", 25, "itTechnician", 15],
+            jobReq: "Programming lvl 25, IT Technician lvl 15, 1 computer",
+            itemReq: ["Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "developing videogames",
+            jobBuff: "0.01/s stressed, 0.03/s accomplished, 0.01/s lonely, Tech 80xp/s"
+        },
+        {
+            jobName: "AI Specialist",
+            jobPay: 40,
+            jobIdentifier: "aiSpecialist",
+            skillReq: ["Artificial Intelligence", 25, "Programming", 15],
+            jobReq: "Artificial Intelligence lvl 25, Programming lvl 15, 1 computer",
+            itemReq: ["Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "creating AI Prompts",
+            jobBuff: "0.01/s stressed, 0.02/s lonely, 0.02/s accomplished, Tech 80xp/s"
+        },
+        {
+            jobName: "Street Racer",
+            jobPay: 40,
+            jobIdentifier: "streetRacing",
+            skillReq: ["Machine Control", 30, "Mechanics", 10],
+            jobReq: "Machine Control lvl 30, Mechanics lvl 10, 1 car",
+            itemReq: ["Car", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "driving in an ilegal street race",
+            jobBuff: "0.01/s stressed, 0.03/s afraid, 0.02/s accompanied, Tech 80xp/s"
+        },
+        {
+            jobName: "Cyber Security Expert",
+            jobPay: 80,
+            jobIdentifier: "cyberSecurity",
+            skillReq: ["itTechnician", 40, "Programming", 50, "Informatics", 50],
+            jobReq: "IT Technician lvl 40, Programming lvl 50, Informatics lvl 50, 1 high-end computer",
+            itemReq: ["High-end Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "stopping hackers",
+            jobBuff: "0.02/s afraid, 0.01/s lonely, 0.04/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Metal Bubble Racer",
+            jobPay: 80,
+            jobIdentifier: "metalBubble",
+            skillReq: ["Machine Control", 40, "streetRacing", 50, "Mechanics", 50],
+            jobReq: "Machine Control lvl 40, Street Racing lvl 50, Mechanics lvl 50, 1 Metal Bubble",
+            itemReq: ["Metal Bubble", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "rolling and rolling",
+            jobBuff: "0.03/s stressed, 0.04/s excited, 0.02/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Rogue AI Hunter",
+            jobPay: 80,
+            jobIdentifier: "rogueAiHunter",
+            skillReq: ["Artificial Intelligence", 60, "Programming", 50, "videogameDev", 40],
+            jobReq: "Artificial Intelligence lvl 60, Programming lvl 50, Videogame Developer lvl 40, 1 high-end computer",
+            itemReq: ["High-end Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "stopping the end of the world",
+            jobBuff: "0.03/s lonely, 0.01/s depressed, 0.01/s afraid, 0.06/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Nanomachine Specialist",
+            jobPay: 80,
+            jobIdentifier: "nanomachineSpecialist",
+            skillReq: ["Machine Control", 40, "mechaMechanic", 50, "Nanotech", 60],
+            jobReq: "Machine control lvl 40, Mecha Mechanic lvl 50, Nano Tech lvl 60, 1 Nano equipment",
+            itemReq: ["Nano equipment", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "making very little machines",
+            jobBuff: "0.03/s depressed, 0.04/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "AI Governor",
+            jobPay: 200,
+            jobIdentifier: "aiGovenor",
+            skillReq: ["rogueAiHunter", 80, "aiSpecialist", 85, "Machine Control", 60],
+            jobReq: "Rogue AI Hunter lvl 80, AI Specialist lvl 85, Machine Control lvl 60, 1 AI Brain Implant",
+            itemReq: ["AI Brain Implant", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "ruling the whole society through AI",
+            jobBuff: "0.04/s excited, 0.04/s lonely, Tech 250xp/s "
+        },
+        {
+            jobName: "Cyberterrorist",
+            jobPay: 200,
+            jobIdentifier: "cyberTerrorist",
+            skillReq: ["cyberSecurity", 85, "Informatics", 80, "Programming", 70],
+            jobReq: "Cyber Security Expert lvl 85, Informatics lvl 80, Programming lvl 70, 1 Hacking computer",
+            itemReq: ["Hacking computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "hacking for a greater cause",
+            jobBuff: "0.04/s afraid, 0.04 accomplished, Tech 250xp/s"
+        }
+    ]
+
+}
+
+let emotionJobSection = {
+        sectionName: "EMOTIONS",
+        jobs:[{
+            jobName: "PC Bang clerk",
+            jobPay: 10,
+            jobIdentifier: "pcBang",
+            skillReq:[],
+            jobReq: "None",
+            itemReq: [],
+            itemConsum: ["PC Bang tickets", 1],
+            jobDesc: "Chill job where you can play your favorite games at the same time",
+            jobActivity: "working at a PC Bang",
+            jobBuff: "0.02/s relaxed, 0.01/s depressed, Tech 30xp/s"
+        },
+        {
+            jobName: "IT Technician",
+            jobPay: 20,
+            jobIdentifier: "itTechnician",
+            skillReq: ["Informatics", 10],
+            jobReq: "Informatics lvl 10, 1 computer tools",
+            itemReq: ["Computer tools", 1],
+            itemConsum: [],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "fixing computers",
+            jobBuff: "0.02/s stressed, 0.01/s depressed, Tech 50xp/s"
+        },
+        {
+            jobName: "E-sports Player",
+            jobPay: 20,
+            jobIdentifier: "esportsPlayer",
+            skillReq: ["Machine Control", 10],
+            jobReq: "Machine control lvl 10, 1 game console",
+            itemReq: ["Game console", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "playing games very seriously",
+            jobBuff: "0.01/s accomplished, 0.01/s stressed, 0.02/s excited, Tech 50xp/s"
+        },
+        {
+            jobName: "Mecha Mechanic",
+            jobPay: 40,
+            jobIdentifier: "mechaMechanic",
+            skillReq: ["Mechanics", 25, "Robotics", 15],
+            jobReq: "Mechanics lvl 25, Robotics lvl 15, 1 mech tools",
+            itemReq: ["Mech tools", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "fixing giant robots",
+            jobBuff: "0.01/s stressed, 0.02/s excited, 0.01/s lonely, Tech 80xp/s "
+        },
+        {
+            jobName: "Videogame Developer",
+            jobPay: 40,
+            jobIdentifier: "videogameDev",
+            skillReq: ["Programming", 25, "itTechnician", 15],
+            jobReq: "Programming lvl 25, IT Technician lvl 15, 1 computer",
+            itemReq: ["Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "developing videogames",
+            jobBuff: "0.01/s stressed, 0.03/s accomplished, 0.01/s lonely, Tech 80xp/s"
+        },
+        {
+            jobName: "AI Specialist",
+            jobPay: 40,
+            jobIdentifier: "aiSpecialist",
+            skillReq: ["Artificial Intelligence", 25, "Programming", 15],
+            jobReq: "Artificial Intelligence lvl 25, Programming lvl 15, 1 computer",
+            itemReq: ["Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "creating AI Prompts",
+            jobBuff: "0.01/s stressed, 0.02/s lonely, 0.02/s accomplished, Tech 80xp/s"
+        },
+        {
+            jobName: "Street Racer",
+            jobPay: 40,
+            jobIdentifier: "streetRacing",
+            skillReq: ["Machine Control", 30, "Mechanics", 10],
+            jobReq: "Machine Control lvl 30, Mechanics lvl 10, 1 car",
+            itemReq: ["Car", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "driving in an ilegal street race",
+            jobBuff: "0.01/s stressed, 0.03/s afraid, 0.02/s accompanied, Tech 80xp/s"
+        },
+        {
+            jobName: "Cyber Security Expert",
+            jobPay: 80,
+            jobIdentifier: "cyberSecurity",
+            skillReq: ["itTechnician", 40, "Programming", 50, "Informatics", 50],
+            jobReq: "IT Technician lvl 40, Programming lvl 50, Informatics lvl 50, 1 high-end computer",
+            itemReq: ["High-end Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "stopping hackers",
+            jobBuff: "0.02/s afraid, 0.01/s lonely, 0.04/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Metal Bubble Racer",
+            jobPay: 80,
+            jobIdentifier: "metalBubble",
+            skillReq: ["Machine Control", 40, "streetRacing", 50, "Mechanics", 50],
+            jobReq: "Machine Control lvl 40, Street Racing lvl 50, Mechanics lvl 50, 1 Metal Bubble",
+            itemReq: ["Metal Bubble", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "rolling and rolling",
+            jobBuff: "0.03/s stressed, 0.04/s excited, 0.02/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Rogue AI Hunter",
+            jobPay: 80,
+            jobIdentifier: "rogueAiHunter",
+            skillReq: ["Artificial Intelligence", 60, "Programming", 50, "videogameDev", 40],
+            jobReq: "Artificial Intelligence lvl 60, Programming lvl 50, Videogame Developer lvl 40, 1 high-end computer",
+            itemReq: ["High-end Computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "stopping the end of the world",
+            jobBuff: "0.03/s lonely, 0.01/s depressed, 0.01/s afraid, 0.06/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "Nanomachine Specialist",
+            jobPay: 80,
+            jobIdentifier: "nanomachineSpecialist",
+            skillReq: ["Machine Control", 40, "mechaMechanic", 50, "Nanotech", 60],
+            jobReq: "Machine control lvl 40, Mecha Mechanic lvl 50, Nano Tech lvl 60, 1 Nano equipment",
+            itemReq: ["Nano equipment", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "making very little machines",
+            jobBuff: "0.03/s depressed, 0.04/s accomplished, Tech 120xp/s"
+        },
+        {
+            jobName: "AI Governor",
+            jobPay: 200,
+            jobIdentifier: "aiGovenor",
+            skillReq: ["rogueAiHunter", 80, "aiSpecialist", 85, "Machine Control", 60],
+            jobReq: "Rogue AI Hunter lvl 80, AI Specialist lvl 85, Machine Control lvl 60, 1 AI Brain Implant",
+            itemReq: ["AI Brain Implant", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "ruling the whole society through AI",
+            jobBuff: "0.04/s excited, 0.04/s lonely, Tech 250xp/s "
+        },
+        {
+            jobName: "Cyberterrorist",
+            jobPay: 200,
+            jobIdentifier: "cyberTerrorist",
+            skillReq: ["cyberSecurity", 85, "Informatics", 80, "Programming", 70],
+            jobReq: "Cyber Security Expert lvl 85, Informatics lvl 80, Programming lvl 70, 1 Hacking computer",
+            itemReq: ["Hacking computer", 1],
+            jobDesc: "an accessible and easy job to for beginners in the job market",
+            jobActivity: "hacking for a greater cause",
+            jobBuff: "0.04/s afraid, 0.04 accomplished, Tech 250xp/s"
+        }
+    ]
+
+}
+
+
+
+export let jobSections = [techJobSection, artJobSection, mechJobSection, socialJobSection, scienceJobSection, athleticsJobSection, emotionJobSection]
 
 
 export const jobsWindowbtn = document.getElementById("jobs-top-button");

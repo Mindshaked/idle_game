@@ -113,7 +113,7 @@ body{
 }
 
 
-#right-table{
+#desk{
     grid-row: 10/14;
     grid-column: 12 / 16;
     cursor: pointer;
@@ -123,7 +123,7 @@ body{
 }
 
 
-#on-table{
+#on-desk{
     grid-row: 8/10;
     grid-column: 13 / 16;
     cursor: pointer;
@@ -132,7 +132,7 @@ body{
     z-index: 3;
 }
 
-#left-table{
+#tv-stand{
     grid-row: 11/13;
     grid-column: 4 / 6;
     cursor: pointer;
@@ -150,7 +150,7 @@ body{
     z-index: 3;
 }
 
-#on-shelf1{
+#book-shelf1{
     grid-row: 5/6;
     grid-column: 1 / 2;
     cursor: pointer;
@@ -159,7 +159,7 @@ body{
     z-index: 3;
 }
 
-#on-shelf2{
+#book-shelf2{
     grid-row: 5/6;
     grid-column: 2 / 3;
     cursor: pointer;
@@ -168,7 +168,7 @@ body{
     z-index: 3;
 }
 
-#on-shelf3{
+#book-shelf3{
     grid-row: 5/6;
     grid-column: 3 / 4;
     cursor: pointer;
@@ -177,18 +177,36 @@ body{
     z-index: 3;
 }
 
-#book-shelf1{
+#on-shelf1{
     grid-row: 5/6;
-    grid-column: 6 / 8;
+    grid-column: 6 / 6;
     cursor: pointer;
     display:flex;
     max-width: 96px;
     z-index: 3;
 }
 
-#book-shelf2{
+#on-shelf2{
+    grid-row: 5/6;
+    grid-column: 7 / 8;
+    cursor: pointer;
+    display:flex;
+    max-width: 96px;
+    z-index: 3;
+}
+
+#on-shelf3{
     grid-row: 7/8;
-    grid-column: 6 / 8;
+    grid-column: 6 / 7;
+    cursor: pointer;
+    display:flex;
+    max-width: 96px;
+    z-index: 3;
+}
+
+#on-shelf4{
+    grid-row: 7/8;
+    grid-column: 7 / 8;
     cursor: pointer;
     display:flex;
     max-width: 96px;
@@ -198,7 +216,7 @@ body{
 
 
 
-#ceiling-table{
+#lamp{
     grid-row: 1/3;
     grid-column: 8 / 10;
     cursor: pointer;
@@ -207,7 +225,7 @@ body{
     z-index: 3;
 }
 
-#shelf{
+#book-shelf{
     grid-row: 6/13;
     grid-column: 1 / 4;
     cursor: pointer;
@@ -728,6 +746,7 @@ body{
     display: flex;
     flex-direction: column;
     padding-top: 15px;
+    overflow-y: scroll;
 }
 
 
@@ -791,6 +810,7 @@ body{
     padding-top: 25px;
     display:flex;
     flex-direction: column;
+    overflow: scroll;
 }
 
 
@@ -1027,6 +1047,7 @@ body{
     padding-top: 25px;
     display:flex;
     flex-direction: column;
+    overflow: scroll;
 }
 
 
