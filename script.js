@@ -178,7 +178,7 @@ class Player {
             }
 
         this.accompanied = {
-            name: "accompanied",
+            name: "Accompanied",
             modifier: 1,
             status: 0
             }

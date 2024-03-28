@@ -1151,6 +1151,7 @@ export function  populateJobSections(player){
 
 
 
+
 //toggle job section jobs
 
 
@@ -1254,6 +1255,7 @@ function populateJobDetail(job, player){
 
         const jobApplyBtnSection =  document.createElement("div");
         const jobApplyBtn = document.createElement("button")
+        const jobDetailLvl = document.createElement("div");
         jobApplyBtnSection.remove();
 
     
@@ -1265,6 +1267,7 @@ function populateJobDetail(job, player){
         jobDesc.setAttribute("id", "job-detail-desc");
         jobBuff.setAttribute("id", "job-detail-buff")
         jobApplyBtn.setAttribute("id", "job-apply-btn")
+        jobDetailLvl.setAttribute("id", "job-detail-lvl");
 
         jobImage.src = job.jobSrc;
         jobTitle.innerText = job.jobName;
@@ -1273,6 +1276,10 @@ function populateJobDetail(job, player){
         jobDesc.innerText = job.jobDesc;
         jobBuff.innerText = job.jobBuff;
         jobApplyBtn.innerText = "APPLY"
+
+
+
+    
 
         if (job.state == "inactive"){
             jobApplyBtn.style.backgroundColor = "#84a699";
@@ -1291,6 +1298,9 @@ function populateJobDetail(job, player){
         jobReqTag.innerText = "REQUIREMENTS";
         jobDescTag.innerText = "DESCRIPTION";
         jobBuffTag.innerText = "EFFECTS";
+        let targetJobIdentifier = job.jobIdentifier
+        console.log(targetJobIdentifier)
+        jobDetailLvl.innerText = "Lvl. " +player[targetJobIdentifier].level
 
 
         //job button functionality
@@ -1342,6 +1352,7 @@ function populateJobDetail(job, player){
         jobBuffSection.appendChild(jobBuffTag);
         jobBuffSection.appendChild(jobBuff);
         jobApplyBtnSection.appendChild(jobApplyBtn);
+        jobApplyBtnSection.appendChild(jobDetailLvl);
         jobsWindowRightPanel.appendChild(jobImageSection);
         jobsWindowRightPanel.appendChild(jobTitleSection);
         jobsWindowRightPanel.appendChild(jobPaySection);

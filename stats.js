@@ -168,18 +168,18 @@ export function populateStatsSections(player){
 
 
     statsWindowImg.src = player.profilePicture;
-    statsWindowEmotionsTitle.innerText = "Emotions";
-    statsWindowSkillsTitle.innerText = "Skills";
+    statsWindowEmotionsTitle.innerText = "EMOTIONS";
+    statsWindowSkillsTitle.innerText = "SKILLS";
     statsWindowMainNameTag.innerText = "NAME: "
     statsWindowMainName.innerText = player.name;
     statsWindowMainMoneyTag.innerText = "MONEY: "
     statsWindowMainMoney.innerText = "$" + player.money;
-    statsWindowMainMoodTag.innerText = "CURRENT MOOD: ";
+    statsWindowMainMoodTag.innerText = "MOOD: ";
     statsWindowMainMood.innerText = " " + player.getCurrentMood()
 
     statsWindow.appendChild(statsWindowContent);
     statsWindowContent.appendChild(statsWindowImgContainer);
-    statsWindowImgContainer.appendChild(statsWindowImg);
+    statsWindowMain.appendChild(statsWindowImg);
     statsWindowMain.appendChild(statsWindowMainNameContainer);
     statsWindowMain.appendChild(statsWindowMainMoneyContainer);
     statsWindowMain.appendChild(statsWindowMainMoodContainer);
