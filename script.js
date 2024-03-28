@@ -75,6 +75,7 @@ class Job {
         this.exp = 0;
         this.payModifier = 1;
         this.pay = pay;   
+        this.state = "inactive"
     }
 
     jobPay(){
@@ -84,6 +85,7 @@ class Job {
    
     jobEarnExp(){
         this.exp += 30 * this.expModifier;
+        
     }
     jobLevelUp(player){
         this.level += 1;
@@ -1013,18 +1015,20 @@ class Player {
         if (this.money >= furniture.price){
             if (furniIndex !== -1){
                 this.inventory[furniIndex].quantity += quantity;
+                let moneyChange = (furniture.price * quantity) * -1;
                 this.money -= furniture.price * quantity;
                 player.displayAlert("Bought "+ quantity + furniture.name +" for " + furniture.price)
-                                
+                this.displayMoneyChange("-" + moneyChange)
                 this.displayStats();
             } else {
                 this.inventory.push(furniture);
                 const furniIndex = this.inventory.findIndex(item => item.name === furniture.name);
+                let moneyChange = (furniture.price * quantity) * -1;
                 this.inventory[furniIndex].quantity = quantity
                 this.money -= furniture.price * quantity;
                 player.displayAlert("You bought "+ quantity + furniture.name + " for " + furniture.price);
                
-               
+                this.displayMoneyChange(moneyChange)
                 this.displayStats();
             }
 
@@ -1101,7 +1105,8 @@ class Player {
                 } else if(activity.type == "activity"){
                     this.updateActivityStats(activity);
                 }
-                
+                populateJobSections(player)
+                this.displayMoneyChange(moneyChange)
                 this.consumePlayerItem(itemConsum);
                 this.displayStats();
                 this.progressBarMove();
@@ -1286,8 +1291,31 @@ class Player {
         document.getElementById("current-date").innerText = this.currentDate.toDateString();
         document.getElementById("days-passed").innerText = "Days passed:" + this.daysPassed;
         document.getElementById("inventory").innerText = "Inventory:" + this.inventory;
+        
 
 
+    }
+
+    displayMoneyChange(moneyChange){
+
+        
+        let moneyChangeNum = document.getElementById("money-change")
+        
+        if (moneyChange > 0){
+            moneyChangeNum.style.color = "green";
+            moneyChangeNum.innerText = "+" + moneyChange + "$";
+        } else if (moneyChange == 0){
+            moneyChangeNum.style.color = "black";
+            moneyChangeNum.innerText = moneyChange + "$";
+        } else if(moneyChange < 0){
+            moneyChangeNum.style.color = "red";
+            moneyChangeNum.innerText = moneyChange + "$";
+        }
+
+        console.log(moneyChangeNum.innerText)
+
+
+        
     }
 
 
@@ -1307,6 +1335,8 @@ class Player {
 
         messageContainer.appendChild(messageWindow);
         messageWindow.appendChild(messageContent);
+
+        setTimeout(() => { messageContainer.removeChild(messageWindow)}, 3000);
 
     }
 

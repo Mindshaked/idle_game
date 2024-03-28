@@ -345,7 +345,15 @@ body{
 }
 
 #money{
-    margin-right: 40px;
+   
+}
+
+#money-change{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-right: 15px;
+   width: 50px;
 }
 
 #edit-button{
@@ -493,6 +501,13 @@ body{
     width: 250px;
     padding-right: 30px;
     
+}
+
+#money-top-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-right: 40px;
 }
 
 #shop-window{
@@ -810,7 +825,7 @@ body{
     padding-top: 25px;
     display:flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 
@@ -848,24 +863,42 @@ body{
 }
 
 
-.job-left-panel{
+.job-left-panel-content{
     font-size: 11px;
-    height: 15px;
+    height: auto;
     padding-left: 15px;
     padding-right: 20px;
     padding-top: 5px;
-    padding-bottom: 5px;
     display: flex;
-    justify-self: center;
-    align-items: center;
-    justify-content: space-between;
+    
+    
     cursor: pointer;
+    flex-direction: column;
+    margin-bottom: 5px;
 }
 
-.job-left-panel:hover{
+.job-left-panel-content:hover{
     background-color: #d4ca97;
     color: #221d1d;
 }
+
+.job-left-panel-top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.job-left-panel-bar{
+    height: 1px;
+ 
+    background-color:#d4ca97;
+    opacity: 50%;
+}
+
+
 
 .job-section-sub-menu{
     display: flex;
@@ -1903,7 +1936,7 @@ body{
 
 /* width */
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 15px;
    
   }
   

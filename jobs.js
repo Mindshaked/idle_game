@@ -17,6 +17,7 @@ import {removeChildItemDet} from "./script.js"
 
 export let techJobSection = {
     sectionName: "TECH",
+    sectionState: "inactive",
     jobs:
         [{
             jobName: "PC Bang clerk",
@@ -168,6 +169,7 @@ export let techJobSection = {
 
 let artJobSection = {
         sectionName: "ARTS",
+        sectionState: "inactive",
         jobs:[{
             jobName: "PC Bang clerk",
             jobPay: 10,
@@ -319,6 +321,7 @@ let artJobSection = {
 
 let mechJobSection = {
         sectionName: "MECH",
+        sectionState: "inactive",
         jobs:[{
             jobName: "PC Bang clerk",
             jobPay: 10,
@@ -470,6 +473,7 @@ let mechJobSection = {
 
 let socialJobSection = {
         sectionName: "SOCIAL",
+        sectionState: "inactive",
         jobs:[{
             jobName: "PC Bang clerk",
             jobPay: 10,
@@ -621,6 +625,7 @@ let socialJobSection = {
 
 let scienceJobSection = {
         sectionName: "SCIENCE",
+        sectionState: "inactive",
         jobs:[{
             jobName: "PC Bang clerk",
             jobPay: 10,
@@ -772,6 +777,7 @@ let scienceJobSection = {
 
 let athleticsJobSection = {
         sectionName: "ATHLETICS",
+        sectionState: "inactive",
         jobs:[{
             jobName: "PC Bang clerk",
             jobPay: 10,
@@ -923,6 +929,7 @@ let athleticsJobSection = {
 
 let emotionJobSection = {
         sectionName: "EMOTIONS",
+        sectionState: "inactive",
         jobs:[{
             jobName: "PC Bang clerk",
             jobPay: 10,
@@ -1094,11 +1101,12 @@ export function toggleJobWindow(){
         }
 }
 
-let toggleState = "inactive";
 
 export function  populateJobSections(player){
 
     removeChildItemDet(jobsWindowLeftPanel)
+
+    
 
     for (let i=0;i<jobSections.length;i++){
         const jobSection = document.createElement("div");
@@ -1106,10 +1114,12 @@ export function  populateJobSections(player){
         jobSection.innerText = jobSections[i].sectionName;
         jobSection.classList.add("job-section-name")
         jobSectionSubMenu.classList.add("job-section-sub-menu")
-        jobsWindowLeftPanel.appendChild(jobSection);
-        jobsWindowLeftPanel.appendChild(jobSectionSubMenu);
+
+
+
+       
         
-        if (toggleState == "active"){
+        if (jobSections[i].sectionState == "active"){
             removeChildItemDet(jobSectionSubMenu)
             toggleJobSectionContent(jobSections[i], jobSectionSubMenu, player);
             } else{
@@ -1118,17 +1128,21 @@ export function  populateJobSections(player){
             }
         
         jobSection.addEventListener("click", function(){
-            if (toggleState == "active"){
+            if (jobSections[i].sectionState == "active"){
                 removeChildItemDet(jobSectionSubMenu)
-                toggleState = "inactive";
+                jobSections[i].sectionState = "inactive";
+                
                 } else{
                    
                     toggleJobSectionContent(jobSections[i], jobSectionSubMenu, player);
-                    toggleState = "active";
+                    jobSections[i].sectionState = "active"
                 }
            
            
         })
+
+        jobsWindowLeftPanel.appendChild(jobSection);
+        jobsWindowLeftPanel.appendChild(jobSectionSubMenu);
         
         
     }
@@ -1136,24 +1150,29 @@ export function  populateJobSections(player){
 }
 
 
-let eventListener = false;
-let applyJob = function(){
-
-}
 
 //toggle job section jobs
+
 
 function toggleJobSectionContent(section, sectionDom, player){
     for (let i=0; i<section.jobs.length;i++){
 
         const jobItem = document.createElement("div");
         const jobItemLvl = document.createElement("div");
+        const jobItemTop = document.createElement("div");
+        const jobItemContent = document.createElement("div");
+        const jobItemBar = document.createElement("div");
 
+        jobItem.classList.add("job-left-panel");
+        jobItemLvl.classList.add("job-left-panel-lvl")
+        jobItemTop.classList.add("job-left-panel-top");
+        jobItemContent.classList.add("job-left-panel-content");
+        jobItemBar.classList.add("job-left-panel-bar")
 
 
         if (player.checkPlayerItem(section.jobs[i].itemReq) !== true || player.checkPlayerSkill(section.jobs[i].skillReq) !== true){
 
-            jobItem.style.opacity = "50%";
+            jobItemContent.style.opacity = "50%";
 
             }
         
@@ -1163,19 +1182,42 @@ function toggleJobSectionContent(section, sectionDom, player){
 
         jobItemLvl.innerText = player[jobIdentifier].level;
         jobItemLvl.style.fontSize = "12px";
-        jobItem.classList.add("job-left-panel");
-        sectionDom.appendChild(jobItem);
-        jobItem.appendChild(jobItemLvl);
+
+        function jobWindowLvlBar (){
+            let jobBarLvl = player[jobIdentifier].level
+
+        if (player[jobIdentifier].level == 1){
+
+       
+            jobItemBar.style.width = player.checkCurrentSkillExp(player[jobIdentifier])/player.nextLevel(jobBarLvl+1)*100 + "%";
+
+
+        } else {
+            jobItemBar.style.width = ((player.checkCurrentSkillExp(player[jobIdentifier])-player.nextLevel(jobBarLvl))/(player.nextLevel(jobBarLvl + 1)- player.nextLevel(jobBarLvl))*100)  + "%";
+        }
+        }
+
+        jobWindowLvlBar();
+
+
+        console.log(jobItemBar.style.width);
+     
 
         
 
-        jobItem.addEventListener("click", function(){
+        jobItemContent.addEventListener("click", function(){
         
 
-                populateJobDetail(section.jobs[i], player, applyJob)
+                populateJobDetail(section.jobs[i], player)
             
         })
 
+        sectionDom.appendChild(jobItemContent);
+        jobItemTop.appendChild(jobItem)
+        jobItemTop.appendChild(jobItemLvl)
+        jobItemContent.appendChild(jobItemTop)
+        jobItemContent.appendChild(jobItemBar)
+       
         
 
     }
@@ -1208,8 +1250,7 @@ const jobBuff = document.createElement("div");
 
 
 
-
-function populateJobDetail(job, player, applyJob){
+function populateJobDetail(job, player){
 
         const jobApplyBtnSection =  document.createElement("div");
         const jobApplyBtn = document.createElement("button")
@@ -1231,7 +1272,18 @@ function populateJobDetail(job, player, applyJob){
         jobReq.innerText = job.jobReq;
         jobDesc.innerText = job.jobDesc;
         jobBuff.innerText = job.jobBuff;
-        jobApplyBtn.innerText = "APPLY";
+        jobApplyBtn.innerText = "APPLY"
+
+        if (job.state == "inactive"){
+            jobApplyBtn.style.backgroundColor = "#84a699";
+            jobApplyBtn.innerText = "APPLY"
+
+        } else if(job.state == "active"){
+            jobApplyBtn.style.backgroundColor = "red";
+            jobApplyBtn.innerText = "STOP"
+            jobApplyBtn.style.color = "white";
+        }
+        
         
 
         jobTitleTag.innerText = "JOB TITLE";
@@ -1241,23 +1293,28 @@ function populateJobDetail(job, player, applyJob){
         jobBuffTag.innerText = "EFFECTS";
 
 
-  //job button functionality
+        //job button functionality
+        
+    
 
- 
-
-    applyJob = function applyJobFunction(){
+    let applyJob = function applyJobFunction(){
     
 
 
         if (player.currentActivity == job.jobActivity){
             player.endActivity()
-            
+            jobApplyBtn.style.backgroundColor = "#84a699";
+            jobApplyBtn.innerText = "APPLY"
+            job.state = "inactive"
             
             return;
         } 
 
         if (player.checkPlayerItem(job.itemReq) == true && player.checkPlayerSkill(job.skillReq) == true && player.checkPlayerItem(job.itemConsum == true)){
             player.work(job.jobName);
+            jobApplyBtn.style.backgroundColor = "red";
+            jobApplyBtn.innerText = "STOP"
+            job.state = "active"
         } else {
             player.displayAlert("You don't meet the requirements for this job")
         }
