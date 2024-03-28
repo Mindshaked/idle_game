@@ -1487,6 +1487,29 @@ body{
     align-content: flex-start;
 }
 
+#inventory-main-window-content{
+    width: 450px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#main-window-content-searchbar-div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+#main-window-content-searchbar{
+    opacity: 70%;
+    height: 15px;
+    background-color:#221e1e;
+    border: 1px solid #d4ca97;
+    color: #d4ca97;
+    font-size: 11px;
+}
+
 
 #inventory-window-name{
     width: 494px;
@@ -1509,7 +1532,7 @@ body{
     position: absolute;
     bottom:  0%;
     left: 3%;
-    width: 400px;
+    width: 80%;
     height: 130px;
     background-color: #2c2727;
     padding: 30px;

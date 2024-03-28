@@ -1854,21 +1854,21 @@ drag_div(statsWindowName, statsWindowContainer)
 
 // Inventory functionality
 
-import {populateInventorySections, toggleInventoryWindow, inventoryWindowbtn, inventoryWindowContainer, inventoryMainWindow, inventoryWindowName, inventoryWindowCloseBtn, inventoryWindowItemDetail} from "./inventory.js"
+import {populateInventorySections, toggleInventoryWindow, inventoryWindowbtn, inventoryWindowContainer, inventoryMainWindow, inventoryWindowName, inventoryWindowCloseBtn, inventoryMainWindowContent} from "./inventory.js"
 
 
 
 inventoryWindowbtn.addEventListener("click", function(){
 
     toggleInventoryWindow();
-    removeChildItemDet(inventoryMainWindow);
+    removeChildItemDet(inventoryMainWindowContent);
     populateInventorySections(player);
     
 })
 
 inventoryWindowCloseBtn.addEventListener("click", function(){
     toggleInventoryWindow()
-    removeChildItemDet(inventoryMainWindow);
+    removeChildItemDet(inventoryMainWindowContent);
   
     populateInventorySections(player);
 })
