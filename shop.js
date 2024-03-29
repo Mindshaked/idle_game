@@ -28,6 +28,111 @@ export function toggleShopWindow(){
 
 //shop array
 
+let basicSet = {
+    sectionName: "BASIC SET",
+    items:
+        [{
+            shopType: "central-furniture",
+            itemPrice: 50,
+            itemSellPrice: 30,
+            itemName: "Basic central table",
+            itemImg: "resources/centraltable.png",
+            itemBonus: ["pcBang", "payModifier", 1],
+            itemDescription: "a normal table",
+            itemReq: [],
+            reqText: "None"
+        },
+        {
+            shopType: "book-shelf",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Basic book shelf",
+            itemImg: "resources/bookshelfBasic.png",
+            itemBonus: [],
+            itemDescription: "a normal book shelf",
+            itemReq: [],
+            reqText: "None"
+        },
+        {
+            shopType: "tv-stand",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Basic TV stand",
+            itemImg: "resources/tvstandBasic.png",
+            itemBonus: [],
+            itemDescription: "a normal TV stand",
+            itemReq: [],
+            reqText: "None"
+        },
+        {
+            shopType: "on-tv-stand",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Basic retro TV",
+            itemImg: "resources/retrotv.png",
+            itemBonus: [],
+            itemDescription: "a retro TV with a lot of charm",
+            itemReq: [],
+            reqText: "None"
+        },
+        {
+            shopType: "desk",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Basic desk",
+            itemImg: "resources/desk.png",
+            itemBonus: [],
+            itemDescription: "a basic desk",
+            itemReq: [],
+            reqText: "None"
+        },
+        {
+            shopType: "on-desk",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Basic retro computer",
+            itemImg: "resources/retrocomputer.png",
+            itemBonus: [],
+            itemDescription: "a retro computer",
+            itemReq: [],
+            reqText: "None"
+        },
+        {
+            shopType: "shelf",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Basic shelf",
+            itemImg: "resources/shelf.png",
+            itemBonus: [],
+            itemDescription: "a basic shelf",
+            itemReq: [],
+            reqText: "None"
+        },
+        {
+            shopType: "lamp",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Basic lamp",
+            itemImg: "resources/lamp.png",
+            itemBonus: [],
+            itemDescription: "a basic lamp",
+            itemReq: [],
+            reqText: "None"
+        },
+        {
+            shopType: "chair",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Basic chair",
+            itemImg: "resources/chair.png",
+            itemBonus: [],
+            itemDescription: "a basic chair",
+            itemReq: [],
+            reqText: "None"
+        }
+    ]
+}
+
 let socialSet = {
     sectionName: "SOCIAL SET",
     items:
@@ -39,7 +144,8 @@ let socialSet = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "central-furniture",
@@ -49,7 +155,8 @@ let socialSet = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -65,7 +172,8 @@ let artSet = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "central-furniture",
@@ -75,7 +183,8 @@ let artSet = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -90,7 +199,8 @@ let techSet = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "central-furniture",
@@ -100,7 +210,8 @@ let techSet = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -115,7 +226,8 @@ let emotionSet = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "central-furniture",
@@ -125,7 +237,8 @@ let emotionSet = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -140,7 +253,8 @@ let physicalSet = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "central-furniture",
@@ -150,7 +264,8 @@ let physicalSet = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -165,7 +280,8 @@ let militarySet = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "central-furniture",
@@ -175,7 +291,8 @@ let militarySet = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -190,7 +307,8 @@ let scienceSet = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "central-furniture",
@@ -200,7 +318,8 @@ let scienceSet = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -216,7 +335,8 @@ let deskItems = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "on-desk",
@@ -226,7 +346,8 @@ let deskItems = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -242,7 +363,8 @@ let landscapeHolograms = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "central-furniture",
@@ -252,7 +374,8 @@ let landscapeHolograms = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -268,7 +391,8 @@ let pets = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "central-furniture",
@@ -278,7 +402,8 @@ let pets = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -294,7 +419,8 @@ let miscFurniture = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "central-furniture",
@@ -304,7 +430,8 @@ let miscFurniture = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -320,7 +447,8 @@ let wallItems = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "central-furniture",
@@ -330,7 +458,8 @@ let wallItems = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -346,7 +475,8 @@ let shelfDecorations = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "central-furniture",
@@ -356,7 +486,8 @@ let shelfDecorations = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -372,7 +503,8 @@ let tvStandItems = {
             itemImg: "resources/centraltable.png",
             itemBonus: ["pcBang", "payModifier", 1],
             itemDescription: "a normal table",
-            itemReq: "None",
+            itemReq: [],
+            reqText: "None"
         },
         {
             shopType: "central-furniture",
@@ -382,7 +514,8 @@ let tvStandItems = {
             itemImg: "resources/centraltable.png",
             itemBonus: [],
             itemDescription: "a normal table",
-            itemReq: "None"
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }
@@ -390,7 +523,7 @@ let tvStandItems = {
 
 
 
-export let shopInventory = [socialSet, artSet, techSet, emotionSet, physicalSet, militarySet, scienceSet, deskItems, landscapeHolograms, pets, miscFurniture, wallItems, shelfDecorations, tvStandItems]
+export let shopInventory = [basicSet, socialSet, artSet, techSet, emotionSet, physicalSet, militarySet, scienceSet, deskItems, landscapeHolograms, pets, miscFurniture, wallItems, shelfDecorations, tvStandItems]
 
 
 
@@ -511,11 +644,17 @@ function populateItemDetail(item, player){
       // item buy button functionality
 
      
-      
+     
       const buyItemFunc = function buyItemFunction(){
        
-        let newFurniture = new furniture(item.itemPrice, item.itemSellPrice, item.itemName, item.shopType, item.itemImg, item.itemBonus);
-        player.buyFurni(newFurniture, 1);
+
+        if (player.checkPlayerSkill(item.itemReq)){
+            let newFurniture = new furniture(item.itemPrice, item.itemSellPrice, item.itemName, item.shopType, item.itemImg, item.itemBonus);
+            player.buyFurni(newFurniture, 1);
+        } else {
+            console.log("You don't meet the requirements")
+        }
+       
     
          }
 

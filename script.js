@@ -10,7 +10,7 @@ export class furniture {
         this.sellPrice = sellPrice;
         this.stats = "+1 Sanity"
         this.description = "None";
-        this.requirements = "None";
+        this.requirements = [];
         this.type = type;
         this.source = source;
         this.equipped = false;
@@ -199,8 +199,7 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            badMoodModifier: 1,
-            goodMoodModifier: 1
+            jobPayModifier: 1
         }
         
         this.tech = {
@@ -208,8 +207,7 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            badMoodModifier: 1,
-            goodMoodModifier: 1
+            jobPayModifier: 1
         }
 
         this.art = {
@@ -217,8 +215,7 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            badMoodModifier: 1,
-            goodMoodModifier: 1
+            jobPayModifier: 1
         }
 
         this.athletics = {
@@ -226,8 +223,7 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            badMoodModifier: 1,
-            goodMoodModifier: 1
+            jobPayModifier: 1
         }
 
         this.science = {
@@ -235,8 +231,7 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            badMoodModifier: 1,
-            goodMoodModifier: 1
+            jobPayModifier: 1
         }
 
         this.military = {
@@ -244,8 +239,7 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            badMoodModifier: 1,
-            goodMoodModifier: 1
+            jobPayModifier: 1
         }
 
         this.emotion = {
@@ -253,8 +247,7 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            badMoodModifier: 1,
-            goodMoodModifier: 1
+            jobPayModifier: 1
         }
 
         this.playerSkills = [this.social, this.tech, this.art, this.athletics, this.science, this.military, this.emotion]
@@ -282,7 +275,7 @@ class Player {
         this.rogueAiHunter = new Job("Rogue AI Hunter", "job", "stopping the end of the world", 80);
         this.nanomachineSpecialist = new Job("Nanomachine Specialist", "job", "making very little machines", 80);
 
-        this.aiGovenor = new Job("AI Governor", "job", "ruling the whole society through AI", 200);
+        this.aiGovernor = new Job("AI Governor", "job", "ruling the whole society through AI", 200);
         this.cyberTerrorist = new Job("Cyberterrorist", "job", "hacking for a greater cause", 200);
         
 
@@ -574,11 +567,11 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.relaxed,
-                    "change": 0.01*this.tech.goodMoodModifier,
+                    "change": 0.01*this.relaxed.modifier,
                 },
                 {
                     "mood" : this.depressed,
-                    "change": 0.02*this.tech.badMoodModifier,
+                    "change": 0.02*this.depressed.modifier,
                 }
             ]
 
@@ -588,7 +581,7 @@ class Player {
             let jobItemPool = []
             let jobItemConsum = jobSections[0].jobs[0].itemConsum
     
-
+            this.pcBang.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.pcBang, this.pcBang.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.pcBang.name;
             
@@ -607,15 +600,15 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.depressed,
-                    "change": 0.01*this.tech.badMoodModifier,
+                    "change": 0.01*this.depressed.modifier,
                 },
                 {
                     "mood" : this.stressed,
-                    "change": 0.02*this.tech.badMoodModifier,
+                    "change": 0.02*this.stressed.modifier,
                 },
                 {
                     "mood" : this.accomplished,
-                    "change": 0.03*this.tech.goodMoodModifier,
+                    "change": 0.03*this.accomplished.modifier,
                 }
             ]
 
@@ -625,7 +618,7 @@ class Player {
             let jobItemPool = []
             let jobItemConsum = []
     
-
+            this.itTechnician.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.itTechnician, this.itTechnician.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.itTechnician.name;
 
@@ -641,15 +634,15 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.accomplished,
-                    "change": 0.01*this.tech.goodMoodModifier,
+                    "change": 0.01*this.accomplished.modifier
                 },
                 {
                     "mood" : this.excited,
-                    "change": 0.01*this.tech.goodMoodModifier,
+                    "change": 0.01*this.excited.modifier,
                 },
                 {
                     "mood" : this.stressed,
-                    "change" : 0.03*this.tech.badMoodModifier,
+                    "change" : 0.03*this.stressed.modifier,
                 }
             ]
 
@@ -659,6 +652,7 @@ class Player {
             let jobItemPool = []
             let jobItemConsum = []
 
+            this.esportsPlayer.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.esportsPlayer, this.esportsPlayer.jobPay(), jobSkills, jobMood, jobItemPool), jobItemConsum
             this.job = this.esportsPlayer.name;
 
@@ -674,15 +668,15 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.stressed,
-                    "change": 0.01*this.tech.badMoodModifier,
+                    "change": 0.01*this.stressed.modifier,
                 },
                 {
                     "mood" : this.excited,
-                    "change": 0.02*this.tech.goodMoodModifier,
+                    "change": 0.02*this.excited.modifier,
                 },
                 {
                     "mood" : this.lonely,
-                    "change" : 0.01*this.tech.badMoodModifier,
+                    "change" : 0.01*this.lonely.modifier,
                 }
             ]
 
@@ -692,6 +686,7 @@ class Player {
             let jobItemPool = []
             let jobItemConsum = []
 
+            this.mechaMechanic.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.mechaMechanic, this.mechaMechanic.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.mechaMechanic.name;
 
@@ -708,15 +703,15 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.stressed,
-                    "change": 0.01*this.tech.badMoodModifier,
+                    "change": 0.01*this.stressed.modifier,
                 },
                 {
                     "mood" : this.accomplished,
-                    "change": 0.03*this.tech.goodMoodModifier,
+                    "change": 0.03*this.accomplished.modifier,
                 },
                 {
                     "mood" : this.lonely,
-                    "change" : 0.01*this.tech.badMoodModifier,
+                    "change" : 0.01*this.lonely.modifier,
                 }
             ]
 
@@ -726,6 +721,7 @@ class Player {
             let jobItemPool = []
             let jobItemConsum = []
 
+            this.videogameDev.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.videogameDev, this.videogameDev.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.videogameDev.name;
 
@@ -742,15 +738,15 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.accomplished,
-                    "change": 0.02*this.tech.goodMoodModifier,
+                    "change": 0.02*this.accomplished.modifier,
                 },
                 {
                     "mood" : this.lonely,
-                    "change": 0.02*this.tech.badMoodModifier,
+                    "change": 0.02*this.lonely.modifier,
                 },
                 {
                     "mood" : this.stressed,
-                    "change" : 0.01*this.tech.badMoodModifier,
+                    "change" : 0.01*this.stressed.modifier,
                 }
             ]
 
@@ -760,6 +756,7 @@ class Player {
             let jobItemPool = []
             let jobItemConsum = []
 
+            this.aiSpecialist.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.aiSpecialist, this.aiSpecialist.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.aiSpecialist.name;
 
@@ -776,15 +773,15 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.accomplished,
-                    "change": 0.01*this.tech.goodMoodModifier,
+                    "change": 0.01*this.accomplished.modifier,
                 },
                 {
                     "mood" : this.afraid,
-                    "change": 0.03*this.tech.badMoodModifier,
+                    "change": 0.03*this.afraid.modifier
                 },
                 {
                     "mood" : this.accompanied,
-                    "change" : 0.02*this.tech.goodMoodModifier,
+                    "change" : 0.02*this.accompanied.modifier,
                 }
             ]
 
@@ -794,6 +791,7 @@ class Player {
             let jobItemPool = []
             let jobItemConsum = []
 
+            this.streetRacing.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.streetRacing, this.streetRacing.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.streetRacing.name;
 
@@ -810,15 +808,15 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.accomplished,
-                    "change": 0.04*this.tech.goodMoodModifier,
+                    "change": 0.04*this.accomplished.modifier,
                 },
                 {
                     "mood" : this.lonely,
-                    "change": 0.01*this.tech.badMoodModifier,
+                    "change": 0.01*this.lonely.modifier,
                 },
                 {
                     "mood" : this.afraid,
-                    "change" : 0.02*this.tech.badMoodModifier,
+                    "change" : 0.02*this.afraid.modifier,
                 }
             ]
 
@@ -828,6 +826,7 @@ class Player {
             let jobItemPool = []
             let jobItemConsum = []
 
+            this.cyberSecurity.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.cyberSecurity, this.cyberSecurity.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.cyberSecurity.name;
 
@@ -844,15 +843,15 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.accomplished,
-                    "change": 0.02*this.tech.goodMoodModifier,
+                    "change": 0.02*this.accomplished.modifier,
                 },
                 {
                     "mood" : this.excited,
-                    "change": 0.04*this.tech.goodMoodModifier,
+                    "change": 0.04*this.excited.modifier,
                 },
                 {
                     "mood" : this.stressed,
-                    "change" : 0.03*this.tech.badMoodModifier,
+                    "change" : 0.03*this.stressed.modifier,
                 }
             ]
 
@@ -862,6 +861,7 @@ class Player {
             let jobItemPool = []
             let jobItemConsum = []
 
+            this.metalBubble.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.metalBubble, this.metalBubble.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.metalBubble.name;
 
@@ -878,19 +878,19 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.lonely,
-                    "change": 0.03*this.tech.badMoodModifier,
+                    "change": 0.03*this.lonely.modifier,
                 },
                 {
                     "mood" : this.depressed,
-                    "change": 0.01*this.tech.badMoodModifier,
+                    "change": 0.01*this.depressed.modifier,
                 },
                 {
                     "mood" : this.afraid,
-                    "change" : 0.01*this.tech.badMoodModifier,
+                    "change" : 0.01*this.afraid.modifier,
                 },
                 {
                     "mood" : this.accomplished,
-                    "change" : 0.06*this.tech.goodMoodModifier,
+                    "change" : 0.06*this.accomplished.modifier,
                 }
             ]
 
@@ -900,6 +900,7 @@ class Player {
             let jobItemPool = []
             let jobItemConsum = []
 
+            this.rogueAiHunter.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.rogueAiHunter, this.rogueAiHunter.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.rogueAiHunter.name;
 
@@ -916,11 +917,11 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.depressed,
-                    "change": 0.03*this.tech.badMoodModifier,
+                    "change": 0.03*this.depressed.modifier,
                 },
                 {
                     "mood" : this.accomplished,
-                    "change": 0.04*this.tech.goodMoodModifier,
+                    "change": 0.04*this.accomplished.modifier,
                 }
             ]
 
@@ -930,6 +931,7 @@ class Player {
             let jobItemPool = []
             let jobItemConsum = []
 
+            this.nanomachineSpecialist.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.nanomachineSpecialist, this.nanomachineSpecialist.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.nanomachineSpecialist.name;
 
@@ -946,11 +948,11 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.lonely,
-                    "change": 0.04*this.tech.badMoodModifier,
+                    "change": 0.04*this.lonely.modifier,
                 },
                 {
                     "mood" : this.excited,
-                    "change": 0.04*this.tech.goodMoodModifier,
+                    "change": 0.04*this.excited.modifier,
                 }
             ]
 
@@ -960,8 +962,9 @@ class Player {
             let jobItemPool = []
             let jobItemConsum = []
 
-            this.startActivity(this.aiGovenor, this.aiGovenor.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
-            this.job = this.aiGovenor.name;
+            this.aiGovernor.payModifier *= this.tech.jobPayModifier;
+            this.startActivity(this.aiGovernor, this.aiGovernor.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.aiGovernor.name;
         } else if(job == "Cyberterrorist"){
             let jobSkills = [
                 {
@@ -974,11 +977,11 @@ class Player {
             let jobMood = [
                 {
                     "mood" : this.afraid,
-                    "change": 0.04*this.tech.badMoodModifier,
+                    "change": 0.04*this.afraid.modifier,
                 },
                 {
                     "mood" : this.accomplished,
-                    "change": 0.04*this.tech.goodMoodModifier,
+                    "change": 0.04*this.accomplished.modifier,
                 }
             ]
 
@@ -988,6 +991,7 @@ class Player {
             let jobItemPool = []
             let jobItemConsum = []
 
+            this.cyberTerrorist.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.cyberTerrorist, this.cyberTerrorist.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.cyberTerrorist.name;
         }
@@ -1418,11 +1422,13 @@ function placeFurni(selectedFurniture, slot, slotArray){
 
     selectedFurniture.applyEffects("equipped");
 
+
     
     player.cleanInventory(slot)
     let furniImg = document.createElement("img");
     furniImg.src = selectedFurniture.source
     slot.appendChild(furniImg)
+        
 
    
    
@@ -1476,6 +1482,14 @@ tvStandSlot.addEventListener("click", function (){
     
 });
 
+const onTVStandSlot = document.getElementById("on-tv-stand");
+let onTVStandItem = [];
+
+onTVStandSlot.addEventListener("click", function (){
+        furniSelect("on-tv-stand", onTVStandSlot, onTVStandItem)
+    
+});
+
 const deskSlot = document.getElementById("desk");
 let deskItem = [];
 
@@ -1492,6 +1506,46 @@ onDeskSlot.addEventListener("click", function (){
     
 });
 
+const shelf1Slot = document.getElementById("shelf1");
+let shelf1Item = [];
+
+shelf1Slot.addEventListener("click", function (){
+        furniSelect("shelf", shelf1Slot, shelf1Item)
+    
+});
+
+const shelf2Slot = document.getElementById("shelf2");
+let shelf2Item = [];
+
+shelf2Slot.addEventListener("click", function (){
+        furniSelect("shelf", shelf2Slot, shelf2Item)
+    
+});
+
+const miscSlot = document.getElementById("miscellaneous");
+let miscItem = [];
+
+miscSlot.addEventListener("click", function (){
+        furniSelect("miscellaneous", miscSlot, miscItem)
+    
+});
+
+const onTableSlot = document.getElementById("on-table");
+let onTableItem = [];
+
+onTableSlot.addEventListener("click", function (){
+    furniSelect("on-table", onTableSlot, onTableItem)
+
+});
+
+const chairSlot = document.getElementById("chair");
+let chairItem = [];
+
+chairSlot.addEventListener("click", function (){
+    furniSelect("chair", chairSlot, chairItem)
+
+});
+
 const bookShelfSlot1 = document.getElementById("book-shelf1");
 const bookShelfSlot2 = document.getElementById("book-shelf2");
 const bookShelfSlot3 = document.getElementById("book-shelf3");
@@ -1499,6 +1553,11 @@ const onShelfSlot1 = document.getElementById("on-shelf1");
 const onShelfSlot2 = document.getElementById("on-shelf2");
 const onShelfSlot3 = document.getElementById("on-shelf3");
 const onShelfSlot4 = document.getElementById("on-shelf4");
+const wallItemSlot1 = document.getElementById("wall-item1");
+const wallItemSlot2 = document.getElementById("wall-item2");
+const wallItemSlot3 = document.getElementById("wall-item3");
+const wallItemSlot4 = document.getElementById("wall-item4");
+
 
 let bookShelfItem1 = [];
 let bookShelfItem2 = [];
@@ -1507,6 +1566,11 @@ let onShelfItem1 = [];
 let onShelfItem2 = [];
 let onShelfItem3 = [];
 let onShelfItem4 = [];
+let wallItem1 = [];
+let wallItem2 = [];
+let wallItem3 = [];
+let wallItem4 = [];
+
 
 bookShelfSlot1.addEventListener("click", function (){
         furniSelect("decoration", bookShelfSlot1, bookShelfItem1)
@@ -1542,6 +1606,27 @@ onShelfSlot4.addEventListener("click", function (){
     furniSelect("decoration", onShelfSlot4, onShelfItem4)
 
 });
+
+wallItemSlot1.addEventListener("click", function (){
+    furniSelect("wall", wallItemSlot1, wallItem1)
+
+});
+
+wallItemSlot2.addEventListener("click", function (){
+    furniSelect("wall", wallItemSlot2, wallItem2)
+
+});
+
+wallItemSlot3.addEventListener("click", function (){
+    furniSelect("wall", wallItemSlot3, wallItem3)
+
+});
+
+wallItemSlot4.addEventListener("click", function (){
+    furniSelect("wall", wallItemSlot4, wallItem4)
+
+});
+
 
 
 /*
@@ -1586,6 +1671,11 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
         emptyFurni.addEventListener("click", function(){
             if (typeSlot.hasChildNodes() == true){
             typeSlot.removeChild(typeSlot.firstElementChild)
+            let elementType = document.createElement("div");
+            elementType.classList.add("element-type");
+            elementType.innerText =  typeSlot.id
+            typeSlot.appendChild(elementType);
+
             }
             emptyFurni.style.outline = "3px solid blue";
             for (let i = 0; i< typeArray.length; i++){
@@ -1673,21 +1763,53 @@ function furniSelect(type, typeSlot, typeSlotArray){
 
 const editButton = document.getElementById("edit-button");
 const gridElements = document.getElementsByClassName("grid-slots");
+
+
+
 editButton.addEventListener("click", function(){
 
     if (gridElements[0].classList.contains("grid-slots-on") == true){
         for(let i=0; i<gridElements.length;i++){
         gridElements[i].pointerEvents = "initial";
-        gridElements[i].classList.remove("grid-slots-on")
+        gridElements[i].classList.remove("grid-slots-on");
+        gridElements[i].style.opacity = "100%";
+        while (gridElements[i].firstChild && gridElements[i].firstChild.classList.contains("element-type")){
+            gridElements[i].removeChild(gridElements[i].firstChild)
         }
+        
+        }
+
+        
+
+    
     } else{
-
    
-
     for (let i = 0; i < gridElements.length; i++){
         gridElements[i].classList.add("grid-slots-on");
         gridElements[i].pointerEvents = "none";
+
+        let elementType = document.createElement("div");
+        elementType.classList.add("element-type");
+        elementType.innerText =  gridElements[i].id
+
+        
+       
+
+        gridElements[i].addEventListener("mouseover", function(){
+            gridElements[i].style.backgroundColor = "darkblue";
+            gridElements[i].style.opacity = "100%";
+        })
+
+        gridElements[i].addEventListener("mouseout", function(){
+            gridElements[i].style.backgroundColor = "initial";
+            gridElements[i].style.opacity = "70%";
+        })
+
+        gridElements[i].appendChild(elementType);
+
         }
+
+        
    
     }  
 })

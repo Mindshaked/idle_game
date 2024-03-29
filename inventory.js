@@ -239,6 +239,28 @@ export function populateInventorySections(player){
         inventoryItemNum.classList.add("inventory-item-num");
         inventoryItemNum.innerText = player.inventory[i].quantity;
 
+        inventoryItem.addEventListener("mouseover", function(){
+           
+            let inventoryItemName = document.createElement("div");
+            inventoryItemName.classList.add("inventory-item-name");
+            inventoryItemName.innerText = player.inventory[i].name;
+            inventoryMainWindow.appendChild(inventoryItemName)
+            
+        })
+
+        inventoryItem.addEventListener("mouseout", function(){
+
+            let inventoryItemNameRemove = document.querySelectorAll(".inventory-item-name");
+            inventoryItemNameRemove.forEach(item => {
+                item.remove();
+            })
+            console.log("item removed")
+            
+            
+        })
+
+
+
        
 
         inventoryItem.addEventListener("click", function(){
