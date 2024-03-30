@@ -145,7 +145,7 @@ export let techJobSection = {
         {
             jobName: "AI Governor",
             jobPay: 200,
-            jobIdentifier: "aiGovenor",
+            jobIdentifier: "aiGovernor",
             skillReq: ["rogueAiHunter", 80, "aiSpecialist", 85, "Machine Control", 60],
             jobReq: "Rogue AI Hunter lvl 80, AI Specialist lvl 85, Machine Control lvl 60, 1 AI Brain Implant",
             itemReq: ["AI Brain Implant", 1],

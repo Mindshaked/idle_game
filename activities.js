@@ -35,18 +35,24 @@ let basicActivitiesSection = {
         [{
             activityName: "Take a walk",
             activityCost: 5,
+            activityConsum: [],
             activityReq: [],
             skillReq: [],
             activityDesc: "an accessible and easy way to exercise and release stress",
-            activity: "walk"
+            activity: "walking",
+            activityIdentifier: "walk",
+            activityBuff: []
         },
         {
             activityName: "Garbage Collector",
             activityCost: 50,
+            activityConsum: [],
             activityReq: [],
             skillReq: [],
             activityDesc: "You might smell bad when coming back home, but it is what it is",
-            activity: "garbage"
+            activity: "garbage",
+            activityIdentifier: "garbage",
+            activityBuff: []
         }
     ]
 }
@@ -155,28 +161,50 @@ export function populateActivitiesDetail(activity, player){
         activitiesReqTag.innerText = "REQUIREMENTS: ";
         activitiesDescTag.innerText = "DESCRIPTION: ";
 
+        if (activity.state == "inactive"){
+            activitiesStartBtn.style.backgroundColor = "#84a699";
+            activitiesStartBtn.innerText = "START"
 
-        if ( activitiesStartBtn.classList.contains("event-added")){
-            return;
-        } else{
-            activitiesStartBtn.addEventListener("click", function() {
-                activitiesStartBtn.classList.add("event-added");    
-                if (player.currentActivity == activity.activity){
-                    player.endActivity()
-                    return;
-                } 
-            
-                if (player.checkPlayerItem(activity.activityReq) == true && player.checkPlayerSkill(activity.skillReq) == true){
-                    player.activity(activity.activity);
-                } else {
-                    alert("You don't meet the requirements for this job")
-                }
-                
-               
-              
-            
-            });
+        } else if(activity.state == "active"){
+            activitiesStartBtn.style.backgroundColor = "red";
+            activitiesStartBtn.innerText = "STOP"
+            activitiesStartBtn.style.color = "white";
         }
+
+
+
+        let startActivity = function startActivityFunction(){
+            if (player.currentActivity == activity.activityIdentifier){
+                player.endActivity()
+                activitiesStartBtn.style.backgroundColor = "#84a699";
+                activitiesStartBtn.innerText = "START"
+                activity.state = "inactive";
+
+                console.log("activity stopped")
+                return;
+            } 
+        
+            if (player.checkPlayerItem(activity.activityReq) == true && player.checkPlayerSkill(activity.skillReq) == true && player.checkPlayerItem(activity.itemConsum == true)){
+                player.activity(activity.activityIdentifier);
+                activitiesStartBtn.style.backgroundColor = "red";
+                activitiesStartBtn.innerText = "STOP"
+                activity.state = "active"
+
+                console.log(player.currentActivity + activity.activity)
+            } else {
+                alert("You don't meet the requirements for this activity")
+            }
+            
+           
+          
+        
+        }
+
+
+        
+        activitiesStartBtn.addEventListener("click", startActivity);
+      
+
 
 
         

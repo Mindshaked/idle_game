@@ -292,6 +292,7 @@ class Player {
             exp: 0,
             costModifier: 1,
             cost: 0,
+            state: "inactive",
             activityCost(){
                 let finalCost = this.cost * this.costModifier;
                 return finalCost;
@@ -531,7 +532,7 @@ class Player {
                 }
             ]
 
-            let centralTable = new furniture(shopInventory.socialSet.items[0].itemPrice, shopInventory.socialSet.items[0].itemSellPrice, shopInventory.socialSet.items[0].itemName, shopInventory.socialSet.items[0].shopType, shopInventory.socialSet.items[0].itemImg, shopInventory.socialSet.items[0].itemBonus)
+            let centralTable = new furniture(shopInventory[1].items[0].itemPrice, shopInventory[1].items[0].itemSellPrice, shopInventory[1].items[0].itemName, shopInventory[1].items[0].shopType, shopInventory[1].items[0].itemImg, shopInventory[1].items[0].itemBonus)
             let activityItemPool = [centralTable, 5]
             let activityItemConsum = jobSections[0].jobs[0].itemConsum
     
@@ -1097,7 +1098,7 @@ class Player {
       
         
         player.displayAlert("You started " + activity.action);
-        this.currentActivity = activity.action;
+        this.currentActivity = activity.name;
 
 
         this.interval = setInterval(() => {

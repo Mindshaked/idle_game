@@ -556,7 +556,8 @@ const shopItemReqTag = document.getElementById("furniture-shop-req-tag")
 
 
 
-
+let menuHoverSound = new Audio("./resources/sounds/Minimalist3.mp3")
+let menuClickSound = new Audio("./resources/sounds/Minimalist7.mp3")
 
 
 
@@ -568,6 +569,21 @@ export function  populateShopSections(player){
         shopSection.innerText = shopInventory[i].sectionName;
         shopSection.classList.add("shop-section-name")
         shopSectionsWindow.appendChild(shopSection);
+
+        shopSection.addEventListener("mouseover", function(){
+            menuHoverSound.play();
+        })
+
+        shopSection.addEventListener("click", function(){
+            menuClickSound.play();
+        })
+
+        shopSection.addEventListener("mouseout", function(){
+            menuHoverSound.currentTime = 0;
+            menuHoverSound.play();
+        })
+
+      
         
         
         shopSection.addEventListener("click", function(){
