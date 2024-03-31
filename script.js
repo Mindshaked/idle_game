@@ -199,7 +199,10 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            jobPayModifier: 1
+            jobPayModifier: 1,
+            earnExp(exp){
+                this.exp += exp;
+            }
         }
         
         this.tech = {
@@ -207,7 +210,10 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            jobPayModifier: 1
+            jobPayModifier: 1,
+            earnExp(exp){
+                this.exp += exp;
+            }
         }
 
         this.art = {
@@ -215,7 +221,10 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            jobPayModifier: 1
+            jobPayModifier: 1,
+            earnExp(exp){
+                this.exp += exp;
+            }
         }
 
         this.athletics = {
@@ -223,7 +232,10 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            jobPayModifier: 1
+            jobPayModifier: 1,
+            earnExp(exp){
+                this.exp += exp;
+            }
         }
 
         this.science = {
@@ -231,7 +243,10 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            jobPayModifier: 1
+            jobPayModifier: 1,
+            earnExp(exp){
+                this.exp += exp;
+            }
         }
 
         this.military = {
@@ -239,7 +254,10 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            jobPayModifier: 1
+            jobPayModifier: 1,
+            earnExp(exp){
+                this.exp += exp;
+            }
         }
 
         this.emotion = {
@@ -247,7 +265,10 @@ class Player {
             level: 1,
             exp: 0,
             modifier: 1,
-            jobPayModifier: 1
+            jobPayModifier: 1,
+            earnExp(exp){
+                this.exp += exp;
+            }
         }
 
         this.playerSkills = [this.social, this.tech, this.art, this.athletics, this.science, this.military, this.emotion]
@@ -481,6 +502,19 @@ class Player {
         }
         return true;
        
+    }
+
+    checkPlayerItemAmount(itemName){
+        let itemIsTrue = (item) => item.name == itemName;
+        let itemIndex = this.inventory.findIndex(itemIsTrue);
+
+        if (itemIndex == -1){
+            return 0;
+        } else{
+            let itemAmount = this.inventory[itemIndex].quantity;
+            return  itemAmount;
+        }
+
     }
 
     consumePlayerItem(items){

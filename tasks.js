@@ -10,6 +10,7 @@ export const tasksWindowSectionDetailBanner = document.getElementById("tasks-win
 export const tasksWindowSectionDetailInfo = document.getElementById("tasks-window-section-detail-info");
 
 
+
 import {removeChildItemDet} from "./script.js"
 
 
@@ -34,10 +35,31 @@ export function toggleTasksWindow(){
 let taskSections = [
     {
         name: "TECH",
+        imgsrc: "./resources/lore/arts_district.jpeg",
+        sectionState: "active",
         tasks:[
             {
                 goal: "Deliver 500 PC Bang tickets",
-                reward: "$5000, 300 SOCIAL EXP"
+                reward: "$5000, 300 SOCIAL EXP",
+                itemReq: ["PC Bang tickets", 1000],
+                skillReq: [],
+                moneyReq: 0,
+                giveReward(player){
+                    player.social.earnExp(300);
+    
+                }
+
+            },
+            {
+                goal: "Deliver 500 PC Bang tickets",
+                reward: "$5000, 300 SOCIAL EXP",
+                itemReq: ["PC Bang tickets", 1000],
+                skillReq: [],
+                moneyReq: 0,
+                giveReward(player){
+                    player.social.earnExp(300);
+    
+                }
 
             }
         ]
@@ -46,14 +68,39 @@ let taskSections = [
     {
 
         name: "ARTS",
+        imgsrc: "./resources/lore/arts_district.jpeg",
+        sectionState: "inactive",
         tasks:[
             {
+                goal: "Deliver 500 PC Bang tickets",
+                reward: "$5000, 300 SOCIAL EXP",
+                itemReq: ["PC Bang tickets", 1000],
+                skillReq: [],
+                moneyReq: 0,
+                giveReward(player){
+                    player.social.earnExp(300);
+    
+                }
+
+            },
+            {
+                goal: "Deliver 500 PC Bang tickets",
+                reward: "$5000, 300 SOCIAL EXP",
+                itemReq: ["PC Bang tickets", 1000],
+                skillReq: [],
+                moneyReq: 0,
+                giveReward(player){
+                    player.social.earnExp(300);
+    
+                }
 
             }
         ]
     },
     {
         name: "MECH",
+        imgsrc: "./resources/lore/arts_district.jpeg",
+        sectionState: "inactive",
         tasks:[
             {
 
@@ -63,6 +110,8 @@ let taskSections = [
     },
     {
         name: "SOCIAL",
+        imgsrc: "./resources/lore/arts_district.jpeg",
+        sectionState: "inactive",
         tasks:[
             {
 
@@ -72,6 +121,8 @@ let taskSections = [
     },
     {
         name: "SCIENCE",
+        imgsrc: "./resources/lore/arts_district.jpeg",
+        sectionState: "inactive",
         tasks:[
             {
 
@@ -81,6 +132,8 @@ let taskSections = [
     },
     {
         name: "ATHLETICS",
+        imgsrc: "./resources/lore/arts_district.jpeg",
+        sectionState: "inactive",
         tasks:[
             {
 
@@ -90,6 +143,8 @@ let taskSections = [
     },
     {
         name: "EMOTIONS",
+        imgsrc: "./resources/lore/arts_district.jpeg",
+        sectionState: "inactive",
         tasks:[
             {
 
@@ -100,22 +155,60 @@ let taskSections = [
 ]
 
 
+function deactiveSections(){
+    for (let i = 0; i<taskSections.length; i++){
+        taskSections[i].sectionState = "inactive";
+        
+    }
+    
+}
+
+
+
+function activateSection(taskSection){
+    taskSection.style.backgroundColor = "#d4ca97";
+    taskSection.style.color = "#221e1e";
+    
+}
 
 
 export function populateTaskSections(player){
+
+    populateTaskDetail(player, taskSections[0])
+
+    removeChildItemDet(tasksWindowSections)
+
 
     for (let i = 0; i<taskSections.length; i++){
         let taskSection = document.createElement("div");
         taskSection.classList.add("task-section");
         taskSection.innerText = taskSections[i].name;
 
+       if (taskSections[i].sectionState == "active"){
+        taskSection.style.backgroundColor = "#d4ca97";
+        taskSection.style.color = "#221e1e";
+       }
+
+       
+       
+
         taskSection.addEventListener("click", function(){
+            deactiveSections();
+            taskSections[i].sectionState = "active";
+            activateSection(taskSection)
+            populateTaskSections(player)
+            removeChildItemDet(tasksWindowSectionDetailBanner);
+            removeChildItemDet(tasksWindowSectionDetailInfo);
+          
             populateTaskDetail(player, taskSections[i])
+            
+           
+
             
         });
 
         tasksWindowSections.appendChild(taskSection);
-        console.log(taskSections[i].tasks)
+       
     }
     
     
@@ -123,9 +216,19 @@ export function populateTaskSections(player){
 
 
 export function populateTaskDetail(player, taskSection){
+
+    let taskImgDiv = document.createElement("div");
+    taskImgDiv.classList.add("task-img-div");
+    let taskImg = document.createElement("img");
+    taskImg.classList.add("task-img")
+    taskImg.src = taskSection.imgsrc;
+
+
+
         for (let i = 0; i < taskSection.tasks.length; i++){
             let task = document.createElement("div");
             task.classList.add("task");
+           
 
             console.log("populated task")
 
@@ -135,6 +238,7 @@ export function populateTaskDetail(player, taskSection){
 
             let taskBarSection = document.createElement("div");
             taskBarSection.classList.add("task-bar-section");
+
             let taskBar = document.createElement("div");
             taskBar.classList.add("task-bar");
             let taskBarDiv = document.createElement("div");
@@ -158,6 +262,68 @@ export function populateTaskDetail(player, taskSection){
             taskClaimBtn.classList.add("task-claim-button");
             taskClaimBtn.innerText = "CLAIM";
 
+    
+
+
+            //check the progress
+
+
+
+            
+            let itemsAmount = 0;
+            
+            for (let j=0; j<taskSection.tasks[i].itemReq.length ;j+=2){
+                let acumItemAmount = player.checkPlayerItemAmount(taskSection.tasks[j].itemReq[i])
+                console.log(acumItemAmount)
+                itemsAmount += acumItemAmount;
+            }
+
+           
+           
+            let itemsReqAmount = 0;
+
+            for (let g=0; g<taskSection.tasks[i].itemReq.length; g+=2){
+                let targetItemAmount = taskSection.tasks[g].itemReq[i+1];
+                itemsReqAmount += targetItemAmount;
+            }
+
+            
+
+            if (isNaN(itemsReqAmount)){
+                itemsReqAmount = 1;
+            }
+
+            let goalProgress = (itemsAmount/itemsReqAmount)*100
+
+            console.log(itemsAmount)
+            console.log(itemsReqAmount)
+
+            taskProgress.innerText = Math.round(goalProgress) + "%";
+            taskBar.style.width = goalProgress + "%";
+
+            if (itemsAmount == itemsReqAmount){
+               
+                taskClaimBtn.style.backgroundColor = "#84A699";
+                taskClaimBtn.style.cursor = "pointer";
+
+                taskClaimBtn.addEventListener("click", function(){
+
+                    task.style.opacity = "30%";
+                    taskClaimBtn.innerText = "COMPLETED";
+                    taskClaimBtn.disabled = true;
+                    taskSection.tasks[i].giveReward(player);
+
+
+                })
+
+            }
+
+
+
+
+
+            tasksWindowSectionDetailBanner.appendChild(taskImgDiv);
+            taskImgDiv.appendChild(taskImg)
             tasksWindowSectionDetailInfo.appendChild(task);
             task.appendChild(taskGoal);
             task.appendChild(taskBarSection);
