@@ -2026,3 +2026,28 @@ upgradesWindowCloseBtn.addEventListener("click", function(){
 
 
 drag_div(upgradesWindowName,upgradesWindowContainer)
+
+
+
+/// Tasks section
+
+import {toggleTasksWindow, tasksWindowName, tasksWindowContainer, tasksWindowCloseBtn, tasksWindowBtn, populateTaskSections} from "./tasks.js";
+
+
+tasksWindowBtn.addEventListener("click", function(){
+
+    toggleTasksWindow();
+    /*removeChildItemDet(upgradesWindowSections);*/
+    populateTaskSections(player)
+    
+})
+
+tasksWindowCloseBtn.addEventListener("click", function(){
+    toggleTasksWindow()
+   /* removeChildItemDet(upgradesWindowSections);*/
+   populateTaskSections(player)
+})
+
+
+
+drag_div(tasksWindowName,tasksWindowContainer)
