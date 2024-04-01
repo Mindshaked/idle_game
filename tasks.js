@@ -40,12 +40,15 @@ let taskSections = [
         tasks:[
             {
                 goal: "Deliver 500 PC Bang tickets",
-                reward: "$5000, 300 SOCIAL EXP",
+                reward: "$5000, 3000 SOCIAL EXP",
                 itemReq: ["PC Bang tickets", 1000],
                 skillReq: [],
                 moneyReq: 0,
                 giveReward(player){
-                    player.social.earnExp(300);
+                    player.social.earnExp(3000);
+                    player.social.updateLevel()
+                    
+                   
     
                 }
 
@@ -302,9 +305,10 @@ export function populateTaskDetail(player, taskSection){
             taskBar.style.width = goalProgress + "%";
 
             if (itemsAmount == itemsReqAmount){
-               
-                taskClaimBtn.style.backgroundColor = "#84A699";
-                taskClaimBtn.style.cursor = "pointer";
+
+
+                taskClaimBtn.classList.add("task-claim-button-enabled");
+              
 
                 taskClaimBtn.addEventListener("click", function(){
 

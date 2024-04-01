@@ -2052,9 +2052,17 @@ body{
     
 }
 
-.task-claim-button:hover {
+
+.task-claim-button-enabled{
+    background-color: #84A699;
+    cursor: pointer;
+    
+}
+.task-claim-button-enabled:hover {
     background-color: #47695c;
     color: #bebab2;
+   
+    
    
 }
 

@@ -83,15 +83,31 @@ class Job {
         return finalPay;
     }
    
-    jobEarnExp(){
-        this.exp += 30 * this.expModifier;
+    jobEarnExp(exp){
+        this.exp += exp * this.expModifier;
         
     }
+
     jobLevelUp(player){
         this.level += 1;
 
          populateJobSections(player);
        
+    }
+    updateLevel(){
+        let arrayExp = player.levelArray();
+        let currentExp = this.exp;
+        let initialLevel = 1;
+        let previousLevel = this.level
+        for (let i = 0; arrayExp[i] < currentExp; i++){
+           initialLevel++
+           
+        }
+    
+        this.level = initialLevel;
+
+        if (previousLevel != previousLevel)
+        player.displayAlert("Your " + this.name + " level is now " + this.level)
     }
  
 }
@@ -117,6 +133,78 @@ class Upgrade {
     
     }
 }
+
+class Skill {
+    constructor(name){
+        this.name = name
+        this.level = 1;
+        this.exp = 0;
+        this.modifier = 1;
+        this.jobPayModifier = 1;
+       
+    }
+
+    earnExp(exp){
+        this.exp += exp;
+    }
+
+    updateLevel(){
+        let arrayExp = player.levelArray();
+        let currentExp = this.exp;
+        let actualLevel = 1;
+        for (let i = 0; arrayExp[i] < currentExp; i++){
+           actualLevel++
+           
+        }
+    
+        this.level = actualLevel;
+    }
+
+
+}
+
+
+
+class Activity{
+    constructor(name, action, cost){
+        this.name = name;
+        this.level = 1;
+        this.type = "activity";
+        this.action = action;
+        this.expModifier = 1;
+        this.exp = 0;
+        this.costModifier = 1;
+        this.cost = cost;
+        this.state = "inactive";
+           
+        }
+
+        activityCost(){
+            let finalCost = this.cost * this.costModifier;
+            return finalCost;
+        }
+       
+        activityEarnExp(){
+            this.exp += 30 * this.expModifier;
+        }
+        activityLevelUp(){
+            this.lvl += 1
+        }
+
+
+    updateLevel(){
+        let arrayExp = player.levelArray();
+        let currentExp = this.exp;
+        let actualLevel = 1;
+        for (let i = 0; arrayExp[i] < currentExp; i++){
+           actualLevel++
+           
+        }
+    
+        this.level = actualLevel;
+        }
+    }
+
 
 
 let tickets = new furniture(5, 2, "PC Bang tickets", "consumable", "resources/centraltable.png", []);
@@ -194,82 +282,14 @@ class Player {
 
 
         //skills
-        this.social = {
-            name: "Social",
-            level: 1,
-            exp: 0,
-            modifier: 1,
-            jobPayModifier: 1,
-            earnExp(exp){
-                this.exp += exp;
-            }
-        }
-        
-        this.tech = {
-            name: "Tech",
-            level: 1,
-            exp: 0,
-            modifier: 1,
-            jobPayModifier: 1,
-            earnExp(exp){
-                this.exp += exp;
-            }
-        }
-
-        this.art = {
-            name: "Art",
-            level: 1,
-            exp: 0,
-            modifier: 1,
-            jobPayModifier: 1,
-            earnExp(exp){
-                this.exp += exp;
-            }
-        }
-
-        this.athletics = {
-            name: "Athletics",
-            level: 1,
-            exp: 0,
-            modifier: 1,
-            jobPayModifier: 1,
-            earnExp(exp){
-                this.exp += exp;
-            }
-        }
-
-        this.science = {
-            name: "Science",
-            level: 1,
-            exp: 0,
-            modifier: 1,
-            jobPayModifier: 1,
-            earnExp(exp){
-                this.exp += exp;
-            }
-        }
-
-        this.military = {
-            name: "Military",
-            level: 1,
-            exp: 0,
-            modifier: 1,
-            jobPayModifier: 1,
-            earnExp(exp){
-                this.exp += exp;
-            }
-        }
-
-        this.emotion = {
-            name: "Emotion",
-            level: 1,
-            exp: 0,
-            modifier: 1,
-            jobPayModifier: 1,
-            earnExp(exp){
-                this.exp += exp;
-            }
-        }
+        this.social = new Skill("Social");
+    
+        this.tech = new Skill("Tech")
+        this.art = new Skill("Art")
+        this.athletics = new Skill("Athletics")
+        this.science = new Skill("Science")
+        this.military = new Skill("Military")
+        this.emotion = new Skill("Emotion")
 
         this.playerSkills = [this.social, this.tech, this.art, this.athletics, this.science, this.military, this.emotion]
 
@@ -304,28 +324,7 @@ class Player {
 
         // activity levels
 
-        this.walk = {
-            name: "walk",
-            level: 1,
-            type: "activity",
-            action: "walking",
-            expModifier: 1,
-            exp: 0,
-            costModifier: 1,
-            cost: 0,
-            state: "inactive",
-            activityCost(){
-                let finalCost = this.cost * this.costModifier;
-                return finalCost;
-            },
-           
-            activityEarnExp(){
-                this.exp += 30 * this.expModifier;
-            },
-            activityLevelUp(){
-                this.lvl += 1
-            }
-        }
+        this.walk = new Activity("walk", "walking", 0)
 
         //study levels
 
@@ -615,6 +614,7 @@ class Player {
 
             let jobItemPool = []
             let jobItemConsum = jobSections[0].jobs[0].itemConsum
+
     
             this.pcBang.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.pcBang, this.pcBang.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
@@ -1128,12 +1128,11 @@ class Player {
 
     startActivity(activity, moneyChange, skills, mood, itemPool, itemConsum){
 
-        //ADD VARIABLE THAT YOU CAN INPUT IN THE FUNCTION PARAMETERS TO CHANGE WHAT IS THE INTERVAL OF EVERY ACTIVITY
       
         
         player.displayAlert("You started " + activity.action);
         this.currentActivity = activity.name;
-
+       
 
         this.interval = setInterval(() => {
             if (this.checkCost(moneyChange)){
@@ -1150,6 +1149,7 @@ class Player {
                 this.displayStats();
                 this.progressBarMove();
                 this.itemDropThrow(itemPool);
+
 
               
             } else {
@@ -1246,15 +1246,12 @@ class Player {
     //jobs level and experience updating
 
     updateJobStats(job){
-        if (this.checkCurrentSkillExp(job) < this.nextLevel(job.level + 1)){
-            job.jobEarnExp()
-        } else {
-            job.jobEarnExp()
-            job.jobLevelUp(player)
-            player.displayAlert("Your " + job.name + " level is now " + job.level);
+       
+            job.jobEarnExp(30)
+            job.updateLevel();
 
         }
-    }
+    
 
 
     //activity levels and experience updating
@@ -1295,6 +1292,36 @@ class Player {
         let baseXp = 500;
         return Math.floor(baseXp * (level ** exponent))
     }
+
+    levelArray(){
+        let arrayExp = [];
+        let level = 2
+        
+        while (level < 99){
+            arrayExp.push(player.nextLevel(level))
+            level++
+        }
+        
+    
+        return arrayExp;
+    
+    }
+    
+    
+    
+    checkLevel(exp){
+        let arrayExp = this.levelArray();
+        let currentExp = exp;
+        let actualLevel = 1;
+        for (let i = 0; arrayExp[i] < currentExp; i++){
+           actualLevel++
+           
+        }
+    
+        return actualLevel;
+    }
+
+  
 
     checkCurrentSkillExp(skill){
         return skill.exp;
@@ -1390,6 +1417,9 @@ class Player {
 
 export const player = new Player("Edi");
 player.startGame();
+
+
+
 
 // draggable window
 

@@ -1310,12 +1310,12 @@ function populateJobDetail(job, player){
     let applyJob = function applyJobFunction(){
     
 
-
-        if (player.currentActivity == job.jobActivity){
+        if (player.currentActivity == job.jobName){
             player.endActivity()
             jobApplyBtn.style.backgroundColor = "#84a699";
             jobApplyBtn.innerText = "APPLY"
             job.state = "inactive"
+            console.log("job stopped")
             
             return;
         } 
