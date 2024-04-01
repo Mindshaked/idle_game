@@ -178,7 +178,7 @@ function activateSection(taskSection){
 export function populateTaskSections(player){
 
     populateTaskDetail(player, taskSections[0])
-
+    removeChildItemDet(taskSections[0])
     removeChildItemDet(tasksWindowSections)
 
 

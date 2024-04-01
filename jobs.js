@@ -1128,15 +1128,16 @@ export function  populateJobSections(player){
             }
         
         jobSection.addEventListener("click", function(){
+
             if (jobSections[i].sectionState == "active"){
                 removeChildItemDet(jobSectionSubMenu)
                 jobSections[i].sectionState = "inactive";
                 
-                } else{
+            } else{
                    
-                    toggleJobSectionContent(jobSections[i], jobSectionSubMenu, player);
-                    jobSections[i].sectionState = "active"
-                }
+                toggleJobSectionContent(jobSections[i], jobSectionSubMenu, player);
+                jobSections[i].sectionState = "active"
+            }
            
            
         })
@@ -1156,6 +1157,8 @@ export function  populateJobSections(player){
 
 
 function toggleJobSectionContent(section, sectionDom, player){
+    removeChildItemDet(sectionDom)
+
     for (let i=0; i<section.jobs.length;i++){
 
         const jobItem = document.createElement("div");
