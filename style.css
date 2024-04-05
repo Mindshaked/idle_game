@@ -419,13 +419,13 @@ body{
 }
 
 #main-character{
-    width: 96px;
+    width: 128px;
     height: auto;
     position: absolute;
     z-index: 2;
     transform: scaleX(-1);
     top:255px;
-    right: 300px;
+    right: 360px;
 }
 
 #character-pillow{

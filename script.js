@@ -1834,14 +1834,18 @@ const gridElements = document.getElementsByClassName("grid-slots");
 editButton.addEventListener("click", function(){
 
     if (gridElements[0].classList.contains("grid-slots-on") == true){
+
+
+        let slotTags = document.querySelectorAll(".grid-slots-on .element-type");  
+        slotTags.forEach((tag) => tag.remove())
+
+
         for(let i=0; i<gridElements.length;i++){
         gridElements[i].pointerEvents = "initial";
         gridElements[i].classList.remove("grid-slots-on");
         gridElements[i].style.opacity = "100%";
-        while (gridElements[i].firstChild && gridElements[i].firstChild.classList.contains("element-type")){
-            gridElements[i].removeChild(gridElements[i].firstChild)
-        }
-        
+
+    
         }
 
         
@@ -1852,6 +1856,7 @@ editButton.addEventListener("click", function(){
     for (let i = 0; i < gridElements.length; i++){
         gridElements[i].classList.add("grid-slots-on");
         gridElements[i].pointerEvents = "none";
+
 
         let elementType = document.createElement("div");
         elementType.classList.add("element-type");

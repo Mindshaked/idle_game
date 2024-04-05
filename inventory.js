@@ -7,7 +7,7 @@ export const inventoryMainWindowContent = document.getElementById("inventory-mai
 export const inventoryWindowName = document.getElementById("inventory-window-name");
 export const inventoryWindowCloseBtn = document.getElementById("inventory-window-close-btn");
 export const inventoryWindowItemDetail = document.getElementById("inventory-item-detail");
-const inventoryWindowSearchbar = document.getElementById("main-window-content-searchbar");
+
 
 
 
@@ -38,14 +38,20 @@ function removeChildItemDet(container){
 
 export function populateInventorySections(player){
 
-    removeChildItemDet(inventoryMainWindowContent)
+    removeChildItemDet(inventoryMainWindow)
+    
 
-
+    const inventoryWindowSearchbar = document.createElement("input");
+    const inventoryWindowSearchbarContainer = document.createElement("div")
+    inventoryWindowSearchbar.setAttribute("id", "main-window-content-searchbar")
+    inventoryWindowSearchbarContainer.setAttribute("id", "main-window-content-searchbar-div");
+    
 
     function handle(){
        
 
         if(this.value == ""){
+            removeChildItemDet(inventoryMainWindowContent)
             populateInventorySections(player)
         } else{
 
@@ -402,9 +408,11 @@ export function populateInventorySections(player){
 
         })
 
-        
+        inventoryWindowSearchbarContainer.appendChild(inventoryWindowSearchbar)
+        inventoryMainWindow.appendChild(inventoryWindowSearchbarContainer)
         inventoryMainWindow.appendChild(inventoryWindowItemDetail)
         inventoryMainWindow.appendChild(inventoryMainWindowContent)
+       
         inventoryMainWindowContent.appendChild(inventoryItem);
         inventoryItem.appendChild(inventoryItemImg);
         inventoryItem.appendChild(inventoryItemNum);
