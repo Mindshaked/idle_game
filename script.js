@@ -1032,7 +1032,2728 @@ class Player {
             this.cyberTerrorist.payModifier *= this.tech.jobPayModifier;
             this.startActivity(this.cyberTerrorist, this.cyberTerrorist.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
             this.job = this.cyberTerrorist.name;
+
+
+//Art jobs
+
+        } else if(job == "Street performer"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.streetperformer.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.streetperformer, this.streetperformer.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.streetperformer.name;
+
+        } else if(job == "Street performer"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.backgrounddancer.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.backgrounddancer, this.backgrounddancer.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.backgrounddancer.name;
+            
+        }   else if(job == "Background dancer"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.backgrounddancer.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.backgrounddancer, this.backgrounddancer.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.backgrounddancer.name;
+            
+        }    else if(job == "Background dancer"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.backgrounddancer.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.backgrounddancer, this.backgrounddancer.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.backgrounddancer.name;
+            
+        }    else if(job == "Idol trainee"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.idoltrainee.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.idoltrainee, this.idoltrainee.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.idoltrainee.name;
+            
+        }   else if(job == "Webtoon artist"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.webtoon.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.webtoon, this.webtoon.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.webtoon.name;
+            
+        }   else if(job == "Voice actress"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.voiceactress.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.voiceactress, this.voiceactress.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.voiceactress.name;
+            
+        } else if(job == "Hollograph sculptor"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.hollograph.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.hollograph, this.hollograph.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.hollograph.name;
+            
+        } else if(job == "Virtual actor"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.virtualactor.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.virtualactor, this.virtualactor.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.virtualactor.name;
+            
+        } else if(job == "Intergallactic fashion model"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.fashionmodel.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.fashionmodel, this.fashionmodel.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.fashionmodel.name;
+            
+        }  else if(job == "Smart building architect"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.smartarchitect.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.smartarchitect, this.smartarchitect.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.smartarchitect.name;
+            
+        }  else if(job == "Space opera main actor"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.spaceopera.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.spaceopera, this.spaceopera.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.spaceopera.name;
+            
+        }  else if(job == "Super idol"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.superidol.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.superidol, this.superidol.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.superidol.name;
+            
+        }  else if(job == "Cultural landmark"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.culturallandmark.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.culturallandmark, this.culturallandmark.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.culturallandmark.name;
+            
+        } else if(job == "Propaganda leader"){
+            let jobSkills = [
+                {
+                    "skill" : this.art,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.propagandaleader.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.propagandaleader, this.propagandaleader.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.propagandaleader.name;
+            
         }
+
+
+        //Social jobs
+
+
+        else if(job == "Call center"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.callcenter.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.callcenter, this.callcenter.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.callcenter.name;
+            
+        } else if(job == "Street seller"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.streetseller.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.streetseller, this.streetseller.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.streetseller.name;
+            
+        } else if(job == "Convinience store clerk"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.convenience.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.convenience, this.convenience.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.convenience.name;
+            
+        } else if(job == "Real estate agent"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.realestateagent.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.realestateagent, this.realestateagent.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.realestateagent.name;
+            
+        } else if(job == "Virtual scammer"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.virtualscammer.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.virtualscammer, this.virtualscammer.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.virtualscammer.name;
+            
+        } else if(job == "Influencer"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.influencer.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.influencer, this.influencer.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.influencer.name;
+            
+        } else if(job == "Business owner"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.businessowner.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.businessowner, this.businessowner.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.businessowner.name;
+            
+        } else if(job == "Corporate"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.corporate.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.corporate, this.corporate.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.corporate.name;
+            
+        } else if(job == "Politician"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.politician.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.politician, this.politician.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.politician.name;
+            
+        } else if(job == "Information broker"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.informationbroker.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.informationbroker, this.informationbroker.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.informationbroker.name;
+            
+        } else if(job == "Social instructor"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.socialinstructor.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.socialinstructor, this.socialinstructor.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.socialinstructor.name;
+            
+        } else if(job == "Peace ambassador"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.peaceambassador.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.peaceambassador, this.peaceambassador.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.peaceambassador.name;
+            
+        } else if(job == "Corrupted oligarch"){
+            let jobSkills = [
+                {
+                    "skill" : this.social,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.corruptedoligarch.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.corruptedoligarch, this.corruptedoligarch.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.corruptedoligarch.name;
+            
+        }
+
+        //Emotions jobs
+
+        else if(job == "Emotional coach"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.emotionalcoach.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.emotionalcoach, this.emotionalcoach.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.emotionalcoach.name;
+            
+        } else if(job == "Fortune teller"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.fortuneteller.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.fortuneteller, this.fortuneteller.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.fortuneteller.name;
+            
+        } else if(job == "Emotions dealer"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.emotionsdealer.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.emotionsdealer, this.emotionsdealer.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.emotionsdealer.name;
+            
+        } else if(job == "Memory builder"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.memorybuilder.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.memorybuilder, this.memorybuilder.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.memorybuilder.name;
+            
+        }  else if(job == "Cybershaman"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.cybershaman.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.cybershaman, this.cybershaman.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.cybershaman.name;
+            
+        }  else if(job == "Digital mortician"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.digitalmortician.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.digitalmortician, this.digitalmortician.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.digitalmortician.name;
+            
+        }  else if(job == "Feeling connector"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.feelingconnector.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.feelingconnector, this.feelingconnector.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.feelingconnector.name;
+            
+        } else if(job == "Emotional tuner"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.emotionaltuner.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.emotionaltuner, this.emotionaltuner.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.emotionaltuner.name;
+            
+        } else if(job == "Digital sience"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.digitalsience.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.digitalsience, this.digitalsience.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.digitalsience.name;
+            
+        } else if(job == "Emotional drifter"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.emotionaldrifter.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.emotionaldrifter, this.emotionaldrifter.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.emotionaldrifter.name;
+            
+        } else if(job == "Emotional shifter"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.emotionalshifter.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.emotionalshifter, this.emotionalshifter.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.emotionalshifter.name;
+            
+        } else if(job == "Cult leader"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.cultleader.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.cultleader, this.cultleader.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.cultleader.name;
+            
+        } else if(job == "Mesmer"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.mesmer.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.mesmer, this.mesmer.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.mesmer.name;
+            
+        } else if(job == "Technomessiah"){
+            let jobSkills = [
+                {
+                    "skill" : this.emotions,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.technomessiah.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.technomessiah, this.technomessiah.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.technomessiah.name;
+            
+        }
+
+
+        //Science jobs
+
+        else if(job == "Lab assistant"){
+            let jobSkills = [
+                {
+                    "skill" : this.science,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.labassistant.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.labassistant, this.labassistant.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.labassistant.name;
+            
+        } else if(job == "Back alley doctor"){
+            let jobSkills = [
+                {
+                    "skill" : this.science,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.backalleydoctor.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.backalleydoctor, this.backalleydoctor.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.backalleydoctor.name;
+            
+        } else if(job == "Prosthetics dealer"){
+            let jobSkills = [
+                {
+                    "skill" : this.science,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.prostheticsdealer.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.prostheticsdealer, this.prostheticsdealer.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.prostheticsdealer.name;
+            
+        } else if(job == "Augmentation surgeon"){
+            let jobSkills = [
+                {
+                    "skill" : this.science,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.augmentationsurgeon.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.augmentationsurgeon, this.augmentationsurgeon.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.augmentationsurgeon.name;
+            
+        } else if(job == "Hydroponics cultivator"){
+            let jobSkills = [
+                {
+                    "skill" : this.science,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.hydroponicscultivator.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.hydroponicscultivator, this.hydroponicscultivator.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.hydroponicscultivator.name;
+            
+        } else if(job == "Drug maker"){
+            let jobSkills = [
+                {
+                    "skill" : this.science,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.drugmaker.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.drugmaker, this.drugmaker.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.drugmaker.name;
+            
+        } else if(job == "Lab researcher"){
+            let jobSkills = [
+                {
+                    "skill" : this.science,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.labresearcher.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.labresearcher, this.labresearcher.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.labresearcher.name;
+            
+        } else if(job == "Antimatter bomb architect"){
+            let jobSkills = [
+                {
+                    "skill" : this.science,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.antimatter.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.antimatter, this.antimatter.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.antimatter.name;
+            
+        } else if(job == "Warp engineer"){
+            let jobSkills = [
+                {
+                    "skill" : this.science,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.warpengineer.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.warpengineer, this.warpengineer.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.warpengineer.name;
+            
+        } else if(job == "Time manipulator"){
+            let jobSkills = [
+                {
+                    "skill" : this.science,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.timemanipulator.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.timemanipulator, this.timemanipulator.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.timemanipulator.name;
+            
+        } else if(job == "Reanimator"){
+            let jobSkills = [
+                {
+                    "skill" : this.science,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.reanimator.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.reanimator, this.reanimator.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.reanimator.name;
+            
+        }
+
+
+        //Athletic jobs
+
+        else if(job == "Wall worker"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.wallworker.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.wallworker, this.wallworker.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.wallworker.name;
+            
+        } else if(job == "Mob member"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.mobmember.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.mobmember, this.mobmember.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.mobmember.name;
+            
+        } else if(job == "Porter"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.porter.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.porter, this.porter.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.porter.name;
+            
+        } else if(job == "Bodyguard"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.bodyguard.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.bodyguard, this.bodyguard.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.bodyguard.name;
+            
+        } else if(job == "Hitman"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.hitman.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.hitman, this.hitman.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.hitman.name;
+            
+        } else if(job == "Martial artist"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.martialartist.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.martialartist, this.martialartist.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.martialartist.name;
+            
+        } else if(job == "Rescue team"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.rescueteam.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.rescueteam, this.rescueteam.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.rescueteam.name;
+            
+        } else if(job == "Augmented boxer"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.augmentedboxer.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.augmentedboxer, this.augmentedboxer.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.augmentedboxer.name;
+            
+        } else if(job == "Street gang leader"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.streetgang.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.streetgang, this.streetgang.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.streetgang.name;
+            
+        } else if(job == "City runner"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.cityrunner.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.cityrunner, this.cityrunner.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.cityrunner.name;
+            
+        } else if(job == "Prison guard"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.prisonguard.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.prisonguard, this.prisonguard.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.prisonguard.name;
+            
+        } else if(job == "Emperor's guard"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.emperorguard.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.emperorguard, this.emperorguard.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.emperorguard.name;
+            
+        } else if(job == "Undercity legend"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.undercitylegend.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.undercitylegend, this.undercitylegend.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.undercitylegend.name;
+            
+        }
+
+
+        //Military jobs
+
+        else if(job == "Wall guard"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.wallguard.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.wallguard, this.wallguard.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.wallguard.name;
+            
+        } else if(job == "Law enforcer"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.lawenforcer.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.lawenforcer, this.lawenforcer.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.lawenforcer.name;
+            
+        } else if(job == "Military transport"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.militarytransport.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.militarytransport, this.militarytransport.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.militarytransport.name;
+            
+        } else if(job == "Intelligence agent"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.intelligenceagent.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.intelligenceagent, this.intelligenceagent.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.intelligenceagent.name;
+            
+        }  else if(job == "Bounty hunter"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.bountyhunter.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.bountyhunter, this.bountyhunter.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.bountyhunter.name;
+            
+        } else if(job == "Spaceship pilot"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.spaceshippilot.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.spaceshippilot, this.spaceshippilot.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.spaceshippilot.name;
+            
+        } else if(job == "Marine"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.marine.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.marine, this.marine.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.marine.name;
+            
+        }  else if(job == "Special forces agent"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.specialforces.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.specialforces, this.specialforces.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.specialforces.name;
+            
+        } else if(job == "Fleet commander"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.fleetcommander.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.fleetcommander, this.fleetcommander.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.fleetcommander.name;
+            
+        } else if(job == "Mecha pilot"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.mechapilot.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.mechapilot, this.mechapilot.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.mechapilot.name;
+            
+        } else if(job == "Mercenary"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.mercenary.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.mercenary, this.mercenary.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.mercenary.name;
+            
+        }  else if(job == "Military dictator"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.dictator.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.dictator, this.dictator.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.dictator.name;
+            
+        } else if(job == "Rebel liberator"){
+            let jobSkills = [
+                {
+                    "skill" : this.athletics,
+                    "experience": 50*this.art.modifier,
+                    
+                }
+            ]
+
+            let jobMood = [
+                {
+                    "mood" : this.depressed,
+                    "change": 0.01*this.depressed.modifier,
+                },
+                {
+                    "mood" : this.stressed,
+                    "change": 0.02*this.stressed.modifier,
+                },
+                {
+                    "mood" : this.accomplished,
+                    "change": 0.03*this.accomplished.modifier,
+                }
+            ]
+
+           // let centralTable = new furniture(shopInventory[0].items[0].itemPrice, shopInventory[0].items[0].itemSellPrice, shopInventory[0].items[0].itemName, shopInventory[0].items[0].shopType, shopInventory[0].items[0].itemImg, shopInventory[0].items[0].itemBonus)
+            //let jobItemPool = [centralTable, 5]
+
+            let jobItemPool = []
+            let jobItemConsum = []
+    
+            this.rebelliberator.payModifier *= this.art.jobPayModifier;
+            this.startActivity(this.rebelliberator, this.rebelliberator.jobPay(), jobSkills, jobMood, jobItemPool, jobItemConsum)
+            this.job = this.rebelliberator.name;
+            
+        }
+
+
+
+
+
+
 
 
         this.displayStats();

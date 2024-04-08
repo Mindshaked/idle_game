@@ -261,7 +261,7 @@ let artJobSection = {
             jobBuff: "0.02/s afraid, 0.01/s lonely, 0.04/s accomplished, Tech 120xp/s"
         },
         {
-            jobName: "Smart buildings architect",
+            jobName: "Smart building architect",
             jobPay: 80,
             jobIdentifier: "smartarchitect",
             skillReq: ["Machine Control", 40, "streetRacing", 50, "Mechanics", 50],
@@ -320,7 +320,7 @@ let artJobSection = {
 }
 
 let socialJobSection = {
-        sectionName: "MECH",
+        sectionName: "SOCIAL",
         sectionState: "inactive",
         jobs:[{
             jobName: "Call center",
@@ -489,7 +489,7 @@ let emotionsJobSection = {
         {
             jobName: "Fortune teller",
             jobPay: 20,
-            jobIdentifier: "fortune teller",
+            jobIdentifier: "fortuneteller",
             skillReq: ["Informatics", 10],
             jobReq: "Informatics lvl 10, 1 computer tools",
             itemReq: ["Computer tools", 1],
@@ -664,7 +664,7 @@ let scienceJobSection = {
         {
             jobName: "Prosthetics dealer",
             jobPay: 20,
-            jobIdentifier: "prosthetics dealer",
+            jobIdentifier: "prostheticsdealer",
             skillReq: ["Machine Control", 10],
             jobReq: "Machine control lvl 10, 1 game console",
             itemReq: ["Game console", 1],
@@ -739,9 +739,9 @@ let scienceJobSection = {
             jobBuff: "0.03/s stressed, 0.04/s excited, 0.02/s accomplished, Tech 120xp/s"
         },
         {
-            jobName: "Warp enineer",
+            jobName: "Warp engineer",
             jobPay: 80,
-            jobIdentifier: "Warp engineer",
+            jobIdentifier: "warpengineer",
             skillReq: ["Artificial Intelligence", 60, "Programming", 50, "videogameDev", 40],
             jobReq: "Artificial Intelligence lvl 60, Programming lvl 50, Videogame Developer lvl 40, 1 high-end computer",
             itemReq: ["High-end Computer", 1],
@@ -871,7 +871,7 @@ let athleticsJobSection = {
         {
             jobName: "Augmented boxer",
             jobPay: 80,
-            jobIdentifier: "augmented boxer",
+            jobIdentifier: "augmentedboxer",
             skillReq: ["itTechnician", 40, "Programming", 50, "Informatics", 50],
             jobReq: "IT Technician lvl 40, Programming lvl 50, Informatics lvl 50, 1 high-end computer",
             itemReq: ["High-end Computer", 1],
@@ -939,7 +939,7 @@ let athleticsJobSection = {
 }
 
 let militaryJobSection = {
-        sectionName: "EMOTIONS",
+        sectionName: "military",
         sectionState: "inactive",
         jobs:[{
             jobName: "Wall guard",
@@ -954,7 +954,7 @@ let militaryJobSection = {
             jobBuff: "0.02/s relaxed, 0.01/s depressed, Tech 30xp/s"
         },
         {
-            jobName: "law enforcer",
+            jobName: "Law enforcer",
             jobPay: 20,
             jobIdentifier: "lawenforcer",
             skillReq: ["Informatics", 10],
@@ -1116,7 +1116,7 @@ export function toggleJobWindow(){
 export function  populateJobSections(player){
 
     removeChildItemDet(jobsWindowLeftPanel)
-    cyberTerrorist
+
     
 
     for (let i=0;i<jobSections.length;i++){
