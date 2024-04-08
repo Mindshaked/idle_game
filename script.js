@@ -212,6 +212,8 @@ tickets.quantity = 1000;
 
 let computerTools = new furniture(5, 2, "Computer tools", "item", "resources/centraltable.png", [])
 
+let defaultWindow = new furniture(0, 0, "Soul City", "window", "resources/soulcitydefault.gif", [])
+
 import {jobSections} from "./jobs.js"
 
 class Player {
@@ -222,7 +224,7 @@ class Player {
         this.daysPassed = 0;
         this.currentActivity = "Doing nothing";
         this.currentDate = new Date();
-        this.inventory = [tickets, computerTools];
+        this.inventory = [tickets, computerTools, defaultWindow];
         this.room = [];
         this.interval = null;
         this.profilePicture = "resources/profilepicture.png";
@@ -324,7 +326,8 @@ class Player {
 
         // activity levels
 
-        this.walk = new Activity("walk", "walking", 0)
+        this.walk = new Activity("walk", "walking", 0);
+        
 
         //study levels
 
@@ -1733,6 +1736,8 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
         emptyFurni.innerText = "X";
         inventoryPopupItems.appendChild(emptyFurni);
 
+
+
         emptyFurni.addEventListener("click", function(){
             if (typeSlot.hasChildNodes() == true){
             typeSlot.removeChild(typeSlot.firstElementChild)
@@ -1882,6 +1887,56 @@ editButton.addEventListener("click", function(){
         
    
     }  
+})
+
+
+// edit walls functionality
+
+const editWallsBtn = document.getElementById("edit-walls");
+const rightWall = document.getElementById("right-wall");
+const leftWall = document.getElementById("left-wall");
+
+let editWallsPanel = document.getElementById("edit-walls-panel");
+let editWallsTitle = document.getElementById("edit-walls-title");
+let editWallsPreColors = document.getElementById("edit-walls-pre-colors");
+let closeWallsPanel = document.getElementById("close-edit-walls");
+
+let wallColors = ["#FFFFFF", "#F4F4F4", "#A7776B", "#76DAE7", "#C65550", "#df9b5b", "#a83f48", "#6f975e", "#3b6b58", "#8A2E3F", "#DF9B5B", "#473354", "#466F77", "#A38DC9", "#524F73", "#7C3A67", "#5F80a6", "#566794", "#2a202a", "#000000"] 
+
+editWallsBtn.addEventListener("click", function(){
+
+    
+
+        if (editWallsPanel.style.visibility == "visible"){
+            editWallsPanel.style.visibility = "hidden"
+        } else{
+            editWallsPanel.style.visibility = "visible";
+
+            removeChildItemDet(editWallsPreColors)
+    
+    
+        for (let i=0; i<wallColors.length; i++){
+            let colorButton = document.createElement("button");
+            colorButton.classList.add("color-button")
+            colorButton.style.backgroundColor = wallColors[i];
+    
+            colorButton.addEventListener("click", function(){
+                rightWall.style.backgroundColor = wallColors[i];
+                leftWall.style.backgroundColor = wallColors[i];
+    
+            })
+    
+            editWallsPreColors.appendChild(colorButton)
+            }
+        }
+        
+
+
+
+})
+
+closeWallsPanel.addEventListener("click", function(){
+    editWallsPanel.style.visibility = "hidden"
 })
 
 

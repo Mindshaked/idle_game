@@ -1,4 +1,4 @@
-
+import {removeChildItemDet} from "./script.js"
 
 
 
@@ -30,25 +30,232 @@ const activitiesStartBtn = document.createElement("button");
 //activities array
 
 let basicActivitiesSection = {
-    sectionName: "BASIC ACTIVITIES",
+    sectionName: "PASSIVE ACTIVITIES",
+    sectionState: "inactive",
     activities:
         [{
             activityName: "Take a walk",
-            activityCost: 5,
+            activityCost: 0,
             activityConsum: [],
             activityReq: [],
             skillReq: [],
+            requirementsText: "",
             activityDesc: "an accessible and easy way to exercise and release stress",
             activity: "walking",
             activityIdentifier: "walk",
             activityBuff: []
         },
         {
-            activityName: "Garbage Collector",
-            activityCost: 50,
+            activityName: "BBQ with friends",
+            activityCost: 5,
             activityConsum: [],
             activityReq: [],
             skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "bbq",
+            activityIdentifier: "bbq",
+            activityBuff: []
+        },
+        {
+            activityName: "Go clubbing",
+            activityCost: 10,
+            activityConsum: [],
+            activityReq: [],
+            requirementsText: "",
+            skillReq: [],
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "club",
+            activityIdentifier: "club",
+            activityBuff: []
+        },
+        {
+            activityName: "Sleep",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "sleep",
+            activityIdentifier: "sleep",
+            activityBuff: []
+        },
+        {
+            activityName: "Sauna",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "sauna",
+            activityIdentifier: "sauna",
+            activityBuff: []
+        },
+        {
+            activityName: "Go to Pop concerts",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "pop",
+            activityIdentifier: "pop",
+            activityBuff: []
+        },
+        {
+            activityName: "Emotions trafficking",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "emotiontraffic",
+            activityIdentifier: "emotiontraffic",
+            activityBuff: []
+        },
+        {
+            activityName: "Mecha battles",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "mechabattle",
+            activityIdentifier: "mechabattle",
+            activityBuff: []
+        },
+        {
+            activityName: "Prosthetic boxing",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "boxing",
+            activityIdentifier: "boxing",
+            activityBuff: []
+        },
+        {
+            activityName: "Drone racing",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "drone",
+            activityIdentifier: "drone",
+            activityBuff: []
+        },
+        {
+            activityName: "Urban exploration",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "urbanexplore",
+            activityIdentifier: "urbanexplore",
+            activityBuff: []
+        },
+        {
+            activityName: "Electronic tinkering",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "tinkering",
+            activityIdentifier: "tinkering",
+            activityBuff: []
+        },
+        {
+            activityName: "Play videogames",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "playgame",
+            activityIdentifier: "playgame",
+            activityBuff: []
+        },
+        {
+            activityName: "Assault drones",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "assaultdrones",
+            activityIdentifier: "assaultdrones",
+            activityBuff: []
+        },
+        {
+            activityName: "Karaoke",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "karaoke",
+            activityIdentifier: "karaoke",
+            activityBuff: []
+        },
+        {
+            activityName: "Workout",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "workout",
+            activityIdentifier: "workout",
+            activityBuff: []
+        },
+        {
+            activityName: "Memory tourism",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "memorytourism",
+            activityIdentifier: "memorytourism",
+            activityBuff: []
+        },
+        {
+            activityName: "Ride outer walls Harra",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
+            activityDesc: "You might smell bad when coming back home, but it is what it is",
+            activity: "harra",
+            activityIdentifier: "harra",
+            activityBuff: []
+        },
+        {
+            activityName: "Collect garbage",
+            activityCost: 5,
+            activityConsum: [],
+            activityReq: [],
+            skillReq: [],
+            requirementsText: "",
             activityDesc: "You might smell bad when coming back home, but it is what it is",
             activity: "garbage",
             activityIdentifier: "garbage",
@@ -58,10 +265,44 @@ let basicActivitiesSection = {
 }
 
 let advancedActivitiesSection = {
-    sectionName: "ADVANCED ACTIVITIES",
+    sectionName: "ACTIVE ACTIVITIES",
+    sectionState: "inactive",
     activities:[{
-
-    }
+        activityName: "Real estate",
+        activityCost: 5,
+        activityConsum: [],
+        activityReq: [],
+        skillReq: [],
+        requirementsText: "",
+        activityDesc: "You might smell bad when coming back home, but it is what it is",
+        activity: "realestateactivity",
+        activityIdentifier: "realestateactivity",
+        activityBuff: []
+        },
+        {
+        activityName: "Crypto investing",
+        activityCost: 5,
+        activityConsum: [],
+        activityReq: [],
+        skillReq: [],
+        requirementsText: "",
+        activityDesc: "You might smell bad when coming back home, but it is what it is",
+        activity: "crypto",
+        activityIdentifier: "crypto",
+        activityBuff: []
+        },
+        {
+        activityName: "Street car racing",
+        activityCost: 5,
+        activityConsum: [],
+        activityReq: [],
+        skillReq: [],
+        requirementsText: "",
+        activityDesc: "You might smell bad when coming back home, but it is what it is",
+        activity: "crypto",
+        activityIdentifier: "crypto",
+        activityBuff: []
+        }
 ]
 
 }
@@ -89,15 +330,15 @@ export function  populateActivitiesSections(player){
         activitySectionSubMenu.classList.add("activities-section-sub-menu")
         activitiesWindowLeftPanel.appendChild(activitySection);
         activitiesWindowLeftPanel.appendChild(activitySectionSubMenu);
-        let toggleState = "inactive"
+        
         
         activitySection.addEventListener("click", function(){
-            if (toggleState == "active"){
+            if (activitiesSections[i].sectionState == "active"){
                 removeChildItemDet(activitySectionSubMenu)
-                toggleState = "inactive";
+                activitiesSections[i].sectionState = "inactive";
                 } else{
                     toggleActivitySectionContent(activitiesSections[i], activitySectionSubMenu, player);
-                    toggleState = "active";
+                    activitiesSections[i].sectionState = "active";
                 }
            
            

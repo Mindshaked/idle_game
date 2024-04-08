@@ -102,6 +102,7 @@ body{
     grid-row: 1 / 13;
     grid-column: 1 / 9;
     background-color: #7b7b7b;
+    filter: brightness(80%);
     z-index: 1;
 }
 
@@ -110,6 +111,56 @@ body{
     grid-column: 9 / 17;
     background-color: #a6a6a6;
     z-index: 1;
+}
+
+#edit-walls-panel{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 18%;
+    left: 10%;
+    background-color: #221e1e;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    visibility: hidden;
+}
+
+#edit-walls-title{
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.color-button{
+    width: 15px;
+    height: 15px;
+    border-style: none;
+    margin: 2px;
+    border: 0.5px solid white;
+    
+}
+
+.color-button:hover{
+    outline: 1px solid white;
+    box-sizing: border-box;
+   
+}
+
+#close-edit-walls{
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    background-color: #d4ca97;
+}
+
+#close-edit-walls:hover{
+    background-color: #b3a562;
 }
 
 
@@ -333,6 +384,11 @@ body{
     display:flex;
     z-index: 2;
     background-color: #151d45;
+
+}
+
+#window > img{
+    object-fit: cover;
 }
 
 #chair{
@@ -419,12 +475,12 @@ body{
 }
 
 #main-character{
-    width: 128px;
+    width: 145px;
     height: auto;
     position: absolute;
     z-index: 2;
     transform: scaleX(-1);
-    top:255px;
+    bottom: 0px;
     right: 360px;
 }
 
@@ -471,6 +527,28 @@ body{
 #edit-button:hover{
     background-color: darkblue;
 }
+
+#edit-walls{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    height: auto;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.336);
+    color: white;
+    font-family: "Px437_SperryPC_8x16";
+   
+    font-size: 10px;
+}
+
+#edit-walls:hover{
+    background-color: darkblue;
+}
+
+
 
 
 #smartphone-menu{
@@ -1221,7 +1299,7 @@ body{
     padding-left: 15px;
     padding-right: 20px;
     padding-top: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     display: flex;
     justify-self: center;
     align-items: center;
@@ -1241,7 +1319,7 @@ body{
     padding-left: 15px;
     padding-right: 20px;
     padding-top: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     display: flex;
     justify-self: center;
     align-items: center;
