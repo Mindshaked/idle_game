@@ -302,6 +302,18 @@ let advancedActivitiesSection = {
         activity: "crypto",
         activityIdentifier: "crypto",
         activityBuff: []
+        },
+        {
+        activityName: "Directional game (original name needed)",
+        activityCost: 5,
+        activityConsum: [],
+        activityReq: [],
+        skillReq: [],
+        requirementsText: "",
+        activityDesc: "You might smell bad when coming back home, but it is what it is",
+        activity: "crypto",
+        activityIdentifier: "crypto",
+        activityBuff: []
         }
 ]
 

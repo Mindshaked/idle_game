@@ -939,7 +939,7 @@ let athleticsJobSection = {
 }
 
 let militaryJobSection = {
-        sectionName: "military",
+        sectionName: "MILITARY",
         sectionState: "inactive",
         jobs:[{
             jobName: "Wall guard",

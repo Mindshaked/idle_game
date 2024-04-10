@@ -210,7 +210,7 @@ class Activity{
 let tickets = new furniture(5, 2, "PC Bang tickets", "consumable", "resources/centraltable.png", []);
 tickets.quantity = 1000;
 
-let computerTools = new furniture(5, 2, "Computer tools", "item", "resources/centraltable.png", [])
+let computerTools = new furniture(5, 2, "Computer tools", "implant", "resources/centraltable.png", [])
 
 let defaultWindow = new furniture(0, 0, "Soul City", "window", "resources/soulcitydefault.gif", [])
 
@@ -4418,20 +4418,6 @@ wallItemSlot4.addEventListener("click", function (){
 
 
 
-/*
-
-<div id="on-left-table" class="grid-slots grid-slots"></div>
-
-<div id="on-shelf1" class="grid-slots grid-slots"></div>
-<div id="on-shelf2" class="grid-slots grid-slots"></div>
-<div id="on-shelf3" class="grid-slots grid-slots"></div>
-
-<div id="central-furniture" class="grid-slots grid-slots"></div>
-<div id="on-table" class="grid-slots grid-slots"></div>
-<div id="book-shelf1" class="grid-slots grid-slots"></div>
-<div id="book-shelf2" class="grid-slots grid-slots"></div>
-
-*/
 
 
 
@@ -4896,3 +4882,128 @@ tasksWindowCloseBtn.addEventListener("click", function(){
 
 
 drag_div(tasksWindowName,tasksWindowContainer)
+
+
+
+// implants system
+
+let firstImplantSlot = document.getElementById("implant-slot1");
+let secondImplantSlot = document.getElementById("implant-slot2");
+
+
+let firstImplantArray = [];
+let secondImplantArray = [];
+
+
+
+
+
+let implantsFunction = function populateImplants(){
+
+    
+    let selectedSlot = this;
+
+    let implantsWindowContainer = document.getElementById("implants-window-container");
+
+    if (implantsWindowContainer.style.visibility == "visible"){
+        implantsWindowContainer.style.visibility = "hidden";
+    } else{
+        implantsWindowContainer.style.visibility = "visible";
+    }
+    
+
+    removeChildItemDet(implantsWindowContainer);
+
+    let implantsArray = player.inventory.filter((furni) => furni.type == "implant")
+
+    console.log(implantsArray);
+    
+    for (let i =0; i<implantsArray.length; i++){
+        let implant = document.createElement("div");
+        implant.classList.add("implant-card");
+
+            let implantImg = document.createElement("img");
+            implantImg.src = implantsArray[i].source;
+            implant.appendChild(implantImg);
+
+
+        implant.addEventListener("click", function(){
+
+            
+
+            //check if the item is still in the inventory
+
+            let implantIndex = player.inventory.findIndex((element) => element.name == implantsArray[i].name);
+            let implantSelected = player.inventory.slice(implantIndex, 1);
+           
+
+            if(selectedSlot.id == "implant-slot1"){
+                if (firstImplantArray.length !== 0){
+                    firstImplantArray.splice(0,1);
+                    implantImg.remove()
+                }
+
+                implantSelected.equipped = "equipped";
+                console.log(implantSelected.equipped)
+
+                firstImplantArray.push(implantSelected);
+                selectedSlot.appendChild(implantImg);
+
+            } else if(selectedSlot.id == "implant-slot2"){
+                if (secondImplantArray.length !== 0){
+                    secondImplantArray.splice(0,1);
+                    implantImg.remove()
+                }
+
+                implantSelected.equipped = "equipped";
+
+                secondImplantArray.push(implantSelected);
+                selectedSlot.appendChild(implantImg);
+            }
+
+
+                
+            
+
+           
+        })
+        
+        implantsWindowContainer.appendChild(implant)
+
+        
+    }
+
+
+    
+}
+
+
+firstImplantSlot.addEventListener("click", implantsFunction);
+secondImplantSlot.addEventListener("click", implantsFunction);
+
+
+/*
+
+function placeFurni(selectedFurniture, slot, slotArray){
+    //popup the menu with the
+
+    if (slotArray.length !== 0){
+        slotArray.splice(0,1);
+    }
+    
+    slotArray.push(selectedFurniture)
+
+    selectedFurniture.applyEffects("equipped");
+
+
+    
+    player.cleanInventory(slot)
+    let furniImg = document.createElement("img");
+    furniImg.src = selectedFurniture.source
+    slot.appendChild(furniImg)
+        
+
+   
+
+    
+}   */

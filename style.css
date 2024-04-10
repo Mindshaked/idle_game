@@ -2303,6 +2303,80 @@ body{
 
 
 
+/* implants slots */
+
+#implant-container{
+    height: 75px;
+    width: 120px;
+    position: absolute;
+    background-color: #221e1e;
+    right: 10%;
+    bottom: 2%;
+    border: 2px solid #d4ca97;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+}
+
+#implant-title{
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+#implant-slot-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.implant-slots{
+    width: 40px;
+    height: 40px;
+    border: 1px solid #d4ca97;
+    margin: 5px;
+}
+
+.implant-slots > img{
+    object-fit: contain;
+    height: 40px;
+    width: 40px;
+}
+
+.implant-slots:hover{
+    background-color: #d4ca97;
+    cursor: pointer;
+}
+
+#implants-window-container{
+    height: 160px;
+    width: 120px;
+    position: absolute;
+    background-color: #221e1e;
+    top: -280%;
+    padding: 15px;
+    z-index: 20;
+    visibility: hidden;
+}
+
+.implant-card{
+    height: 40px;
+    width: 40px;
+    border: 1px solid #d4ca97;
+}
+
+.implant-card:hover{
+    background-color: #d4ca97;
+    cursor: pointer;
+}
+
+.implant-card > img{
+    object-fit: contain;
+    height: 40px;
+    width: 40px;
+}
+
+
 /* display message */
 
 #message-container{
