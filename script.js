@@ -4933,32 +4933,41 @@ let implantsFunction = function populateImplants(){
 
             //check if the item is still in the inventory
 
+            //make it so you cannot equip the same item if it's already equipped
+
+            //Add a way to remove the implant equipped
+
             let implantIndex = player.inventory.findIndex((element) => element.name == implantsArray[i].name);
             let implantSelected = player.inventory.slice(implantIndex, 1);
+            let implantSlotImg = document.createElement("img");
+            implantSlotImg.src = implantImg.src;
+           
            
 
             if(selectedSlot.id == "implant-slot1"){
                 if (firstImplantArray.length !== 0){
+                    firstImplantArray[0].equipped = "unequipped";
                     firstImplantArray.splice(0,1);
-                    implantImg.remove()
+                    implantSlotImg.remove()
                 }
 
                 implantSelected.equipped = "equipped";
                 console.log(implantSelected.equipped)
 
                 firstImplantArray.push(implantSelected);
-                selectedSlot.appendChild(implantImg);
+                selectedSlot.appendChild(implantSlotImg);
 
             } else if(selectedSlot.id == "implant-slot2"){
                 if (secondImplantArray.length !== 0){
+                    firstImplantArray[0].equipped = "unequipped";
                     secondImplantArray.splice(0,1);
-                    implantImg.remove()
+                    implantSlotImg.remove()
                 }
 
                 implantSelected.equipped = "equipped";
 
                 secondImplantArray.push(implantSelected);
-                selectedSlot.appendChild(implantImg);
+                selectedSlot.appendChild(implantSlotImg);
             }
 
 
