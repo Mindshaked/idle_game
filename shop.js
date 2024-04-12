@@ -129,6 +129,17 @@ let basicSet = {
             itemDescription: "a basic chair",
             itemReq: [],
             reqText: "None"
+        },
+        {
+            shopType: "on-table",
+            itemPrice: 200,
+            itemSellPrice: 120,
+            itemName: "Cat",
+            itemImg: "resources/cattest.png",
+            itemBonus: [],
+            itemDescription: "a basic chair",
+            itemReq: [],
+            reqText: "None"
         }
     ]
 }

@@ -64,6 +64,53 @@ export class furniture {
 
 }
 
+let petInterval;
+
+export class Pet extends furniture {
+    constructor(food, price, sellPrice, name, type, source, effects){
+        super(price, sellPrice, name, type, source, effects)
+        this.feedLevel = 100;
+        this.food = food;
+
+        // food for example ["cat food"]
+    }
+
+    feedPet(){
+
+        let foodAmount = player.checkPlayerItemAmount(this.food)
+
+        if (foodAmount >= 100){
+            player.consumePlayerItem([this.food, 100-feedLevel])
+            this.feedLevel = 100;
+        } else if(foodAmount < 100){
+            player.consumePlayerItem([this.food, foodAmount])
+            this.feedLevel += foodAmount;
+        } else if(foodAmount == 0){
+            displayAlert("You don't have any pet food");
+            return false;
+        }
+        
+    }
+
+    activatePet(){
+         petInterval = setInterval(() => {
+            if (feedLevel > 0){
+                feedLevel -= 1;
+                //update feed level
+            } else{
+                displayAlert("not enough food")
+            }
+        }, 10000);
+    }
+
+    deactivatePet(){
+        clearInterval(petInterval);
+        petInterval = null;
+    }
+}
+
+
+
 
 class Job {
     constructor(name, type, action, pay){
@@ -214,6 +261,10 @@ let computerTools = new furniture(5, 2, "Computer tools", "implant", "resources/
 
 let defaultWindow = new furniture(0, 0, "Soul City", "window", "resources/soulcitydefault.gif", [])
 
+let cat = new Pet("cat food", 300, 200, "Cat", "pet", "resources/cattest.png", [])
+
+console.log(cat.food)
+
 import {jobSections} from "./jobs.js"
 
 class Player {
@@ -224,7 +275,7 @@ class Player {
         this.daysPassed = 0;
         this.currentActivity = "Doing nothing";
         this.currentDate = new Date();
-        this.inventory = [tickets, computerTools, defaultWindow];
+        this.inventory = [tickets, computerTools, defaultWindow, cat];
         this.room = [];
         this.interval = null;
         this.profilePicture = "resources/profilepicture.png";
@@ -4327,6 +4378,9 @@ onTableSlot.addEventListener("click", function (){
 
 });
 
+
+
+
 const chairSlot = document.getElementById("chair");
 let chairItem = [];
 
@@ -4510,6 +4564,10 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
             populateInventoryPopup(typeArray, typeSlot, typeSlotArray);
 
             placeFurni(typeArray[i], typeSlot, typeSlotArray)
+
+            // pet functionality
+
+            
 
           
         })
@@ -4885,7 +4943,7 @@ drag_div(tasksWindowName,tasksWindowContainer)
 
 
 
-// implants system
+/* implants system
 
 let firstImplantSlot = document.getElementById("implant-slot1");
 let secondImplantSlot = document.getElementById("implant-slot2");
@@ -4991,28 +5049,6 @@ firstImplantSlot.addEventListener("click", implantsFunction);
 secondImplantSlot.addEventListener("click", implantsFunction);
 
 
-/*
 
-function placeFurni(selectedFurniture, slot, slotArray){
-    //popup the menu with the
+  */
 
-    if (slotArray.length !== 0){
-        slotArray.splice(0,1);
-    }
-    
-    slotArray.push(selectedFurniture)
-
-    selectedFurniture.applyEffects("equipped");
-
-
-    
-    player.cleanInventory(slot)
-    let furniImg = document.createElement("img");
-    furniImg.src = selectedFurniture.source
-    slot.appendChild(furniImg)
-        
-
-   
-
-    
-}   */

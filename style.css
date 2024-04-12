@@ -322,6 +322,7 @@ body{
 #on-table{
     grid-row: 11/12;
     grid-column: 7 / 9;
+    transform: translateY(2px);
     cursor: pointer;
     display:flex;
     max-width: 96px;
