@@ -529,6 +529,26 @@ body{
     background-color: darkblue;
 }
 
+#feed-pet{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    height: auto;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.336);
+    color: white;
+    font-family: "Px437_SperryPC_8x16";
+   
+    font-size: 10px;
+}
+
+#feed-pet:hover{
+    background-color: darkblue;
+}
+
 #edit-walls{
     display: flex;
     flex-direction: column;

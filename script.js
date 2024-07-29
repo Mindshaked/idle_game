@@ -29,7 +29,9 @@ export class furniture {
             let furniEffects = this.effects;
            
             if (status == "equipped" && furniEffects.length !== 0 && this.effectsState == "off"){
+                this.equipped = true;
                 this.effectsState = "on";
+                console.log("furniture effects applied")
 
                for (let i=0; i< furniEffects.length; i+=3){
 
@@ -43,8 +45,9 @@ export class furniture {
                }
 
             } else if (status == "unequipped" && furniEffects.length !== 0){
-
+                this.equipped = false;
                 this.effectsState = "off";
+                console.log("furniture effects removed")
 
                 for (let i=0; i< furniEffects.length; i+=3){
 
@@ -65,12 +68,15 @@ export class furniture {
 }
 
 let petInterval;
+const petFeedLevel = document.getElementById("pet-feed-level");
 
 export class Pet extends furniture {
-    constructor(food, price, sellPrice, name, type, source, effects){
+    constructor(food, price, sellPrice, name, type, petType, source, effects){
         super(price, sellPrice, name, type, source, effects)
         this.feedLevel = 100;
         this.food = food;
+        this.petType = "pet";
+        this.state = "inactive";
 
         // food for example ["cat food"]
     }
@@ -79,31 +85,55 @@ export class Pet extends furniture {
 
         let foodAmount = player.checkPlayerItemAmount(this.food)
 
+        console.log(foodAmount)
+
         if (foodAmount >= 100){
-            player.consumePlayerItem([this.food, 100-feedLevel])
+            player.consumePlayerItem([this.food, 100-this.feedLevel])
             this.feedLevel = 100;
-        } else if(foodAmount < 100){
+            petFeedLevel.innerText = onTableItem[0].feedLevel;
+          
+            player.displayAlert("You fed the pet")
+        } else if(foodAmount < 100 && foodAmount > 0){
             player.consumePlayerItem([this.food, foodAmount])
             this.feedLevel += foodAmount;
+            petFeedLevel.innerText = onTableItem[0].feedLevel;
+            
+            player.displayAlert("You fed the pet")
         } else if(foodAmount == 0){
-            displayAlert("You don't have any pet food");
+            player.displayAlert("You don't have any pet food");
             return false;
         }
         
     }
 
     activatePet(){
+
+        if (this.state == "inactive"){
+
+        
          petInterval = setInterval(() => {
-            if (feedLevel > 0){
-                feedLevel -= 1;
+            if (this.feedLevel > 0){
+                this.state = "active";
+                this.feedLevel -= 1;
+                console.log("the pet feed level is " + this.feedLevel)
+                this.applyEffects("equipped");
+
+    petFeedLevel.innerText = onTableItem[0].feedLevel;
                 //update feed level
             } else{
-                displayAlert("not enough food")
+                player.displayAlert("not enough food")
+               
+                this.applyEffects("unequipped");
+                this.deactivatePet();
             }
+
+            
         }, 10000);
+        }
     }
 
     deactivatePet(){
+        this.state = "inactive"
         clearInterval(petInterval);
         petInterval = null;
     }
@@ -257,11 +287,13 @@ class Activity{
 let tickets = new furniture(5, 2, "PC Bang tickets", "consumable", "resources/centraltable.png", []);
 tickets.quantity = 1000;
 
-let computerTools = new furniture(5, 2, "Computer tools", "implant", "resources/centraltable.png", [])
+let catFood = new furniture(5, 2, "cat food", "food", "resources/centraltable.png", [])
+catFood.quantity = 1000;
 
 let defaultWindow = new furniture(0, 0, "Soul City", "window", "resources/soulcitydefault.gif", [])
+defaultWindow.equipped = true;
 
-let cat = new Pet("cat food", 300, 200, "Cat", "pet", "resources/cattest.png", [])
+let cat = new Pet("cat food", 300, 200, "Cat", "on-table", "pet", "resources/cattest.png", ["pcBang", "payModifier", 1])
 
 console.log(cat.food)
 
@@ -275,7 +307,7 @@ class Player {
         this.daysPassed = 0;
         this.currentActivity = "Doing nothing";
         this.currentDate = new Date();
-        this.inventory = [tickets, computerTools, defaultWindow, cat];
+        this.inventory = [tickets, catFood, defaultWindow, cat];
         this.room = [];
         this.interval = null;
         this.profilePicture = "resources/profilepicture.png";
@@ -3856,15 +3888,31 @@ class Player {
         const furniIndex = this.inventory.findIndex(item => item.name === furniture.name)
         if (furniIndex !== -1){
             if (this.inventory[furniIndex].quantity > 1){
-                this.inventory[furniIndex].quantity -= amount;
-                this.money += furniture.sellPrice * amount;
-                if (this.inventory[furniIndex].quantity == 0){
+                if (this.inventory[furniIndex].quantity - amount == 0 && this.inventory[furniIndex].equipped == true){
+                    if (this.inventory[furniIndex].equipped == true){
+                        this.displayAlert("You cannot sell all this furniture, it is in the room. Leave at least one");
+                    
+                } else {
+                    this.inventory[furniIndex].quantity -= amount;
+                    this.money += furniture.sellPrice * amount;
+                    if (this.inventory[furniIndex].quantity == 0){
+                        this.inventory.splice(furniIndex, 1);
+                    }
+
+                    player.displayAlert("You sold " + furniture.name + " for " + furniture.sellPrice);
+                }
+
+            }    
+                
+            } else if (this.inventory[furniIndex].quantity <= 1){
+
+                if (this.inventory[furniIndex].equipped == true){
+                    this.displayAlert("You cannot sell this furniture, it is in the room");
+                } else{
+                    this.money += furniture.sellPrice;
                     this.inventory.splice(furniIndex, 1);
                 }
-                player.displayAlert("You sold " + furniture.name + " for " + furniture.sellPrice);
-            } else if (this.inventory[furniIndex].quantity <= 1){
-                this.money += furniture.sellPrice;
-                this.inventory.splice(furniIndex, 1);
+                
              
             } 
            
@@ -4252,6 +4300,7 @@ export function removeChildItemDet(container){
 //function to place furniture
 
 function placeFurni(selectedFurniture, slot, slotArray){
+    
     //popup the menu with the
 
     if (slotArray.length !== 0){
@@ -4261,7 +4310,10 @@ function placeFurni(selectedFurniture, slot, slotArray){
     slotArray.push(selectedFurniture)
 
     selectedFurniture.applyEffects("equipped");
-
+console.log(selectedFurniture)
+    if (selectedFurniture.petType == "pet"){
+        selectedFurniture.activatePet();
+    }
 
     
     player.cleanInventory(slot)
@@ -4298,7 +4350,10 @@ bookShelfSlot.addEventListener("click", function (){
 });
 
 const windowSlot = document.getElementById("window");
-let windowItem = [];
+
+let windowItem = [defaultWindow];
+
+placeFurni(defaultWindow, windowSlot, windowItem)
 
 windowSlot.addEventListener("click", function (){
         furniSelect("window", windowSlot, windowItem)
@@ -4471,6 +4526,11 @@ wallItemSlot4.addEventListener("click", function (){
 });
 
 
+const roomSlots = [centralFurnitureSlot,bookShelfSlot, windowSlot, lampSlot, tvStandSlot, onTVStandSlot, deskSlot, onDeskSlot, shelf1Slot, shelf2Slot, miscSlot, onTableSlot, chairSlot, bookShelfSlot1, bookShelfSlot2, bookShelfSlot3, onShelfSlot1, onShelfSlot2, onShelfSlot3, onShelfSlot4, wallItemSlot1, wallItemSlot2, wallItemSlot3, wallItemSlot4]
+const roomItems = [centralFurnitureItem,bookShelfItem, windowItem, lampItem, tvStandItem, onTVStandItem, deskItem, onDeskItem, shelf1Item, shelf2Item, miscItem, onTableItem, chairItem, bookShelfItem1, bookShelfItem2, bookShelfItem3, onShelfItem1, onShelfItem2, onShelfItem3, onShelfItem4, wallItem1, wallItem2, wallItem3, wallItem4]
+
+
+
 
 
 
@@ -4491,6 +4551,7 @@ inventoryPopupCloseBtn.addEventListener("click", function(){
 
 //function puplate inventory popup
 function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
+   
 
         let emptyFurni = document.createElement("div");
         emptyFurni.className = "empty-furni";
@@ -4500,7 +4561,7 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
 
 
         emptyFurni.addEventListener("click", function(){
-            if (typeSlot.hasChildNodes() == true){
+            if (typeSlot.hasChildNodes() == true){  
             typeSlot.removeChild(typeSlot.firstElementChild)
             let elementType = document.createElement("div");
             elementType.classList.add("element-type");
@@ -4511,6 +4572,10 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
             emptyFurni.style.outline = "3px solid blue";
             for (let i = 0; i< typeArray.length; i++){
                 if (typeArray[i].equipped == true){
+
+                    if (typeArray[i].petType == "pet"){
+                        typeArray[i].deactivatePet();
+                    }
                     typeArray[i].equipped = false;
                     console.log("furniture desequipado" + typeArray[i].name)
                     console.log(typeArray)
@@ -4549,6 +4614,9 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
 
             for (let i = 0; i< typeArray.length; i++){
                 if (typeArray[i].equipped == true){
+                    if (typeArray[i].petType == "pet"){
+                        typeArray[i].deactivatePet();
+                    }
                     typeArray[i].equipped = false;
                     typeArray[i].applyEffects("unequipped");
                    
@@ -4576,6 +4644,9 @@ function populateInventoryPopup(typeArray, typeSlot, typeSlotArray){
 
     
 }
+
+
+
 
 // function to select the furniture from the menu
 
@@ -4703,6 +4774,23 @@ editWallsBtn.addEventListener("click", function(){
 closeWallsPanel.addEventListener("click", function(){
     editWallsPanel.style.visibility = "hidden"
 })
+
+
+// feed pet button
+
+const feedPetBtn = document.getElementById("feed-pet");
+
+feedPetBtn.addEventListener("click", function(){
+    if(onTableItem[0].petType == "pet"){
+       onTableItem[0].feedPet();
+        console.log("it's a pet")
+    } else{
+        console.log("it's not a pet")
+    }
+})
+
+
+
 
 
 

@@ -17,7 +17,7 @@ import {removeChildItemDet} from "./script.js"
 
 export function toggleTasksWindow(){
     if (tasksWindowContainer.style.visibility == "visible"){
-        
+       
         tasksWindowContainer.style.visibility = "hidden";
         tasksMainWindow.style.visibility = "hidden";
         tasksWindowName.style.visibility = "hidden";
@@ -44,6 +44,7 @@ let taskSections = [
                 itemReq: ["PC Bang tickets", 1000],
                 skillReq: [],
                 moneyReq: 0,
+                status: "incomplete",
                 giveReward(player){
                     player.social.earnExp(3000);
                     player.social.updateLevel()
@@ -59,9 +60,10 @@ let taskSections = [
                 itemReq: ["PC Bang tickets", 1000],
                 skillReq: [],
                 moneyReq: 0,
+                status: "incomplete",
                 giveReward(player){
                     player.social.earnExp(300);
-    
+                    player.social.updateLevel()
                 }
 
             }
@@ -80,9 +82,10 @@ let taskSections = [
                 itemReq: ["PC Bang tickets", 1000],
                 skillReq: [],
                 moneyReq: 0,
+                status: "incomplete",
                 giveReward(player){
                     player.social.earnExp(300);
-    
+                    player.social.updateLevel()
                 }
 
             },
@@ -92,9 +95,10 @@ let taskSections = [
                 itemReq: ["PC Bang tickets", 1000],
                 skillReq: [],
                 moneyReq: 0,
+                status: "incomplete",
                 giveReward(player){
                     player.social.earnExp(300);
-    
+                    player.social.updateLevel()
                 }
 
             }
@@ -219,6 +223,8 @@ export function populateTaskSections(player){
 
 
 export function populateTaskDetail(player, taskSection){
+    removeChildItemDet(tasksWindowSectionDetailBanner);
+    removeChildItemDet(tasksWindowSectionDetailInfo);
 
     let taskImgDiv = document.createElement("div");
     taskImgDiv.classList.add("task-img-div");
@@ -263,10 +269,19 @@ export function populateTaskDetail(player, taskSection){
 
             let taskClaimBtn = document.createElement("button");
             taskClaimBtn.classList.add("task-claim-button");
-            taskClaimBtn.innerText = "CLAIM";
+
+            if (taskSection.tasks[i].status == "completed"){
+                task.style.opacity = "30%";
+                taskClaimBtn.innerText = "CLAIMED";
+                taskClaimBtn.disabled = true;
+            } else {
+                taskClaimBtn.innerText = "CLAIM";
+            }
+            
 
     
-
+           
+           
 
             //check the progress
 
@@ -313,9 +328,10 @@ export function populateTaskDetail(player, taskSection){
                 taskClaimBtn.addEventListener("click", function(){
 
                     task.style.opacity = "30%";
-                    taskClaimBtn.innerText = "COMPLETED";
+                    taskClaimBtn.innerText = "CLAIMED";
                     taskClaimBtn.disabled = true;
                     taskSection.tasks[i].giveReward(player);
+                    taskSection.tasks[i].status = "completed";
 
 
                 })
